@@ -1,0 +1,75 @@
+/* The Inner Cosmos — design tokens
+   The Institute of The Spiritual Science of Human Patterns
+   v2 · every ratio below is measured, not estimated (WCAG 2.1)
+
+   The shell is dark, always. The Page is a surface inside it, not a theme.
+   There is no light mode. */
+
+:root{
+  /* ---- the shell, dark to light ---- */
+  --void:      #0B0E16;  /* the ground. every screen starts here — and the ink on the Page */
+  --nocturne:  #171E2E;  /* raised neutral surfaces: cards, lists, tables */
+  --nebula:    #2A1B45;  /* atmosphere: the wash behind heroes, the figure's interior,
+                            and raised cosmos surfaces — hero panels, feature wells */
+
+  --teal:      #329C9E;  /* 5.86 void · 5.06 nocturne · 4.76 nebula — AA on all three
+                            second diagram channel. relationships, never things */
+  --starlight: #B0A3C9;  /* 8.20 void · 7.08 nocturne · 6.66 nebula — AAA/AA
+                            secondary text, captions, quiet interface.
+                            this is where the violet in the brand actually lives */
+  --moonlight: #EDEBE2;  /* 16.15 void · 13.94 nocturne · 13.11 nebula — AAA
+                            body text and headings on dark */
+  --starfire:  #FFE9A8;  /* 16.05 void — AAA. star points and focal glints.
+                            never type, never fills */
+  --gold:      #E8BE45;  /* 10.92 void · 9.42 nocturne · 8.86 nebula — AAA
+                            diagram linework, the mark, one accent per screen */
+
+  /* ---- the Page: the long-form reading surface ---- */
+  --page:       #F3F0E7; /* the ground. anything over ~400 words */
+  --page-muted: #5A6172; /* 5.44 on page — AA. marginal notes and captions */
+  /* body ink on the Page is --void: 16.93:1, AAA */
+
+  /* ---- the metallic ---- */
+  --bronze:     #836919; /* 3.67 on void (shadow of a rendered object, never type)
+                            4.61 on page — AA. the only gold that holds on ivory */
+  --metal: linear-gradient(100deg, #836919 0%, #E8BE45 48%, #FFE9A8 100%);
+  /* A treatment, not a colour. Seals, foil, embossed covers, the emblem —
+     anywhere gold must read as actual metal. Tops out at 16.05:1, brighter
+     than any single gold in the system.
+     Linework, diagrams and interface always stay FLAT --gold.
+     A gradient in a diagram is a bug. */
+
+  /* ---- rules ---- */
+  --rule:      #2A2647;
+  --rule-soft: #1E1B33;
+
+  /* ---- type ---- */
+  --display: "Fraunces", Georgia, "Times New Roman", serif;
+  --body:    "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ui:      "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --measure: 40rem;      /* ~66 characters at 1.125rem */
+}
+
+/* WARNING — flat Gold Leaf on the Page measures 1.55:1 and fails at any size.
+   Where the Page needs a metallic, use --bronze (4.61, AA).
+   Diagrams are the exception: they need the whole gold, so they keep a dark inset.
+   Deep Teal (2.89) and Starlight (2.06) also fail on the Page.
+   Violet never touches the Page. */
+
+/* Fraunces is variable: request opsz explicitly at each step of the scale,
+   or the browser holds the default and the large sizes lose their contrast.
+   Leave SOFT and WONK at 0 — the wonk axis reads as playful. */
+body{
+  background: var(--void);
+  color: var(--moonlight);
+  font-family: var(--body);
+  font-weight: 400;              /* never 300 on dark — light weights shimmer */
+  font-size: 1.125rem;
+  line-height: 1.65;
+}
+h1,h2,h3{
+  font-family: var(--display);
+  font-variation-settings: "opsz" 96, "SOFT" 0, "WONK" 0;
+  font-weight: 400;
+}

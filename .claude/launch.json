@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "institute-site",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "4477", "--directory", "site"],
+      "port": 4477
+    }
+  ]
+}
