@@ -6,3 +6,14 @@ desktop.ini
 # editor scratch
 *.swp
 *~
+
+# Raw OpenArt output. Thirty-eight generations, ~180 MB, most of them rejected
+# explorations — too heavy to carry in git history forever.
+#
+# The masters for every image ACTUALLY IN USE are kept, as WebP at full
+# resolution, in assets/masters/. Those are what the shipped cuts in
+# site/assets/ are derived from, so nothing in the live site is unrecoverable.
+#
+# The rejected explorations stay on Sara's disk only. If one is ever wanted,
+# it can be regenerated from the prompts in docs/imagery-directions.md.
+assets/source-*.png

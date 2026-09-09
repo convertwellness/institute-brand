@@ -10,108 +10,82 @@ python -m http.server 4477 --directory site
 ```
 index.html    the page
 styles.css    tokens, components, sections, motion — commented by section
-app.js        shell switch, doors, drawer, reveal, diagram draw
-assets/       images, plus the two mask cuts of the mark
+app.js        doors, drawer, the ring readout, the path, reveal
+assets/       the shipped cuts. Masters live in ../assets/masters/
 ```
 
-## Two decisions that depart from the handoff
+## Where this stands
 
-Both were Sara's calls on 1 Sep 2026. `CLAUDE.md` still describes the original plan.
+A light site — white ground, faintly lavender bands, charcoal text — carrying a set of
+deep cosmic images. The rhythm is deliberate: rich plates on a quiet page, so the page
+reads as luminous rather than dark. Michael's first note on the original build was that it
+was *far too dark*; this answers that without giving up the cosmos.
 
-**1 · Static, not Next.js.** Everything on the marketing and catalogue side is static
-content. The framework was carrying no weight. The gate — accounts, enrolment records,
-per-lesson progress, the completion event at the end of Foundation week ten — still needs
-a server, but that is the *study* layer, and it can sit behind `/account` and the lesson
-player without the catalogue paying for it.
+## The two departures from the handoff
 
-**2 · A shell switch, where the brand said dark only.** Reconciled rather than overridden:
-the brand already has an ivory reading surface, the Page. The switch does not invert the
-site — it grows the Page to full size. Void ink, `--page-muted` for captions, and Bronze
-in place of flat Gold, because flat Gold measures 1.55:1 on ivory and fails at any size.
+`CLAUDE.md` still describes the original plan. Both changes were Sara's, 1 Sep 2026.
 
-Three moments stay cosmic in both shells, because they need the whole gold and the whole
-dark: **the hero**, **the Operating System ring**, and **the Membership plate**. The light comes up
-in the rooms; the sky stays the sky. Those carry `.inset`, which re-points the tokens
-locally.
+**Static, not Next.js.** Everything on the marketing and catalogue side is static. The gate —
+accounts, enrolment, per-lesson progress, the completion event at the end of Foundation
+week ten — still needs a server, but that is the *study* layer, not the catalogue.
 
-**3 · Nocturne is no longer a section ground.** Navy against violet was the one colour
-pairing in the system that jarred. Nocturne now appears only on raised surfaces — cards,
-School panels, mega-menu panels — which always sit on Void, never against Nebula. Section
-grounds run: field → Nebula → Void → Void → Void → Nebula → Void.
-
-**4 · Hover deepens rather than tints.** A hovered surface drops to `--hover-ground` (Void
-in the Cosmos shell, Page one step down in the Page shell) and takes a hairline in
-`--hover-line` (Gold, Bronze). Where a grid gap already draws the divider, the hairline is
-an inset ring, not a border, so nothing shifts.
-
-## The Operating System diagram
-
-Michael's chain — Concept, Belief, Pattern, Emotion, Behavior, Life Result — is drawn as a
-closed ring, Life Result returning to Concept, confirmed by Sara on 1 Sep 2026. That is what
-makes the section's own copy legible: *"a sequence that can be drawn, followed, and
-interrupted"*, and *"why do certain experiences continue to repeat?"* — you interrupt a loop,
-not a line.
-
-A star sits at the centre: the person the system runs in, echoing the star at the heart of
-the seal. Below 800px the ring becomes a vertical chain with the return leg running back up
-the left, because a ring that size loses its labels.
-
-## Ground transitions
-
-Two grounds are never butted together. A `.bridge-top` / `.bridge-bottom` overlay fades one
-into the other over 14rem, on an **eased** ramp — a straight alpha ramp holds full strength
-for a single pixel and then falls, and the eye reads that change of slope as an edge, which
-is exactly the seam this was added to remove.
-
-Bridges live on the section whose ground follows the shell, and fade from or to the fixed
-cosmic colour. That way one rule holds in both shells.
+**A light shell.** The brand said dark-only. The site is now light, with the cosmos carried
+by imagery and one gold band rather than by the ground. The full dark "Inner Cosmos" build
+is preserved at commit `1e3406f` (`git show 1e3406f:site/index.html`).
 
 ## Colour
 
-Every value comes from `BRAND-TOKENS.css` with two exceptions, both in the Page shell,
-both Page carried toward white, both measured:
+| | | on white | on band `#F6F5FA` |
+|---|---|---|---|
+| charcoal | `#16181D` | 17.8 | 16.6 |
+| quiet    | `#5A6172` |  6.0 |  5.6 |
+| amethyst | `#5B4A9E` |  7.2 |  6.7 |
+| bronze   | `#836919` |  5.4 |  5.0 |
 
-| | | on Void ink | on Bronze | on `--page-muted` |
-|---|---|---|---|---|
-| Page   | `#F3F0E7` | 16.68 | 4.63 | 5.19 |
-| *added* | `#FBF9F4` | 18.40 | 5.10 | 5.71 |
-| *added* | `#FFFFFF` | 19.30 | 5.37 | 6.01 |
+**Amethyst leads**; bronze is the warm second voice. Amethyst is the brand's own Starlight
+`#B0A3C9` taken down far enough to carry type — Starlight itself is 2.06 on white and is
+decorative only. Flat Gold `#E8BE45` is 1.55 and never touches a light ground as type; it
+appears only inside imagery and as star points.
 
-The ladder runs upward, because on ivory a raised surface is lighter, not darker.
+## The three set pieces
 
-## Assets
+**The Operating System ring.** Michael's chain drawn as a closed loop, Life Result returning
+to Concept. Each stage is a real button — hover on a pointer, tab to it, tap it — and the
+readout underneath is a live region. Below 800px it becomes a vertical chain with the return
+leg up the left. **Three of the six stages carry a visible placeholder**: Emotion, Behavior
+and Life Result have no description from Michael yet, and the page says so rather than
+inventing copy.
 
-`emblem-cut.webp` and `seal-cut.webp` are generated from `assets/emblem.jpg` and
-`assets/seal.png`, which both ship on a solid black ground. Alpha is baked from luminance
-so the figure floats on any surface — no `mix-blend-mode`, which breaks the moment
-anything above it opens a stacking context.
+**The path.** Five tiers that open on hover or click. Height animates through
+`grid-template-rows: 0fr → 1fr`, so there is no guessed `max-height` and no jump when copy
+length changes.
 
-```python
-lut = [0 if i < 14 else min(255, int(((i/255)**0.85)*255*1.12)) for i in range(256)]
-a = im.convert("L").point(lut); out = im.convert("RGBA"); out.putalpha(a)
-```
+**The library band.** A warm gold light on cream — not a photograph — carrying the counts,
+which are three doors that bloom and reveal a line of description on hover.
 
-`membership-sphere.webp` and `tile-events.webp` were generated with OpenArt (Nano Banana
-Pro, text-to-image, 2K, 1 Sep 2026) and cut the same way. Both prompts share a style spine —
-*flat single-weight metallic gold hairlines on a pure black ground, interiors opening into a
-deep indigo and violet field of stars, antique celestial atlas engraving* — and both
-explicitly exclude text, lettering, shading, gradients and drop shadows. Subjects:
+## Imagery
 
-- **Membership** — a brass armillary sphere on a beaded ring, botanical stems rooted at its
-  base, 1:1.
-- **Live Events** — five figures in gold outline around a wide circle, joined by
-  constellation lines, 9:16 with the lower third left empty for the tile's type.
+Six cosmic plates, all generated with OpenArt (Nano Banana Pro) and sharing one language:
+a deep violet galaxy, fine luminous linework, and a single warm star. The hero is the seal's
+own idea — a figure outline in the cosmos with a star at its heart.
 
-The mark is used at two cuts, never scaled from one: `mark-micro-mask.svg` (solid, below
-48px) and `mark-mask.svg` (outline, 48–120px). Both are applied as CSS masks so they take
-`currentColor` and follow the shell.
+Masters for everything in use are in `../assets/masters/` as full-resolution WebP.
+
+**Raw PNG output is gitignored.** Thirty-eight generations, about 180 MB, most of them
+rejected explorations — too heavy to carry in git history forever. Nothing live depends on
+them; the prompts that made them are in `../docs/imagery-directions.md`.
+
+The mark is filled with a galaxy at every size, masked over `galaxy-figure.webp`.
 
 ## Verified
 
-390 / 768 / 1024 / 1440 with no horizontal overflow · Fraunces and Source Sans 3 both
-loading, `opsz` set explicitly at every step · visible focus ring on every interactive
-element · all three motion moments inside `prefers-reduced-motion` · keyboard pass through
-the header doors, the drawer accordions and a tile.
+390 / 768 / 1024 / 1440 with no horizontal overflow · both fonts loading with `opsz` set at
+every step · visible focus ring on every interactive element · motion inside
+`prefers-reduced-motion` · keyboard pass through the header, the ring and the path.
+
+**A note on previewing.** `IntersectionObserver` does not fire in a backgrounded tab, so the
+reveal animations and the ring draw stay dormant until the page is actually visible. If a
+screenshot tool shows the page faded or inert, that is why.
 
 ## Not built yet
 

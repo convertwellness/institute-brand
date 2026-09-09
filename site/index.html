@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Institute of The Spiritual Science of Human Patterns</title>
 <meta name="description" content="There is a structure underneath, and it can be seen. The Institute studies the Concepts and Patterns that shape how we think, choose, relate and respond.">
-<meta name="theme-color" content="#0B0E16">
+<meta name="theme-color" content="#FFFFFF">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Source+Sans+3:wght@400;600&display=swap">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body>
 
@@ -21,7 +21,7 @@
   <div class="shell header__bar">
 
     <a class="brand" href="/" aria-label="The Institute — home">
-      <span class="mark mark--micro" aria-hidden="true"></span>
+      <span class="brand__mark" aria-hidden="true"></span>
       <span class="brand__name">The Institute</span>
     </a>
 
@@ -150,23 +150,6 @@
         </svg>
       </button>
 
-      <!-- Cosmos and Page: the two grounds of the brand, offered as a shell -->
-      <div class="switch" role="group" aria-label="Reading shell">
-        <button class="switch__opt" type="button" data-shell-set="cosmos" aria-pressed="true">
-          <span class="sr-only">Cosmos — the dark shell</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-            <path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1Z"></path>
-          </svg>
-        </button>
-        <button class="switch__opt" type="button" data-shell-set="page" aria-pressed="false">
-          <span class="sr-only">Page — the light reading shell</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-            <circle cx="12" cy="12" r="4.2"></circle>
-            <path d="M12 2v2.6M12 19.4V22M2 12h2.6M19.4 12H22M4.9 4.9l1.9 1.9M17.2 17.2l1.9 1.9M19.1 4.9l-1.9 1.9M6.8 17.2l-1.9 1.9"></path>
-          </svg>
-        </button>
-      </div>
-
       <button class="icon-btn burger" type="button" id="burger" aria-expanded="false" aria-controls="drawer" aria-label="Open menu">
         <span aria-hidden="true"></span>
       </button>
@@ -179,7 +162,7 @@
 <div class="drawer" id="drawer" data-open="false" role="dialog" aria-modal="true" aria-label="Menu">
   <div class="shell drawer__top">
     <a class="brand" href="/">
-      <span class="mark mark--micro" aria-hidden="true"></span>
+      <span class="brand__mark" aria-hidden="true"></span>
       <span class="brand__name">The Institute</span>
     </a>
     <button class="icon-btn" type="button" id="drawer-close" aria-label="Close menu">
@@ -249,42 +232,37 @@
 <main id="main">
 
 <!-- ══ Hero ════════════════════════════════════════════════════════════ -->
-<section class="hero inset">
-  <div class="hero__field" aria-hidden="true"></div>
-
+<section class="hero g-paper">
   <div class="shell hero__inner">
 
-    <div>
-      <div class="hero__copy">
-        <h1 class="masthead" data-reveal>There is a structure underneath, and it can be seen.</h1>
+    <div class="hero__copy">
+      <h1 class="masthead" data-reveal>There is a structure underneath, and it can be seen.</h1>
 
-        <p class="lead measure" data-reveal style="--d:80ms">
-          The Institute studies the Concepts and Patterns that shape how we think, choose,
-          relate and respond — and teaches you to recognise them operating in your own life.
-        </p>
+      <p class="lead measure" data-reveal style="--d:80ms">
+        The Institute studies the Concepts and Patterns that shape how we think, choose,
+        relate and respond — and teaches you to recognise them operating in your own life.
+      </p>
 
-        <div class="hero__actions" data-reveal style="--d:160ms">
-          <a class="btn btn--primary" href="/courses/five-laws">Start the free course</a>
-          <a class="btn btn--secondary" href="/human-operating-system">See the system</a>
-        </div>
-
-        <p class="hero__foot" data-reveal style="--d:240ms">
-          You do not have to understand everything before you begin.
-        </p>
+      <div class="hero__actions" data-reveal style="--d:160ms">
+        <a class="btn btn--primary" href="/courses/five-laws">Start the free course</a>
+        <a class="btn btn--secondary" href="/human-operating-system">See the system</a>
       </div>
+
+      <p class="hero__foot" data-reveal style="--d:240ms">
+        You do not have to understand everything before you begin.
+      </p>
     </div>
 
-    <figure class="emblem" data-reveal style="--d:120ms; margin:0">
-      <span class="emblem__glow" aria-hidden="true"></span>
-      <img src="assets/emblem-cut.webp" alt="A human figure drawn in a single gold line, its interior an open field of stars, rooted among engraved botanical stems." width="747" height="1109" fetchpriority="high">
-      <span class="glint" aria-hidden="true"></span>
+    <figure class="shot shot--hero" style="--ratio: 4 / 5; margin:0" data-reveal>
+      <img src="assets/shot-hero.webp" width="1100" height="1366" fetchpriority="high"
+           alt="A deep violet galaxy, with the fine luminous outline of a standing human figure emerging from it and one bright warm star burning at the centre of its chest.">
     </figure>
 
   </div>
 </section>
 
 <!-- ══ The Human Operating System ══════════════════════════════════════ -->
-<section class="section g-cosmos inset bridge-top" style="--from:var(--nebula)" aria-labelledby="os-h">
+<section class="section g-band" aria-labelledby="os-h">
   <div class="shell">
 
     <div class="os__grid">
@@ -293,7 +271,7 @@
         <h2 class="h-section" id="os-h" data-reveal style="--d:60ms">
           Why can we consciously want one thing and repeatedly create something different?
         </h2>
-        <p class="lead measure" data-reveal style="--d:120ms">
+        <p class="prose measure" data-reveal style="--d:120ms">
           Institute teachings examine the relationship between what we hold as true and what our
           lives keep producing. Not as a metaphor — as a sequence that can be drawn, followed,
           and interrupted.
@@ -311,12 +289,19 @@
       </div>
     </div>
 
-    <!-- The chain. A diagram needs the whole gold, so it keeps a dark inset. -->
-    <div class="diagram" data-reveal style="--d:120ms">
+    <!-- The ring. Linework, not imagery — it stays. -->
+    <div class="diagram" id="diagram" data-reveal style="--d:120ms">
 
-      <svg class="chain chain--wide" viewBox="0 0 640 500" role="img" aria-labelledby="chain-t">
-        <title id="chain-t">The Human Operating System: Concept leads to Belief, Belief to Pattern, Pattern to Emotion, Emotion to Behavior, Behavior to Life Result, and Life Result back to Concept.</title>
-
+      <svg class="chain chain--wide" viewBox="0 0 640 500" aria-hidden="true">
+        <defs>
+          <radialGradient id="auraW">
+            <stop offset="0"   stop-color="#FFFFFF" stop-opacity=".95"/>
+            <stop offset=".14" stop-color="#FFF1C9" stop-opacity=".30"/>
+            <stop offset=".40" stop-color="#B0A3C9" stop-opacity=".50"/>
+            <stop offset=".70" stop-color="#8E7EC4" stop-opacity=".26"/>
+            <stop offset="1"   stop-color="#B0A3C9" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
         <path class="chain__line" d="M320 85 A170 170 0 0 1 467.22 170 A170 170 0 0 1 467.22 340 A170 170 0 0 1 320 425 A170 170 0 0 1 172.78 340 A170 170 0 0 1 172.78 170 A170 170 0 0 1 320 85Z"/>
 
         <g class="chain__arrow" transform="translate(405,107.8) rotate(30)"><path d="M-4-5 2 0 -4 5"/></g>
@@ -326,27 +311,64 @@
         <g class="chain__arrow" transform="translate(150,255) rotate(270)"><path d="M-4-5 2 0 -4 5"/></g>
         <g class="chain__arrow" transform="translate(235,107.8) rotate(330)"><path d="M-4-5 2 0 -4 5"/></g>
 
-        <g transform="translate(320,85)"><circle class="chain__node" r="7.5" style="--nd:200ms"/><path class="chain__core" d="M0-4.5 1.1-1.1 4.5 0 1.1 1.1 0 4.5 -1.1 1.1 -4.5 0 -1.1-1.1Z" style="--nd:260ms"/></g>
-        <g transform="translate(467.22,170)"><circle class="chain__node" r="7.5" style="--nd:340ms"/><path class="chain__core" d="M0-4.5 1.1-1.1 4.5 0 1.1 1.1 0 4.5 -1.1 1.1 -4.5 0 -1.1-1.1Z" style="--nd:400ms"/></g>
-        <g transform="translate(467.22,340)"><circle class="chain__node" r="7.5" style="--nd:480ms"/><path class="chain__core" d="M0-4.5 1.1-1.1 4.5 0 1.1 1.1 0 4.5 -1.1 1.1 -4.5 0 -1.1-1.1Z" style="--nd:540ms"/></g>
-        <g transform="translate(320,425)"><circle class="chain__node" r="7.5" style="--nd:620ms"/><path class="chain__core" d="M0-4.5 1.1-1.1 4.5 0 1.1 1.1 0 4.5 -1.1 1.1 -4.5 0 -1.1-1.1Z" style="--nd:680ms"/></g>
-        <g transform="translate(172.78,340)"><circle class="chain__node" r="7.5" style="--nd:760ms"/><path class="chain__core" d="M0-4.5 1.1-1.1 4.5 0 1.1 1.1 0 4.5 -1.1 1.1 -4.5 0 -1.1-1.1Z" style="--nd:820ms"/></g>
-        <g transform="translate(172.78,170)"><circle class="chain__node" r="7.5" style="--nd:900ms"/><path class="chain__core" d="M0-4.5 1.1-1.1 4.5 0 1.1 1.1 0 4.5 -1.1 1.1 -4.5 0 -1.1-1.1Z" style="--nd:960ms"/></g>
+        <circle class="chain__aura" cx="320" cy="255" r="104" fill="url(#auraW)"/>
+        <circle class="chain__aura chain__aura--in" cx="320" cy="255" r="56" fill="url(#auraW)"/>
+        <path class="chain__heart" d="M320 237 324.4 250.6 338 255 324.4 259.4 320 273 315.6 259.4 302 255 315.6 250.6Z"/>
 
-        <circle class="chain__halo" cx="320" cy="255" r="26"/>
-        <path class="chain__heart" d="M320 243 322.93 252.07 332 255 322.93 257.93 320 267 317.07 257.93 308 255 317.07 252.07Z"/>
-
-        <text class="chain__label" x="320"   y="53"  text-anchor="middle" style="--nd:240ms">Concept</text>
-        <text class="chain__label" x="494.9" y="154" text-anchor="start" dominant-baseline="middle" style="--nd:380ms">Belief</text>
-        <text class="chain__label" x="494.9" y="356" text-anchor="start" dominant-baseline="middle" style="--nd:520ms">Pattern</text>
-        <text class="chain__label" x="320"   y="463" text-anchor="middle" style="--nd:660ms">Emotion</text>
-        <text class="chain__label" x="145.1" y="356" text-anchor="end" dominant-baseline="middle" style="--nd:800ms">Behavior</text>
-        <text class="chain__label" x="145.1" y="154" text-anchor="end" dominant-baseline="middle" style="--nd:940ms">Life Result</text>
+        <g class="node" data-term="concept" tabindex="0" role="button" aria-label="Concept" style="--nd:200ms">
+          <circle class="node__hit" cx="320" cy="85" r="40"/>
+          <circle class="node__halo" cx="320" cy="85" r="19.5"/>
+          <circle class="node__ring" cx="320" cy="85" r="7.5"/>
+          <path class="node__core" transform="translate(320,85)" d="M0-4.5 1.1-1.1 4.5 0 1.1 1.1 0 4.5 -1.1 1.1 -4.5 0 -1.1-1.1Z"/>
+          <text class="node__label" x="320" y="53" text-anchor="middle">Concept</text>
+        </g>
+        <g class="node" data-term="belief" tabindex="0" role="button" aria-label="Belief" style="--nd:340ms">
+          <circle class="node__hit" cx="467.22" cy="170" r="40"/>
+          <circle class="node__halo" cx="467.22" cy="170" r="19.5"/>
+          <circle class="node__ring" cx="467.22" cy="170" r="7.5"/>
+          <path class="node__core" transform="translate(467.22,170)" d="M0-4.5 1.1-1.1 4.5 0 1.1 1.1 0 4.5 -1.1 1.1 -4.5 0 -1.1-1.1Z"/>
+          <text class="node__label" x="494.9" y="154" text-anchor="start" dominant-baseline="middle">Belief</text>
+        </g>
+        <g class="node" data-term="pattern" tabindex="0" role="button" aria-label="Pattern" style="--nd:480ms">
+          <circle class="node__hit" cx="467.22" cy="340" r="40"/>
+          <circle class="node__halo" cx="467.22" cy="340" r="19.5"/>
+          <circle class="node__ring" cx="467.22" cy="340" r="7.5"/>
+          <path class="node__core" transform="translate(467.22,340)" d="M0-4.5 1.1-1.1 4.5 0 1.1 1.1 0 4.5 -1.1 1.1 -4.5 0 -1.1-1.1Z"/>
+          <text class="node__label" x="494.9" y="356" text-anchor="start" dominant-baseline="middle">Pattern</text>
+        </g>
+        <g class="node" data-term="emotion" tabindex="0" role="button" aria-label="Emotion" style="--nd:620ms">
+          <circle class="node__hit" cx="320" cy="425" r="40"/>
+          <circle class="node__halo" cx="320" cy="425" r="19.5"/>
+          <circle class="node__ring" cx="320" cy="425" r="7.5"/>
+          <path class="node__core" transform="translate(320,425)" d="M0-4.5 1.1-1.1 4.5 0 1.1 1.1 0 4.5 -1.1 1.1 -4.5 0 -1.1-1.1Z"/>
+          <text class="node__label" x="320" y="463" text-anchor="middle">Emotion</text>
+        </g>
+        <g class="node" data-term="behavior" tabindex="0" role="button" aria-label="Behavior" style="--nd:760ms">
+          <circle class="node__hit" cx="172.78" cy="340" r="40"/>
+          <circle class="node__halo" cx="172.78" cy="340" r="19.5"/>
+          <circle class="node__ring" cx="172.78" cy="340" r="7.5"/>
+          <path class="node__core" transform="translate(172.78,340)" d="M0-4.5 1.1-1.1 4.5 0 1.1 1.1 0 4.5 -1.1 1.1 -4.5 0 -1.1-1.1Z"/>
+          <text class="node__label" x="145.1" y="356" text-anchor="end" dominant-baseline="middle">Behavior</text>
+        </g>
+        <g class="node" data-term="life-result" tabindex="0" role="button" aria-label="Life Result" style="--nd:900ms">
+          <circle class="node__hit" cx="172.78" cy="170" r="40"/>
+          <circle class="node__halo" cx="172.78" cy="170" r="19.5"/>
+          <circle class="node__ring" cx="172.78" cy="170" r="7.5"/>
+          <path class="node__core" transform="translate(172.78,170)" d="M0-4.5 1.1-1.1 4.5 0 1.1 1.1 0 4.5 -1.1 1.1 -4.5 0 -1.1-1.1Z"/>
+          <text class="node__label" x="145.1" y="154" text-anchor="end" dominant-baseline="middle">Life Result</text>
+        </g>
       </svg>
 
-      <svg class="chain chain--tall" viewBox="0 0 300 706" role="img" aria-labelledby="chain-t2">
-        <title id="chain-t2">The Human Operating System: Concept leads to Belief, Belief to Pattern, Pattern to Emotion, Emotion to Behavior, Behavior to Life Result, and Life Result back to Concept.</title>
-
+      <svg class="chain chain--tall" viewBox="0 0 300 706" aria-hidden="true">
+        <defs>
+          <radialGradient id="auraT">
+            <stop offset="0"   stop-color="#FFFFFF" stop-opacity=".95"/>
+            <stop offset=".14" stop-color="#FFF1C9" stop-opacity=".30"/>
+            <stop offset=".40" stop-color="#B0A3C9" stop-opacity=".50"/>
+            <stop offset=".70" stop-color="#8E7EC4" stop-opacity=".26"/>
+            <stop offset="1"   stop-color="#B0A3C9" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
         <path class="chain__line" d="M84 44 C84 100 100 112 100 168 C100 224 84 236 84 292 C84 348 102 360 102 416 C102 472 86 484 86 540 C86 596 104 608 104 664 C62 678 26 656 26 576 C26 420 26 230 26 128 C26 66 50 30 84 44Z"/>
 
         <g class="chain__arrow"><path d="M87 101 l5 8 5 -8"/></g>
@@ -356,31 +378,91 @@
         <g class="chain__arrow"><path d="M90 597 l5 8 5 -8"/></g>
         <g class="chain__arrow"><path d="M21 359 l5 -8 5 8"/></g>
 
-        <g transform="translate(84,44)"><circle class="chain__node" r="7" style="--nd:200ms"/><path class="chain__core" d="M0-4.5 1.1-1.1 4.5 0 1.1 1.1 0 4.5 -1.1 1.1 -4.5 0 -1.1-1.1Z" style="--nd:260ms"/></g>
-        <g transform="translate(100,168)"><circle class="chain__node" r="7" style="--nd:340ms"/><path class="chain__core" d="M0-4.5 1.1-1.1 4.5 0 1.1 1.1 0 4.5 -1.1 1.1 -4.5 0 -1.1-1.1Z" style="--nd:400ms"/></g>
-        <g transform="translate(84,292)"><circle class="chain__node" r="7" style="--nd:480ms"/><path class="chain__core" d="M0-4.5 1.1-1.1 4.5 0 1.1 1.1 0 4.5 -1.1 1.1 -4.5 0 -1.1-1.1Z" style="--nd:540ms"/></g>
-        <g transform="translate(102,416)"><circle class="chain__node" r="7" style="--nd:620ms"/><path class="chain__core" d="M0-4.5 1.1-1.1 4.5 0 1.1 1.1 0 4.5 -1.1 1.1 -4.5 0 -1.1-1.1Z" style="--nd:680ms"/></g>
-        <g transform="translate(86,540)"><circle class="chain__node" r="7" style="--nd:760ms"/><path class="chain__core" d="M0-4.5 1.1-1.1 4.5 0 1.1 1.1 0 4.5 -1.1 1.1 -4.5 0 -1.1-1.1Z" style="--nd:820ms"/></g>
-        <g transform="translate(104,664)"><circle class="chain__node" r="7" style="--nd:900ms"/><path class="chain__core" d="M0-4.5 1.1-1.1 4.5 0 1.1 1.1 0 4.5 -1.1 1.1 -4.5 0 -1.1-1.1Z" style="--nd:960ms"/></g>
-
-        <text class="chain__label" x="112" y="49"  style="--nd:240ms">Concept</text>
-        <text class="chain__label" x="128" y="173" style="--nd:380ms">Belief</text>
-        <text class="chain__label" x="112" y="297" style="--nd:520ms">Pattern</text>
-        <text class="chain__label" x="130" y="421" style="--nd:660ms">Emotion</text>
-        <text class="chain__label" x="114" y="545" style="--nd:800ms">Behavior</text>
-        <text class="chain__label" x="132" y="669" style="--nd:940ms">Life Result</text>
+        <g class="node" data-term="concept" tabindex="0" role="button" aria-label="Concept" style="--nd:200ms">
+          <circle class="node__hit" cx="84" cy="44" r="30"/>
+          <circle class="node__halo" cx="84" cy="44" r="18.2"/>
+          <circle class="node__ring" cx="84" cy="44" r="7"/>
+          <path class="node__core" transform="translate(84,44)" d="M0-4.5 1.1-1.1 4.5 0 1.1 1.1 0 4.5 -1.1 1.1 -4.5 0 -1.1-1.1Z"/>
+          <text class="node__label" x="112" y="49" text-anchor="start" dominant-baseline="middle">Concept</text>
+        </g>
+        <g class="node" data-term="belief" tabindex="0" role="button" aria-label="Belief" style="--nd:340ms">
+          <circle class="node__hit" cx="100" cy="168" r="30"/>
+          <circle class="node__halo" cx="100" cy="168" r="18.2"/>
+          <circle class="node__ring" cx="100" cy="168" r="7"/>
+          <path class="node__core" transform="translate(100,168)" d="M0-4.5 1.1-1.1 4.5 0 1.1 1.1 0 4.5 -1.1 1.1 -4.5 0 -1.1-1.1Z"/>
+          <text class="node__label" x="128" y="173" text-anchor="start" dominant-baseline="middle">Belief</text>
+        </g>
+        <g class="node" data-term="pattern" tabindex="0" role="button" aria-label="Pattern" style="--nd:480ms">
+          <circle class="node__hit" cx="84" cy="292" r="30"/>
+          <circle class="node__halo" cx="84" cy="292" r="18.2"/>
+          <circle class="node__ring" cx="84" cy="292" r="7"/>
+          <path class="node__core" transform="translate(84,292)" d="M0-4.5 1.1-1.1 4.5 0 1.1 1.1 0 4.5 -1.1 1.1 -4.5 0 -1.1-1.1Z"/>
+          <text class="node__label" x="112" y="297" text-anchor="start" dominant-baseline="middle">Pattern</text>
+        </g>
+        <g class="node" data-term="emotion" tabindex="0" role="button" aria-label="Emotion" style="--nd:620ms">
+          <circle class="node__hit" cx="102" cy="416" r="30"/>
+          <circle class="node__halo" cx="102" cy="416" r="18.2"/>
+          <circle class="node__ring" cx="102" cy="416" r="7"/>
+          <path class="node__core" transform="translate(102,416)" d="M0-4.5 1.1-1.1 4.5 0 1.1 1.1 0 4.5 -1.1 1.1 -4.5 0 -1.1-1.1Z"/>
+          <text class="node__label" x="130" y="421" text-anchor="start" dominant-baseline="middle">Emotion</text>
+        </g>
+        <g class="node" data-term="behavior" tabindex="0" role="button" aria-label="Behavior" style="--nd:760ms">
+          <circle class="node__hit" cx="86" cy="540" r="30"/>
+          <circle class="node__halo" cx="86" cy="540" r="18.2"/>
+          <circle class="node__ring" cx="86" cy="540" r="7"/>
+          <path class="node__core" transform="translate(86,540)" d="M0-4.5 1.1-1.1 4.5 0 1.1 1.1 0 4.5 -1.1 1.1 -4.5 0 -1.1-1.1Z"/>
+          <text class="node__label" x="114" y="545" text-anchor="start" dominant-baseline="middle">Behavior</text>
+        </g>
+        <g class="node" data-term="life-result" tabindex="0" role="button" aria-label="Life Result" style="--nd:900ms">
+          <circle class="node__hit" cx="104" cy="664" r="30"/>
+          <circle class="node__halo" cx="104" cy="664" r="18.2"/>
+          <circle class="node__ring" cx="104" cy="664" r="7"/>
+          <path class="node__core" transform="translate(104,664)" d="M0-4.5 1.1-1.1 4.5 0 1.1 1.1 0 4.5 -1.1 1.1 -4.5 0 -1.1-1.1Z"/>
+          <text class="node__label" x="132" y="669" text-anchor="start" dominant-baseline="middle">Life Result</text>
+        </g>
       </svg>
 
-      <p class="diagram__cap">Always this order, always with arrows</p>
+      <ol class="sr-only">
+        <li>Concept</li><li>Belief</li><li>Pattern</li>
+        <li>Emotion</li><li>Behavior</li><li>Life Result, which returns to Concept</li>
+      </ol>
+
+      <div class="readout" id="os-readout" aria-live="polite">
+        <p class="readout__idle">Always this order, always with arrows. <span>Choose a stage to read it.</span></p>
+        <div class="readout__item" data-term="concept" hidden>
+          <p class="readout__term">Concept</p>
+          <p class="readout__text">Everything begins with Concept. Concepts influence beliefs, expectations, patterns, choices, and life experiences.</p>
+        </div>
+        <div class="readout__item" data-term="belief" hidden>
+          <p class="readout__term">Belief</p>
+          <p class="readout__text">The beliefs and expectations that form around a Concept.</p>
+        </div>
+        <div class="readout__item" data-term="pattern" hidden>
+          <p class="readout__term">Pattern</p>
+          <p class="readout__text">Patterns of Behavior may influence how we think, choose, relate, and respond to life.</p>
+        </div>
+        <div class="readout__item" data-term="emotion" hidden>
+          <p class="readout__term">Emotion</p>
+          <p class="readout__needs">Michael has not written this stage yet.</p>
+        </div>
+        <div class="readout__item" data-term="behavior" hidden>
+          <p class="readout__term">Behavior</p>
+          <p class="readout__needs">Michael has not written this stage yet.</p>
+        </div>
+        <div class="readout__item" data-term="life-result" hidden>
+          <p class="readout__term">Life Result</p>
+          <p class="readout__needs">Michael has not written this stage yet.</p>
+        </div>
+      </div>
     </div>
 
   </div>
 </section>
 
 <!-- ══ Begin where you are · the path ══════════════════════════════════ -->
-<section class="section g-void bridge-top" style="--from:var(--nebula)" aria-labelledby="path-h">
+<section class="section g-paper" aria-labelledby="path-h">
   <div class="shell">
-    <div class="os__grid" style="margin-bottom:clamp(2.5rem,4vw,3.5rem)">
+    <div class="head" style="margin-bottom:clamp(2.5rem,4vw,3.5rem)">
       <div class="stack gap-6">
         <p class="eyebrow" data-reveal>How the education fits together</p>
         <h2 class="h-section" id="path-h" data-reveal style="--d:60ms">Begin where you are</h2>
@@ -393,24 +475,44 @@
 
     <ol class="path" data-reveal style="--d:160ms">
       <li>
-        <span class="path__tier">Free introduction</span>
-        <span class="path__detail">The Five Laws of Manifestation</span>
+        <button class="path__row" type="button" aria-expanded="false" aria-controls="tier-1">
+          <span class="path__tier">Free introduction</span>
+          <span class="path__detail">The Five Laws of Manifestation</span>
+          <span class="path__plus" aria-hidden="true"></span>
+        </button>
+        <div class="path__more" id="tier-1"><div><p>An introduction to several of the fundamental principles upon which the Institute&#8217;s teachings are built. It is an opportunity to experience the Institute&#8217;s approach before deciding whether to continue into more extensive study.</p></div></div>
       </li>
       <li>
-        <span class="path__tier">Recognition</span>
-        <span class="path__detail">Foundation Course — thirty Patterns of Behavior</span>
+        <button class="path__row" type="button" aria-expanded="false" aria-controls="tier-2">
+          <span class="path__tier">Recognition</span>
+          <span class="path__detail">Foundation Course &#8212; thirty Patterns of Behavior</span>
+          <span class="path__plus" aria-hidden="true"></span>
+        </button>
+        <div class="path__more" id="tier-2"><div><p>Ten weeks. Each week introduces three Patterns of Behavior that may influence how we think, choose, relate, and respond to life. The purpose is not to judge or label, but to develop awareness of the patterns operating beneath familiar reactions.</p></div></div>
       </li>
       <li>
-        <span class="path__tier">Focused study</span>
-        <span class="path__detail">Concepts, Families, Weaves</span>
+        <button class="path__row" type="button" aria-expanded="false" aria-controls="tier-3">
+          <span class="path__tier">Focused study</span>
+          <span class="path__detail">Concepts, Families, Weaves</span>
+          <span class="path__plus" aria-hidden="true"></span>
+        </button>
+        <div class="path__more" id="tier-3"><div><p>Concept Studies allow students to explore the individual Concepts that influence beliefs, expectations, patterns, choices, and life experiences. Students may select the Concepts most relevant to their present lives rather than following a predetermined sequence.</p></div></div>
       </li>
       <li>
-        <span class="path__tier">Deeper understanding</span>
-        <span class="path__detail">Extended Foundation, the Human Operating System</span>
+        <button class="path__row" type="button" aria-expanded="false" aria-controls="tier-4">
+          <span class="path__tier">Deeper understanding</span>
+          <span class="path__detail">Extended Foundation, the Human Operating System</span>
+          <span class="path__plus" aria-hidden="true"></span>
+        </button>
+        <div class="path__more" id="tier-4"><div><p>Students move from simply recognising Patterns toward understanding more deeply what creates them, why they continue, and how conscious change becomes possible.</p></div></div>
       </li>
       <li>
-        <span class="path__tier">Comprehensive education</span>
-        <span class="path__detail">The Schools of the Institute</span>
+        <button class="path__row" type="button" aria-expanded="false" aria-controls="tier-5">
+          <span class="path__tier">Comprehensive education</span>
+          <span class="path__detail">The Schools of the Institute</span>
+          <span class="path__plus" aria-hidden="true"></span>
+        </button>
+        <div class="path__more" id="tier-5"><div><p>Rather than examining only a single Concept or Pattern, each School contains multiple Courses devoted to a major area of human understanding.</p></div></div>
       </li>
     </ol>
 
@@ -422,10 +524,10 @@
 </section>
 
 <!-- ══ Explore ═════════════════════════════════════════════════════════ -->
-<section class="section g-void" aria-labelledby="explore-h">
+<section class="section g-band" aria-labelledby="explore-h">
   <div class="shell stack gap-8">
 
-    <div class="os__grid">
+    <div class="head">
       <h2 class="h-section" id="explore-h" data-reveal>Explore the Institute</h2>
       <p class="lead" data-reveal style="--d:80ms">
         Start where you are, explore what speaks to you, and allow your understanding to deepen
@@ -433,77 +535,114 @@
       </p>
     </div>
 
-    <div class="tiles inset" data-reveal style="--d:160ms">
+    <div class="tiles" data-reveal style="--d:160ms">
 
       <a class="tile" href="/concepts">
-        <img class="tile__img" src="assets/tile-constellation.webp" alt="" width="700" height="1630" loading="lazy">
-        <span class="tile__veil" aria-hidden="true"></span>
+        <span class="shot" style="--ratio: 3 / 4">
+          <img src="assets/shot-concepts.webp" width="800" height="1071" loading="lazy" alt="A violet spiral galaxy turning around one brilliant warm star at its centre, a fine luminous circle drawn around the star.">
+        </span>
         <h3 class="tile__title">Concept Studies</h3>
         <p class="tile__note">Twenty-four Concepts, eight Families, twelve Weaves. Choose what is relevant to your present life.</p>
         <span class="tile__more">Enter</span>
       </a>
 
       <a class="tile" href="/courses">
-        <img class="tile__img" src="assets/tile-botanical.webp" alt="" width="700" height="1630" loading="lazy">
-        <span class="tile__veil" aria-hidden="true"></span>
+        <span class="shot" style="--ratio: 3 / 4">
+          <img src="assets/shot-courses.webp" width="800" height="1071" loading="lazy" alt="A fine luminous line rising through a violet nebula, threaded through five star points of increasing brightness.">
+        </span>
         <h3 class="tile__title">Courses</h3>
         <p class="tile__note">From the free Five Laws to the ten-week Foundation and the Schools. Every Course in an audio and a video edition.</p>
         <span class="tile__more">Enter</span>
       </a>
 
       <a class="tile" href="/books">
-        <img class="tile__img" src="assets/tile-books.webp" alt="" width="700" height="1630" loading="lazy">
-        <span class="tile__veil" aria-hidden="true"></span>
+        <span class="shot" style="--ratio: 3 / 4">
+          <img src="assets/shot-books.webp" width="800" height="1071" loading="lazy" alt="The outline of an open book drawn in luminous line within a violet galaxy, its pages dense with stars and one warm star rising from the fold.">
+        </span>
         <h3 class="tile__title">Books &amp; Study Editions</h3>
         <p class="tile__note">Where a Course has a written edition. Read, underline, return to passages, study at your own pace.</p>
         <span class="tile__more">Enter</span>
       </a>
 
       <a class="tile" href="/events">
-        <img class="tile__img" src="assets/tile-events.webp" alt="" width="700" height="1254" loading="lazy">
-        <span class="tile__veil" aria-hidden="true"></span>
+        <span class="shot" style="--ratio: 3 / 4">
+          <img src="assets/shot-events.webp" width="800" height="1071" loading="lazy" alt="Six bright stars arranged in a wide ring within a violet spiral galaxy, its centre glowing warm.">
+        </span>
         <h3 class="tile__title">Live Events</h3>
         <p class="tile__note">Seminars on Zoom, each applying the Institute's principles to a single area of experience.</p>
         <span class="tile__more">Enter</span>
       </a>
 
     </div>
+  </div>
+</section>
 
-    <div class="counts" data-reveal style="--d:200ms">
-      <div class="count"><span class="count__n tabular">24</span><span class="count__l">Individual Concepts</span></div>
-      <div class="count"><span class="count__n tabular">12</span><span class="count__l">Concept Weaves</span></div>
-      <div class="count"><span class="count__n tabular">8</span><span class="count__l">Concept Families</span></div>
+<!-- ══ The library ═════════════════════════════════════════════════════ -->
+<section class="section cosmos" aria-labelledby="library-h">
+  <div class="shell stack gap-8">
+
+    <div class="head">
+      <div class="stack gap-6">
+        <p class="eyebrow" data-reveal>The launch library</p>
+        <h2 class="h-section" id="library-h" data-reveal style="--d:60ms">Everything begins with Concept.</h2>
+      </div>
+      <p class="lead" data-reveal style="--d:120ms">
+        Concept Studies allow students to explore the individual Concepts that influence
+        beliefs, expectations, patterns, choices, and life experiences &#8212; and to select the
+        ones most relevant to their present lives, rather than following a predetermined
+        sequence.
+      </p>
     </div>
 
-    <div class="stack gap-4" data-reveal style="--d:240ms">
-      <p class="eyebrow eyebrow--quiet">Concepts Michael names as examples</p>
+    <div class="counts" data-reveal style="--d:160ms">
+      <a class="count" href="/concepts">
+        <span class="count__n tabular">24</span>
+        <span class="count__l">Individual Concepts</span>
+        <span class="count__note">Each with its Patterns, and the beliefs that form around it.</span>
+      </a>
+      <a class="count" href="/concepts/weaves">
+        <span class="count__n tabular">12</span>
+        <span class="count__l">Concept Weaves</span>
+        <span class="count__note">Concepts rarely operate alone. A Weave draws the chain between them.</span>
+      </a>
+      <a class="count" href="/concepts/families">
+        <span class="count__n tabular">8</span>
+        <span class="count__l">Concept Families</span>
+        <span class="count__note">A central area of human experience, and the Concepts that grow inside it.</span>
+      </a>
+    </div>
+
+    <div class="stack gap-4" data-reveal style="--d:200ms">
+      <p class="eyebrow eyebrow--plain">Concepts Michael names as examples</p>
       <div class="chips">
-        <a class="chip" href="/concepts">Acceptance</a>
-        <a class="chip" href="/concepts">Approval</a>
-        <a class="chip" href="/concepts">Rejection</a>
-        <a class="chip" href="/concepts">Unworthiness</a>
-        <a class="chip" href="/concepts">Abandonment</a>
-        <a class="chip" href="/concepts">Fear</a>
-        <a class="chip" href="/concepts">Control</a>
-        <a class="chip" href="/concepts">Guilt</a>
-        <a class="chip" href="/concepts">Success and Failure</a>
-        <a class="chip" href="/concepts">Victimhood</a>
-        <a class="chip" href="/concepts">Validation</a>
-        <a class="chip" href="/concepts">Worth</a>
+          <a class="chip" href="/concepts">Acceptance</a>
+          <a class="chip" href="/concepts">Approval</a>
+          <a class="chip" href="/concepts">Rejection</a>
+          <a class="chip" href="/concepts">Unworthiness</a>
+          <a class="chip" href="/concepts">Abandonment</a>
+          <a class="chip" href="/concepts">Fear</a>
+          <a class="chip" href="/concepts">Control</a>
+          <a class="chip" href="/concepts">Guilt</a>
+          <a class="chip" href="/concepts">Success and Failure</a>
+          <a class="chip" href="/concepts">Victimhood</a>
+          <a class="chip" href="/concepts">Validation</a>
+          <a class="chip" href="/concepts">Worth</a>
       </div>
       <p class="small quiet">The twenty-four that open the library are being chosen.</p>
     </div>
+
+    <div data-reveal style="--d:240ms"><a class="arrow" href="/concepts">Enter the Concept Studies</a></div>
 
   </div>
 </section>
 
 <!-- ══ The Schools ═════════════════════════════════════════════════════ -->
-<section class="section g-void bridge-bottom" aria-labelledby="schools-h" style="padding-top:0;--to:var(--nebula)">
+<section class="section g-band" aria-labelledby="schools-h">
   <div class="shell stack gap-8">
 
     <div class="stack gap-4">
       <h2 class="h-section" id="schools-h" data-reveal>The Schools of the Institute</h2>
-      <p class="standfirst" data-reveal style="--d:80ms">
+      <p class="lead" style="max-width:44rem;--d:80ms" data-reveal>
         The Schools provide the Institute's most comprehensive areas of continuing education.
         Rather than examining only a single Concept or Pattern, each School contains multiple
         Courses devoted to a major area of human understanding.
@@ -548,21 +687,22 @@
 </section>
 
 <!-- ══ Membership ══════════════════════════════════════════════════════ -->
-<section class="section g-cosmos inset bridge-top" style="--from:var(--nebula)" aria-labelledby="mem-h">
+<section class="section g-paper" aria-labelledby="mem-h">
   <div class="shell close__grid">
 
-    <figure class="seal" data-reveal style="margin:0">
-      <img src="assets/membership-sphere.webp" alt="An armillary sphere drawn in gold hairlines, its interior an open field of stars, standing on a beaded ring among engraved botanical stems." width="820" height="766" loading="lazy">
+    <figure class="shot" style="--ratio: 1 / 1; margin:0" data-reveal>
+      <img src="assets/shot-membership.webp" width="900" height="900" loading="lazy"
+           alt="A violet galaxy encircled by a complete ring of small evenly spaced stars, with one warm star burning at the centre.">
     </figure>
 
     <div class="stack gap-6">
       <h2 class="h-section" id="mem-h" data-reveal>You are not being asked to believe anything.</h2>
-      <p class="lead measure" data-reveal style="--d:120ms">
+      <p class="prose measure" data-reveal style="--d:80ms">
         You are being asked to look at what is already operating, and to decide for yourself
         whether you recognise it. Members receive preferred pricing on qualifying Courses, books
         and materials.
       </p>
-      <div class="hero__actions" data-reveal style="--d:180ms">
+      <div class="hero__actions" data-reveal style="--d:160ms">
         <a class="btn btn--primary" href="/membership">Become a member</a>
         <a class="btn btn--secondary" href="/courses/five-laws">Start free</a>
       </div>
@@ -574,14 +714,14 @@
 </main>
 
 <!-- ══ Footer ══════════════════════════════════════════════════════════ -->
-<footer class="footer g-void bridge-top" style="--from:var(--nebula)">
+<footer class="footer g-deep">
   <div class="shell">
 
     <div class="footer__top">
 
       <div class="stack gap-6">
         <div class="footer__lockup">
-          <span class="mark mark--simple" aria-hidden="true" style="width:18px;height:66px"></span>
+          <span class="plate__mark" aria-hidden="true"></span>
           <p class="fullname">
             <span>The Institute of</span>
             <span>The Spiritual Science</span>
@@ -663,6 +803,6 @@
   </div>
 </footer>
 
-<script src="app.js"></script>
+<script src="app.js?v=7"></script>
 </body>
 </html>

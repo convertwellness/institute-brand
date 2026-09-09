@@ -2,50 +2,22 @@
    The Institute — interface behaviour
 
    Five things and no more:
-     1. The shell switch (Cosmos / Page), remembered per browser
-     2. The five doors — mega panels, hover on a fine pointer, click anywhere
-     3. The mobile drawer and its accordions
-     4. Section reveal, once, on first scroll into view
-     5. The diagram, drawn once, from its own measured path length
+     1. The five doors — mega panels, hover on a fine pointer, click anywhere
+     2. The mobile drawer and its accordions
+     3. The Operating System ring — hover, tab or tap a stage to read it
+     4. The path — each tier opens
+     5. Section reveal and the ring draw, each once
    ========================================================================== */
 
 (function () {
   "use strict";
 
-  var root   = document.documentElement;
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var fine   = window.matchMedia("(hover: hover) and (pointer: fine)");
 
-  /* ── 1. The shell ─────────────────────────────────────────────────────── */
-
-  var STORE = "institute-shell";
-  var opts  = Array.prototype.slice.call(document.querySelectorAll("[data-shell-set]"));
-
-  function setShell(name, remember) {
-    if (name === "page") root.setAttribute("data-shell", "page");
-    else root.removeAttribute("data-shell");
-
-    opts.forEach(function (b) {
-      b.setAttribute("aria-pressed", String(b.dataset.shellSet === name));
-    });
-
-    var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute("content", name === "page" ? "#F3F0E7" : "#0B0E16");
-
-    if (remember) { try { localStorage.setItem(STORE, name); } catch (e) {} }
-  }
-
-  var saved = null;
-  try { saved = localStorage.getItem(STORE); } catch (e) {}
-  setShell(saved === "page" ? "page" : "cosmos", false);
-
-  opts.forEach(function (b) {
-    b.addEventListener("click", function () { setShell(b.dataset.shellSet, true); });
-  });
-
-  /* ── 2. The five doors ────────────────────────────────────────────────── */
+  /* ── 1. The five doors ────────────────────────────────────────────────── */
 
   var doors = Array.prototype.slice.call(document.querySelectorAll(".door"));
-  var fine  = window.matchMedia("(hover: hover) and (pointer: fine)");
   var hoverTimer = null;
 
   function openDoor(door, open) {
@@ -81,7 +53,6 @@
       hoverTimer = window.setTimeout(function () { openDoor(door, false); }, 140);
     });
 
-    // Leaving the last focusable thing in a panel closes it.
     door.addEventListener("focusout", function (e) {
       if (!door.contains(e.relatedTarget)) openDoor(door, false);
     });
@@ -91,10 +62,10 @@
     if (!e.target.closest(".door")) closeAllDoors(null);
   });
 
-  /* ── 3. Drawer and accordions ─────────────────────────────────────────── */
+  /* ── 2. Drawer and accordions ─────────────────────────────────────────── */
 
-  var burger = document.getElementById("burger");
-  var drawer = document.getElementById("drawer");
+  var burger   = document.getElementById("burger");
+  var drawer   = document.getElementById("drawer");
   var closeBtn = document.getElementById("drawer-close");
 
   function setDrawer(open) {
@@ -122,14 +93,73 @@
     });
   });
 
+  /* ── 3. The ring — hover, tab or tap a stage ──────────────────────────── */
+
+  var diagram = document.getElementById("diagram");
+  var pinned  = null;
+
+  if (diagram) {
+    var nodes = Array.prototype.slice.call(diagram.querySelectorAll(".node"));
+    var items = Array.prototype.slice.call(diagram.querySelectorAll(".readout__item"));
+    var idle  = diagram.querySelector(".readout__idle");
+
+    var show = function (term) {
+      nodes.forEach(function (n) {
+        n.classList.toggle("is-active", !!term && n.dataset.term === term);
+      });
+      items.forEach(function (it) { it.hidden = it.dataset.term !== term; });
+      if (idle) idle.hidden = !!term;
+      if (term) diagram.setAttribute("data-active", term);
+      else diagram.removeAttribute("data-active");
+    };
+
+    nodes.forEach(function (n) {
+      var term = n.dataset.term;
+
+      n.addEventListener("mouseenter", function () { if (!pinned) show(term); });
+      n.addEventListener("mouseleave", function () { if (!pinned) show(null); });
+      n.addEventListener("focus",      function () { if (!pinned) show(term); });
+      n.addEventListener("blur",       function () { if (!pinned) show(null); });
+
+      // a tap pins the stage open, so it survives the finger lifting
+      n.addEventListener("click", function () {
+        pinned = pinned === term ? null : term;
+        show(pinned);
+      });
+
+      n.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        e.preventDefault();
+        pinned = pinned === term ? null : term;
+        show(pinned || term);
+      });
+    });
+
+    document.addEventListener("click", function (e) {
+      if (pinned && !e.target.closest(".node")) { pinned = null; show(null); }
+    });
+  }
+
+  /* ── 4. The path — each tier opens ────────────────────────────────────── */
+
+  Array.prototype.forEach.call(document.querySelectorAll(".path__row"), function (btn) {
+    btn.addEventListener("click", function () {
+      var open = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", String(!open));
+    });
+  });
+
+  /* ── Escape closes whatever is open ───────────────────────────────────── */
+
   document.addEventListener("keydown", function (e) {
     if (e.key !== "Escape") return;
     if (drawer.getAttribute("data-open") === "true") { setDrawer(false); return; }
-    var openDoorEl = document.querySelector('.door .door__btn[aria-expanded="true"]');
-    if (openDoorEl) { closeAllDoors(null); openDoorEl.focus(); }
+    if (pinned) { pinned = null; if (diagram) diagram.removeAttribute("data-active"); }
+    var openBtn = document.querySelector('.door .door__btn[aria-expanded="true"]');
+    if (openBtn) { closeAllDoors(null); openBtn.focus(); }
   });
 
-  /* ── Header hairline, once the page has moved ─────────────────────────── */
+  /* ── The header hairline, once the page has moved ─────────────────────── */
 
   var header = document.getElementById("header");
   var onScroll = function () {
@@ -138,7 +168,7 @@
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
 
-  /* ── 4. Section reveal — once, never on scroll back ───────────────────── */
+  /* ── 5. Reveal, and the ring draw — each once ─────────────────────────── */
 
   var revealables = Array.prototype.slice.call(document.querySelectorAll("[data-reveal]"));
 
@@ -155,15 +185,18 @@
     revealables.forEach(function (el) { seen.observe(el); });
   }
 
-  /* ── 5. The diagram draws itself once, then holds still forever ───────── */
+  // the hero trace measures its own length, like the ring does
+  var trace = document.querySelector(".trace__line");
+  if (trace && trace.getTotalLength) {
+    trace.style.setProperty("--len", Math.ceil(trace.getTotalLength()));
+  }
 
   var chains = Array.prototype.slice.call(document.querySelectorAll(".chain"));
 
   chains.forEach(function (svg) {
     var line = svg.querySelector(".chain__line");
     if (line && line.getTotalLength) {
-      var len = Math.ceil(line.getTotalLength());
-      line.style.setProperty("--len", len);
+      line.style.setProperty("--len", Math.ceil(line.getTotalLength()));
     }
   });
 
