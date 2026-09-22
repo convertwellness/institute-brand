@@ -111,6 +111,23 @@ every step · visible focus ring on every interactive element · motion inside
 reveal animations and the ring draw stay dormant until the page is actually visible. If a
 screenshot tool shows the page faded or inert, that is why.
 
+## Routes that exist
+
+```
+/                        home
+/concepts                the twelve Concepts, filterable by Family
+/concepts/unworthiness   the Study template
+/collections/unworthiness  the Collection template
+/patterns                the twelve Patterns of Behavior
+/schools                 the six Schools, in Michael's order
+/courses                 the four Courses, side by side
+/membership              the three tiers
+```
+
+The Concepts index filter surfaces a real gap rather than hiding it: **Abandonment,
+Shame, and Fear and Doubt appear in none of Michael's four Family lists**, so they sit
+under "Family not yet assigned" instead of being quietly placed in one.
+
 ## Not built yet
 
 The other sixteen templates in `STRUCTURE.md`. The Concept page is the one that matters —

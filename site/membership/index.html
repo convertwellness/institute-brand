@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Source+Sans+3:wght@400;600&display=swap">
 <link rel="stylesheet" href="../styles.css?v=7">
-<link rel="stylesheet" href="../study.css?v=2">
+<link rel="stylesheet" href="../study.css?v=3">
 </head>
 <body data-state="open">
 
@@ -21,13 +21,14 @@
 <header class="header" id="header">
   <div class="shell header__bar">
 
-    <a class="brand" href="../index.html" aria-label="The Institute — home">
+    <a class="brand" href="/" aria-label="The Institute — home">
       <span class="brand__mark" aria-hidden="true"></span>
       <span class="brand__name">The Institute</span>
     </a>
 
     <nav aria-label="Primary">
       <ul class="doors">
+
         <li class="door">
           <button class="door__btn" type="button" aria-expanded="false" aria-controls="p-begin">
             Begin Here <i class="door__chev" aria-hidden="true"></i>
@@ -47,6 +48,7 @@
             </ul>
           </div>
         </li>
+
         <li class="door">
           <button class="door__btn" type="button" aria-expanded="false" aria-controls="p-concepts">
             Concepts <i class="door__chev" aria-hidden="true"></i>
@@ -57,21 +59,25 @@
               <li><a class="panel__link" href="/concepts">
                 <span class="panel__label">Individual Concepts</span>
                 <span class="panel__note">Each with its Patterns, and the beliefs that form around it.</span></a></li>
+              <li><a class="panel__link" href="/patterns">
+                <span class="panel__label">Patterns of Behavior</span>
+                <span class="panel__note">Twelve to begin with, each studied on its own.</span></a></li>
               <li><a class="panel__link" href="/concepts/families">
                 <span class="panel__label">Concept Families</span>
                 <span class="panel__note">Acceptance, Worth, Control, Trust.</span></a></li>
-              <li><a class="panel__link" href="/concepts/weaves">
+              <li><a class="panel__link" href="/collections">
                 <span class="panel__label">Interwoven Studies</span>
-                <span class="panel__note">Concepts rarely operate alone.</span></a></li>
+                <span class="panel__note">Concepts and Patterns woven together, in threes and sixes.</span></a></li>
             </ul>
           </div>
         </li>
+
         <li class="door">
           <button class="door__btn" type="button" aria-expanded="false" aria-controls="p-courses">
             Courses <i class="door__chev" aria-hidden="true"></i>
           </button>
           <div class="panel" id="p-courses" data-open="false">
-            <p class="panel__blurb">The four Courses at launch.</p>
+            <p class="panel__blurb">Every Course in an audio and a video edition.</p>
             <ul class="panel__list">
               <li><a class="panel__link" href="/courses/five-laws">
                 <span class="panel__label">The Five Laws of Manifestation</span>
@@ -81,13 +87,17 @@
                 <span class="panel__note">Ten weeks. Thirty Patterns of Behavior.</span></a></li>
               <li><a class="panel__link" href="/courses/human-operating-system">
                 <span class="panel__label">The Human Operating System</span>
-                <span class="panel__note">Slide presentation, or the complete written study.</span></a></li>
+                <span class="panel__note">A slide presentation, or the complete written study.</span></a></li>
               <li><a class="panel__link" href="/courses/body-symbology">
                 <span class="panel__label">Body Symbology</span>
                 <span class="panel__note">Introductory, expanded, and the comprehensive reference.</span></a></li>
+              <li><a class="panel__link" href="/schools">
+                <span class="panel__label">The Schools of the Institute</span>
+                <span class="panel__note">Six Schools, in the order Michael recommends beginning.</span></a></li>
             </ul>
           </div>
         </li>
+
         <li class="door">
           <button class="door__btn" type="button" aria-expanded="false" aria-controls="p-books">
             Books <i class="door__chev" aria-hidden="true"></i>
@@ -96,10 +106,17 @@
             <p class="panel__blurb">Written editions, workbooks and study materials.</p>
             <ul class="panel__list">
               <li><a class="panel__link" href="/books/awakening"><span class="panel__label">Awakening</span></a></li>
+              <li><a class="panel__link" href="/books/tj">
+                <span class="panel__label">T.J.</span>
+                <span class="panel__note">Title to be confirmed.</span></a></li>
               <li><a class="panel__link" href="/books/workbooks"><span class="panel__label">Workbooks &amp; Awakening Portfolios</span></a></li>
+              <li><a class="panel__link" href="/books/video-studies">
+                <span class="panel__label">Video Studies &amp; Special Topics</span>
+                <span class="panel__note">Coming soon.</span></a></li>
             </ul>
           </div>
         </li>
+
         <li class="door">
           <button class="door__btn" type="button" aria-expanded="false" aria-controls="p-events">
             Live Events <i class="door__chev" aria-hidden="true"></i>
@@ -115,17 +132,20 @@
             </ul>
           </div>
         </li>
+
       </ul>
     </nav>
 
     <div class="rail">
       <a class="rail__link" href="/membership">Membership</a>
       <a class="rail__link" href="/account">Sign in</a>
+
       <button class="icon-btn" type="button" aria-label="Search Concepts, Courses and Patterns">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
           <circle cx="11" cy="11" r="7"></circle><path d="M16.5 16.5 21 21"></path>
         </svg>
       </button>
+
       <button class="icon-btn burger" type="button" id="burger" aria-expanded="false" aria-controls="drawer" aria-label="Open menu">
         <span aria-hidden="true"></span>
       </button>
@@ -137,7 +157,7 @@
 <!-- ══ Mobile drawer ═══════════════════════════════════════════════════ -->
 <div class="drawer" id="drawer" data-open="false" role="dialog" aria-modal="true" aria-label="Menu">
   <div class="shell drawer__top">
-    <a class="brand" href="../index.html">
+    <a class="brand" href="/">
       <span class="brand__mark" aria-hidden="true"></span>
       <span class="brand__name">The Institute</span>
     </a>
@@ -147,13 +167,23 @@
       </svg>
     </button>
   </div>
+
   <div class="shell drawer__body">
+    <div class="acc">
+      <button class="acc__btn" type="button" aria-expanded="false" aria-controls="d-begin">Begin Here <i class="acc__plus" aria-hidden="true"></i></button>
+      <div class="acc__panel" id="d-begin" data-open="false">
+        <a class="acc__link" href="/courses/five-laws">The Five Laws of Manifestation — free</a>
+        <a class="acc__link" href="/human-operating-system">The Human Operating System</a>
+        <a class="acc__link" href="/begin/the-path">How the education fits together</a>
+      </div>
+    </div>
     <div class="acc">
       <button class="acc__btn" type="button" aria-expanded="false" aria-controls="d-concepts">Concepts <i class="acc__plus" aria-hidden="true"></i></button>
       <div class="acc__panel" id="d-concepts" data-open="false">
         <a class="acc__link" href="/concepts">Individual Concepts</a>
+        <a class="acc__link" href="/patterns">Patterns of Behavior</a>
         <a class="acc__link" href="/concepts/families">Concept Families</a>
-        <a class="acc__link" href="/concepts/weaves">Interwoven Studies</a>
+        <a class="acc__link" href="/collections">Interwoven Studies</a>
       </div>
     </div>
     <div class="acc">
@@ -163,11 +193,31 @@
         <a class="acc__link" href="/courses/foundation">Foundation Studies</a>
         <a class="acc__link" href="/courses/human-operating-system">The Human Operating System</a>
         <a class="acc__link" href="/courses/body-symbology">Body Symbology</a>
+        <a class="acc__link" href="/schools">The Schools of the Institute</a>
       </div>
     </div>
+    <div class="acc">
+      <button class="acc__btn" type="button" aria-expanded="false" aria-controls="d-books">Books <i class="acc__plus" aria-hidden="true"></i></button>
+      <div class="acc__panel" id="d-books" data-open="false">
+        <a class="acc__link" href="/books/awakening">Awakening</a>
+        <a class="acc__link" href="/books/tj">T.J.</a>
+        <a class="acc__link" href="/books/workbooks">Workbooks &amp; Awakening Portfolios</a>
+        <a class="acc__link" href="/books/video-studies">Video Studies &amp; Special Topics</a>
+      </div>
+    </div>
+    <div class="acc">
+      <button class="acc__btn" type="button" aria-expanded="false" aria-controls="d-events">Live Events <i class="acc__plus" aria-hidden="true"></i></button>
+      <div class="acc__panel" id="d-events" data-open="false">
+        <a class="acc__link" href="/events/arthritis">Arthritis</a>
+        <a class="acc__link" href="/events/cancer">Cancer</a>
+        <a class="acc__link" href="/events">All seminars</a>
+      </div>
+    </div>
+
     <div class="stack gap-4" style="margin-top:2.25rem">
       <a class="btn btn--primary" href="/courses/five-laws">Start the free course</a>
       <a class="btn btn--secondary" href="/membership">Membership</a>
+      <a class="arrow" href="/account">Sign in</a>
     </div>
   </div>
 </div>
