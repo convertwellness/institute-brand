@@ -28,6 +28,14 @@ def main():
         d = os.path.dirname(rel)
         routes.add("/" if d == "" else "/" + d)
 
+    # A link can also point at a file that is not a page — the favicons, an
+    # image, a stylesheet. Anything actually present under site/ is a real
+    # target, so the whole tree counts, not just the HTML in it.
+    for dirpath, _dirs, files in os.walk(OUT):
+        for fn in files:
+            rel = os.path.relpath(os.path.join(dirpath, fn), OUT).replace("\\", "/")
+            flat.add("/" + rel)
+
     dead = collections.Counter()
     where = collections.defaultdict(set)
     needs = collections.Counter()
