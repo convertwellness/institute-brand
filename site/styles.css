@@ -47,6 +47,8 @@
   --accent-warm: #836919;   /* brand Bronze — 5.4:1, the second voice */
   --bronze:      #836919;
   --gold:        #E8BE45;   /* brand Gold — imagery and star points only */
+  --nebula:      #2A1B45;   /* brand Nebula — the ground behind a plate, so the
+                               box holds its colour while the picture loads */
 
   --display: "Fraunces", Georgia, "Times New Roman", serif;
   --body:    "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;

@@ -590,3 +590,58 @@ a.item:hover .item__n{ color: var(--accent); }
 }
 .nf__door:hover b{ color: var(--accent); }
 .nf__door span{ color: var(--ink-quiet); font-size: .9375rem; }
+
+/* ── Index opener ─────────────────────────────────────────────────────
+   One plate per index, beside the title. The set shares a language — a deep
+   violet field with a single idea drawn over it in fine gold line — so the
+   picture says what the section is before the heading is read.
+
+   The plate is the one place flat Gold is allowed on a light page: it is
+   imagery, not type. Gold as a rule, a label or an icon measures 1.55:1 and
+   must be Bronze instead. */
+
+.opener{
+  display: grid; gap: clamp(1.5rem,3vw,2.5rem);
+  grid-template-columns: 1fr; align-items: end;
+  padding-block: clamp(2rem,4vw,3rem) 0;
+}
+@media (min-width: 900px){
+  .opener{ grid-template-columns: minmax(0,1fr) minmax(15rem,30%); }
+}
+.opener .index__head{ padding-block: 0; }
+
+.opener__plate{
+  margin: 0; position: relative; overflow: hidden;
+  background: var(--nebula);
+  aspect-ratio: 16 / 7;                    /* a band when stacked */
+}
+@media (min-width: 900px){
+  .opener__plate{ aspect-ratio: 3 / 4; }           /* the picture's own shape */
+}
+.opener__plate img{
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+
+/* The plates are dark, and they sit on a light page. A hairline keeps the
+   edge deliberate rather than letting the image bleed into the paper. */
+.opener__plate::after{
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgb(11 14 22 / .18);
+}
+
+/* Interior pages get the same picture as a narrow band above the title, so a
+   Study reads as belonging to its index without repeating its whole masthead. */
+.ribbon{
+  margin: 0; position: relative; overflow: hidden;
+  aspect-ratio: 20 / 3; background: var(--nebula);
+  margin-top: clamp(1.25rem,2.5vw,2rem);
+}
+.ribbon img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+.ribbon::after{
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgb(11 14 22 / .18);
+}
+
+/* Membership's plate is square rather than portrait — it is the one image in
+   the set that is a close, not a field. */
+@media (min-width: 900px){ .opener__plate--square{ aspect-ratio: 1 / 1; } }
