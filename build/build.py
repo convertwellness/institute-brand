@@ -18,7 +18,7 @@ SRC   = os.path.join(ROOT, "src")
 OUT   = os.path.join(ROOT, "site")
 PARTS = os.path.join(ROOT, "build", "partials")
 
-CSS_V, JS_V, STUDY_V = "8", "8", "4"   # bump to bust caches
+CSS_V, JS_V, STUDY_V = "8", "8", "5"   # bump to bust caches
 
 TAIL_MARK = u"<!-- \u2550\u2550 page tail"
 
@@ -84,7 +84,7 @@ def front_matter(text):
 def mark_current(chrome, route):
     """Give the link to the page you are on aria-current, so the header says
     where you are to a screen reader as well as to the eye."""
-    if route == "/":
+    if route in (None, "/"):
         return chrome
     return chrome.replace('href="%s"' % route, 'href="%s" aria-current="page"' % route)
 
@@ -107,6 +107,15 @@ def build():
         up = "../" * depth
 
         meta, body = front_matter(read(s))
+
+        # A flat page sits beside index.html rather than in a folder of its own.
+        # 404.html is the only one: the host serves it for any address it cannot
+        # match, so it must live at the root and link with absolute paths.
+        # Assets must be absolute: the host serves this file's contents at
+        # whatever address failed, so "styles.css" would resolve against that
+        # address and 404 in its turn.
+        if meta.get("flat") == "yes":
+            depth, up, route = 0, "/", None
         main, tail = split_tail(body)
         tail  = ("\n" + tail.strip() + "\n") if tail.strip() else ""
         study = ('\n<link rel="stylesheet" href="%sstudy.css?v=%s">' % (up, STUDY_V)
@@ -121,13 +130,17 @@ def build():
             main=main.strip(), footer=footer,
         )
 
-        dest = (os.path.join(OUT, "index.html") if route == "/"
-                else os.path.join(OUT, rel[:-5], "index.html"))
+        if route is None:
+            dest = os.path.join(OUT, rel)
+        elif route == "/":
+            dest = os.path.join(OUT, "index.html")
+        else:
+            dest = os.path.join(OUT, rel[:-5], "index.html")
         d = os.path.dirname(dest)
         if not os.path.isdir(d):
             os.makedirs(d)
         io.open(dest, "w", encoding="utf-8", newline="\n").write(page)
-        print("  %-34s -> %s" % (route, os.path.relpath(dest, ROOT).replace("\\", "/")))
+        print("  %-34s -> %s" % (route or "(404)", os.path.relpath(dest, ROOT).replace("\\", "/")))
 
     print("\n%d pages built." % len(sources))
 

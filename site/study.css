@@ -523,3 +523,65 @@ a.item:hover .item__n{ color: var(--accent); }
   width: 5px; height: 9px; border-right: 1.5px solid var(--accent-warm);
   border-bottom: 1.5px solid var(--accent-warm); transform: rotate(45deg);
 }
+
+/* ── Routes that exist before their content does ────────────────────────
+   Michael's note of 22 Aug — "items will be added in the same categories that
+   are built today" — only holds if the categories are actually reachable. A
+   stub is a real page at a real URL that says plainly what is not written yet.
+   It is not an error, and it never apologises. */
+
+.stub{ padding-block: clamp(3rem,7vw,6rem) clamp(4rem,9vw,8rem); max-width: 44rem; }
+.stub__k{
+  font-size: .72rem; font-weight: 600; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--accent-warm);
+}
+.stub__h{
+  font-family: var(--display);
+  font-variation-settings: "opsz" 144, "SOFT" 0, "WONK" 0;
+  font-size: clamp(2.2rem,5vw,3.4rem); line-height: 1.04;
+  letter-spacing: -.02em; color: var(--ink-strong); margin-top: .75rem;
+}
+.stub__lead{ font-size: clamp(1.05rem,1.2vw,1.2rem); line-height: 1.6; margin-top: 1.1rem; }
+.stub .needs{ margin-top: 1.75rem; }
+.stub__on{ display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; margin-top: 2.25rem;
+           padding-top: 1.5rem; border-top: 1px solid var(--rule); }
+
+/* ── Not found ──────────────────────────────────────────────────────────
+   A wrong address is not the visitor's fault, so the page does not say so. It
+   says where the five doors are and gets out of the way. */
+
+.nf{ padding-block: clamp(4rem,9vw,7rem) clamp(4rem,9vw,8rem); }
+.nf__n{
+  font-family: var(--display);
+  font-variation-settings: "opsz" 144, "SOFT" 0, "WONK" 0;
+  font-size: clamp(4rem,14vw,8rem); line-height: .9; color: var(--accent-soft);
+  font-variant-numeric: tabular-nums;
+}
+.nf__h{
+  font-family: var(--display);
+  font-variation-settings: "opsz" 72, "SOFT" 0, "WONK" 0;
+  font-size: clamp(1.8rem,4vw,2.6rem); line-height: 1.1;
+  color: var(--ink-strong); margin-top: .5rem; max-width: 24ch;
+}
+.nf__lead{ font-size: 1.1rem; line-height: 1.6; margin-top: 1rem; max-width: 40rem; }
+.nf__doors{
+  display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule);
+  grid-template-columns: 1fr; margin-top: clamp(2rem,4vw,3rem);
+}
+@media (min-width: 620px){ .nf__doors{ grid-template-columns: repeat(2,1fr); } }
+@media (min-width: 980px){ .nf__doors{ grid-template-columns: repeat(3,1fr); } }
+.nf__door{
+  background: var(--paper); padding: 1.25rem 1.35rem; text-decoration: none; color: inherit;
+  display: grid; gap: .3rem; align-content: start;
+  transition: background-color var(--t-colour), box-shadow var(--t-colour);
+}
+.nf__door:hover, .nf__door:focus-visible{
+  background: var(--band); box-shadow: inset 0 0 0 1px var(--accent);
+}
+.nf__door b{
+  font-family: var(--display); font-variation-settings: "opsz" 36, "SOFT" 0, "WONK" 0;
+  font-size: 1.25rem; font-weight: 400; color: var(--ink-strong);
+  transition: color var(--t-colour);
+}
+.nf__door:hover b{ color: var(--accent); }
+.nf__door span{ color: var(--ink-quiet); font-size: .9375rem; }

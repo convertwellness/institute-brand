@@ -8,6 +8,14 @@ page, and its output is committed, so the site runs with or without it.
 python build/build.py && python -m http.server 4477 --directory site
 ```
 
+```bash
+python build/audit.py
+```
+
+`audit.py` fails if any internal link points at a route that does not exist, and
+reports how many "Awaiting Michael" placeholders are left and where. It is the
+list to hand him.
+
 **`site/` is generated. Do not edit it by hand** — the next build overwrites it.
 Pages are written in `../src/`, the chrome lives in `../build/partials/`.
 
@@ -125,22 +133,66 @@ every step · visible focus ring on every interactive element · motion inside
 reveal animations and the ring draw stay dormant until the page is actually visible. If a
 screenshot tool shows the page faded or inert, that is why.
 
-## Routes that exist
+## Routes
+
+**Every internal link resolves.** 67 pages, 66 routes, 5,229 internal links, no
+dead ends. `build/audit.py` enforces that.
 
 ```
-/                        home
-/concepts                the twelve Concepts, filterable by Family
-/concepts/unworthiness   the Study template
-/collections/unworthiness  the Collection template
-/patterns                the twelve Patterns of Behavior
-/schools                 the six Schools, in Michael's order
-/courses                 the four Courses, side by side
-/courses/five-laws       free introductory course
-/courses/foundation      the ten-week programme — the gate
-/courses/human-operating-system
-/courses/body-symbology
-/membership              the three tiers
+/                              home
+/concepts                      twelve Concepts, filterable by Family
+/concepts/<slug>               11 Concept Studies
+/concepts/families             the four Families
+/concepts/families/<slug>      Acceptance · Worth · Control · Trust
+/patterns                      twelve Patterns of Behavior
+/patterns/<slug>               12 Pattern Studies
+/collections                   Interwoven Studies
+/collections/<slug>            4 sets
+/courses                       the four Courses
+/courses/<slug>                Five Laws · Foundation · HOS · Body Symbology
+/schools                       six Schools, in Michael's order
+/schools/<slug>                6 School pages
+/books, /books/<slug>          2 books, 2 kinds of study material
+/events, /events/<slug>        2 seminars
+/membership                    the three tiers
+/about /michael /contact       the Institute
+/begin/the-path                how the education fits together
+/legal/terms /privacy /refunds
+/account /cart                 the application layer
+404.html                       served for any unmatched address
 ```
+
+**The host must be told to serve `/404.html`** for addresses it cannot match.
+Without that, a wrong URL gets the host's own bare error page rather than the
+Institute's. Most static hosts do this automatically for a root `404.html`;
+confirm it on Sevalla.
+
+### What is real and what is scaffold
+
+Three kinds of page, and the difference matters when reading the site:
+
+1. **Written** — home, the four Courses, the three indexes with real data, the
+   Unworthiness Study and its Collection, Membership, the 404.
+2. **Generated from Michael's names** — the 11 Concept Studies, 12 Pattern
+   Studies, 6 Schools, 4 sets. Real names, real prices, real structure; the
+   descriptions are placeholders. Written by `build/make-library.py`.
+3. **Route only** — books, events, about, michael, contact, legal, account,
+   cart. A real page at a real URL saying plainly what is missing. Written by
+   `build/make-stubs.py`.
+
+Neither generator overwrites a file that already exists, so replacing a
+placeholder means editing its `src/` file and never running the script again for
+that page.
+
+**141 placeholders across 62 pages.** That is the backlog, and it is visible on
+the site on purpose — `CLAUDE.md` says ship the route, ship a clear placeholder,
+do not invent copy. The legal pages go further and say the text is not ours to
+draft, because a plausible-looking placeholder there invites someone to ship it.
+
+The Concepts index filter surfaces a real gap rather than hiding it:
+**Abandonment, Shame, and Fear and Doubt appear in none of Michael's four Family
+lists**, so they sit under "Family not yet assigned" instead of being quietly
+placed in one.
 
 The Course template flexes rather than branching: a free course, a ten-week
 programme, a study in two editions and an eBook at three depths are all the same
@@ -149,10 +201,6 @@ ten weeks in order is the only part of the catalogue that is genuinely sequentia
 
 **No Course is gated.** The Foundation is the gate, and a Course page therefore
 says what completing it *opens* — never what is closed against you.
-
-The Concepts index filter surfaces a real gap rather than hiding it: **Abandonment,
-Shame, and Fear and Doubt appear in none of Michael's four Family lists**, so they sit
-under "Family not yet assigned" instead of being quietly placed in one.
 
 ## Not built yet
 
