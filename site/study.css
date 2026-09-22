@@ -1,0 +1,368 @@
+/* ============================================================================
+   The Institute — the Study page
+
+   The workhorse. One Concept Study, and the template that repeats for every
+   Concept, Pattern, Universal Teaching, Four Selves and Relationship Study.
+   Loaded after styles.css, which carries the tokens.
+
+   Two rules from the build instructions govern this page:
+
+     The gate stops study, never browsing or buying. A locked Study shows its
+     whole description, its Patterns, its price and one line saying what opens
+     it — so the catalogue can still sell.
+
+     Where Michael has not written the teaching copy, the page says so in
+     place. It never invents his voice.
+   ========================================================================== */
+
+/* ── Breadcrumb ─────────────────────────────────────────────────────────── */
+
+.crumb{
+  display: flex; flex-wrap: wrap; align-items: center; gap: .5rem;
+  font-size: .875rem; color: var(--ink-quiet);
+  padding-block: 1.5rem 0;
+}
+.crumb a{ color: var(--ink-quiet); text-decoration: none; }
+.crumb a:hover{ color: var(--accent); }
+.crumb span[aria-current]{ color: var(--ink); }
+.crumb i{ font-style: normal; color: var(--rule-strong); }
+
+/* ── The two columns ────────────────────────────────────────────────────── */
+
+.study{
+  display: grid; gap: clamp(2.5rem, 5vw, 4rem);
+  padding-block: clamp(2rem, 4vw, 3rem) clamp(4rem, 8vw, 7rem);
+}
+@media (min-width: 940px){
+  .study{ grid-template-columns: minmax(0,1fr) minmax(0,21rem); align-items: start; }
+}
+
+.study__head{ display: flex; flex-direction: column; gap: 1.1rem; align-items: flex-start; }
+.study__title{
+  font-family: var(--display);
+  font-variation-settings: "opsz" 144, "SOFT" 0, "WONK" 0;
+  font-size: clamp(2.6rem, 6vw, 4.4rem); line-height: 1;
+  letter-spacing: -.02em; color: var(--ink-strong);
+}
+.study__def{ font-size: clamp(1.1rem, 1.3vw, 1.3rem); line-height: 1.6; max-width: 34rem; }
+
+/* ── State ──────────────────────────────────────────────────────────────── */
+
+.state{
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+  padding: .4rem .7rem; border: 1px solid currentColor;
+}
+.state::before{
+  content: ""; width: 7px; height: 7px; flex: none;
+  background: currentColor;
+}
+.state--open     { color: var(--accent); }
+.state--locked   { color: var(--accent-warm); background: rgba(131,105,25,.10); }
+.state--progress { color: var(--paper); background: var(--accent); border-color: var(--accent); }
+.state--complete { color: var(--accent); }
+.state--complete::before{
+  width: 5px; height: 9px; background: none;
+  border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg) translateY(-1px);
+}
+
+/* one line saying what opens it — never a padlock alone */
+.gatehelp{
+  border-left: 2px solid var(--accent-warm);
+  padding: .9rem 1.1rem; margin-top: .2rem;
+  background: var(--band);
+  font-size: 1rem; color: var(--ink); max-width: 36rem;
+}
+
+/* ── Sections ───────────────────────────────────────────────────────────── */
+
+.sections{ display: flex; flex-direction: column; gap: clamp(2.5rem, 4vw, 3.5rem); margin-top: clamp(2.5rem,5vw,4rem); }
+.sec{ display: flex; flex-direction: column; gap: .9rem; }
+.sec__n{
+  font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent-warm); font-variant-numeric: tabular-nums;
+}
+.sec__h{
+  font-family: var(--display);
+  font-variation-settings: "opsz" 72, "SOFT" 0, "WONK" 0;
+  font-size: clamp(1.5rem, 2.4vw, 2rem); line-height: 1.2; color: var(--ink-strong);
+}
+.sec p{ max-width: 38rem; }
+
+/* Where Michael has not written it yet. Visible on purpose: it shows him
+   exactly what is missing, in the exact place it goes. */
+.needs{
+  border: 1px dashed var(--rule-strong);
+  background: var(--band);
+  padding: 1rem 1.2rem; max-width: 38rem;
+}
+.needs__k{
+  display: block; font-size: .72rem; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--accent-warm);
+  margin-bottom: .35rem;
+}
+.needs p{ margin: 0; color: var(--ink-quiet); font-size: .9875rem; }
+
+/* ── The Patterns ───────────────────────────────────────────────────────── */
+
+.patterns{ list-style: none; margin: 0; padding: 0; counter-reset: pat; }
+.patterns li{
+  counter-increment: pat;
+  display: grid; grid-template-columns: 2.25rem minmax(0,1fr);
+  gap: .2rem 1rem; align-items: baseline;
+  padding-block: 1rem; border-top: 1px solid var(--rule);
+}
+.patterns li:last-child{ border-bottom: 1px solid var(--rule); }
+.patterns li::before{
+  content: counter(pat, decimal-leading-zero);
+  font-size: .8125rem; font-weight: 600; letter-spacing: .1em;
+  color: var(--accent); font-variant-numeric: tabular-nums;
+}
+.pat__n{
+  font-family: var(--display);
+  font-variation-settings: "opsz" 36, "SOFT" 0, "WONK" 0;
+  font-size: 1.18rem; color: var(--ink-strong);
+}
+.pat__d{ grid-column: 2; color: var(--ink-quiet); font-size: .9875rem; }
+
+/* ── Where it belongs ───────────────────────────────────────────────────── */
+
+.belongs{ display: grid; gap: 1px; background: var(--rule);
+          border: 1px solid var(--rule); grid-template-columns: 1fr; }
+@media (min-width: 620px){ .belongs{ grid-template-columns: repeat(2,1fr); } }
+.belongs a{
+  background: var(--paper); padding: 1.2rem 1.35rem;
+  display: flex; flex-direction: column; gap: .35rem;
+  text-decoration: none; color: inherit;
+  transition: background-color var(--t-colour), box-shadow var(--t-colour);
+}
+.belongs a:hover, .belongs a:focus-visible{
+  background: var(--band); box-shadow: inset 0 0 0 1px var(--accent);
+}
+.belongs__k{ font-size: .72rem; font-weight: 600; letter-spacing: .12em;
+             text-transform: uppercase; color: var(--accent-warm); }
+.belongs__n{
+  font-family: var(--display);
+  font-variation-settings: "opsz" 36, "SOFT" 0, "WONK" 0;
+  font-size: 1.18rem; color: var(--ink-strong);
+  transition: color var(--t-colour);
+}
+.belongs a:hover .belongs__n{ color: var(--accent); }
+.belongs__d{ color: var(--ink-quiet); font-size: .9375rem; }
+
+/* ── The buy panel ──────────────────────────────────────────────────────── */
+
+.buy{ display: flex; flex-direction: column; gap: 1.5rem; }
+@media (min-width: 940px){
+  .buy{ position: sticky; top: calc(74px + 1.5rem); }
+}
+.buy__card{
+  border: 1px solid var(--rule-strong);
+  background: var(--paper);
+  padding: clamp(1.25rem, 2vw, 1.6rem);
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.buy__k{ font-size: .72rem; font-weight: 600; letter-spacing: .12em;
+         text-transform: uppercase; color: var(--accent-warm); }
+
+.price{ display: flex; align-items: baseline; gap: .65rem; flex-wrap: wrap; }
+.price__now{
+  font-family: var(--display);
+  font-variation-settings: "opsz" 96, "SOFT" 0, "WONK" 0;
+  font-size: 2.6rem; line-height: 1; color: var(--ink-strong);
+  font-variant-numeric: tabular-nums;
+}
+.price__was{ color: var(--ink-quiet); text-decoration: line-through; font-variant-numeric: tabular-nums; }
+.price__note{ font-size: .9375rem; color: var(--ink-quiet); }
+.price__member{
+  font-size: .9375rem; color: var(--accent); font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.buy .btn{ width: 100%; }
+.includes{ list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .5rem;
+           border-top: 1px solid var(--rule); padding-top: 1rem; }
+.includes li{
+  display: grid; grid-template-columns: 1rem minmax(0,1fr); gap: .6rem;
+  font-size: .9375rem; color: var(--ink);
+}
+.includes li::before{
+  content: ""; width: 5px; height: 9px; margin: .35rem 0 0 .25rem;
+  border-right: 1.5px solid var(--accent); border-bottom: 1.5px solid var(--accent);
+  transform: rotate(45deg);
+}
+
+/* the member door, as Michael wrote it: three choices on every study page */
+.upsell{
+  border: 1px solid var(--rule); background: var(--band);
+  padding: 1.2rem 1.35rem; display: flex; flex-direction: column; gap: .6rem;
+}
+.upsell__h{
+  font-family: var(--display);
+  font-variation-settings: "opsz" 36, "SOFT" 0, "WONK" 0;
+  font-size: 1.12rem; color: var(--ink-strong);
+}
+.upsell p{ font-size: .9375rem; color: var(--ink-quiet); margin: 0; }
+
+/* ── The three choices, full width ──────────────────────────────────────── */
+
+.offer{ display: grid; gap: 1px; background: var(--rule);
+        border: 1px solid var(--rule); grid-template-columns: 1fr; }
+@media (min-width: 760px){ .offer{ grid-template-columns: repeat(3,1fr); } }
+.offer__col{
+  background: var(--paper); padding: clamp(1.4rem,2.2vw,1.9rem);
+  display: flex; flex-direction: column; gap: .7rem;
+}
+.offer__col--lead{ background: var(--band); }
+.offer__k{ font-size: .72rem; font-weight: 600; letter-spacing: .12em;
+           text-transform: uppercase; color: var(--accent-warm); }
+.offer__p{
+  font-family: var(--display);
+  font-variation-settings: "opsz" 72, "SOFT" 0, "WONK" 0;
+  font-size: 1.9rem; line-height: 1; color: var(--ink-strong);
+  font-variant-numeric: tabular-nums;
+}
+.offer__d{ font-size: .9375rem; color: var(--ink-quiet); flex: 1; }
+
+/* ── Mock control ───────────────────────────────────────────────────────
+   Not part of the site. It exists so the four gate states can be seen
+   without accounts, enrolment records or a server. It is removed the moment
+   the real gate exists. */
+
+.mockbar{
+  position: sticky; bottom: 0; z-index: 90;
+  background: var(--ink-strong); color: #ECEAF2;
+  border-top: 1px solid var(--ink-strong);
+}
+.mockbar__in{
+  display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1rem;
+  padding-block: .7rem;
+}
+.mockbar__k{
+  font-size: .7rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+  color: #B0A3C9;
+}
+.mockbar__set{ display: flex; flex-wrap: wrap; gap: .4rem; margin-inline-end: auto; }
+.mockbar__b{
+  min-height: 34px; padding: 0 .75rem;
+  background: none; border: 1px solid #46405E; color: #ECEAF2;
+  font-size: .85rem; cursor: pointer;
+  transition: background-color var(--t-colour), border-color var(--t-colour), color var(--t-colour);
+}
+.mockbar__b:hover{ border-color: #B0A3C9; }
+.mockbar__b[aria-pressed="true"]{ background: #B0A3C9; border-color: #B0A3C9; color: #14121C; font-weight: 600; }
+.mockbar__note{ font-size: .8125rem; color: #B0A3C9; }
+.mockbar :focus-visible{ outline-color: #FFE9A8; }
+
+/* what each state hides or shows */
+[data-state="locked"]   .is-open,
+[data-state="open"]     .is-locked,
+[data-state="progress"] .is-open,
+[data-state="progress"] .is-locked,
+[data-state="complete"] .is-open,
+[data-state="complete"] .is-locked{ display: none; }
+[data-state="open"]     .is-progress,
+[data-state="locked"]   .is-progress,
+[data-state="complete"] .is-progress,
+[data-state="open"]     .is-complete,
+[data-state="locked"]   .is-complete,
+[data-state="progress"] .is-complete{ display: none; }
+
+/* ── Collection page ────────────────────────────────────────────────────
+   A Collection is several Studies sold together. The page has one job the
+   Study page does not: show what is inside, and show honestly what the
+   bundle saves against buying the parts. */
+
+.contents{ list-style: none; margin: 0; padding: 0; }
+.contents li{
+  display: grid; gap: .2rem 1rem; align-items: baseline;
+  grid-template-columns: minmax(0,1fr) auto;
+  padding-block: 1rem; border-top: 1px solid var(--rule);
+}
+.contents li:last-child{ border-bottom: 1px solid var(--rule); }
+.contents__k{
+  grid-column: 1; font-size: .72rem; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--accent-warm);
+}
+.contents__n{
+  grid-column: 1; font-family: var(--display);
+  font-variation-settings: "opsz" 36, "SOFT" 0, "WONK" 0;
+  font-size: 1.18rem; color: var(--ink-strong);
+}
+.contents__n a{ color: inherit; text-decoration: none; }
+.contents__n a:hover{ color: var(--accent); }
+.contents__p{
+  grid-column: 2; grid-row: 1 / span 2; align-self: center;
+  font-variant-numeric: tabular-nums; color: var(--ink-quiet); font-size: .9375rem;
+  white-space: nowrap;
+}
+
+/* the saving, stated plainly rather than as a badge */
+.sums{ width: 100%; border-collapse: collapse; font-size: .9375rem; max-width: 30rem; }
+.sums th, .sums td{ text-align: left; padding: .55rem 0; border-bottom: 1px solid var(--rule); }
+.sums td:last-child, .sums th:last-child{ text-align: right; font-variant-numeric: tabular-nums; }
+.sums tr:last-child th, .sums tr:last-child td{
+  border-bottom: 0; border-top: 1px solid var(--rule-strong);
+  font-weight: 600; color: var(--ink-strong);
+}
+.sums .save{ color: var(--accent); }
+
+/* ── Membership page ────────────────────────────────────────────────────
+   Three tiers, read across. Each column is one object: same edges, same
+   baselines, the price in the same place. */
+
+.tiers{ display: grid; gap: 1px; background: var(--rule);
+        border: 1px solid var(--rule); grid-template-columns: 1fr; }
+@media (min-width: 900px){ .tiers{ grid-template-columns: repeat(3,1fr); } }
+.tier{
+  background: var(--paper); padding: clamp(1.5rem,2.4vw,2rem);
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.tier--lead{ background: var(--band); }
+.tier__k{ font-size: .72rem; font-weight: 600; letter-spacing: .12em;
+          text-transform: uppercase; color: var(--accent-warm); }
+.tier__name{
+  font-family: var(--display);
+  font-variation-settings: "opsz" 72, "SOFT" 0, "WONK" 0;
+  font-size: 1.6rem; line-height: 1.15; color: var(--ink-strong);
+}
+.tier__price{
+  font-family: var(--display);
+  font-variation-settings: "opsz" 96, "SOFT" 0, "WONK" 0;
+  font-size: 2.4rem; line-height: 1; color: var(--ink-strong);
+  font-variant-numeric: tabular-nums;
+}
+.tier__per{ font-size: .9375rem; color: var(--ink-quiet); }
+.tier__line{ font-size: .9875rem; color: var(--ink-quiet); }
+.tier__list{ list-style: none; margin: 0; padding: 0;
+             display: flex; flex-direction: column; gap: .55rem;
+             border-top: 1px solid var(--rule); padding-top: 1rem; flex: 1; }
+.tier__list li{
+  display: grid; grid-template-columns: 1rem minmax(0,1fr); gap: .6rem;
+  font-size: .9375rem; color: var(--ink);
+}
+.tier__list li::before{
+  content: ""; width: 5px; height: 9px; margin: .35rem 0 0 .25rem;
+  border-right: 1.5px solid var(--accent); border-bottom: 1.5px solid var(--accent);
+  transform: rotate(45deg);
+}
+.tier__list li.carry{ color: var(--ink-quiet); }
+.tier__list li.carry::before{ border-color: var(--rule-strong); }
+.tier__cap{
+  font-size: .875rem; color: var(--accent-warm);
+  border: 1px solid rgba(131,105,25,.35); padding: .5rem .7rem;
+}
+
+/* the three kinds of access, which run underneath every tier */
+.access{ display: grid; gap: 1px; background: var(--rule);
+         border: 1px solid var(--rule); grid-template-columns: 1fr; }
+@media (min-width: 700px){ .access{ grid-template-columns: repeat(3,1fr); } }
+.access div{ background: var(--paper); padding: 1.2rem 1.35rem;
+             display: flex; flex-direction: column; gap: .35rem; }
+.access h3{
+  font-family: var(--display);
+  font-variation-settings: "opsz" 36, "SOFT" 0, "WONK" 0;
+  font-size: 1.12rem; color: var(--ink-strong); margin: 0;
+}
+.access p{ margin: 0; color: var(--ink-quiet); font-size: .9375rem; }
