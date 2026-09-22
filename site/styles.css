@@ -796,7 +796,11 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
 }
 .chip:hover{ color: var(--accent); border-color: var(--accent); background: var(--paper); }
 
-/* ── Schools — a set, not a sequence. No numbers. ───────────────────────── */
+/* ── Schools ────────────────────────────────────────────────────────────
+   They used to be a set, and were deliberately unnumbered. On 11 Sep Michael
+   gave an explicit opening order and a reason for it — Human Patterns first,
+   because it answers the question most students arrive with — so the sequence
+   is now real, and DESIGN.md says number what is genuinely sequential. */
 
 .schools{ display: grid; gap: 1px; background: var(--rule);
           border: 1px solid var(--rule); grid-template-columns: 1fr; }
@@ -814,6 +818,10 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
   box-shadow: inset 0 0 0 1px var(--accent);
 }
 .school:hover .school__name{ color: var(--accent); }
+.school__n{
+  font-size: .8125rem; font-weight: 600; letter-spacing: .1em;
+  color: var(--accent); font-variant-numeric: tabular-nums;
+}
 .school__name{
   font-family: var(--display);
   font-variation-settings: "opsz" 36, "SOFT" 0, "WONK" 0;

@@ -77,6 +77,30 @@ them; the prompts that made them are in `../docs/imagery-directions.md`.
 
 The mark is filled with a galaxy at every size, masked over `galaxy-figure.webp`.
 
+## Content — Michael's material of 11 Sep 2026
+
+The home page, the Study, Collection and Membership templates all now run on his real
+catalogue rather than the placeholder sets:
+
+- **Four Courses** — Five Laws, Foundation Studies, the Human Operating System, Body Symbology.
+  The Human Operating System and Body Symbology moved out of Books; Extended Foundation,
+  Awakening of Consciousness and T.J. are out of launch.
+- **Twelve Concepts** (eleven named), **twelve Patterns**, **four Concept Families**.
+- **Six Schools**, in the order he recommends, with his own one-line descriptions. They are
+  numbered now: they used to be a set and were deliberately unnumbered, but he gave an explicit
+  opening order and a reason for it, and `DESIGN.md` says number what is genuinely sequential.
+- **Weaves are "Interwoven Studies"** — his own name for them, from the pricing sheet.
+
+**Deliberately not changed: the Operating System ring.** The Member Pricing document states the
+chain as *Concept → Expectation → Pattern → Experience → Validation*; the ring draws his earlier
+*Concept → Belief → Pattern → Emotion → Behavior → Life Result*. Five stages against six.
+Redrawing it before he says which is current would be a guess, and it is the most prominent
+thing on the page.
+
+Three other answers are still open — whether the Foundation gate survives the $6.99 standalone
+Study, whether the member price is one figure or three, and what a purchase credit buys. All are
+set out in the launch-model document with the smaller gaps.
+
 ## Verified
 
 390 / 768 / 1024 / 1440 with no horizontal overflow · both fonts loading with `opsz` set at
