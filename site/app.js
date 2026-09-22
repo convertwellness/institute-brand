@@ -213,6 +213,50 @@
     chains.forEach(function (svg) { drawn.observe(svg); });
   }
 
+  /* ── Index filters ────────────────────────────────────────────────────
+     Any index with #grid and [data-filter] buttons gets this — Concepts and
+     Patterns today, the rest of the library as Michael's mapping arrives. A
+     card marked data-fam="all" survives every filter; that is the placeholder
+     card, which belongs to no Family because it has no name yet.
+
+     The count is spoken as well as shown: without it a filter that empties a
+     grid reads as a broken page to anyone not watching the cards. */
+
+  var grid = document.getElementById("grid");
+  if (grid) {
+    var items   = Array.prototype.slice.call(grid.querySelectorAll(".item"));
+    var fbtns   = Array.prototype.slice.call(document.querySelectorAll("[data-filter]"));
+    var readout = document.getElementById("filter-said");
+
+    /* A placeholder card stands for something not yet named, so it is not one
+       of the Studies and is left out of both counts. It appears unfiltered
+       only, since it belongs to no Family until it has a name. */
+    var real = items.filter(function (it) {
+      return !it.classList.contains("item--awaited");
+    });
+
+    var applyFilter = function (f, label) {
+      var shown = 0;
+      items.forEach(function (it) {
+        var keep = f === "all" || it.dataset.fam === f || it.dataset.fam === "all";
+        it.hidden = !keep;
+        if (keep && !it.classList.contains("item--awaited")) shown += 1;
+      });
+      if (readout) {
+        readout.textContent = f === "all"
+          ? "Showing all " + shown + "."
+          : "Showing " + shown + " of " + real.length + " — " + label + ".";
+      }
+    };
+
+    fbtns.forEach(function (b) {
+      b.addEventListener("click", function () {
+        fbtns.forEach(function (o) { o.setAttribute("aria-pressed", String(o === b)); });
+        applyFilter(b.dataset.filter, (b.dataset.label || b.textContent).trim());
+      });
+    });
+  }
+
   /* ── Small change ─────────────────────────────────────────────────────── */
 
   var year = document.getElementById("year");

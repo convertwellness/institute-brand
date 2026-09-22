@@ -66,6 +66,13 @@
 
 *, *::before, *::after{ box-sizing: border-box; }
 
+/* The browser's own [hidden] rule lives in the user-agent origin, so ANY author
+   rule that sets display beats it — .item{display:flex} silently un-hides every
+   card the filter hides. Four behaviours set .hidden in JS (the filter, the ring
+   readout, the ring's idle line, the newsletter confirmation); this is what makes
+   all four actually hide. */
+[hidden]{ display: none !important; }
+
 html{ -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 
 body{

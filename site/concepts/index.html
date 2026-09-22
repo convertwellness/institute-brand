@@ -10,8 +10,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Source+Sans+3:wght@400;600&display=swap">
-<link rel="stylesheet" href="../styles.css?v=8">
-<link rel="stylesheet" href="../study.css?v=5">
+<link rel="stylesheet" href="../styles.css?v=9">
+<link rel="stylesheet" href="../study.css?v=6">
 </head>
 <body>
 
@@ -241,11 +241,13 @@
   <div class="filters" role="group" aria-label="Filter by Concept Family">
     <span class="filters__k">Family</span>
     <button class="filt" type="button" data-filter="all" aria-pressed="true">All <span class="filt__n">11</span></button>
-    <button class="filt" type="button" data-filter="acceptance" aria-pressed="false">Acceptance <span class="filt__n">3</span></button>
-    <button class="filt" type="button" data-filter="worth" aria-pressed="false">Worth <span class="filt__n">4</span></button>
-    <button class="filt" type="button" data-filter="trust" aria-pressed="false">Trust <span class="filt__n">1</span></button>
-    <button class="filt" type="button" data-filter="none" aria-pressed="false">Unassigned <span class="filt__n">3</span></button>
+    <button class="filt" type="button" data-filter="acceptance" data-label="the Acceptance Family" aria-pressed="false">Acceptance <span class="filt__n">3</span></button>
+    <button class="filt" type="button" data-filter="worth" data-label="the Worth Family" aria-pressed="false">Worth <span class="filt__n">4</span></button>
+    <button class="filt" type="button" data-filter="trust" data-label="the Trust Family" aria-pressed="false">Trust <span class="filt__n">1</span></button>
+    <button class="filt" type="button" data-filter="none" data-label="no Family yet assigned" aria-pressed="false">Unassigned <span class="filt__n">3</span></button>
   </div>
+  <p class="sr-only" id="filter-said" role="status" aria-live="polite"></p>
+
   <div class="cards" id="grid">
     <a class="item" href="/concepts/unworthiness" data-fam="worth">
       <span class="item__k">Worth Family</span>
@@ -437,27 +439,6 @@
   </div>
 </footer>
 
-<script src="../app.js?v=8"></script>
-
-<script>
-/* The Family filter, working. Eleven cards, four Families, one of which is
-   "not yet assigned" — which is itself a finding worth seeing. */
-(function () {
-  "use strict";
-  var grid = document.getElementById("grid");
-  if (!grid) return;
-  var items = [].slice.call(grid.querySelectorAll(".item"));
-  var btns  = [].slice.call(document.querySelectorAll("[data-filter]"));
-  btns.forEach(function (b) {
-    b.addEventListener("click", function () {
-      var f = b.dataset.filter;
-      btns.forEach(function (o) { o.setAttribute("aria-pressed", String(o === b)); });
-      items.forEach(function (it) {
-        it.hidden = !(f === "all" || it.dataset.fam === f || it.dataset.fam === "all");
-      });
-    });
-  });
-})();
-</script>
+<script src="../app.js?v=10"></script>
 </body>
 </html>
