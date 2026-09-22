@@ -471,3 +471,55 @@ a.item:hover .item__n{ color: var(--accent); }
   color: var(--ink-quiet);
 }
 .formats .m{ color: var(--accent); font-weight: 600; }
+
+/* ── The Course template ────────────────────────────────────────────────
+   Four Courses that are not four of the same thing: a free introduction, a
+   ten-week programme, a study sold in two editions, an eBook at three depths.
+   The template flexes by which blocks a page uses, not by variant classes. */
+
+/* What a Course covers. Foundation is genuinely sequential — ten weeks, in
+   order — so it is numbered. The others are a set of topics and are not. */
+.weeks{ list-style: none; display: grid; gap: 1px; background: var(--rule);
+        border: 1px solid var(--rule); margin-top: 1.25rem; }
+.week{ background: var(--paper); padding: 1rem 1.15rem;
+       display: grid; grid-template-columns: 2.5rem 1fr; gap: .25rem 1rem; align-items: baseline; }
+.week__n{
+  font-family: var(--display); font-variation-settings: "opsz" 24, "SOFT" 0, "WONK" 0;
+  font-size: 1.05rem; color: var(--accent-warm); font-variant-numeric: tabular-nums;
+}
+.week__h{ font-weight: 600; color: var(--ink-strong); }
+.week__d{ grid-column: 2; color: var(--ink-quiet); font-size: .9375rem; }
+.week--needs .week__h{ color: var(--ink-quiet); font-weight: 400; font-style: italic; }
+
+/* A plain set of topics, where order carries nothing. */
+.topics{ list-style: none; display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1.15rem; }
+.topics li{
+  border: 1px solid var(--rule-strong); padding: .3rem .7rem;
+  font-size: .9375rem; color: var(--ink);
+}
+
+/* Choosing between editions, in the buy panel. Each is its own purchase, so
+   each carries its own price and its own button. */
+.editions{ display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+.edition{ background: var(--paper); padding: .95rem 1.05rem; display: grid; gap: .35rem; }
+.edition__n{ font-weight: 600; color: var(--ink-strong); font-size: .9375rem; }
+.edition__d{ font-size: .875rem; color: var(--ink-quiet); }
+.edition__row{ display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+.edition__p{ font-variant-numeric: tabular-nums; color: var(--ink); }
+.edition__m{ font-variant-numeric: tabular-nums; color: var(--accent); font-weight: 600;
+             font-size: .9375rem; }
+.edition .btn{ margin-top: .3rem; }
+
+/* What completing it opens. The gate stops study, never browsing or buying —
+   so a Course page says what it unlocks, never what is locked against you. */
+.opens{ border: 1px solid var(--rule-strong); border-left: 3px solid var(--accent-warm);
+        padding: clamp(1.1rem,2vw,1.5rem); margin-top: 1.5rem; display: grid; gap: .6rem; }
+.opens__k{ font-size: .72rem; font-weight: 600; letter-spacing: .12em;
+           text-transform: uppercase; color: var(--accent-warm); }
+.opens ul{ list-style: none; display: grid; gap: .4rem; }
+.opens li{ padding-left: 1.15rem; position: relative; color: var(--ink); }
+.opens li::before{
+  content: ""; position: absolute; left: 0; top: .48em;
+  width: 5px; height: 9px; border-right: 1.5px solid var(--accent-warm);
+  border-bottom: 1.5px solid var(--accent-warm); transform: rotate(45deg);
+}

@@ -10,8 +10,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Source+Sans+3:wght@400;600&display=swap">
-<link rel="stylesheet" href="../styles.css?v=7">
-<link rel="stylesheet" href="../study.css?v=3">
+<link rel="stylesheet" href="../styles.css?v=8">
+<link rel="stylesheet" href="../study.css?v=4">
 </head>
 <body>
 
@@ -39,7 +39,7 @@
               <li><a class="panel__link" href="/courses/five-laws">
                 <span class="panel__label">The Five Laws of Manifestation</span>
                 <span class="panel__note">Free · An introduction to the principles the teachings are built on.</span></a></li>
-              <li><a class="panel__link" href="/human-operating-system">
+              <li><a class="panel__link" href="/courses/human-operating-system">
                 <span class="panel__label">The Human Operating System</span>
                 <span class="panel__note">Concept to Belief to Pattern to Emotion to Behavior to Life Result.</span></a></li>
               <li><a class="panel__link" href="/begin/the-path">
@@ -173,7 +173,7 @@
       <button class="acc__btn" type="button" aria-expanded="false" aria-controls="d-begin">Begin Here <i class="acc__plus" aria-hidden="true"></i></button>
       <div class="acc__panel" id="d-begin" data-open="false">
         <a class="acc__link" href="/courses/five-laws">The Five Laws of Manifestation — free</a>
-        <a class="acc__link" href="/human-operating-system">The Human Operating System</a>
+        <a class="acc__link" href="/courses/human-operating-system">The Human Operating System</a>
         <a class="acc__link" href="/begin/the-path">How the education fits together</a>
       </div>
     </div>
@@ -325,10 +325,12 @@
 </div>
 </main>
 
-<!-- ══ Footer ══════════════════════════════════════════════════════════ -->
+<!-- ══ Footer ═══════════════════════════════════════════════════════════════════ -->
 <footer class="footer g-deep">
   <div class="shell">
+
     <div class="footer__top">
+
       <div class="stack gap-6">
         <div class="footer__lockup">
           <span class="plate__mark" aria-hidden="true"></span>
@@ -338,17 +340,33 @@
             <span>of Human Patterns</span>
           </p>
         </div>
+
+        <div>
+          <p class="h-small">Occasional letters from the Institute</p>
+          <p class="small quiet" style="margin-top:.4rem">New Concepts, new Courses, and seminar dates. No more than monthly.</p>
+          <form class="news" id="news">
+            <label class="sr-only" for="news-email">Email address</label>
+            <input id="news-email" type="email" name="email" placeholder="you@example.com" required>
+            <button class="btn btn--primary" type="submit">Subscribe</button>
+          </form>
+          <p class="small quiet" id="news-said" hidden style="margin-top:.6rem">Thank you. You will hear from the Institute.</p>
+        </div>
       </div>
+
       <div class="footer__cols">
+
         <div>
           <p class="footer__h">Study</p>
           <ul class="footer__list">
             <li><a href="/courses/five-laws">The Five Laws</a></li>
             <li><a href="/courses/foundation">Foundation Studies</a></li>
             <li><a href="/concepts">Concept Studies</a></li>
+            <li><a href="/patterns">Patterns of Behavior</a></li>
             <li><a href="/concepts/families">Concept Families</a></li>
+            <li><a href="/collections">Interwoven Studies</a></li>
           </ul>
         </div>
+
         <div>
           <p class="footer__h">The Schools</p>
           <ul class="footer__list">
@@ -356,8 +374,11 @@
             <li><a href="/schools/human-operating-system">Human Operating System</a></li>
             <li><a href="/schools/identity">Identity</a></li>
             <li><a href="/schools/concepts-and-beliefs">Concepts and Beliefs</a></li>
+            <li><a href="/schools/relationships">Relationships</a></li>
+            <li><a href="/schools/consciousness">Consciousness</a></li>
           </ul>
         </div>
+
         <div>
           <p class="footer__h">Library</p>
           <ul class="footer__list">
@@ -367,17 +388,21 @@
             <li><a href="/books/workbooks">Workbooks &amp; Portfolios</a></li>
           </ul>
         </div>
+
         <div>
           <p class="footer__h">The Institute</p>
           <ul class="footer__list">
             <li><a href="/about">About</a></li>
             <li><a href="/michael">Michael Schwartz</a></li>
             <li><a href="/membership">Membership</a></li>
+            <li><a href="/events">Live Events</a></li>
             <li><a href="/contact">Contact</a></li>
           </ul>
         </div>
+
       </div>
     </div>
+
     <div class="footer__base">
       <p>&copy; <span id="year">2026</span> The Institute of The Spiritual Science of Human Patterns</p>
       <ul class="footer__legal">
@@ -386,10 +411,10 @@
         <li><a href="/legal/refunds">Refunds</a></li>
       </ul>
     </div>
+
   </div>
 </footer>
 
-
-<script src="../app.js?v=7"></script>
+<script src="../app.js?v=8"></script>
 </body>
 </html>

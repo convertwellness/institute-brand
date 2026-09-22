@@ -1,18 +1,32 @@
 # The Institute — static build
 
-The home page, built as plain HTML, CSS and one file of vanilla JavaScript. No build
-step, no framework, no dependencies. Open `index.html` or serve the folder.
+Plain HTML, CSS and one file of vanilla JavaScript. No framework and no dependencies —
+the only build step is a short Python script that stamps the shared chrome onto each
+page, and its output is committed, so the site runs with or without it.
 
 ```bash
-python -m http.server 4477 --directory site
+python build/build.py && python -m http.server 4477 --directory site
 ```
 
+**`site/` is generated. Do not edit it by hand** — the next build overwrites it.
+Pages are written in `../src/`, the chrome lives in `../build/partials/`.
+
 ```
-index.html    the page
-styles.css    tokens, components, sections, motion — commented by section
-app.js        doors, drawer, the ring readout, the path, reveal
-assets/       the shipped cuts. Masters live in ../assets/masters/
+../src/<route>.html   a page: front matter, <main>, an optional tail block
+../build/partials/    header.html · drawer.html · footer.html — one copy each
+../build/build.py     assembles the two into site/. ~120 lines, no dependencies
+
+site/index.html       generated
+site/styles.css       tokens, components, sections, motion — commented by section
+site/study.css        catalogue: study, collection, index, course templates
+site/app.js           doors, drawer, the ring readout, the path, reveal
+site/assets/          the shipped cuts. Masters live in ../assets/masters/
 ```
+
+Adding a page is one file in `src/` and one run of the build. The header, the
+mobile drawer and the footer are written once; changing a nav link changes it
+everywhere. The build also marks the link to the current page with
+`aria-current="page"`, so the header says where you are to a screen reader.
 
 ## Where this stands
 
@@ -121,8 +135,20 @@ screenshot tool shows the page faded or inert, that is why.
 /patterns                the twelve Patterns of Behavior
 /schools                 the six Schools, in Michael's order
 /courses                 the four Courses, side by side
+/courses/five-laws       free introductory course
+/courses/foundation      the ten-week programme — the gate
+/courses/human-operating-system
+/courses/body-symbology
 /membership              the three tiers
 ```
+
+The Course template flexes rather than branching: a free course, a ten-week
+programme, a study in two editions and an eBook at three depths are all the same
+page with different blocks filled. Foundation is the only one numbered, because
+ten weeks in order is the only part of the catalogue that is genuinely sequential.
+
+**No Course is gated.** The Foundation is the gate, and a Course page therefore
+says what completing it *opens* — never what is closed against you.
 
 The Concepts index filter surfaces a real gap rather than hiding it: **Abandonment,
 Shame, and Fear and Doubt appear in none of Michael's four Family lists**, so they sit
