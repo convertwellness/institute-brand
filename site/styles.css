@@ -228,9 +228,8 @@ p{ margin: 0; }
 
 /* the mark, wherever it appears */
 .plate__mark{
-  width: 18px; height: 66px;
-  -webkit-mask: url("assets/mark-mask.svg") no-repeat center / contain;
-          mask: url("assets/mark-mask.svg") no-repeat center / contain;
+  width: 66px; height: 66px;
+  background: url("assets/logo-mark.webp") no-repeat center / contain;
 }
 
 /* ── The library band — light, not cosmos ───────────────────────────────
@@ -339,12 +338,8 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
 }
 
 /* the galaxy sits inside the figure, at every size */
-.plate__mark, .brand__mark{
-  background-color: #2A1B45;
-  background-image: url("assets/galaxy-figure.webp");
-  background-size: cover;
-  background-position: center;
-}
+/* The mark is a full-colour emblem now, not a shape cut out of a galaxy, so
+   nothing is masked or filled — it is simply placed. */
 
 
 /* ── The structure, drawn over the hero ─────────────────────────────────
@@ -434,11 +429,11 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
 }
 
 .brand{ display: flex; align-items: center; gap: .7rem; text-decoration: none; flex: none; }
+/* Round now, so it takes the cap height of the name beside it rather than
+   the old sliver's full line height. */
 .brand__mark{
-  width: 9px; height: 33px; flex: none;
-  background-color: var(--accent);
-  -webkit-mask: url("assets/mark-micro-mask.svg") no-repeat center / contain;
-          mask: url("assets/mark-micro-mask.svg") no-repeat center / contain;
+  width: 42px; height: 42px; flex: none;
+  background: url("assets/logo-mark.webp") no-repeat center / contain;
 }
 .brand__name{
   font-family: var(--display);
@@ -868,6 +863,9 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
                  transition: color var(--t-colour); }
 .footer__list a:hover{ color: var(--accent); }
 .footer__lockup{ display: flex; gap: 1rem; align-items: flex-start; }
+/* The footer carries the full name, so it uses the whole lockup rather than
+   the emblem alone. Capped so it never outgrows the column it sits in. */
+.lockup{ width: 100%; max-width: 19rem; height: auto; }
 
 .news{ display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.1rem; }
 .news input{

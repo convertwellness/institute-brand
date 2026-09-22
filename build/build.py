@@ -18,7 +18,7 @@ SRC   = os.path.join(ROOT, "src")
 OUT   = os.path.join(ROOT, "site")
 PARTS = os.path.join(ROOT, "build", "partials")
 
-CSS_V, JS_V, STUDY_V = "10", "10", "9"   # bump to bust caches
+CSS_V, JS_V, STUDY_V = "12", "10", "9"   # bump to bust caches
 
 TAIL_MARK = u"<!-- \u2550\u2550 page tail"
 
@@ -30,6 +30,10 @@ SHELL = u"""<!doctype html>
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <meta name="theme-color" content="#FFFFFF">
+
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
