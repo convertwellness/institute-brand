@@ -1276,21 +1276,53 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
    photograph would have meant darkening the sky to carry it, and the brief
    asked for the mountains and mist to survive. */
 
-.journey{ background: var(--paper); padding-block: clamp(4rem, 8vw, 7rem) 0; }
-.journey__intro{ max-width: 46rem; display: grid; gap: 1.05rem; }
-.journey__lead{ display: grid; gap: .85rem; max-width: 38rem; margin-top: .3rem; }
-.journey__lead p{ margin: 0; }
-.journey__q{
+/* The introduction announces a chapter, so it gets the room a chapter opening
+   needs and the headline gets to be the largest thing on the light page. The
+   vertical gap into the photograph is deliberately short — heading and
+   landscape are one composition, not two stacked blocks. */
+
+.journey{ background: var(--paper); padding-block: clamp(3.5rem, 7vw, 6rem) 0; }
+.journey__top{ position: relative; }
+
+.journey__horizon{
+  position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0;
+  pointer-events: none;
+  stroke: var(--gold); stroke-width: 1.25; opacity: .1;
+}
+
+.journey__intro{ position: relative; z-index: 1; display: grid; gap: 1.5rem; }
+@media (min-width: 900px){
+  .journey__intro{
+    grid-template-columns: 1.1fr 1fr;
+    column-gap: clamp(3rem, 7vw, 7rem); align-items: end;
+  }
+  .journey__R{ padding-bottom: .4rem; }
+}
+
+.journey__L{ display: grid; gap: 1.1rem; align-content: end; }
+.journey__h{
+  margin: 0; font-family: var(--display);
+  font-variation-settings: "opsz" 144, "SOFT" 0, "WONK" 0;
+  font-size: clamp(2.6rem, 6vw, 5rem); line-height: .98;
+  letter-spacing: -.025em; color: var(--ink-strong); text-wrap: balance;
+}
+
+.journey__R{ display: grid; gap: .9rem; max-width: 34rem; }
+.journey__R p{ margin: 0; color: var(--ink-quiet); line-height: 1.65; }
+/* scoped rather than forced — .journey__R p is class+element and would
+   otherwise win on specificity over a bare class */
+.journey__R .journey__q{
   font-family: var(--display);
   font-variation-settings: "opsz" 36, "SOFT" 0, "WONK" 0;
-  font-size: clamp(1.18rem, 1.6vw, 1.42rem); line-height: 1.4; color: var(--ink-strong);
+  font-size: clamp(1.22rem, 1.75vw, 1.5rem); line-height: 1.35;
+  color: var(--ink-strong);
 }
 
 /* The landscape ---------------------------------------------------------- */
 
 .trail{
   position: relative; isolation: isolate;
-  margin-top: clamp(2.5rem, 5vw, 4rem);
+  margin-top: clamp(1.5rem, 2.8vw, 2.25rem);
   width: 100%; overflow: hidden;
 }
 .trail__img{ width: 100%; height: auto; display: block; }
