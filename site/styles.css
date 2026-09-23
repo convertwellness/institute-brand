@@ -243,114 +243,243 @@ p{ margin: 0; }
   background: url("assets/logo-mark.webp") no-repeat center / contain;
 }
 
-/* ── The library band — light, not cosmos ───────────────────────────────
-   Sara, 9 Sep 2026: with a galaxy in the hero and four more in the tiles, a
-   sixth photographed nebula here was one too many. This band is now a *light*
-   instead — a warm gold glow rising off cream, closer to starlight than to
-   deep space, so it reads as a clearing between the cosmic plates rather than
-   another one of them.
+/* ── The launch library ─────────────────────────────────────────────────
+   Sara, 23 Sep 2026: keep the ground warm ivory, and put one warm point of
+   light behind it with very fine orbits opening outward — one Concept, and
+   the consequences that expand from it. Decorative only, 5–10%.
 
-   It is built from gradients, not a photograph: nothing to download, and it
-   scales to any width without cropping.
+   The ceiling is not taste, it is the bronze. Bronze on plain cream is only
+   5.07:1 to begin with, and the brief keeps a bronze call to action, so any
+   warm tint behind it eats the margin. Measured, worst case being the glow
+   and an orbit stacked:
 
-   Measured on the most saturated part of the glow (#F7EFD6):
-     charcoal #16181D ... 15.2 : 1   AAA
-     bronze   #836919 ....  4.6 : 1   AA
-   and everything is lighter than that toward the edges. */
+       glow 14% + orbits 3% .... 4.53:1   orbits invisible
+       glow  8% + orbits 6% .... 4.52:1   <- this
+       glow 10% + orbits 6% .... 4.48:1   fails
+       glow 18% + orbits 7% .... 4.25:1   fails badly
 
-.cosmos{
+   So the point of light is small and sits high, near the headline, rather
+   than washing the whole band — which keeps the call to action at the foot
+   of the section on very nearly bare cream.
+
+   The bordered three-cell statistics box and the outlined Concept pills are
+   both gone. The pills read as UI filters, which is the one thing a field of
+   Concept names must not look like. */
+
+.library{
+  --orbit-x: 26%;
+  --orbit-y: 24%;
   position: relative; isolation: isolate; overflow: hidden;
-  background-color: #FFFDF7;
+  background: var(--paper);
   color: var(--ink);
-  border-block: 1px solid #EFE4C6;
+  border-block: 1px solid color-mix(in srgb, var(--accent-warm) 15%, transparent);
 }
-.cosmos::before{
+/* the point of light */
+.library::before{
   content: ""; position: absolute; inset: 0; z-index: -2;
   background:
-    radial-gradient(52% 62% at 50% 42%, rgba(232,190,69,.30), transparent 72%),
-    radial-gradient(88% 90% at 50% 38%, rgba(255,233,168,.55), transparent 78%),
-    radial-gradient(120% 120% at 50% 120%, rgba(176,163,201,.20), transparent 70%);
+    radial-gradient(22% 26% at var(--orbit-x) var(--orbit-y),
+      color-mix(in srgb, var(--gold) 8%, transparent), transparent 72%),
+    radial-gradient(56% 58% at var(--orbit-x) var(--orbit-y),
+      color-mix(in srgb, var(--gold) 4%, transparent), transparent 76%);
 }
-/* the faintest scatter of light, so it is starlight and not just a wash */
-.cosmos::after{
-  content: ""; position: absolute; inset: 0; z-index: -1; opacity: .5;
-  background-image:
-    radial-gradient(1.5px 1.5px at 12% 22%, rgba(131,105,25,.55), transparent),
-    radial-gradient(1.5px 1.5px at 78% 16%, rgba(131,105,25,.45), transparent),
-    radial-gradient(2px 2px   at 33% 74%, rgba(131,105,25,.40), transparent),
-    radial-gradient(1.5px 1.5px at 64% 84%, rgba(131,105,25,.45), transparent),
-    radial-gradient(1.5px 1.5px at 88% 62%, rgba(131,105,25,.35), transparent),
-    radial-gradient(2px 2px   at 22% 48%, rgba(131,105,25,.30), transparent),
-    radial-gradient(1.5px 1.5px at 54% 12%, rgba(131,105,25,.35), transparent);
-}
-.cosmos h2, .cosmos .lead, .cosmos p{ color: var(--ink); }
-.cosmos .eyebrow{ color: var(--accent-warm); }
-.cosmos .eyebrow::after{ background: rgba(131,105,25,.28); }
-.cosmos .quiet, .cosmos .small{ color: var(--ink-quiet); }
-.cosmos .arrow{ color: var(--accent-warm); }
-
-/* the counts, now three doors ------------------------------------------ */
-
-.cosmos .counts{
-  background: rgba(131,105,25,.20);
-  border-color: rgba(131,105,25,.20);
-}
-.count{
-  position: relative; isolation: isolate;
-  background: rgba(255,253,247,.72);
-  padding: clamp(1.5rem, 2.6vw, 2.25rem);
-  display: flex; flex-direction: column; gap: .3rem;
-  text-decoration: none; color: inherit;
-  transition: background-color var(--t-colour);
-}
-.count::before{
+/* and the orbits opening out of it */
+.library::after{
   content: ""; position: absolute; inset: 0; z-index: -1;
-  background: radial-gradient(70% 80% at 50% 30%, rgba(232,190,69,.55), transparent 72%);
-  opacity: 0; transition: opacity var(--t-move);
+  background: repeating-radial-gradient(circle at var(--orbit-x) var(--orbit-y),
+    color-mix(in srgb, var(--accent-warm) 6%, transparent) 0 1px,
+    transparent 1px 78px);
 }
-.count__n{
+.library .eyebrow{ color: var(--accent-warm); }
+.library .eyebrow::after{ background: color-mix(in srgb, var(--accent-warm) 30%, transparent); }
+.library .arrow{ color: var(--accent-warm); }
+.library :focus-visible{ outline-color: var(--accent-warm); }
+
+/* the three figures — open, no cells, one hairline standing between them */
+.figures{ display: grid; gap: clamp(1.75rem, 3vw, 2.4rem); }
+@media (min-width: 720px){
+  .figures{ grid-template-columns: repeat(3, 1fr); gap: 0; }
+  .figure{ padding-inline: clamp(1.5rem, 3.2vw, 2.75rem); }
+  .figure:first-child{ padding-left: 0; }
+  .figure:last-child{ padding-right: 0; }
+  .figure + .figure{
+    border-left: 1px solid color-mix(in srgb, var(--accent-warm) 28%, transparent);
+  }
+}
+.figure{
+  display: flex; flex-direction: column; gap: .35rem;
+  text-decoration: none; color: inherit;
+}
+.figure__n{
   font-family: var(--display);
-  font-variation-settings: "opsz" 96, "SOFT" 0, "WONK" 0;
-  font-size: clamp(2.6rem, 4.4vw, 3.6rem); line-height: 1;
+  font-variation-settings: "opsz" 144, "SOFT" 0, "WONK" 0;
+  font-size: clamp(3.1rem, 5.6vw, 4.6rem); line-height: .95;
+  letter-spacing: -.025em;
   color: var(--accent-warm); font-variant-numeric: tabular-nums;
-  transition: color var(--t-colour), transform var(--t-move);
+  transition: color var(--t-colour);
 }
-.count__l{ color: var(--ink); font-size: 1.0625rem; }
-/* the note is the reward for hovering, so it stays out of the way until then */
-.count__note{
-  color: var(--ink-quiet); font-size: .9375rem; line-height: 1.5;
-  max-width: 22rem;
-  opacity: 0; transform: translateY(4px);
-  transition: opacity var(--t-move), transform var(--t-move);
+.figure__l{
+  font-family: var(--display);
+  font-variation-settings: "opsz" 24, "SOFT" 0, "WONK" 0;
+  font-size: 1.14rem; line-height: 1.25; color: var(--ink-strong);
+  transition: color var(--t-colour);
 }
-a.count:hover, a.count:focus-visible{ background: rgba(255,253,247,.9); }
-a.count:hover::before, a.count:focus-visible::before{ opacity: 1; }
-a.count:hover .count__n, a.count:focus-visible .count__n{
-  color: var(--ink-strong); transform: translateY(-2px);
+.figure__note{
+  margin-top: .15rem; max-width: 19rem;
+  color: var(--ink-quiet); font-size: .9rem; line-height: 1.5;
 }
-a.count:hover .count__note, a.count:focus-visible .count__note{
-  opacity: 1; transform: none;
-}
+a.figure:hover .figure__n, a.figure:focus-visible .figure__n{ color: var(--ink-strong); }
+a.figure:hover .figure__l, a.figure:focus-visible .figure__l{ color: var(--accent-warm); }
 
-/* the example Concepts ------------------------------------------------- */
-
-.cosmos .chip{
-  border-color: rgba(131,105,25,.38);
-  color: var(--ink);
-  background: rgba(255,253,247,.6);
+/* the Concepts, as a field of names rather than a row of filters.
+   The point beside each is a small bronze diamond — the brand has no rounded
+   corners, and a star point here would spend the one glint. */
+.names{
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  column-gap: clamp(1.5rem, 3vw, 2.75rem);
+  row-gap: .35rem;
 }
-.cosmos .chip:hover{
-  color: var(--paper); background: var(--accent-warm); border-color: var(--accent-warm);
+.names a{
+  display: grid; grid-template-columns: 6px 1fr; align-items: start;
+  gap: .8rem; padding-block: .45rem;
+  text-decoration: none; color: var(--ink-strong);
+  font-family: var(--display);
+  font-variation-settings: "opsz" 24, "SOFT" 0, "WONK" 0;
+  font-size: 1.1rem; line-height: 1.35;
+  transition: color var(--t-colour);
 }
-.cosmos :focus-visible{ outline-color: var(--accent-warm); }
-
-@media (prefers-reduced-motion: reduce){
-  .count__note{ opacity: 1; transform: none; }
+.names a::before{
+  content: ""; width: 6px; height: 6px; margin-top: .48em;
+  background: var(--accent-warm); transform: rotate(45deg);
+  transition: transform var(--t-move);
 }
+.names a:hover{ color: var(--accent-warm); }
+.names a:hover::before{ transform: rotate(45deg) scale(1.3); }
 
-/* the galaxy sits inside the figure, at every size */
-/* The mark is a full-colour emblem now, not a shape cut out of a galaxy, so
-   nothing is masked or filled — it is simply placed. */
+
+/* ── The Schools ────────────────────────────────────────────────────────
+   Sara, 23 Sep 2026: a chapter break. The page has been light since the
+   hero, and this is where it goes dark again — arriving at a deeper level of
+   the Institute, not reaching the next row of products.
+
+   Six bordered cells become a 2 x 3 editorial composition separated by
+   whitespace and hairlines. The numbers are typographic artwork: gold at
+   13%, sitting behind the titles, measured so ivory over them still runs
+   13.4:1 and the body 11.4:1.
+
+   One number in the brief had to move. A gold hairline at 14% on this ground
+   is 1.31:1, and a 1px line at that contrast is not faint, it is absent. At
+   30% it is 1.96:1 and reads as a hairline without becoming a border. */
+
+.deep{
+  position: relative; isolation: isolate; overflow: hidden;
+  background: var(--cosmic);
+  color: color-mix(in srgb, var(--paper) 78%, var(--accent-soft));
+}
+.deep::before{
+  content: ""; position: absolute; inset: 0; z-index: -2;
+  background:
+    radial-gradient(110% 80% at 15% -10%,
+      color-mix(in srgb, var(--nebula) 90%, transparent), transparent 64%),
+    linear-gradient(162deg, var(--cosmic) 0%, var(--navy) 78%);
+}
+/* the faintest scatter. This is a field, not a photograph — the brief ruled
+   out a second galaxy, and eight points over a whole section is well under
+   the 5–8% it allowed. */
+.deep::after{
+  content: ""; position: absolute; inset: 0; z-index: -1; opacity: .6;
+  background-image:
+    radial-gradient(1.2px 1.2px at 11% 16%, rgba(255,255,255,.50), transparent),
+    radial-gradient(1.4px 1.4px at 81% 11%, rgba(232,190,69,.45), transparent),
+    radial-gradient(1px   1px   at 34% 72%, rgba(255,255,255,.40), transparent),
+    radial-gradient(1.4px 1.4px at 66% 83%, rgba(232,190,69,.36), transparent),
+    radial-gradient(1.2px 1.2px at 92% 58%, rgba(255,255,255,.34), transparent),
+    radial-gradient(1px   1px   at 24% 44%, rgba(232,190,69,.32), transparent),
+    radial-gradient(1.2px 1.2px at 56% 26%, rgba(255,255,255,.30), transparent),
+    radial-gradient(1px   1px   at 46% 92%, rgba(255,255,255,.28), transparent);
+}
+.deep .h-section{ color: var(--paper); }
+.deep .eyebrow{ color: var(--gold); }
+.deep .eyebrow::after{ background: color-mix(in srgb, var(--gold) 36%, transparent); }
+.deep__lead{
+  color: color-mix(in srgb, var(--paper) 80%, var(--accent-soft));
+  max-width: 42rem;
+}
+.deep :focus-visible{ outline-color: var(--gold); }
+
+.halls{
+  --hall-rule: color-mix(in srgb, var(--gold) 30%, transparent);
+  display: grid;
+}
+.hall{
+  position: relative; isolation: isolate;
+  padding-block: clamp(2.2rem, 3.6vw, 3rem);
+  display: flex; flex-direction: column; align-items: flex-start; gap: .65rem;
+}
+/* The numeral stays in flow and the title climbs over it, so it can never
+   escape its entry the way an absolutely positioned one can. */
+.hall__n{
+  position: relative; z-index: -1;
+  margin-left: -.045em; margin-bottom: -.46em;
+  font-family: var(--display);
+  font-variation-settings: "opsz" 144, "SOFT" 0, "WONK" 0;
+  font-size: clamp(4.2rem, 7.4vw, 6.75rem); line-height: .78;
+  letter-spacing: -.03em;
+  color: color-mix(in srgb, var(--gold) 13%, transparent);
+  font-variant-numeric: tabular-nums;
+  pointer-events: none; user-select: none;
+  transition: color var(--t-colour);
+}
+.hall__name{
+  font-variation-settings: "opsz" 36, "SOFT" 0, "WONK" 0;
+  font-size: clamp(1.3rem, 1.7vw, 1.6rem); line-height: 1.2;
+  color: var(--paper);
+  transition: color var(--t-colour);
+}
+/* one link per entry, stretched over the whole of it */
+.hall__name a{ color: inherit; text-decoration: none; }
+.hall__name a::after{ content: ""; position: absolute; inset: 0; }
+.hall__sum{
+  max-width: 32rem; font-size: 1rem; line-height: 1.6;
+  color: color-mix(in srgb, var(--paper) 78%, var(--accent-soft));
+}
+.hall__principle{
+  margin-top: .2rem; padding-top: .9rem; max-width: 30rem;
+  border-top: 1px solid color-mix(in srgb, var(--gold) 28%, transparent);
+  font-family: var(--display);
+  font-variation-settings: "opsz" 24, "SOFT" 0, "WONK" 0;
+  font-size: 1.02rem; line-height: 1.45;
+  color: color-mix(in srgb, var(--paper) 92%, var(--gold));
+}
+.hall__go{
+  display: inline-flex; align-items: center; gap: .55rem;
+  margin-top: .75rem;
+  color: var(--gold); font-weight: 600; font-size: .95rem;
+}
+.hall__go::after{
+  content: ""; width: 1.5rem; height: 1px; background: currentColor;
+  transition: width var(--t-move);
+}
+.hall:hover .hall__name{ color: var(--gold); }
+.hall:hover .hall__go::after{ width: 2.5rem; }
+.hall:hover .hall__n{ color: color-mix(in srgb, var(--gold) 22%, transparent); }
+/* the ring belongs to the entry, not to the three words of the title */
+.hall:has(.hall__name a:focus-visible){ outline: 2px solid var(--gold); outline-offset: 8px; }
+.hall__name a:focus-visible{ outline: none; }
+
+@media (max-width: 899px){
+  .hall:first-child{ padding-top: 0; }
+  .hall + .hall{ border-top: 1px solid var(--hall-rule); }
+}
+@media (min-width: 900px){
+  .halls{ grid-template-columns: 1fr 1fr; }
+  .hall{ padding-inline: clamp(1.75rem, 3.4vw, 3.25rem); }
+  .hall:nth-child(odd){ padding-left: 0; }
+  .hall:nth-child(even){ padding-right: 0; border-left: 1px solid var(--hall-rule); }
+  .hall:nth-child(-n+2){ padding-top: 0; }
+  .hall:nth-child(n+3){ border-top: 1px solid var(--hall-rule); }
+}
 
 
 /* ── The structure, drawn over the hero ─────────────────────────────────
@@ -822,23 +951,6 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
 .tile__more::after{ content: ""; width: 1.25rem; height: 1px; background: currentColor;
                     transition: width var(--t-move); }
 .tile:hover .tile__more::after{ width: 2.25rem; }
-
-/* ── Counts and chips ───────────────────────────────────────────────────── */
-
-.counts{ display: grid; gap: 1px; background: var(--rule);
-         border: 1px solid var(--rule); grid-template-columns: 1fr; }
-@media (min-width: 620px){ .counts{ grid-template-columns: repeat(3, 1fr); } }
-/* .count and its parts are defined with the band, which is the only
-   place they appear. */
-
-.chips{ display: flex; flex-wrap: wrap; gap: .5rem; }
-.chip{
-  display: inline-flex; align-items: center; min-height: 40px; padding: 0 .9rem;
-  border: 1px solid var(--rule-strong); color: var(--ink);
-  font-size: .9375rem; text-decoration: none;
-  transition: color var(--t-colour), border-color var(--t-colour), background-color var(--t-colour);
-}
-.chip:hover{ color: var(--accent); border-color: var(--accent); background: var(--paper); }
 
 /* ── Schools ────────────────────────────────────────────────────────────
    They used to be a set, and were deliberately unnumbered. On 11 Sep Michael

@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="styles.css?v=29">
+<link rel="stylesheet" href="styles.css?v=30">
 </head>
 <body>
 
@@ -573,8 +573,12 @@
 </section>
 
 <!-- ══ The library ═════════════════════════════════════════════════════ -->
-<section class="section cosmos" aria-labelledby="library-h">
-  <div class="shell stack gap-8">
+<!-- ══ The launch library ══════════════════════════════════════════════
+     One warm point of light, with fine orbits opening outward from it:
+     one Concept, and the consequences that expand from it. Decorative, and
+     held at 7% — measured, because bronze type sits over it and fails at 10%. -->
+<section class="section library" aria-labelledby="library-h">
+  <div class="shell stack gap-12">
 
     <div class="head">
       <div class="stack gap-6">
@@ -589,40 +593,43 @@
       </p>
     </div>
 
-    <div class="counts" data-reveal style="--d:160ms">
-      <a class="count" href="/concepts">
-        <span class="count__n tabular">12</span>
-        <span class="count__l">Individual Concepts</span>
-        <span class="count__note">Beginning with Unworthiness, Rejection and Approval. Each carries its own Patterns.</span>
+    <!-- Three open figures. No box, no cells: bronze numerals, and one
+         hairline standing between them. -->
+    <div class="figures" data-reveal style="--d:160ms">
+      <a class="figure" href="/concepts">
+        <span class="figure__n tabular">12</span>
+        <span class="figure__l">Individual Concepts</span>
+        <span class="figure__note">Beginning with Unworthiness, Rejection and Approval. Each carries its own Patterns.</span>
       </a>
-      <a class="count" href="/patterns">
-        <span class="count__n tabular">12</span>
-        <span class="count__l">Patterns of Behavior</span>
-        <span class="count__note">Approval-Rejection, People Pleasing, Control, Comparison, Perfectionism and seven more.</span>
+      <a class="figure" href="/patterns">
+        <span class="figure__n tabular">12</span>
+        <span class="figure__l">Patterns of Behavior</span>
+        <span class="figure__note">Approval-Rejection, People Pleasing, Control, Comparison, Perfectionism and seven more.</span>
       </a>
-      <a class="count" href="/concepts/families">
-        <span class="count__n tabular">4</span>
-        <span class="count__l">Concept Families</span>
-        <span class="count__note">Acceptance, Worth, Control and Trust — in the order Michael recommends.</span>
+      <a class="figure" href="/concepts/families">
+        <span class="figure__n tabular">4</span>
+        <span class="figure__l">Concept Families</span>
+        <span class="figure__note">Acceptance, Worth, Control and Trust &#8212; in the order Michael recommends.</span>
       </a>
     </div>
 
-    <div class="stack gap-4" data-reveal style="--d:200ms">
+    <!-- A field of names, not a row of filters. Nothing here implies that any
+         Concept stands in a relationship to any other; the source does not say so. -->
+    <div class="stack gap-6" data-reveal style="--d:200ms">
       <p class="eyebrow eyebrow--plain">The Concepts that open the library</p>
-      <div class="chips">
-          <a class="chip" href="/concepts">Unworthiness</a>
-          <a class="chip" href="/concepts">Rejection</a>
-          <a class="chip" href="/concepts">Approval</a>
-          <a class="chip" href="/concepts">Inadequacy</a>
-          <a class="chip" href="/concepts">Inferiority</a>
-          <a class="chip" href="/concepts">Undeserving</a>
-          <a class="chip" href="/concepts">Self-Rejection</a>
-          <a class="chip" href="/concepts">Abandonment</a>
-          <a class="chip" href="/concepts">Shame</a>
-          <a class="chip" href="/concepts">Fear and Doubt</a>
-          <a class="chip" href="/concepts">Suspicion</a>
-      </div>
-      <p class="small quiet">Michael names these as the top twelve; eleven are set, and the twelfth is still to come.</p>
+      <ul class="names">
+        <li><a href="/concepts">Unworthiness</a></li>
+        <li><a href="/concepts">Rejection</a></li>
+        <li><a href="/concepts">Approval</a></li>
+        <li><a href="/concepts">Inadequacy</a></li>
+        <li><a href="/concepts">Inferiority</a></li>
+        <li><a href="/concepts">Undeserving</a></li>
+        <li><a href="/concepts">Self-Rejection</a></li>
+        <li><a href="/concepts">Abandonment</a></li>
+        <li><a href="/concepts">Shame</a></li>
+        <li><a href="/concepts">Fear and Doubt</a></li>
+        <li><a href="/concepts">Suspicion</a></li>
+      </ul>
     </div>
 
     <div data-reveal style="--d:240ms"><a class="arrow" href="/concepts">Enter the Concept Studies</a></div>
@@ -630,13 +637,16 @@
   </div>
 </section>
 
-<!-- ══ The Schools ═════════════════════════════════════════════════════ -->
-<section class="section g-band" aria-labelledby="schools-h">
-  <div class="shell stack gap-8">
+<!-- ══ The Schools ═════════════════════════════════════════════════════
+     The page turns dark here for the first time since the hero. Arriving at
+     a deeper level of the Institute, not the next row of products. -->
+<section class="section deep" aria-labelledby="schools-h">
+  <div class="shell stack gap-12">
 
-    <div class="stack gap-4">
-      <h2 class="h-section" id="schools-h" data-reveal>The Schools of the Institute</h2>
-      <p class="lead" style="max-width:44rem;--d:80ms" data-reveal>
+    <div class="stack gap-6">
+      <p class="eyebrow" data-reveal>Deeper study</p>
+      <h2 class="h-section" id="schools-h" data-reveal style="--d:60ms">The Schools of the Institute</h2>
+      <p class="lead deep__lead" style="--d:120ms" data-reveal>
         The Schools provide the Institute's most comprehensive areas of continuing education.
         Rather than examining only a single Concept or Pattern, each School contains multiple
         Courses devoted to a major area of human understanding. Six open the Institute, in the
@@ -644,39 +654,55 @@
       </p>
     </div>
 
-    <div class="schools" data-reveal style="--d:160ms">
-      <a class="school" href="/schools/human-patterns">
-        <span class="school__n">01</span>
-        <h3 class="school__name">School of Human Patterns</h3>
-        <p class="school__sum">The most relatable entry point. Students begin with the Patterns they already recognise in daily life.</p>
-        <p class="school__principle">First, because it answers the question most students arrive with: why do I keep doing this?</p>
-      </a>
-      <a class="school" href="/schools/human-operating-system">
-        <span class="school__n">02</span>
-        <h3 class="school__name">School of the Human Operating System</h3>
-        <p class="school__sum">Explains why life repeats, and how consciousness, mind, brain, Concepts, expectations, emotions and Patterns work together.</p>
-      </a>
-      <a class="school" href="/schools/identity">
-        <span class="school__n">03</span>
-        <h3 class="school__name">School of Identity</h3>
-        <p class="school__sum">Acceptance, approval and rejection, the mother and father relationships, self-image, self-worth, roles, masks and belonging.</p>
-      </a>
-      <a class="school" href="/schools/concepts-and-beliefs">
-        <span class="school__n">04</span>
-        <h3 class="school__name">School of Concepts and Beliefs</h3>
-        <p class="school__sum">How experiences receive meaning, Concepts are accepted, expectations develop, and Patterns are created to validate Concepts.</p>
-      </a>
-      <a class="school" href="/schools/relationships">
-        <span class="school__n">05</span>
-        <h3 class="school__name">School of Relationships</h3>
-        <p class="school__sum">Applies the teachings to expectations, communication, responsibility, recurring relationship Patterns and resolution.</p>
-        <p class="school__principle">Relationships do not create the Concepts within us. They reveal the Concepts that already exist.</p>
-      </a>
-      <a class="school" href="/schools/consciousness">
-        <span class="school__n">06</span>
-        <h3 class="school__name">School of Consciousness</h3>
-        <p class="school__sum">Develops awareness, understanding, conscious choice, and participation in the direction of life.</p>
-      </a>
+    <!-- Each entry is an article carrying one link. The link's ::after covers
+         the whole entry, so the entry is clickable but there is still only one
+         stop for a keyboard, and the School's name is the accessible name. -->
+    <div class="halls" data-reveal style="--d:160ms">
+
+      <article class="hall">
+        <span class="hall__n" aria-hidden="true">01</span>
+        <h3 class="hall__name"><a href="/schools/human-patterns">School of Human Patterns</a></h3>
+        <p class="hall__sum">The most relatable entry point. Students begin with the Patterns they already recognise in daily life.</p>
+        <p class="hall__principle">First, because it answers the question most students arrive with: why do I keep doing this?</p>
+        <span class="hall__go" aria-hidden="true">Explore the School</span>
+      </article>
+
+      <article class="hall">
+        <span class="hall__n" aria-hidden="true">02</span>
+        <h3 class="hall__name"><a href="/schools/human-operating-system">School of the Human Operating System</a></h3>
+        <p class="hall__sum">Explains why life repeats, and how consciousness, mind, brain, Concepts, expectations, emotions and Patterns work together.</p>
+        <span class="hall__go" aria-hidden="true">Explore the School</span>
+      </article>
+
+      <article class="hall">
+        <span class="hall__n" aria-hidden="true">03</span>
+        <h3 class="hall__name"><a href="/schools/identity">School of Identity</a></h3>
+        <p class="hall__sum">Acceptance, approval and rejection, the mother and father relationships, self-image, self-worth, roles, masks and belonging.</p>
+        <span class="hall__go" aria-hidden="true">Explore the School</span>
+      </article>
+
+      <article class="hall">
+        <span class="hall__n" aria-hidden="true">04</span>
+        <h3 class="hall__name"><a href="/schools/concepts-and-beliefs">School of Concepts and Beliefs</a></h3>
+        <p class="hall__sum">How experiences receive meaning, Concepts are accepted, expectations develop, and Patterns are created to validate Concepts.</p>
+        <span class="hall__go" aria-hidden="true">Explore the School</span>
+      </article>
+
+      <article class="hall">
+        <span class="hall__n" aria-hidden="true">05</span>
+        <h3 class="hall__name"><a href="/schools/relationships">School of Relationships</a></h3>
+        <p class="hall__sum">Applies the teachings to expectations, communication, responsibility, recurring relationship Patterns and resolution.</p>
+        <p class="hall__principle">Relationships do not create the Concepts within us. They reveal the Concepts that already exist.</p>
+        <span class="hall__go" aria-hidden="true">Explore the School</span>
+      </article>
+
+      <article class="hall">
+        <span class="hall__n" aria-hidden="true">06</span>
+        <h3 class="hall__name"><a href="/schools/consciousness">School of Consciousness</a></h3>
+        <p class="hall__sum">Develops awareness, understanding, conscious choice, and participation in the direction of life.</p>
+        <span class="hall__go" aria-hidden="true">Explore the School</span>
+      </article>
+
     </div>
   </div>
 </section>

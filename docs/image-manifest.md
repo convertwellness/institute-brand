@@ -109,14 +109,37 @@ literally after the photographic journey, and this section is now roughly 90% cr
 
 ---
 
+## 6 · The Launch Library and the Schools — no imagery, 23 Sep
+
+Both sections were redesigned to Sara's brief of 23 Sep, and **both were told not to
+take a photograph.** Neither needs a file; both grounds are CSS, so they cost nothing to
+download and re-scale to any width without cropping.
+
+| | |
+|---|---|
+| **Launch Library** | Warm ivory, with one warm point of light and very fine orbits opening out of it — one Concept, and the consequences that expand from it. |
+| **Schools** | Deep cosmic violet lifting toward navy, with eight star points. The brief ruled out a second galaxy, and this is a *field*, not a photograph. |
+
+**The library's motif is capped by the bronze, not by taste.** Bronze on plain cream is
+only 5.07:1 to begin with, and the brief keeps a bronze call to action, so every warm
+tint behind it eats the margin. Measured at the worst case — the glow and an orbit
+stacked — the glow runs at 8% and the orbits at 6%, giving 4.52:1. At 10% and 6% it is
+4.48:1 and fails. The point of light is therefore small and high, near the headline,
+which keeps the call to action at the foot of the section on very nearly bare cream.
+
+---
+
 ## Still to come — later passes
 
 Slots not yet built. Listed so the imagery can be commissioned in one batch.
 
 | Filename | Section | Purpose | Ratio | Notes |
 |---|---|---|---|---|
-| `library-field.webp` | The Concept Library | Second dark immersive moment, behind floating Concept names | 21 : 9 | Must stay quiet enough for a dozen words over it |
 | `closing-twilight.webp` | Membership / closing | Final immersive twilight | 16 : 9 | Quiet and reflective, not salesy |
+
+`library-field.webp` has been **dropped**. It was specified as a second dark immersive
+moment behind the Concept names; the library now stays light, and the dark moment moved
+to the Schools, which were explicitly to be built without a photograph.
 
 ---
 
@@ -157,6 +180,10 @@ say where it should go.
 
 ## Not touched
 
-Sections five onward — Explore, the Concept Library, the Schools and the closing — are still
-the previous design and will look inconsistent against the first four. That is the stopping
-point the brief asked for.
+Only the **membership / closing** section is still the previous design, and it will look
+inconsistent against everything above it. That is the stopping point the brief asked for.
+
+One knock-on worth a decision: the homepage's Schools section is now a dark editorial
+composition, while the **`/schools` index page** is still six bordered cells on cream. The
+brief covered the homepage only, so that page was deliberately left alone — but a visitor
+following "Explore the School" crosses between two quite different treatments.
