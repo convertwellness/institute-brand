@@ -645,3 +645,31 @@ a.item:hover .item__n{ color: var(--accent); }
 /* Membership's plate is square rather than portrait — it is the one image in
    the set that is a close, not a field. */
 @media (min-width: 900px){ .opener__plate--square{ aspect-ratio: 1 / 1; } }
+
+/* ── Draft copy ─────────────────────────────────────────────────────────
+   Sara, 23 Sep: fill the gaps so layouts can be judged with real text in
+   them. This is NOT Michael's writing and must never be mistaken for it, so
+   every piece carries a visible mark and a machine-readable one.
+
+   `python build/drafts.py --strip` removes all of it and restores the
+   "Awaiting Michael" blocks, which are preserved in a comment beside each. */
+
+.draft{
+  position: relative;
+  padding-left: clamp(.9rem, 1.6vw, 1.25rem);
+  border-left: 2px solid color-mix(in srgb, var(--accent-soft) 70%, transparent);
+  display: grid; gap: .55rem;
+  margin-block: .35rem;
+}
+.draft__k{
+  font-size: .62rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--accent-soft);
+}
+.draft p{ margin: 0; }
+.draft p + p{ margin-top: .15rem; }
+
+/* one switch to make every draft obvious during review */
+body.show-drafts .draft{
+  background: color-mix(in srgb, var(--accent-soft) 9%, transparent);
+  padding: .75rem clamp(.9rem,1.6vw,1.25rem);
+}

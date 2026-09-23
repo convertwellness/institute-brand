@@ -63,6 +63,15 @@ body:
          names: Michael has written Concept, Belief and Pattern and not the other
          three, and inventing the missing ones would be writing doctrine. -->
     <div class="cycle" id="diagram" data-reveal style="--d:180ms">
+      <svg class="cycle__path" viewBox="0 0 100 840" preserveAspectRatio="none"
+           aria-hidden="true" focusable="false">
+        <path d="M17,116 C17,140 83,140 83,164
+                 M83,256 C83,280 17,280 17,304
+                 M17,396 C17,420 83,420 83,444
+                 M83,536 C83,560 17,560 17,584
+                 M17,676 C17,700 83,700 83,724"
+              fill="none" vector-effect="non-scaling-stroke"/>
+      </svg>
       <ol class="cycle__flow">
         <li class="stage">
           <span class="node" data-term="concept" tabindex="0" role="button" aria-label="Concept">
@@ -133,6 +142,17 @@ body:
       </ol>
 
       <p class="cycle__return"><span>The cycle begins again</span></p>
+
+      <div class="cycle__again" aria-hidden="true">
+        <span class="cycle__hook"></span>
+        <span class="cycle__againK">The cycle begins again</span>
+        <span class="cycle__loop">
+          Life&nbsp;Result
+          <i class="cycle__arrow"></i>
+          <img src="/assets/icons/hos-concept.webp" width="480" height="480" alt="">
+          Concept
+        </span>
+      </div>
 
       <div class="readout" id="os-readout" aria-live="polite">
         <p class="readout__idle">Choose a stage to read it.</p>
