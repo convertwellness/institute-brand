@@ -635,7 +635,27 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
   fill: var(--paper); stroke: var(--accent); stroke-width: 1.6;
   transition: stroke-width var(--t-colour);
 }
-.node__core{ fill: var(--gold); }
+/* Each stage carries its own icon, masked so the shape comes from the file and
+   the colour comes from a token — gold at rest, accent when the stage is the one
+   being read. A two-tone image would have fixed both and needed a file per state. */
+.node__icon{
+  /* Bronze, not flat Gold. Gold measures 1.55:1 on the white page — fine for a
+     decorative star, too faint for a mark a reader has to interpret. Bronze is
+     5.4:1 and is the brand's answer for exactly this. Gold stays on the plates,
+     where the ground is dark. */
+  fill: var(--bronze);
+  -webkit-mask: var(--i) no-repeat center / contain;
+          mask: var(--i) no-repeat center / contain;
+  transition: fill var(--t-colour);
+}
+.node.is-active .node__icon{ fill: var(--accent); }
+
+.node[data-term="concept"]     .node__icon{ --i: url("assets/icons/hos-concept.png"); }
+.node[data-term="belief"]      .node__icon{ --i: url("assets/icons/hos-belief.png"); }
+.node[data-term="pattern"]     .node__icon{ --i: url("assets/icons/hos-pattern.png"); }
+.node[data-term="emotion"]     .node__icon{ --i: url("assets/icons/hos-emotion.png"); }
+.node[data-term="behavior"]    .node__icon{ --i: url("assets/icons/hos-behavior.png"); }
+.node[data-term="life-result"] .node__icon{ --i: url("assets/icons/hos-life-result.png"); }
 .node__label{
   font-family: var(--body); font-size: 15px; font-weight: 600;
   fill: var(--ink-strong); letter-spacing: .01em;
