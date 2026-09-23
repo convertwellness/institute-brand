@@ -18,7 +18,7 @@ SRC   = os.path.join(ROOT, "src")
 OUT   = os.path.join(ROOT, "site")
 PARTS = os.path.join(ROOT, "build", "partials")
 
-CSS_V, JS_V, STUDY_V = "15", "10", "10"   # bump to bust caches
+CSS_V, JS_V, STUDY_V = "16", "11", "11"   # bump to bust caches
 
 TAIL_MARK = u"<!-- \u2550\u2550 page tail"
 
@@ -29,7 +29,7 @@ SHELL = u"""<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{desc}">
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#FDFBF3">
 
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
@@ -37,7 +37,7 @@ SHELL = u"""<!doctype html>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Source+Sans+3:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="{up}styles.css?v={cssv}">{study}
 </head>
 <body{bodyattr}>

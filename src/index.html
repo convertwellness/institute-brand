@@ -7,201 +7,98 @@ body:
 
 <main id="main">
 
-<!-- ══ Hero ════════════════════════════════════════════════════════════ -->
-<section class="hero g-paper">
+<!-- ══ Hero ─ the page's first immersive moment ═════════════════ -->
+<section class="hero">
+  <div class="hero__media">
+    <img src="/assets/hero-tree-cosmos.webp"
+         width="2400" height="1350" fetchpriority="high" decoding="async"
+         alt="A tree standing against a deep night sky, its branches opening into a field of stars and its roots reaching down into the dark.">
+  </div>
+
   <div class="shell hero__inner">
-
     <div class="hero__copy">
-      <h1 class="masthead" data-reveal>There is a structure underneath, and it can be seen.</h1>
+      <p class="hero__eyebrow" data-reveal>Explore &middot; Understand &middot; Live more fully</p>
 
-      <p class="lead measure" data-reveal style="--d:80ms">
-        The Institute studies the Concepts and Patterns that shape how we think, choose,
-        relate and respond — and teaches you to recognise them operating in your own life.
-      </p>
+      <h1 class="hero__h" data-reveal style="--d:80ms">A Deeper Understanding<br>of What It Means to Be&nbsp;Human</h1>
 
-      <div class="hero__actions" data-reveal style="--d:160ms">
-        <a class="btn btn--primary" href="/courses/five-laws">Start the free course</a>
-        <a class="btn btn--secondary" href="/courses/human-operating-system">See the system</a>
+      <div class="hero__body" data-reveal style="--d:160ms">
+        <p>Beneath the way we think, choose, relate and respond are Concepts and Patterns
+           that quietly shape our experience.</p>
+        <p>The Institute offers a way to see those patterns more clearly, understand how they
+           work together, and begin recognising them in your own life.</p>
       </div>
 
-      <p class="hero__foot" data-reveal style="--d:240ms">
+      <div class="hero__actions" data-reveal style="--d:240ms">
+        <a class="btn btn--gold" href="/courses/five-laws">Start the Free Course</a>
+        <a class="btn btn--ghost" href="#explore">Explore the Institute</a>
+      </div>
+
+      <p class="hero__foot" data-reveal style="--d:320ms">
         You do not have to understand everything before you begin.
       </p>
     </div>
-
-    <figure class="shot shot--hero" style="--ratio: 4 / 5; margin:0" data-reveal>
-      <img src="assets/shot-hero.webp" width="1100" height="1366" fetchpriority="high"
-           alt="A deep violet galaxy, with the fine luminous outline of a standing human figure emerging from it and one bright warm star burning at the centre of its chest.">
-    </figure>
-
   </div>
 </section>
 
-<!-- ══ The Human Operating System ══════════════════════════════════════ -->
-<section class="section g-band" aria-labelledby="os-h">
+<!-- ══ The Human Operating System ══════════════════════════════ -->
+<section class="section os" aria-labelledby="os-h">
   <div class="shell">
 
-    <div class="os__grid">
-      <div class="stack gap-6">
-        <p class="eyebrow" data-reveal>The Human Operating System</p>
-        <h2 class="h-section" id="os-h" data-reveal style="--d:60ms">
-          Why can we consciously want one thing and repeatedly create something different?
-        </h2>
-        <p class="prose measure" data-reveal style="--d:120ms">
-          Institute teachings examine the relationship between what we hold as true and what our
-          lives keep producing. Not as a metaphor — as a sequence that can be drawn, followed,
-          and interrupted.
-        </p>
-      </div>
-
-      <div class="stack gap-8" style="padding-top:.5rem">
-        <p class="aside" data-reveal style="--d:180ms">
-          Learn to recognise what is operating beneath the visible circumstances of your life,
-          and change the internal cause rather than the external result.
-        </p>
-        <div data-reveal style="--d:240ms">
-          <a class="arrow" href="/courses/human-operating-system">Explore the Human Operating System</a>
-        </div>
+    <div class="os__head">
+      <p class="eyebrow" data-reveal>The Human Operating System</p>
+      <h2 class="h-section" id="os-h" data-reveal style="--d:60ms">How Your Inner World<br>Becomes Your Outer&nbsp;Life</h2>
+      <div class="os__intro" data-reveal style="--d:120ms">
+        <p class="os__q">Why can we consciously want one thing, yet find ourselves repeatedly
+           creating something different?</p>
+        <p>The Institute teaches that our experiences are not isolated. What we hold as true
+           influences what we expect, how we feel, how we respond, and ultimately what we
+           experience.</p>
       </div>
     </div>
 
-    <!-- The ring. Linework, not imagery — it stays. -->
-    <div class="diagram" id="diagram" data-reveal style="--d:120ms">
-
-      <svg class="chain chain--wide" viewBox="0 0 640 500" aria-hidden="true">
-        <defs>
-          <radialGradient id="auraW">
-            <stop offset="0"   stop-color="#FFFFFF" stop-opacity=".95"/>
-            <stop offset=".14" stop-color="#FFF1C9" stop-opacity=".30"/>
-            <stop offset=".40" stop-color="#B0A3C9" stop-opacity=".50"/>
-            <stop offset=".70" stop-color="#8E7EC4" stop-opacity=".26"/>
-            <stop offset="1"   stop-color="#B0A3C9" stop-opacity="0"/>
-          </radialGradient>
-        </defs>
-        <path class="chain__line" d="M320 85 A170 170 0 0 1 467.22 170 A170 170 0 0 1 467.22 340 A170 170 0 0 1 320 425 A170 170 0 0 1 172.78 340 A170 170 0 0 1 172.78 170 A170 170 0 0 1 320 85Z"/>
-
-        <g class="chain__arrow" transform="translate(405,107.8) rotate(30)"><path d="M-4-5 2 0 -4 5"/></g>
-        <g class="chain__arrow" transform="translate(490,255) rotate(90)"><path d="M-4-5 2 0 -4 5"/></g>
-        <g class="chain__arrow" transform="translate(405,402.2) rotate(150)"><path d="M-4-5 2 0 -4 5"/></g>
-        <g class="chain__arrow" transform="translate(235,402.2) rotate(210)"><path d="M-4-5 2 0 -4 5"/></g>
-        <g class="chain__arrow" transform="translate(150,255) rotate(270)"><path d="M-4-5 2 0 -4 5"/></g>
-        <g class="chain__arrow" transform="translate(235,107.8) rotate(330)"><path d="M-4-5 2 0 -4 5"/></g>
-
-        <circle class="chain__aura" cx="320" cy="255" r="104" fill="url(#auraW)"/>
-        <circle class="chain__aura chain__aura--in" cx="320" cy="255" r="56" fill="url(#auraW)"/>
-        <path class="chain__heart" d="M320 237 324.4 250.6 338 255 324.4 259.4 320 273 315.6 259.4 302 255 315.6 250.6Z"/>
-
-        <g class="node" data-term="concept" tabindex="0" role="button" aria-label="Concept" style="--nd:200ms">
-          <circle class="node__hit" cx="320" cy="85" r="40"/>
-          <circle class="node__halo" cx="320" cy="85" r="48"/>
-          <circle class="node__ring" cx="320" cy="85" r="32"/>
-          <rect class="node__icon" x="294.0" y="59.0" width="52" height="52"/>
-          <text class="node__label" x="320" y="34" text-anchor="middle">Concept</text>
-        </g>
-        <g class="node" data-term="belief" tabindex="0" role="button" aria-label="Belief" style="--nd:340ms">
-          <circle class="node__hit" cx="467.22" cy="170" r="40"/>
-          <circle class="node__halo" cx="467.22" cy="170" r="48"/>
-          <circle class="node__ring" cx="467.22" cy="170" r="32"/>
-          <rect class="node__icon" x="441.22" y="144.0" width="52" height="52"/>
-          <text class="node__label" x="514" y="154" text-anchor="start" dominant-baseline="middle">Belief</text>
-        </g>
-        <g class="node" data-term="pattern" tabindex="0" role="button" aria-label="Pattern" style="--nd:480ms">
-          <circle class="node__hit" cx="467.22" cy="340" r="40"/>
-          <circle class="node__halo" cx="467.22" cy="340" r="48"/>
-          <circle class="node__ring" cx="467.22" cy="340" r="32"/>
-          <rect class="node__icon" x="441.22" y="314.0" width="52" height="52"/>
-          <text class="node__label" x="514" y="356" text-anchor="start" dominant-baseline="middle">Pattern</text>
-        </g>
-        <g class="node" data-term="emotion" tabindex="0" role="button" aria-label="Emotion" style="--nd:620ms">
-          <circle class="node__hit" cx="320" cy="425" r="40"/>
-          <circle class="node__halo" cx="320" cy="425" r="48"/>
-          <circle class="node__ring" cx="320" cy="425" r="32"/>
-          <rect class="node__icon" x="294.0" y="399.0" width="52" height="52"/>
-          <text class="node__label" x="320" y="481" text-anchor="middle">Emotion</text>
-        </g>
-        <g class="node" data-term="behavior" tabindex="0" role="button" aria-label="Behavior" style="--nd:760ms">
-          <circle class="node__hit" cx="172.78" cy="340" r="40"/>
-          <circle class="node__halo" cx="172.78" cy="340" r="48"/>
-          <circle class="node__ring" cx="172.78" cy="340" r="32"/>
-          <rect class="node__icon" x="146.78" y="314.0" width="52" height="52"/>
-          <text class="node__label" x="126" y="356" text-anchor="end" dominant-baseline="middle">Behavior</text>
-        </g>
-        <g class="node" data-term="life-result" tabindex="0" role="button" aria-label="Life Result" style="--nd:900ms">
-          <circle class="node__hit" cx="172.78" cy="170" r="40"/>
-          <circle class="node__halo" cx="172.78" cy="170" r="48"/>
-          <circle class="node__ring" cx="172.78" cy="170" r="32"/>
-          <rect class="node__icon" x="146.78" y="144.0" width="52" height="52"/>
-          <text class="node__label" x="126" y="154" text-anchor="end" dominant-baseline="middle">Life Result</text>
-        </g>
-      </svg>
-
-      <svg class="chain chain--tall" viewBox="0 0 300 706" aria-hidden="true">
-        <defs>
-          <radialGradient id="auraT">
-            <stop offset="0"   stop-color="#FFFFFF" stop-opacity=".95"/>
-            <stop offset=".14" stop-color="#FFF1C9" stop-opacity=".30"/>
-            <stop offset=".40" stop-color="#B0A3C9" stop-opacity=".50"/>
-            <stop offset=".70" stop-color="#8E7EC4" stop-opacity=".26"/>
-            <stop offset="1"   stop-color="#B0A3C9" stop-opacity="0"/>
-          </radialGradient>
-        </defs>
-        <path class="chain__line" d="M84 44 C84 100 100 112 100 168 C100 224 84 236 84 292 C84 348 102 360 102 416 C102 472 86 484 86 540 C86 596 104 608 104 664 C62 678 26 656 26 576 C26 420 26 230 26 128 C26 66 50 30 84 44Z"/>
-
-        <g class="chain__arrow"><path d="M87 101 l5 8 5 -8"/></g>
-        <g class="chain__arrow"><path d="M87 225 l5 8 5 -8"/></g>
-        <g class="chain__arrow"><path d="M88 349 l5 8 5 -8"/></g>
-        <g class="chain__arrow"><path d="M89 473 l5 8 5 -8"/></g>
-        <g class="chain__arrow"><path d="M90 597 l5 8 5 -8"/></g>
-        <g class="chain__arrow"><path d="M21 359 l5 -8 5 8"/></g>
-
-        <g class="node" data-term="concept" tabindex="0" role="button" aria-label="Concept" style="--nd:200ms">
-          <circle class="node__hit" cx="84" cy="44" r="30"/>
-          <circle class="node__halo" cx="84" cy="44" r="40"/>
-          <circle class="node__ring" cx="84" cy="44" r="27"/>
-          <rect class="node__icon" x="65.0" y="25.0" width="38" height="38"/>
-          <text class="node__label" x="122" y="49" text-anchor="start" dominant-baseline="middle">Concept</text>
-        </g>
-        <g class="node" data-term="belief" tabindex="0" role="button" aria-label="Belief" style="--nd:340ms">
-          <circle class="node__hit" cx="100" cy="168" r="30"/>
-          <circle class="node__halo" cx="100" cy="168" r="40"/>
-          <circle class="node__ring" cx="100" cy="168" r="27"/>
-          <rect class="node__icon" x="81.0" y="149.0" width="38" height="38"/>
-          <text class="node__label" x="138" y="173" text-anchor="start" dominant-baseline="middle">Belief</text>
-        </g>
-        <g class="node" data-term="pattern" tabindex="0" role="button" aria-label="Pattern" style="--nd:480ms">
-          <circle class="node__hit" cx="84" cy="292" r="30"/>
-          <circle class="node__halo" cx="84" cy="292" r="40"/>
-          <circle class="node__ring" cx="84" cy="292" r="27"/>
-          <rect class="node__icon" x="65.0" y="273.0" width="38" height="38"/>
-          <text class="node__label" x="122" y="297" text-anchor="start" dominant-baseline="middle">Pattern</text>
-        </g>
-        <g class="node" data-term="emotion" tabindex="0" role="button" aria-label="Emotion" style="--nd:620ms">
-          <circle class="node__hit" cx="102" cy="416" r="30"/>
-          <circle class="node__halo" cx="102" cy="416" r="40"/>
-          <circle class="node__ring" cx="102" cy="416" r="27"/>
-          <rect class="node__icon" x="83.0" y="397.0" width="38" height="38"/>
-          <text class="node__label" x="140" y="421" text-anchor="start" dominant-baseline="middle">Emotion</text>
-        </g>
-        <g class="node" data-term="behavior" tabindex="0" role="button" aria-label="Behavior" style="--nd:760ms">
-          <circle class="node__hit" cx="86" cy="540" r="30"/>
-          <circle class="node__halo" cx="86" cy="540" r="40"/>
-          <circle class="node__ring" cx="86" cy="540" r="27"/>
-          <rect class="node__icon" x="67.0" y="521.0" width="38" height="38"/>
-          <text class="node__label" x="124" y="545" text-anchor="start" dominant-baseline="middle">Behavior</text>
-        </g>
-        <g class="node" data-term="life-result" tabindex="0" role="button" aria-label="Life Result" style="--nd:900ms">
-          <circle class="node__hit" cx="104" cy="664" r="30"/>
-          <circle class="node__halo" cx="104" cy="664" r="40"/>
-          <circle class="node__ring" cx="104" cy="664" r="27"/>
-          <rect class="node__icon" x="85.0" y="645.0" width="38" height="38"/>
-          <text class="node__label" x="142" y="669" text-anchor="start" dominant-baseline="middle">Life Result</text>
-        </g>
-      </svg>
-
-      <ol class="sr-only">
-        <li>Concept</li><li>Belief</li><li>Pattern</li>
-        <li>Emotion</li><li>Behavior</li><li>Life Result, which returns to Concept</li>
+    <!-- The diagram takes a dark inset. Gold is 1.71:1 on cream and 9.8:1 here,
+         and the brief's six colours only reach full strength on a dark ground. -->
+    <div class="cycle" id="diagram" data-reveal style="--d:180ms">
+      <ol class="cycle__flow">
+        <li class="stage">
+          <span class="node" data-term="concept" tabindex="0" role="button" aria-label="Concept">
+            <span class="stage__disc"><span class="stage__icon" aria-hidden="true"></span></span>
+            <span class="stage__name">Concept</span>
+          </span>
+        </li>
+        <li class="stage">
+          <span class="node" data-term="belief" tabindex="0" role="button" aria-label="Belief">
+            <span class="stage__disc"><span class="stage__icon" aria-hidden="true"></span></span>
+            <span class="stage__name">Belief</span>
+          </span>
+        </li>
+        <li class="stage">
+          <span class="node" data-term="pattern" tabindex="0" role="button" aria-label="Pattern">
+            <span class="stage__disc"><span class="stage__icon" aria-hidden="true"></span></span>
+            <span class="stage__name">Pattern</span>
+          </span>
+        </li>
+        <li class="stage">
+          <span class="node" data-term="emotion" tabindex="0" role="button" aria-label="Emotion">
+            <span class="stage__disc"><span class="stage__icon" aria-hidden="true"></span></span>
+            <span class="stage__name">Emotion</span>
+          </span>
+        </li>
+        <li class="stage">
+          <span class="node" data-term="behavior" tabindex="0" role="button" aria-label="Behavior">
+            <span class="stage__disc"><span class="stage__icon" aria-hidden="true"></span></span>
+            <span class="stage__name">Behavior</span>
+          </span>
+        </li>
+        <li class="stage">
+          <span class="node" data-term="life-result" tabindex="0" role="button" aria-label="Life Result">
+            <span class="stage__disc"><span class="stage__icon" aria-hidden="true"></span></span>
+            <span class="stage__name">Life Result</span>
+          </span>
+        </li>
       </ol>
+
+      <p class="cycle__return"><span>Life Result returns to Concept</span></p>
 
       <div class="readout" id="os-readout" aria-live="polite">
         <p class="readout__idle">Always this order, always with arrows. <span>Choose a stage to read it.</span></p>
@@ -235,66 +132,74 @@ body:
   </div>
 </section>
 
-<!-- ══ Begin where you are · the path ══════════════════════════════════ -->
-<section class="section g-paper" aria-labelledby="path-h">
-  <div class="shell">
-    <div class="head" style="margin-bottom:clamp(2.5rem,4vw,3.5rem)">
-      <div class="stack gap-6">
-        <p class="eyebrow" data-reveal>How the education fits together</p>
-        <h2 class="h-section" id="path-h" data-reveal style="--d:60ms">Begin where you are</h2>
+<!-- ══ Begin where you are ─ a path, not five boxes ═════════════════ -->
+<section class="section path" aria-labelledby="path-h">
+  <div class="path__scape" aria-hidden="true">
+    <img src="/assets/path-horizon.webp" width="2400" height="777" loading="lazy" decoding="async" alt="">
+  </div>
+
+  <div class="shell path__inner">
+    <div class="path__head">
+      <p class="eyebrow" data-reveal>How the education fits together</p>
+      <h2 class="h-section" id="path-h" data-reveal style="--d:60ms">Begin Where You&nbsp;Are</h2>
+      <div class="path__intro" data-reveal style="--d:120ms">
+        <p class="path__q">There is no single doorway into this work.</p>
+        <p>You may begin with a question about your life. A Pattern you keep repeating. A Concept
+           you recognise. Or simply the sense that there is more to understand.</p>
+        <p>The Institute is designed so that one discovery can naturally lead to the next.</p>
       </div>
-      <p class="lead" data-reveal style="--d:120ms">
-        Some students begin with the free course. Others enter through a Concept they already
-        recognise.
-      </p>
     </div>
 
-    <ol class="path" data-reveal style="--d:160ms">
-      <li>
-        <button class="path__row" type="button" aria-expanded="false" aria-controls="tier-1">
-          <span class="path__tier">Free introduction</span>
-          <span class="path__detail">The Five Laws of Manifestation</span>
-          <span class="path__plus" aria-hidden="true"></span>
-        </button>
-        <div class="path__more" id="tier-1"><div><p>An introduction to several of the fundamental principles upon which the Institute&#8217;s teachings are built. It is an opportunity to experience the Institute&#8217;s approach before deciding whether to continue into more extensive study.</p></div></div>
+    <ol class="ways" data-reveal style="--d:200ms">
+      <li class="way" style="--i:0">
+        <a class="way__link" href="/courses/five-laws">
+          <span class="way__n">01</span>
+          <span class="way__body">
+            <span class="way__verb">Begin</span>
+            <span class="way__detail">The Five Laws of Manifestation</span>
+          </span>
+        </a>
       </li>
-      <li>
-        <button class="path__row" type="button" aria-expanded="false" aria-controls="tier-2">
-          <span class="path__tier">Recognition</span>
-          <span class="path__detail">Foundation Studies &#8212; thirty Patterns of Behavior</span>
-          <span class="path__plus" aria-hidden="true"></span>
-        </button>
-        <div class="path__more" id="tier-2"><div><p>Ten weeks. Each week introduces three Patterns of Behavior that may influence how we think, choose, relate, and respond to life. The purpose is not to judge or label, but to develop awareness of the patterns operating beneath familiar reactions.</p></div></div>
+      <li class="way" style="--i:1">
+        <a class="way__link" href="/courses/foundation">
+          <span class="way__n">02</span>
+          <span class="way__body">
+            <span class="way__verb">Recognise</span>
+            <span class="way__detail">Foundation Studies</span>
+          </span>
+        </a>
       </li>
-      <li>
-        <button class="path__row" type="button" aria-expanded="false" aria-controls="tier-3">
-          <span class="path__tier">Focused study</span>
-          <span class="path__detail">Concepts, Patterns, Families, Interwoven Studies</span>
-          <span class="path__plus" aria-hidden="true"></span>
-        </button>
-        <div class="path__more" id="tier-3"><div><p>Concept Studies allow students to explore the individual Concepts that influence beliefs, expectations, patterns, choices, and life experiences. Students may select the Concepts most relevant to their present lives rather than following a predetermined sequence.</p></div></div>
+      <li class="way" style="--i:2">
+        <a class="way__link" href="/concepts">
+          <span class="way__n">03</span>
+          <span class="way__body">
+            <span class="way__verb">Explore</span>
+            <span class="way__detail">Concepts, Patterns, Families &amp; Interwoven Studies</span>
+          </span>
+        </a>
       </li>
-      <li>
-        <button class="path__row" type="button" aria-expanded="false" aria-controls="tier-4">
-          <span class="path__tier">Deeper understanding</span>
-          <span class="path__detail">The Human Operating System, and Body Symbology</span>
-          <span class="path__plus" aria-hidden="true"></span>
-        </button>
-        <div class="path__more" id="tier-4"><div><p>Why life repeats, and how consciousness, mind, brain, Concepts, expectations, emotions and Patterns work together. Body Symbology examines the body as messenger, and the language through which it communicates.</p></div></div>
+      <li class="way" style="--i:3">
+        <a class="way__link" href="/courses/human-operating-system">
+          <span class="way__n">04</span>
+          <span class="way__body">
+            <span class="way__verb">Understand</span>
+            <span class="way__detail">The Human Operating System &amp; Body Symbology</span>
+          </span>
+        </a>
       </li>
-      <li>
-        <button class="path__row" type="button" aria-expanded="false" aria-controls="tier-5">
-          <span class="path__tier">Comprehensive education</span>
-          <span class="path__detail">The Schools of the Institute</span>
-          <span class="path__plus" aria-hidden="true"></span>
-        </button>
-        <div class="path__more" id="tier-5"><div><p>Rather than examining only a single Concept or Pattern, each School contains multiple Courses devoted to a major area of human understanding.</p></div></div>
+      <li class="way" style="--i:4">
+        <a class="way__link" href="/schools">
+          <span class="way__n">05</span>
+          <span class="way__body">
+            <span class="way__verb">Go Deeper</span>
+            <span class="way__detail">The Schools of the Institute</span>
+          </span>
+        </a>
       </li>
     </ol>
 
-    <p class="note measure" style="margin-top:2rem" data-reveal>
-      The Foundation Course opens everything that follows. Every study stays readable and
-      purchasable before then — the sequence governs when you begin, not what you can see.
+    <p class="path__close" data-reveal>
+      Start with what speaks to you.<br><span>Let understanding deepen from there.</span>
     </p>
   </div>
 </section>

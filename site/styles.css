@@ -22,15 +22,26 @@
 /* ── Tokens ─────────────────────────────────────────────────────────────── */
 
 :root{
-  /* grounds — white, and two off-whites faintly tinted toward the accent */
-  --paper:      #FFFFFF;
-  --band:       #F6F5FA;
-  --band-deep:  #EDEBF4;
+  /* grounds — warm ivory, and two deeper creams. Sara's brief, 22 Sep 2026:
+     cream ground, deep navy type, gold for emphasis, teal as the living accent. */
+  --paper:      #FDFBF3;   /* Cream */
+  --band:       #F7F4EA;
+  --band-deep:  #EFEBDE;
 
-  /* ink */
-  --ink:        #16181D;   /* body and headings */
-  --ink-strong: #0B0E16;   /* the brand's Void, kept for display type */
-  --ink-quiet:  #5A6172;   /* captions, notes — the brand's page-muted */
+  /* the two dark grounds, for the immersive moments */
+  --navy:       #0B1A2F;   /* Deep Navy */
+  --cosmic:     #1B1240;   /* Cosmic Purple */
+
+  /* ink — navy rather than neutral charcoal */
+  --ink:        #1E2C3D;   /* body — 12.2:1 on cream */
+  --ink-strong: #0B1A2F;   /* headings — 16.9:1 on cream */
+  --ink-quiet:  #56657A;   /* captions and notes — 5.1:1 on cream */
+
+  /* Teal is a dark-ground colour. 2.88:1 on cream fails even large text, so it
+     lives on the navy and cosmic grounds and in imagery. --teal-ink is the
+     darkened form for the rare time it must sit on the page. */
+  --teal:       #0FA79C;   /* 5.8:1 on navy */
+  --teal-ink:   #0C827A;   /* 4.5:1 on cream */
 
   /* line */
   --rule:        #E5E3EE;
@@ -51,7 +62,7 @@
                                box holds its colour while the picture loads */
 
   --display: "Fraunces", Georgia, "Times New Roman", serif;
-  --body:    "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --body:    "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 
   --measure: 38rem;
   --shell:   76rem;
@@ -415,17 +426,23 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
 
 /* ── Header ─────────────────────────────────────────────────────────────── */
 
+/* A light header on purpose: it sets the cream, navy and gold before the hero
+   goes dark, so the immersive moment reads as a descent rather than the default
+   state. The hairline is gold at low alpha — present, never a line of colour. */
 .header{
   position: sticky; top: 0; z-index: 100;
-  background: color-mix(in srgb, var(--paper) 90%, transparent);
-  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter: blur(14px) saturate(1.1);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
   border-bottom: 1px solid transparent;
-  transition: border-color var(--t-colour);
+  transition: border-color var(--t-colour), box-shadow var(--t-colour);
 }
-.header[data-scrolled="true"]{ border-bottom-color: var(--rule); }
+.header[data-scrolled="true"]{
+  border-bottom-color: color-mix(in srgb, var(--gold) 38%, transparent);
+}
 .header__bar{
-  display: flex; align-items: center; gap: clamp(1rem, 2.5vw, 2.5rem);
-  min-height: 74px;
+  display: flex; align-items: center; gap: clamp(1.25rem, 3vw, 3rem);
+  min-height: 86px;
 }
 
 .brand{ display: flex; align-items: center; gap: .7rem; text-decoration: none; flex: none; }
@@ -444,24 +461,25 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
 .brand:hover .brand__name{ color: var(--accent); }
 
 .doors{ display: none; list-style: none; margin: 0; padding: 0;
-        gap: clamp(.25rem, 1.4vw, 1rem); margin-inline-end: auto; }
-@media (min-width: 1060px){ .doors{ display: flex; } }
+        gap: clamp(.4rem, 1.8vw, 1.4rem); margin-inline-start: auto; }
+@media (min-width: 1140px){ .doors{ display: flex; } }
 
 .door{ position: relative; }
 .door__btn{
   display: inline-flex; align-items: center; gap: .4rem;
-  min-height: 44px; padding: 0 .55rem;
+  min-height: 44px; padding: 0 .55rem; white-space: nowrap;
   background: none; border: 0; cursor: pointer;
-  font-size: .98rem; color: var(--ink);
+  font-size: .8125rem; font-weight: 500; letter-spacing: .05em; text-transform: uppercase;
+  color: var(--ink-strong);
   transition: color var(--t-colour);
 }
 .door__btn::after{
-  content: ""; position: absolute; left: .55rem; bottom: 14px;
-  height: 1px; width: 0; background: var(--accent);
+  content: ""; position: absolute; left: .7rem; bottom: 12px;
+  height: 1px; width: 0; background: var(--gold);
   transition: width var(--t-move);
 }
-.door__btn:hover, .door__btn[aria-expanded="true"]{ color: var(--accent); }
-.door__btn:hover::after, .door__btn[aria-expanded="true"]::after{ width: calc(100% - 1.1rem); }
+.door__btn:hover, .door__btn[aria-expanded="true"]{ color: var(--bronze); }
+.door__btn:hover::after, .door__btn[aria-expanded="true"]::after{ width: calc(100% - 1.4rem); }
 .door__chev{
   width: 9px; height: 9px; flex: none;
   border-right: 1px solid currentColor; border-bottom: 1px solid currentColor;
@@ -494,14 +512,24 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
               line-height: 1.45; margin-top: .2rem; }
 
 .rail{ display: flex; align-items: center; gap: .35rem; margin-inline-start: auto; }
-@media (min-width: 1060px){ .rail{ margin-inline-start: 0; } }
+@media (min-width: 1140px){ .rail{ margin-inline-start: 0; } }
 .rail__link{
   display: none; align-items: center; min-height: 44px; padding: 0 .7rem;
-  text-decoration: none; color: var(--ink); font-size: .95rem;
-  transition: color var(--t-colour);
+  text-decoration: none; color: var(--ink-strong);
+  font-size: .8125rem; font-weight: 500; letter-spacing: .05em; text-transform: uppercase;
+  white-space: nowrap; transition: color var(--t-colour);
 }
-.rail__link:hover{ color: var(--accent); }
-@media (min-width: 1060px){ .rail__link{ display: inline-flex; } }
+.rail__link:hover{ color: var(--bronze); }
+/* a hairline of gold between the doors and the account rail, nothing more */
+.rail{ position: relative; padding-inline-start: clamp(.5rem, 1.6vw, 1.4rem); }
+@media (min-width: 1140px){
+  .rail::before{
+    content: ""; position: absolute; left: 0; top: 50%; translate: 0 -50%;
+    width: 1px; height: 22px;
+    background: color-mix(in srgb, var(--gold) 55%, transparent);
+  }
+}
+@media (min-width: 1140px){ .rail__link{ display: inline-flex; } }
 
 .icon-btn{
   display: inline-flex; align-items: center; justify-content: center;
@@ -513,7 +541,7 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
 .icon-btn svg{ width: 19px; height: 19px; }
 
 .burger{ display: inline-flex; }
-@media (min-width: 1060px){ .burger{ display: none; } }
+@media (min-width: 1140px){ .burger{ display: none; } }
 .burger span{ display: block; width: 20px; height: 1px; background: currentColor; position: relative; }
 .burger span::before, .burger span::after{
   content: ""; position: absolute; left: 0; width: 20px; height: 1px; background: currentColor;
@@ -924,7 +952,9 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
   stroke-dashoffset: 0;
   transition: stroke-dashoffset 1200ms cubic-bezier(.2,.6,.2,1);
 }
-.node{ opacity: 0; }
+/* Scoped to the chain. The flow diagram reuses .node for its interaction, and
+   an unscoped opacity:0 here made every stage in it invisible. */
+.chain .node{ opacity: 0; }
 .chain.is-drawn .node{
   opacity: 1; transition: opacity 400ms ease-out; transition-delay: var(--nd, 0ms);
 }
@@ -956,3 +986,340 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
   .node, .chain__arrow, .chain__aura, .chain__heart{ opacity: 1; }
   .chain__aura{ animation: none; }
 }
+
+/* ══ Redesign, first pass · Sara's brief of 22 Sep 2026 ═══════════════════
+   70% refined editorial on cream, 30% immersive. The immersive moments are
+   chosen, not constant: the hero, the Operating System's dark inset, and the
+   closing. Everything between them is light. */
+
+/* ── Hero ───────────────────────────────────────────────────────────────
+   Full-bleed photograph with the type on the left. The scrim is a gradient
+   rather than a flat overlay so the right side of the picture keeps its depth
+   while the left stays dark enough to read on — the brief asked for a quiet
+   left, and this is that, done in CSS so the image never has text baked in. */
+
+.hero{
+  position: relative; isolation: isolate;
+  min-height: clamp(38rem, 82vh, 50rem);
+  display: grid; align-items: center;
+  background: var(--navy);
+  overflow: hidden;
+}
+.hero__media{ position: absolute; inset: 0; z-index: -2; }
+.hero__media img{ width: 100%; height: 100%; object-fit: cover; object-position: 62% 50%; }
+
+/* left-to-right scrim, plus a soft foot so the section below meets it cleanly */
+.hero::before{
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(100deg,
+      color-mix(in srgb, var(--navy) 92%, transparent) 0%,
+      color-mix(in srgb, var(--navy) 80%, transparent) 34%,
+      color-mix(in srgb, var(--navy) 28%, transparent) 64%,
+      transparent 88%),
+    linear-gradient(to bottom, transparent 62%, color-mix(in srgb, var(--navy) 55%, transparent) 100%);
+}
+@media (max-width: 860px){
+  /* stacked, the type sits over the middle of the picture, so the scrim goes flat */
+  .hero::before{
+    background: linear-gradient(to bottom,
+      color-mix(in srgb, var(--navy) 62%, transparent) 0%,
+      color-mix(in srgb, var(--navy) 86%, transparent) 55%,
+      color-mix(in srgb, var(--navy) 92%, transparent) 100%);
+  }
+}
+
+.hero__inner{ padding-block: clamp(4rem, 11vh, 7.5rem); }
+.hero__copy{ max-width: 34rem; display: flex; flex-direction: column; gap: 1.35rem; }
+/* On a phone the call to action was landing 7px above the fold — true, but no
+   margin at all once browser chrome is counted. Tightened so it clears. */
+@media (max-width: 560px){
+  .hero{ min-height: 0; }
+  .hero__inner{ padding-block: 3rem 3.25rem; }
+  .hero__copy{ gap: 1.05rem; }
+  .hero__h{ font-size: clamp(2.15rem, 8.4vw, 2.6rem); }
+  .hero__body p{ font-size: 1rem; line-height: 1.55; }
+  .hero__foot{ padding-top: .85rem; font-size: .9rem; }
+}
+
+.hero__eyebrow{
+  font-size: .78rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--gold); margin: 0;
+}
+.hero__h{
+  font-family: var(--display);
+  font-variation-settings: "opsz" 144, "SOFT" 0, "WONK" 0;
+  font-size: clamp(2.5rem, 5.2vw, 4.3rem); line-height: 1.04;
+  letter-spacing: -.022em; color: #FFFFFF; margin: 0; text-wrap: balance;
+}
+.hero__body{ display: grid; gap: .9rem; max-width: 32rem; }
+.hero__body p{
+  margin: 0; font-size: clamp(1.02rem, 1.15vw, 1.13rem); line-height: 1.62;
+  color: color-mix(in srgb, #FFFFFF 86%, var(--teal));
+}
+.hero__actions{ display: flex; flex-wrap: wrap; gap: .75rem; margin-top: .35rem; }
+.hero__foot{
+  margin: 0; font-size: .95rem; color: color-mix(in srgb, #FFFFFF 72%, transparent);
+  padding-top: 1rem; border-top: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
+  max-width: 28rem;
+}
+
+/* ── Buttons for the dark grounds ──────────────────────────────────────
+   Gold is the emphasis colour the brief asks for, and on a dark ground it is
+   9.8:1 — so here it can be a filled button with navy type on it. On cream it
+   could not; that is why the light-ground primary stays as it is. */
+.btn--gold{
+  background: var(--gold); color: var(--navy); border: 1px solid var(--gold);
+  font-weight: 600; letter-spacing: .01em;
+}
+.btn--gold:hover, .btn--gold:focus-visible{
+  background: color-mix(in srgb, var(--gold) 84%, #FFFFFF);
+  border-color: color-mix(in srgb, var(--gold) 84%, #FFFFFF);
+}
+.btn--ghost{
+  background: none; color: #FFFFFF;
+  border: 1px solid color-mix(in srgb, #FFFFFF 42%, transparent);
+}
+.btn--ghost:hover, .btn--ghost:focus-visible{
+  border-color: var(--gold); color: var(--gold);
+}
+
+/* ── The Human Operating System ─────────────────────────────────────────
+   Cream editorial around a dark inset. The inset is not decoration: flat Gold
+   is 1.71:1 on cream and Teal 2.88:1, both failing, while on this navy they
+   are 9.8 and 5.8. The brief's six stage colours only exist at full strength
+   on a dark ground, which is what CLAUDE.md means by "diagrams keep a dark
+   inset because they need the whole gold". */
+
+.os{ background: var(--paper); }
+.os__head{ max-width: 46rem; display: grid; gap: 1.1rem; }
+.os__intro{ display: grid; gap: .9rem; max-width: 40rem; margin-top: .4rem; }
+.os__q{
+  font-family: var(--display);
+  font-variation-settings: "opsz" 36, "SOFT" 0, "WONK" 0;
+  font-size: clamp(1.15rem, 1.6vw, 1.42rem); line-height: 1.38;
+  color: var(--ink-strong); margin: 0;
+}
+.os__intro p{ margin: 0; }
+
+.cycle{
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  background: var(--navy); color: #FFFFFF;
+  padding: clamp(2rem, 4.5vw, 3.75rem) clamp(1.25rem, 4vw, 3.5rem);
+  position: relative; overflow: hidden;
+}
+/* one faint orbital line, to keep the inset from reading as a plain box */
+.cycle::before{
+  content: ""; position: absolute; z-index: 0;
+  width: 44rem; height: 44rem; border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--gold) 13%, transparent);
+  right: -16rem; top: -20rem; pointer-events: none;
+}
+
+.cycle__flow{
+  list-style: none; margin: 0; padding: 0; position: relative; z-index: 1;
+  display: grid; gap: clamp(1.25rem, 2.4vw, 2rem);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 900px){
+  .cycle__flow{ grid-template-columns: repeat(6, 1fr); align-items: start; }
+}
+
+.stage{ position: relative; }
+/* the connecting line: horizontal between discs on desktop, vertical stacked */
+.stage + .stage::before{
+  content: ""; position: absolute; z-index: 0;
+  background: color-mix(in srgb, var(--gold) 38%, transparent);
+  left: 50%; translate: -50% 0; top: -1.1rem; width: 1px; height: 1.1rem;
+}
+@media (min-width: 900px){
+  .stage + .stage::before{
+    left: auto; right: calc(50% + 1.9rem); top: 1.9rem; translate: 0 0;
+    width: calc(100% - 3.8rem); height: 1px;
+  }
+}
+
+.stage .node{
+  display: grid; justify-items: center; gap: .7rem; cursor: pointer;
+  position: relative; z-index: 1; text-align: center;
+}
+.stage__disc{
+  width: 3.8rem; height: 3.8rem; display: grid; place-items: center;
+  border-radius: 50%; background: var(--navy);
+  border: 1px solid color-mix(in srgb, var(--gold) 32%, transparent);
+  transition: border-color var(--t-colour), background-color var(--t-colour),
+              transform var(--t-move);
+}
+.stage__icon{
+  width: 2.1rem; height: 2.1rem; display: block;
+  background: var(--stage-c, var(--gold));
+  -webkit-mask: var(--i) no-repeat center / contain;
+          mask: var(--i) no-repeat center / contain;
+}
+.stage__name{
+  font-size: .82rem; font-weight: 500; letter-spacing: .09em; text-transform: uppercase;
+  color: color-mix(in srgb, #FFFFFF 78%, transparent);
+  transition: color var(--t-colour);
+}
+.stage .node:hover .stage__disc,
+.stage .node:focus-visible .stage__disc,
+.stage .node.is-active .stage__disc{
+  border-color: var(--stage-c, var(--gold));
+  background: color-mix(in srgb, var(--stage-c, var(--gold)) 12%, var(--navy));
+  transform: translateY(-2px);
+}
+.stage .node:hover .stage__name,
+.stage .node.is-active .stage__name{ color: #FFFFFF; }
+.stage .node:focus-visible{ outline: 2px solid var(--gold); outline-offset: 6px; }
+
+/* the six, each its own colour — the icons are masks, so this is one line each */
+.stage .node[data-term="concept"]     { --stage-c: #E8BE45; --i: url("assets/icons/hos-concept.png"); }
+.stage .node[data-term="belief"]      { --stage-c: #7E9BE8; --i: url("assets/icons/hos-belief.png"); }
+.stage .node[data-term="pattern"]     { --stage-c: #2FC4B8; --i: url("assets/icons/hos-pattern.png"); }
+.stage .node[data-term="emotion"]     { --stage-c: #F0876E; --i: url("assets/icons/hos-emotion.png"); }
+.stage .node[data-term="behavior"]    { --stage-c: #A98BE0; --i: url("assets/icons/hos-behavior.png"); }
+.stage .node[data-term="life-result"] { --stage-c: #E8BE45; --i: url("assets/icons/hos-life-result.png"); }
+
+/* the return leg, drawn rather than stated with an arrow */
+.cycle__return{
+  position: relative; z-index: 1; margin: 2.25rem 0 0; text-align: center;
+  font-size: .78rem; letter-spacing: .14em; text-transform: uppercase;
+  color: color-mix(in srgb, var(--gold) 82%, #FFFFFF);
+}
+@media (min-width: 900px){
+  .cycle__return{
+    margin-top: 0; padding-top: 2.6rem;
+  }
+  .cycle__return::before{
+    content: ""; position: absolute; left: 8.33%; right: 8.33%; top: 0; height: 2.2rem;
+    border: 1px solid color-mix(in srgb, var(--gold) 38%, transparent);
+    border-top: 0; border-radius: 0 0 4rem 4rem;
+  }
+  .cycle__return span{ background: var(--navy); padding: 0 .9rem; position: relative; }
+}
+
+.cycle .readout{
+  position: relative; z-index: 1;
+  margin-top: clamp(1.75rem, 3vw, 2.5rem); padding-top: 1.5rem;
+  border-top: 1px solid color-mix(in srgb, #FFFFFF 15%, transparent);
+  min-height: 5.5rem;
+}
+.cycle .readout__idle{ color: color-mix(in srgb, #FFFFFF 60%, transparent); margin: 0; }
+.cycle .readout__idle span{ color: var(--gold); }
+.cycle .readout__term{
+  font-size: .78rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--gold); margin: 0 0 .4rem;
+}
+.cycle .readout__text{ margin: 0; color: color-mix(in srgb, #FFFFFF 88%, transparent); max-width: 44rem; }
+.cycle .readout__needs{
+  margin: 0; color: color-mix(in srgb, #FFFFFF 62%, transparent); font-style: italic;
+}
+
+/* ── Begin where you are ────────────────────────────────────────────────
+   Five waypoints climbing left to right, joined by one thin gold line. Not
+   cards: there is no box, no arrow and no fill — the progression is carried by
+   position and by the line, which is what makes it read as a path rather than
+   a list. Each step is inset a little further than the last, so the eye
+   ascends even before it reads. */
+
+.path{ position: relative; isolation: isolate; background: var(--band); overflow: hidden; }
+/* The landscape anchors the section without ever getting under the type. It
+   is held to the right, faded from both edges, and veiled in cream — a first
+   pass at .5 opacity across the full width washed the last two waypoints out
+   completely. */
+.path__scape{
+  position: absolute; inset: auto 0 0 auto; width: min(58%, 46rem); height: 74%;
+  z-index: -1; opacity: .22;
+}
+.path__scape img{
+  width: 100%; height: 100%; object-fit: cover; object-position: 60% 70%;
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, #000 42%),
+    linear-gradient(to bottom, transparent 0%, #000 38%, #000 82%, transparent 100%);
+  -webkit-mask-composite: source-in;
+          mask-image:
+    linear-gradient(to right, transparent 0%, #000 42%),
+    linear-gradient(to bottom, transparent 0%, #000 38%, #000 82%, transparent 100%);
+          mask-composite: intersect;
+}
+/* a cream veil, so whatever image lands keeps the waypoints legible */
+.path__scape::after{
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(to right,
+    var(--band) 0%, color-mix(in srgb, var(--band) 55%, transparent) 40%, transparent 78%);
+}
+@media (max-width: 760px){ .path__scape{ width: 100%; opacity: .14; } }
+.path__inner{ position: relative; }
+.path__head{ max-width: 44rem; display: grid; gap: 1rem; }
+.path__intro{ display: grid; gap: .85rem; max-width: 38rem; margin-top: .3rem; }
+.path__intro p{ margin: 0; }
+.path__q{
+  font-family: var(--display);
+  font-variation-settings: "opsz" 36, "SOFT" 0, "WONK" 0;
+  font-size: clamp(1.15rem, 1.6vw, 1.42rem); line-height: 1.38; color: var(--ink-strong);
+}
+
+.ways{
+  list-style: none; margin: clamp(2.5rem, 5vw, 4rem) 0 0; padding: 0;
+  display: grid; gap: 0;
+}
+.way{ position: relative; }
+
+/* the climbing inset — step 1 flush left, step 5 furthest in */
+@media (min-width: 760px){
+  .way{ padding-inline-start: calc(var(--i) * clamp(2rem, 5vw, 5.5rem)); }
+}
+
+.way__link{
+  display: grid; grid-template-columns: auto 1fr; align-items: baseline;
+  gap: clamp(1rem, 2.4vw, 2rem);
+  padding-block: clamp(1.1rem, 2vw, 1.6rem);
+  text-decoration: none; color: inherit; position: relative;
+}
+/* the path itself: a hairline dropping from each waypoint to the next */
+.way + .way .way__link::before{
+  content: ""; position: absolute; left: 0; top: -.2rem; bottom: calc(100% - .2rem);
+  width: 1px; height: 0;
+}
+.way__link::after{
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+  background: linear-gradient(to right,
+    color-mix(in srgb, var(--gold) 55%, transparent),
+    color-mix(in srgb, var(--gold) 12%, transparent) 70%, transparent);
+  transition: background var(--t-colour);
+}
+.way:last-child .way__link::after{ opacity: .35; }
+
+.way__n{
+  font-family: var(--display);
+  font-variation-settings: "opsz" 24, "SOFT" 0, "WONK" 0;
+  font-size: .95rem; color: var(--bronze); font-variant-numeric: tabular-nums;
+  position: relative; padding-inline-start: 1.5rem;
+}
+/* a star point on the path at each waypoint */
+.way__n::before{
+  content: ""; position: absolute; left: 0; top: .42em;
+  width: 7px; height: 7px; rotate: 45deg;
+  background: var(--gold);
+  transition: scale var(--t-move), background-color var(--t-colour);
+}
+.way__body{ display: grid; gap: .3rem; }
+.way__verb{
+  font-family: var(--display);
+  font-variation-settings: "opsz" 72, "SOFT" 0, "WONK" 0;
+  font-size: clamp(1.5rem, 2.9vw, 2.15rem); line-height: 1.1;
+  color: var(--ink-strong); transition: color var(--t-colour);
+}
+.way__detail{ color: var(--ink-quiet); font-size: clamp(.95rem, 1.1vw, 1.05rem); }
+
+.way__link:hover .way__verb, .way__link:focus-visible .way__verb{ color: var(--bronze); }
+.way__link:hover .way__n::before, .way__link:focus-visible .way__n::before{ scale: 1.5; }
+.way__link:focus-visible{ outline: 2px solid var(--accent); outline-offset: 4px; }
+
+.path__close{
+  margin: clamp(2.5rem, 5vw, 3.75rem) 0 0;
+  font-family: var(--display);
+  font-variation-settings: "opsz" 36, "SOFT" 0, "WONK" 0;
+  font-size: clamp(1.2rem, 1.8vw, 1.5rem); line-height: 1.45; color: var(--ink-strong);
+}
+.path__close span{ color: var(--ink-quiet); }
