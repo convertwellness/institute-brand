@@ -90,23 +90,22 @@ not.
 
 ---
 
-## 5 · The four Explore entries
+## 5 · The four Explore pathway illustrations — final, 23 Sep
 
-`explore-concepts.webp` · `explore-courses.webp` · `explore-books.webp` · `explore-events.webp`
+`path-concept-studies.webp` · `path-courses.webp` · `path-books.webp` · `path-live-events.webp`
 
 | | |
 |---|---|
 | **Section** | Explore the Institute |
-| **Purpose** | Four ways in. The brief asked for editorial variety rather than four matching cards, so **each slot is a different shape** and sits at a different depth on a twelve-column grid. |
-| **Ratios — these differ on purpose** | Concept Studies **4 : 5** portrait · Courses **3 : 2** landscape · Books **1 : 1**, shown as a circular crop · Live Events **16 : 9** band |
-| **Shipped** | 900px on the long edge, 24–91 KB each |
-| **Composition at 1440** | Concepts left, full width of its column, at the top. Courses right and 56px lower. Books left-indented and circular, far below. Events right, a wide band. No two share a top edge. |
-| **Alt-text intent** | Describe the picture. Each should carry a **distinct visual metaphor** — the brief is explicit that four more galaxies is the wrong answer. |
-| **Current files** | **Temporary.** Cut from the existing violet plates at the four new ratios, so the layout can be judged. They are still four galaxies, which is exactly what the finals should not be. |
+| **Delivered** | 1254 × 1254, shipped at 420 × 420 WebP, 42–68 KB each |
+| **Subjects** | Concept Studies — a gold point inside fine orbiting rings, teal spheres turning on them · Courses — spheres rising along a gold line to a star · Books — an open book in navy and gold, a small star at the fold · Live Events — coral and violet spheres around one warm centre |
+| **Rendered at** | 122px at 1440, 87px at 1024, 80px below 860 — inside the 90–130 and 80–100 ranges asked for |
+| **Transparency** | Three arrived transparent. **Concept Studies arrived RGB on white** and would have shown as a white square on cream, so its background was knocked out by distance-from-white rather than a hard threshold, which keeps the soft edges. |
+| **Alt text** | Describes the drawing, not the doctrine — the title beside it already names that |
 
-**The circular crop is the one place the brand's no-rounded-corners rule is set aside.** It is a
-circular crop of a photograph, not a rounded interface box — the rule is about buttons, cards
-and inputs. Say the word if you would rather it were square.
+**The four galaxy photographs are gone.** They repeated the cosmic language too
+literally after the photographic journey, and this section is now roughly 90% cream.
+`explore-*.webp` are unused and can be deleted once you are happy.
 
 ---
 
