@@ -39,6 +39,7 @@ def main():
     dead = collections.Counter()
     where = collections.defaultdict(set)
     needs = collections.Counter()
+    drafts = collections.Counter()
     total_links = 0
 
     for p in pages:
@@ -48,6 +49,9 @@ def main():
         n = text.count('class="needs"') + text.count('class="week week--needs"')
         if n:
             needs[rel] = n
+        d = text.count('class="draft"')
+        if d:
+            drafts[rel] = d
 
         for h in re.findall(r'href="(/[^"#?]*)"', text):
             total_links += 1
@@ -74,6 +78,12 @@ def main():
             print("  %3d  %s" % (n, rel))
         if len(needs) > 12:
             print("       ... and %d more pages" % (len(needs) - 12))
+
+    if drafts:
+        print("")
+        print("Draft copy — %d blocks across %d pages. This is NOT Michael's writing."
+              % (sum(drafts.values()), len(drafts)))
+        print("  remove with: python build/drafts.py --strip")
 
     print("\nRemember: the host must serve /404.html for unmatched addresses,")
     print("otherwise a wrong URL gets the host's own bare error page.")

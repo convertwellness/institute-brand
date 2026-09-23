@@ -94,6 +94,26 @@ Recorded so they are not asked twice.
 
 ---
 
+## A note on the draft copy now on the site
+
+Since 23 Sep most of these gaps are filled with **draft prose that is not Michael's.**
+Sara asked for it so the layouts could be judged with real text in them. Every piece carries
+a visible "Draft" label, the original placeholder wording is preserved in an HTML comment
+beside it, and `python build/drafts.py --strip` removes all of it and restores the
+placeholders verbatim.
+
+The draft copy describes structure using only vocabulary Michael has already established. It
+asserts no teaching, names no new Concept or Pattern, and invents no price, date or count.
+**It still answers none of the questions below** — every one of them remains open.
+
+Four kinds of page were left honest and were never filled:
+
+- **Terms, Privacy and Refunds** — a plausible-looking legal page is the one piece of filler
+  that could actually cause harm, because someone would ship it.
+- **Michael Schwartz** — a fabricated biography of a real person.
+- **Your account** and **Cart** — these do not say Michael has not written them. They say a
+  static site cannot do accounts, which is true and stays true.
+
 ## Not questions for Michael
 
 For completeness, two gaps that are ours and Sara's rather than his:

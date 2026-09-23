@@ -91,6 +91,69 @@ STAGE_COPY = {
 GENERIC = [u"This section is written and will be set here. The structure, the order and "
            u"the length are settled; only the words are outstanding."]
 
+# Three kinds of page are deliberately left honest, and --strip is not what
+# restores them — they are never filled in the first place.
+#
+#   legal/      a plausible-looking Terms, Privacy or Refunds page is the one
+#               piece of filler that could actually do harm. Someone would ship it.
+#   michael     a fabricated biography of a real person.
+#   account,
+#   cart        these do not say "Michael has not written this". They say the
+#               static site cannot do accounts, which is true and stays true.
+SKIP = ("legal/", "michael.html", "account.html", "cart.html")
+
+CATEGORY = {
+ "schools": [
+   [u"Each School holds a set of Courses devoted to one area of human understanding, "
+    u"taken in whatever order suits the student. They are listed here with a line on "
+    u"each, and each links to its own page.",
+    u"There is more material developed than the outline shows, so this list grows "
+    u"without the School itself changing shape."],
+   [u"What a School costs, and whether it is taken whole or a Course at a time."]],
+ "collections": [
+   [u"A set is bought once and costs less than its parts. What belongs in this one, "
+    u"and the order the Studies are met in, is set out here.",
+    u"Each Study inside it remains available on its own for anyone who would rather "
+    u"take a single piece first."],
+   [u"Why these are studied together rather than separately — what is lost when the "
+    u"set is broken up and met one piece at a time."],
+   [u"The price of the set against its parts, so the saving is visible before the "
+    u"decision rather than after it."]],
+ "courses": [
+   [u"The full outline sits here: what each part covers, and in what order.",
+    u"Everything else on this page — the price, the format, what it opens — is "
+    u"already settled."],
+   [u"How the teaching is delivered, what the work asks of a student, and whether it "
+    u"runs to a calendar or at the student's own pace."],
+   [u"Each part named individually, with a line on what it covers, so a student can "
+    u"see the whole before beginning any of it."]],
+ "books": [
+   [u"A description of the edition, its length, the formats it is sold in, and the "
+    u"price.",
+    u"Where a written edition accompanies a Course or a Study, it is bought "
+    u"separately from the audiovisual material."]],
+ "events": [
+   [u"The date, the format, the length and the price, with an outline of what the "
+    u"seminar covers and who it is for.",
+    u"Registration opens here once those are set."]],
+ "membership": [
+   [u"What the combined price includes, and for how long, set out beside the three "
+    u"memberships so the comparison is direct."]],
+ "about": [
+   [u"What the Institute is, what it teaches, and why it was founded — in Michael's "
+    u"own words rather than a summary of them.",
+    u"This is the page a careful visitor reads before deciding whether to believe "
+    u"anything else on the site, so it is his to write."]],
+ "contact": [
+   [u"An address for enquiries and one for support, with the hours a reply can be "
+    u"expected in.",
+    u"A working form needs the same server the enrolment layer needs."]],
+ "begin": [
+   [u"The order a new student would actually be put through, and why that order and "
+    u"not another.",
+    u"The home page draws the shape of it; this is where it is explained."]],
+}
+
 
 def fill():
     changed = 0
@@ -99,6 +162,9 @@ def fill():
         if not NEEDS.search(s):
             continue
         rel  = os.path.relpath(p, SRC).replace("\\", "/")
+        if any(rel.startswith(k) or rel.endswith(k) for k in SKIP):
+            print("  left honest  %s" % rel)
+            continue
         cat  = rel.split("/")[0].replace(".html", "")
         name = os.path.basename(rel)[:-5].replace("-", " ").title()
         name = {"Fear And Doubt": "Fear and Doubt", "Life Result": "Life Result"}.get(name, name)
@@ -110,6 +176,7 @@ def fill():
             i = idx[0]; idx[0] += 1
             if   cat == "concepts" and rel.count("/") == 1: paras = concept_copy(name, i)
             elif cat == "patterns" and rel.count("/") == 1: paras = pattern_copy(name, i)
+            elif cat in CATEGORY:                           paras = CATEGORY[cat][i % len(CATEGORY[cat])]
             else:                                           paras = GENERIC
             flat_k = kind.replace("|||", "/")
             flat_b = " ".join(body.split()).replace("|||", "/").replace("--", "&#45;&#45;")
