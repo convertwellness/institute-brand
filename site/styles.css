@@ -1132,8 +1132,17 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
   /* Stacked, there is a whole column of width to spend, so the icons scale off
      viewport width more steeply. Six across, they cannot. Two clamps, not one. */
   --icon: clamp(4.5rem, 13vw, 6.5rem);      /* 72 at 390, 100 at 768 */
-  --thread: color-mix(in srgb, var(--bronze) 38%, transparent);
-  position: relative; margin-top: clamp(3.5rem, 7vw, 6rem);
+  --thread: color-mix(in srgb, var(--bronze) 52%, transparent);
+  position: relative; margin-top: clamp(2.25rem, 4vw, 3.5rem);
+}
+/* The diagram is the centrepiece, so it steps outside the 76rem text measure.
+   At 1440 that is 1328px of working width against the shell's 1104 — six icons
+   at 152px then sit in 83px of air each rather than 38. */
+@media (min-width: 1100px){
+  .cycle{
+    width: min(88rem, calc(100vw - 2 * var(--gutter)));
+    left: 50%; translate: -50% 0;
+  }
 }
 
 .cycle__flow{
@@ -1142,7 +1151,7 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
   gap: clamp(2rem, 4vw, 2.75rem); justify-items: center;
 }
 @media (min-width: 880px){
-  .cycle{ --icon: clamp(5.5rem, 9vw, 9rem); }   /* 92 at 1024, 130 at 1440 */
+  .cycle{ --icon: clamp(5.5rem, 10.6vw, 10.5rem); }  /* 108 at 1024, 152 at 1440 */
   .cycle__flow{
     grid-template-columns: repeat(6, 1fr);
     gap: clamp(.5rem, 1.4vw, 1.25rem); align-items: start;
@@ -1193,8 +1202,8 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
 }
 .stage + .stage::after{
   left: 50%; translate: -50% 0; top: calc(-1 * clamp(2rem, 4vw, 2.75rem) / 2 - 3px);
-  width: 6px; height: 6px; rotate: 45deg;
-  border-right: 1px solid var(--bronze); border-bottom: 1px solid var(--bronze);
+  width: 9px; height: 9px; rotate: 45deg;
+  border-right: 1.5px solid var(--bronze); border-bottom: 1.5px solid var(--bronze);
 }
 @media (min-width: 880px){
   .stage + .stage::before{
@@ -1205,8 +1214,8 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
   }
   .stage + .stage::after{
     left: auto; translate: 0 0;
-    right: calc(50% + var(--icon) / 2 + .35rem);
-    top: calc(var(--icon) / 2 - 3px); rotate: -45deg;
+    right: calc(50% + var(--icon) / 2 + .3rem);
+    top: calc(var(--icon) / 2 - 4.5px); rotate: -45deg;
   }
 }
 
@@ -1227,25 +1236,28 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
     border: 1px solid var(--thread); border-top: 0; border-radius: 0 0 3.5rem 3.5rem;
   }
   .cycle__return::after{
-    content: ""; position: absolute; left: 8.333%; top: 1.55rem;
-    width: 6px; height: 6px; rotate: 135deg; translate: -50% 0;
-    border-right: 1px solid var(--bronze); border-bottom: 1px solid var(--bronze);
+    content: ""; position: absolute; left: 8.333%; top: 1.45rem;
+    width: 10px; height: 10px; rotate: 135deg; translate: -50% 0;
+    border-right: 1.5px solid var(--bronze); border-bottom: 1.5px solid var(--bronze);
   }
   .cycle__return span{ background: var(--paper); padding: 0 .9rem; position: relative; }
 }
 
 /* the readout, where three unwritten stages say so */
 .cycle .readout{
-  margin-top: clamp(2rem, 3.5vw, 2.75rem); padding-top: 1.3rem;
-  border-top: 1px solid var(--rule); min-height: 4.75rem; max-width: 44rem;
+  /* the base .readout still carries a top rule and 7.5rem from the old ring;
+     both are overridden here so the line reads as secondary, not as a panel */
+  margin-top: clamp(1.5rem, 2.5vw, 2rem); padding-top: 0; border-top: 0;
+  min-height: 3.1rem; max-width: 46rem; margin-inline: auto; text-align: center;
+  font-size: .9375rem;
 }
-.cycle .readout__idle{ color: var(--ink-quiet); margin: 0; }
+.cycle .readout__idle{ color: var(--ink-quiet); margin: 0; font-size: .875rem; }
 .cycle .readout__term{
-  font-size: .7rem; font-weight: 600; letter-spacing: .13em; text-transform: uppercase;
-  color: var(--bronze); margin: 0 0 .35rem;
+  display: inline; font-size: .7rem; font-weight: 600; letter-spacing: .13em;
+  text-transform: uppercase; color: var(--bronze); margin: 0 .55rem 0 0;
 }
-.cycle .readout__text{ margin: 0; color: var(--ink); }
-.cycle .readout__needs{ margin: 0; color: var(--ink-quiet); font-style: italic; }
+.cycle .readout__text{ display: inline; margin: 0; color: var(--ink-quiet); }
+.cycle .readout__needs{ display: inline; margin: 0; color: var(--ink-quiet); font-style: italic; }
 
 /* Closing ---------------------------------------------------------------- */
 .os__end{
