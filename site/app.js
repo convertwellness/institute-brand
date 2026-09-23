@@ -2,8 +2,8 @@
    The Institute — interface behaviour
 
    Five things and no more:
-     1. The five doors — mega panels, hover on a fine pointer, click anywhere
-     2. The mobile drawer and its accordions
+     1. The doors — mega panels, hover on a fine pointer, click anywhere
+     2. The mobile menu
      3. The Operating System ring — hover, tab or tap a stage to read it
      4. The path — each tier opens
      5. Section reveal and the ring draw, each once
@@ -15,7 +15,7 @@
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
   var fine   = window.matchMedia("(hover: hover) and (pointer: fine)");
 
-  /* ── 1. The five doors ────────────────────────────────────────────────── */
+  /* ── 1. The doors ────────────────────────────────────────────────── */
 
   var doors = Array.prototype.slice.call(document.querySelectorAll(".door"));
   var hoverTimer = null;
@@ -62,7 +62,7 @@
     if (!e.target.closest(".door")) closeAllDoors(null);
   });
 
-  /* ── 2. Drawer and accordions ─────────────────────────────────────────── */
+  /* ── 2. The mobile menu ─────────────────────────────────────────── */
 
   var burger   = document.getElementById("burger");
   var drawer   = document.getElementById("drawer");
@@ -82,15 +82,6 @@
   closeBtn.addEventListener("click", function () { setDrawer(false); });
   drawer.addEventListener("click", function (e) {
     if (e.target.closest("a")) setDrawer(false);
-  });
-
-  Array.prototype.forEach.call(document.querySelectorAll(".acc__btn"), function (btn) {
-    btn.addEventListener("click", function () {
-      var panel = document.getElementById(btn.getAttribute("aria-controls"));
-      var open  = btn.getAttribute("aria-expanded") === "true";
-      btn.setAttribute("aria-expanded", String(!open));
-      panel.setAttribute("data-open", String(!open));
-    });
   });
 
   /* ── 3. The ring — hover, tab or tap a stage ──────────────────────────── */

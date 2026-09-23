@@ -528,112 +528,277 @@ a.figure:hover .figure__l, a.figure:focus-visible .figure__l{ color: var(--accen
 }
 .arrow:hover::after{ width: 2.5rem; }
 
-/* ── Header ─────────────────────────────────────────────────────────────── */
+/* ── Header ─────────────────────────────────────────────────────────────
+   Sara, 23 Sep 2026: a masthead, not a logo bar.
 
-/* A light header on purpose: it sets the cream, navy and gold before the hero
-   goes dark, so the immersive moment reads as a descent rather than the default
-   state. The hairline is gold at low alpha — present, never a line of colour. */
+   The emblem carries the graphic and the name is live text — set in the
+   three lines BRAND.fullName gives, never an image of type. Both identities
+   sit in the markup and this file chooses between them on [data-scrolled]:
+   the full lockup on arrival, the short name once the page moves. The link
+   carries the full name as its aria-label and both spans are aria-hidden,
+   so the swap never changes what a screen reader hears.
+
+   A light header on purpose: it sets the cream, navy and gold before the
+   hero goes dark, so the immersive moment reads as a descent rather than
+   the default state. */
+
 .header{
   position: sticky; top: 0; z-index: 100;
-  background: color-mix(in srgb, var(--paper) 92%, transparent);
+  background: color-mix(in srgb, var(--paper) 93%, transparent);
   backdrop-filter: blur(14px) saturate(1.1);
   -webkit-backdrop-filter: blur(14px) saturate(1.1);
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid color-mix(in srgb, var(--gold) 22%, transparent);
   transition: border-color var(--t-colour), box-shadow var(--t-colour);
 }
 .header[data-scrolled="true"]{
-  border-bottom-color: color-mix(in srgb, var(--gold) 38%, transparent);
+  border-bottom-color: color-mix(in srgb, var(--gold) 40%, transparent);
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--gold) 10%, transparent);
 }
 .header__bar{
-  display: flex; align-items: center; gap: clamp(1.25rem, 3vw, 3rem);
-  min-height: 86px;
+  display: flex; align-items: center; gap: clamp(1rem, 2.4vw, 2.5rem);
+  min-height: 74px;
+  transition: min-height var(--t-move);
+}
+@media (min-width: 1080px){
+  .header__bar{ min-height: 92px; }
+  .header[data-scrolled="true"] .header__bar{ min-height: 64px; }
 }
 
-.brand{ display: flex; align-items: center; gap: .7rem; text-decoration: none; flex: none; }
-/* Round now, so it takes the cap height of the name beside it rather than
-   the old sliver's full line height. */
-.brand__mark{
-  width: 42px; height: 42px; flex: none;
-  background: url("assets/logo-mark.webp") no-repeat center / contain;
+/* ── the lockup ─────────────────────────────────────────────────────── */
+
+/* It must be able to shrink below the desktop breakpoint. Unshrinkable, the
+   second identifier ran the bar to 457px inside a 430px phone and pushed the
+   search and the menu off the right edge. */
+.brand{
+  display: flex; align-items: center; gap: .8rem;
+  text-decoration: none; flex: 0 1 auto; min-width: 0;
 }
-.brand__name{
+@media (min-width: 1080px){ .brand{ flex: none; } }
+.brand__mark{
+  width: 44px; height: 44px; flex: none;
+  background: url("assets/logo-mark.webp") no-repeat center / contain;
+  transition: width var(--t-move), height var(--t-move);
+}
+@media (min-width: 1080px){
+  .brand__mark{ width: 56px; height: 56px; }
+  .header[data-scrolled="true"] .brand__mark{ width: 38px; height: 38px; }
+}
+.brand__id{ display: block; min-width: 0; }
+
+/* the small antique-gold line above the name */
+.brand__of{
+  display: block;
+  font-size: .625rem; font-weight: 600;
+  letter-spacing: .17em; text-transform: uppercase;
+  color: var(--accent-warm);
+  margin-bottom: .18rem;
+}
+.brand__full{
+  display: block;
   font-family: var(--display);
   font-variation-settings: "opsz" 36, "SOFT" 0, "WONK" 0;
-  font-size: 1.18rem; letter-spacing: -.01em; color: var(--ink-strong);
-  white-space: nowrap; transition: color var(--t-colour);
+  font-size: 1.08rem; line-height: 1.16; letter-spacing: -.008em;
+  color: var(--ink-strong);
+  transition: color var(--t-colour);
 }
-.brand:hover .brand__name{ color: var(--accent); }
+.brand__short{
+  display: block;
+  font-family: var(--display);
+  font-variation-settings: "opsz" 36, "SOFT" 0, "WONK" 0;
+  font-size: 1.16rem; line-height: 1.2; letter-spacing: -.01em;
+  color: var(--ink-strong); white-space: nowrap;
+  transition: color var(--t-colour);
+}
+/* the second identifier under the short name, on small screens */
+.brand__sub{
+  display: block; margin-top: .12rem;
+  font-size: .5625rem; font-weight: 600;
+  letter-spacing: .13em; text-transform: uppercase;
+  color: var(--accent-warm); line-height: 1.3;
+}
+.brand:hover .brand__full,
+.brand:hover .brand__short{ color: var(--accent-warm); }
 
-.doors{ display: none; list-style: none; margin: 0; padding: 0;
-        gap: clamp(.4rem, 1.8vw, 1.4rem); margin-inline-start: auto; }
-@media (min-width: 1140px){ .doors{ display: flex; } }
+/* which identity shows, and when */
+.header .brand__lockup{ display: none; }
+.header .brand__short{ display: block; }
+@media (min-width: 1080px){
+  .header .brand__sub{ display: none; }
+  .header .brand__lockup{ display: block; }
+  .header .brand__short{ display: none; }
+  .header[data-scrolled="true"] .brand__lockup{ display: none; }
+  .header[data-scrolled="true"] .brand__short{ display: block; }
+}
+/* it wraps to two lines on a narrow phone, which is fine; below 360px there
+   is no room for it at all */
+@media (max-width: 359px){ .header .brand__sub{ display: none; } }
 
-.door{ position: relative; }
+/* ── the doors ──────────────────────────────────────────────────────── */
+
+.nav{ margin-inline-start: auto; }
+.doors{
+  display: none; list-style: none; margin: 0; padding: 0;
+  align-items: center; gap: clamp(.1rem, 1vw, .9rem);
+}
+@media (min-width: 1080px){ .doors{ display: flex; } }
+
+/* static, so a panel resolves against .header and can run its full width */
+.door{ position: static; }
 .door__btn{
-  display: inline-flex; align-items: center; gap: .4rem;
-  min-height: 44px; padding: 0 .55rem; white-space: nowrap;
-  background: none; border: 0; cursor: pointer;
-  font-size: .8125rem; font-weight: 500; letter-spacing: .05em; text-transform: uppercase;
+  display: inline-flex; align-items: center; gap: .42rem;
+  position: relative;
+  min-height: 44px; padding: 0 .6rem; white-space: nowrap;
+  background: none; border: 0; cursor: pointer; text-decoration: none;
+  font-family: var(--body);
+  font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
   color: var(--ink-strong);
   transition: color var(--t-colour);
 }
 .door__btn::after{
-  content: ""; position: absolute; left: .7rem; bottom: 12px;
-  height: 1px; width: 0; background: var(--gold);
-  transition: width var(--t-move);
+  content: ""; position: absolute; left: .6rem; right: .6rem; bottom: 10px;
+  height: 1px; background: var(--accent-warm);
+  scale: 0 1; transform-origin: left;
+  transition: scale var(--t-move);
 }
-.door__btn:hover, .door__btn[aria-expanded="true"]{ color: var(--bronze); }
-.door__btn:hover::after, .door__btn[aria-expanded="true"]::after{ width: calc(100% - 1.4rem); }
+.door__btn:hover, .door__btn[aria-expanded="true"]{ color: var(--accent-warm); }
+.door__btn:hover::after, .door__btn[aria-expanded="true"]::after{ scale: 1 1; }
 .door__chev{
-  width: 9px; height: 9px; flex: none;
+  width: 8px; height: 8px; flex: none;
   border-right: 1px solid currentColor; border-bottom: 1px solid currentColor;
   transform: translateY(-2px) rotate(45deg);
   transition: transform var(--t-move);
 }
 .door__btn[aria-expanded="true"] .door__chev{ transform: translateY(1px) rotate(-135deg); }
 
+/* Membership carries a hairline rather than a filled button — more present
+   than the others, still a long way from a SaaS call to action. */
+.door__btn--gold{
+  margin-inline-start: .5rem;
+  padding: 0 .95rem; min-height: 38px;
+  color: var(--accent-warm);
+  border: 1px solid color-mix(in srgb, var(--accent-warm) 45%, transparent);
+  transition: color var(--t-colour), border-color var(--t-colour), background-color var(--t-colour);
+}
+.door__btn--gold::after{ content: none; }
+.door__btn--gold:hover{
+  color: var(--ink-strong);
+  border-color: var(--accent-warm);
+  background: color-mix(in srgb, var(--accent-warm) 9%, transparent);
+}
+
+/* ── the mega panels ────────────────────────────────────────────────── */
+
 .panel{
-  position: absolute; top: calc(100% + 10px); left: -1rem;
-  width: min(30rem, 92vw);
+  position: absolute; left: 0; right: 0; top: 100%;
   background: var(--paper);
-  border: 1px solid var(--rule-strong);
-  padding: 1.35rem;
+  border-top: 1px solid color-mix(in srgb, var(--gold) 24%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--gold) 38%, transparent);
   display: none;
 }
 .panel[data-open="true"]{ display: block; }
-.panel__blurb{ color: var(--ink-quiet); font-size: .9375rem; margin-bottom: 1rem; }
-.panel__list{ list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
-.panel__link{
-  display: block; padding: .7rem .8rem; margin-inline: -.8rem;
-  text-decoration: none; color: var(--ink);
-  border-top: 1px solid var(--rule);
-  transition: background-color var(--t-colour), color var(--t-colour);
-}
-.panel__list li:first-child .panel__link{ border-top: 0; }
-.panel__link:hover{ background: var(--band); color: var(--accent); }
-.panel__label{ display: block; font-weight: 600; font-size: 1rem; }
-.panel__note{ display: block; color: var(--ink-quiet); font-size: .9375rem;
-              line-height: 1.45; margin-top: .2rem; }
 
-.rail{ display: flex; align-items: center; gap: .35rem; margin-inline-start: auto; }
-@media (min-width: 1140px){ .rail{ margin-inline-start: 0; } }
-.rail__link{
-  display: none; align-items: center; min-height: 44px; padding: 0 .7rem;
-  text-decoration: none; color: var(--ink-strong);
-  font-size: .8125rem; font-weight: 500; letter-spacing: .05em; text-transform: uppercase;
-  white-space: nowrap; transition: color var(--t-colour);
+.mega{
+  position: relative;
+  display: grid; gap: clamp(1.75rem, 3.4vw, 3.25rem);
+  grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+  padding-block: clamp(1.75rem, 3vw, 2.5rem) clamp(2rem, 3.2vw, 2.75rem);
 }
-.rail__link:hover{ color: var(--bronze); }
-/* a hairline of gold between the doors and the account rail, nothing more */
-.rail{ position: relative; padding-inline-start: clamp(.5rem, 1.6vw, 1.4rem); }
-@media (min-width: 1140px){
+.mega__lead{
+  display: flex; flex-direction: column; align-items: flex-start; gap: .7rem;
+  border-right: 1px solid var(--rule);
+  padding-right: clamp(1.25rem, 2.4vw, 2rem);
+}
+.mega__kicker{
+  font-size: .68rem; font-weight: 600;
+  letter-spacing: .15em; text-transform: uppercase;
+  color: var(--accent-warm);
+}
+.mega__blurb{ color: var(--ink-quiet); font-size: .9375rem; line-height: 1.55; }
+.mega__all{
+  margin-top: auto; padding-top: .5rem;
+  display: inline-flex; align-items: center; gap: .5rem;
+  color: var(--accent-warm); font-weight: 600; font-size: .9375rem;
+  text-decoration: none;
+}
+.mega__all::after{
+  content: ""; width: 1.25rem; height: 1px; background: currentColor;
+  transition: width var(--t-move);
+}
+.mega__all:hover::after{ width: 2rem; }
+
+.mega__cols{ display: grid; gap: clamp(1.5rem, 3vw, 2.75rem); }
+.mega__cols--2{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.mega__cols--3{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+.mega__cat{
+  font-size: .66rem; font-weight: 600;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--accent-warm);
+  padding-bottom: .55rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent-warm) 24%, transparent);
+  margin-bottom: .35rem;
+}
+.mega__list{ list-style: none; margin: 0; padding: 0; }
+/* a hairline between destinations, never a box around one */
+.mega__item{
+  display: block; padding: .6rem 0;
+  border-top: 1px solid var(--rule);
+  text-decoration: none; color: inherit;
+  transition: color var(--t-colour);
+}
+.mega__list li:first-child .mega__item{ border-top: 0; }
+.mega__x{
+  font-size: .7rem; font-weight: 600; letter-spacing: .08em;
+  color: var(--accent-warm); font-variant-numeric: tabular-nums;
+  margin-right: .5rem;
+}
+.mega__n{
+  font-family: var(--display);
+  font-variation-settings: "opsz" 24, "SOFT" 0, "WONK" 0;
+  font-size: 1.02rem; line-height: 1.25; color: var(--ink-strong);
+  transition: color var(--t-colour);
+}
+.mega__d{
+  display: block; margin-top: .15rem;
+  font-size: .85rem; line-height: 1.45; color: var(--ink-quiet);
+}
+.mega__item:hover .mega__n{ color: var(--accent-warm); }
+
+/* the one motif the brief allows — drawn, on the far side, barely there */
+.mega__motif{
+  position: absolute; right: 0; top: 50%; translate: 0 -50%;
+  width: 13rem; aspect-ratio: 1; z-index: -1;
+  color: color-mix(in srgb, var(--accent-warm) 9%, transparent);
+  pointer-events: none;
+}
+.mega__motif svg{ width: 100%; height: 100%; display: block; }
+@media (max-width: 1279px){ .mega__motif{ display: none; } }
+
+/* ── the utility rail ───────────────────────────────────────────────── */
+
+.rail{
+  display: flex; align-items: center; gap: .3rem;
+  margin-inline-start: auto; position: relative;
+}
+@media (min-width: 1080px){
+  .rail{
+    margin-inline-start: 0;
+    padding-inline-start: clamp(.6rem, 1.4vw, 1.25rem);
+  }
   .rail::before{
     content: ""; position: absolute; left: 0; top: 50%; translate: 0 -50%;
-    width: 1px; height: 22px;
-    background: color-mix(in srgb, var(--gold) 55%, transparent);
+    width: 1px; height: 20px;
+    background: color-mix(in srgb, var(--gold) 50%, transparent);
   }
 }
-@media (min-width: 1140px){ .rail__link{ display: inline-flex; } }
+.rail__link{
+  display: none; align-items: center; min-height: 44px; padding: 0 .6rem;
+  text-decoration: none; color: var(--ink-strong);
+  font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+  white-space: nowrap; transition: color var(--t-colour);
+}
+.rail__link:hover{ color: var(--accent-warm); }
+@media (min-width: 1080px){ .rail__link{ display: inline-flex; } }
 
 .icon-btn{
   display: inline-flex; align-items: center; justify-content: center;
@@ -641,53 +806,87 @@ a.figure:hover .figure__l, a.figure:focus-visible .figure__l{ color: var(--accen
   background: none; border: 1px solid transparent; cursor: pointer;
   color: var(--ink); transition: color var(--t-colour), border-color var(--t-colour);
 }
-.icon-btn:hover{ color: var(--accent); border-color: var(--rule); }
+.icon-btn:hover{ color: var(--accent-warm); border-color: color-mix(in srgb, var(--accent-warm) 30%, transparent); }
 .icon-btn svg{ width: 19px; height: 19px; }
 
 .burger{ display: inline-flex; }
-@media (min-width: 1140px){ .burger{ display: none; } }
+@media (min-width: 1080px){ .burger{ display: none; } }
 .burger span{ display: block; width: 20px; height: 1px; background: currentColor; position: relative; }
 .burger span::before, .burger span::after{
   content: ""; position: absolute; left: 0; width: 20px; height: 1px; background: currentColor;
 }
 .burger span::before{ top: -6px; } .burger span::after{ top: 6px; }
 
-/* ── Mobile drawer ──────────────────────────────────────────────────────── */
+/* ── Mobile navigation ──────────────────────────────────────────────────
+   Near-full-screen and ivory, not a squeezed desktop bar. Small gold
+   category labels and Fraunces destinations, so it reads as a contents
+   page. Flat rather than accordions: everything reachable before is still
+   reachable, and none of it is now two taps away. */
 
 .drawer{
   position: fixed; inset: 0; z-index: 150;
-  background: var(--paper); display: none; flex-direction: column; overflow-y: auto;
+  background: var(--paper); display: none; flex-direction: column;
+  overflow-y: auto; -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
 .drawer[data-open="true"]{ display: flex; }
 .drawer__top{
-  display: flex; align-items: center; justify-content: space-between;
-  min-height: 74px; border-bottom: 1px solid var(--rule);
-}
-.drawer__body{ padding-block: 1.5rem 4rem; }
-.acc{ border-bottom: 1px solid var(--rule); }
-.acc__btn{
   display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-  width: 100%; min-height: 60px; padding: .5rem 0;
-  background: none; border: 0; cursor: pointer; text-align: left;
+  min-height: 74px; flex: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
+  position: sticky; top: 0; z-index: 2;
+  background: var(--paper);
+}
+.brand--drawer .brand__mark{ width: 44px; height: 44px; }
+.drawer__body{ padding-block: 1.75rem 4.5rem; }
+
+.dsec{ padding-block: 1.35rem; border-top: 1px solid var(--rule); }
+.dsec:first-child{ border-top: 0; padding-top: .5rem; }
+.dsec__cat{
+  font-family: var(--body);
+  font-size: .66rem; font-weight: 600;
+  letter-spacing: .15em; text-transform: uppercase;
+  color: var(--accent-warm);
+  margin-bottom: .5rem;
+}
+.dsec__sub{
+  font-size: .64rem; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--ink-quiet);
+  margin-top: 1.1rem; margin-bottom: .2rem;
+}
+.dsec__list{ list-style: none; margin: 0; padding: 0; }
+.dlink{
+  display: block; padding: .52rem 0;
+  text-decoration: none; color: var(--ink-strong);
   font-family: var(--display);
-  font-variation-settings: "opsz" 36, "SOFT" 0, "WONK" 0;
-  font-size: 1.35rem; color: var(--ink-strong);
+  font-variation-settings: "opsz" 24, "SOFT" 0, "WONK" 0;
+  font-size: 1.22rem; line-height: 1.3; letter-spacing: -.006em;
   transition: color var(--t-colour);
 }
-.acc__btn:hover{ color: var(--accent); }
-.acc__plus{ position: relative; width: 16px; height: 16px; flex: none; color: var(--accent);
-            transition: transform 300ms cubic-bezier(.2,.6,.2,1); }
-.acc__plus::before, .acc__plus::after{ content: ""; position: absolute; background: currentColor; }
-.acc__plus::before{ left: 0; top: 7.5px; width: 16px; height: 1px; }
-.acc__plus::after{ top: 0; left: 7.5px; width: 1px; height: 16px; }
-.acc__btn[aria-expanded="true"] .acc__plus{ transform: rotate(45deg); }
-.acc__panel{ display: none; padding-bottom: 1.25rem; }
-.acc__panel[data-open="true"]{ display: block; }
-.acc__link{
-  display: block; padding: .6rem 0; text-decoration: none;
-  color: var(--ink-quiet); font-size: 1.0625rem; transition: color var(--t-colour);
+.dlink:hover{ color: var(--accent-warm); }
+.dlink i{
+  font-style: normal; font-family: var(--body);
+  font-size: .7rem; font-weight: 600; letter-spacing: .08em;
+  color: var(--accent-warm); font-variant-numeric: tabular-nums;
+  margin-right: .45rem;
 }
-.acc__link:hover{ color: var(--accent); }
+.dlink em{
+  font-style: normal; font-family: var(--body);
+  font-size: .62rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent-warm); margin-left: .5rem; vertical-align: .14em;
+}
+.dsec--gold .dlink--gold{ color: var(--accent-warm); }
+.dsec--quiet .dlink{ font-size: 1.05rem; color: var(--ink-quiet); }
+.dsec--quiet .dlink:hover{ color: var(--accent-warm); }
+
+/* ── Motion ─────────────────────────────────────────────────────────────
+   The masthead compacting is the only header motion. Under reduced motion
+   it still compacts — it simply arrives there rather than travelling. */
+@media (prefers-reduced-motion: reduce){
+  .header__bar, .brand__mark, .door__btn::after,
+  .mega__all::after{ transition: none; }
+}
 
 /* ── Hero ───────────────────────────────────────────────────────────────── */
 

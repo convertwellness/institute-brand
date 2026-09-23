@@ -1,9 +1,21 @@
-<!-- ══ Mobile drawer ═══════════════════════════════════════════════════ -->
-<div class="drawer" id="drawer" data-open="false" role="dialog" aria-modal="true" aria-label="Menu">
+<!-- ══ Mobile navigation ════════════════════════════════════════════════
+     Near-full-screen and ivory, not a squeezed desktop bar. The categories
+     are small gold labels and the destinations are Fraunces, so the menu
+     reads as a contents page rather than a list of controls.
+
+     Flat rather than accordions: every destination that was reachable
+     before is still reachable, and none of them is now two taps away. -->
+<div class="drawer" id="drawer" data-open="false" role="dialog" aria-modal="true"
+     aria-label="Menu">
+
   <div class="shell drawer__top">
-    <a class="brand" href="/">
+    <a class="brand brand--drawer" href="/"
+       aria-label="The Institute of The Spiritual Science of Human Patterns — home">
       <span class="brand__mark" aria-hidden="true"></span>
-      <span class="brand__name">The Institute</span>
+      <span class="brand__id" aria-hidden="true">
+        <span class="brand__short">The Institute</span>
+        <span class="brand__sub">The Spiritual Science of Human Patterns</span>
+      </span>
     </a>
     <button class="icon-btn" type="button" id="drawer-close" aria-label="Close menu">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
@@ -12,56 +24,86 @@
     </button>
   </div>
 
-  <div class="shell drawer__body">
-    <div class="acc">
-      <button class="acc__btn" type="button" aria-expanded="false" aria-controls="d-begin">Begin Here <i class="acc__plus" aria-hidden="true"></i></button>
-      <div class="acc__panel" id="d-begin" data-open="false">
-        <a class="acc__link" href="/courses/five-laws">The Five Laws of Manifestation — free</a>
-        <a class="acc__link" href="/courses/human-operating-system">The Human Operating System</a>
-        <a class="acc__link" href="/begin/the-path">How the education fits together</a>
-      </div>
-    </div>
-    <div class="acc">
-      <button class="acc__btn" type="button" aria-expanded="false" aria-controls="d-concepts">Concepts <i class="acc__plus" aria-hidden="true"></i></button>
-      <div class="acc__panel" id="d-concepts" data-open="false">
-        <a class="acc__link" href="/concepts">Individual Concepts</a>
-        <a class="acc__link" href="/patterns">Patterns of Behavior</a>
-        <a class="acc__link" href="/concepts/families">Concept Families</a>
-        <a class="acc__link" href="/collections">Interwoven Studies</a>
-      </div>
-    </div>
-    <div class="acc">
-      <button class="acc__btn" type="button" aria-expanded="false" aria-controls="d-courses">Courses <i class="acc__plus" aria-hidden="true"></i></button>
-      <div class="acc__panel" id="d-courses" data-open="false">
-        <a class="acc__link" href="/courses/five-laws">The Five Laws of Manifestation — free</a>
-        <a class="acc__link" href="/courses/foundation">Foundation Studies</a>
-        <a class="acc__link" href="/courses/human-operating-system">The Human Operating System</a>
-        <a class="acc__link" href="/courses/body-symbology">Body Symbology</a>
-        <a class="acc__link" href="/schools">The Schools of the Institute</a>
-      </div>
-    </div>
-    <div class="acc">
-      <button class="acc__btn" type="button" aria-expanded="false" aria-controls="d-books">Books <i class="acc__plus" aria-hidden="true"></i></button>
-      <div class="acc__panel" id="d-books" data-open="false">
-        <a class="acc__link" href="/books/awakening">Awakening</a>
-        <a class="acc__link" href="/books/tj">T.J.</a>
-        <a class="acc__link" href="/books/workbooks">Workbooks &amp; Awakening Portfolios</a>
-        <a class="acc__link" href="/books/video-studies">Video Studies &amp; Special Topics</a>
-      </div>
-    </div>
-    <div class="acc">
-      <button class="acc__btn" type="button" aria-expanded="false" aria-controls="d-events">Live Events <i class="acc__plus" aria-hidden="true"></i></button>
-      <div class="acc__panel" id="d-events" data-open="false">
-        <a class="acc__link" href="/events/arthritis">Arthritis</a>
-        <a class="acc__link" href="/events/cancer">Cancer</a>
-        <a class="acc__link" href="/events">All seminars</a>
-      </div>
-    </div>
+  <nav class="shell drawer__body" aria-label="Menu">
 
-    <div class="stack gap-4" style="margin-top:2.25rem">
-      <a class="btn btn--primary" href="/courses/five-laws">Start the free course</a>
-      <a class="btn btn--secondary" href="/membership">Membership</a>
-      <a class="arrow" href="/account">Sign in</a>
-    </div>
-  </div>
+    <section class="dsec">
+      <h2 class="dsec__cat">Begin here</h2>
+      <ul class="dsec__list">
+        <li><a class="dlink" href="/courses/five-laws">The Five Laws of Manifestation <em>Free</em></a></li>
+        <li><a class="dlink" href="/courses/foundation">Foundation Studies</a></li>
+        <li><a class="dlink" href="/courses/human-operating-system">The Human Operating System</a></li>
+        <li><a class="dlink" href="/begin/the-path">The path through the Institute</a></li>
+      </ul>
+    </section>
+
+    <section class="dsec">
+      <h2 class="dsec__cat">Explore</h2>
+      <ul class="dsec__list">
+        <li><a class="dlink" href="/concepts">Individual Concepts</a></li>
+        <li><a class="dlink" href="/patterns">Patterns of Behavior</a></li>
+        <li><a class="dlink" href="/concepts/families">Concept Families</a></li>
+        <li><a class="dlink" href="/collections">Interwoven Studies</a></li>
+      </ul>
+    </section>
+
+    <section class="dsec">
+      <h2 class="dsec__cat">Learn</h2>
+
+      <p class="dsec__sub">Courses</p>
+      <ul class="dsec__list">
+        <li><a class="dlink" href="/courses/five-laws">The Five Laws of Manifestation <em>Free</em></a></li>
+        <li><a class="dlink" href="/courses/foundation">Foundation Studies</a></li>
+        <li><a class="dlink" href="/courses/human-operating-system">The Human Operating System</a></li>
+        <li><a class="dlink" href="/courses/body-symbology">Body Symbology</a></li>
+        <li><a class="dlink" href="/courses">All four Courses</a></li>
+      </ul>
+
+      <p class="dsec__sub">Books &amp; study editions</p>
+      <ul class="dsec__list">
+        <li><a class="dlink" href="/books/awakening">Awakening</a></li>
+        <li><a class="dlink" href="/books/tj">T.J.</a></li>
+        <li><a class="dlink" href="/books/workbooks">Workbooks &amp; Awakening Portfolios</a></li>
+        <li><a class="dlink" href="/books/video-studies">Video Studies &amp; Special Topics</a></li>
+        <li><a class="dlink" href="/books">All books</a></li>
+      </ul>
+
+      <p class="dsec__sub">Live Events</p>
+      <ul class="dsec__list">
+        <li><a class="dlink" href="/events/arthritis">Arthritis</a></li>
+        <li><a class="dlink" href="/events/cancer">Cancer</a></li>
+        <li><a class="dlink" href="/events">All seminars</a></li>
+      </ul>
+    </section>
+
+    <section class="dsec">
+      <h2 class="dsec__cat">The Schools</h2>
+      <ul class="dsec__list">
+        <li><a class="dlink" href="/schools/human-patterns"><i>01</i> School of Human Patterns</a></li>
+        <li><a class="dlink" href="/schools/human-operating-system"><i>02</i> School of the Human Operating System</a></li>
+        <li><a class="dlink" href="/schools/identity"><i>03</i> School of Identity</a></li>
+        <li><a class="dlink" href="/schools/concepts-and-beliefs"><i>04</i> School of Concepts and Beliefs</a></li>
+        <li><a class="dlink" href="/schools/relationships"><i>05</i> School of Relationships</a></li>
+        <li><a class="dlink" href="/schools/consciousness"><i>06</i> School of Consciousness</a></li>
+        <li><a class="dlink" href="/schools">All six Schools</a></li>
+      </ul>
+    </section>
+
+    <section class="dsec dsec--gold">
+      <h2 class="dsec__cat">Membership</h2>
+      <ul class="dsec__list">
+        <li><a class="dlink dlink--gold" href="/membership">Compare the three memberships</a></li>
+      </ul>
+    </section>
+
+    <section class="dsec dsec--quiet">
+      <h2 class="dsec__cat">The Institute</h2>
+      <ul class="dsec__list">
+        <li><a class="dlink" href="/about">What the Institute is</a></li>
+        <li><a class="dlink" href="/michael">Michael Schwartz, N.D.</a></li>
+        <li><a class="dlink" href="/contact">Contact</a></li>
+        <li><a class="dlink" href="/account">Sign in</a></li>
+      </ul>
+    </section>
+
+  </nav>
 </div>

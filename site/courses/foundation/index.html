@@ -14,23 +14,40 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="../../styles.css?v=33">
+<link rel="stylesheet" href="../../styles.css?v=35">
 <link rel="stylesheet" href="../../study.css?v=12">
 </head>
 <body>
 
 <a class="skip" href="#main">Skip to content</a>
 
-<!-- ══ Header ══════════════════════════════════════════════════════════ -->
+<!-- ══ Header ══════════════════════════════════════════════════════════
+     A masthead rather than a logo bar. The emblem carries the graphic and
+     the institution's name is live text, set in the three lines
+     BRAND.fullName gives — never an image of type.
+
+     Both identities are in the markup and CSS chooses between them on
+     [data-scrolled]: the full lockup on arrival, the short name once the
+     page moves. Both are aria-hidden and the link carries the full name as
+     its label, so the swap never changes what a screen reader hears. -->
 <header class="header" id="header">
   <div class="shell header__bar">
 
-    <a class="brand" href="/" aria-label="The Institute — home">
+    <a class="brand" href="/"
+       aria-label="The Institute of The Spiritual Science of Human Patterns — home">
       <span class="brand__mark" aria-hidden="true"></span>
-      <span class="brand__name">The Institute</span>
+
+      <span class="brand__id" aria-hidden="true">
+        <span class="brand__lockup">
+          <span class="brand__of">The Institute of</span>
+          <span class="brand__full">The Spiritual Science<br>of Human Patterns</span>
+        </span>
+        <span class="brand__short">The Institute</span>
+        <span class="brand__sub">The Spiritual Science of Human Patterns</span>
+      </span>
     </a>
 
-    <nav aria-label="Primary">
+    <nav class="nav" aria-label="Primary">
       <ul class="doors">
 
         <li class="door">
@@ -38,117 +55,194 @@
             Begin Here <i class="door__chev" aria-hidden="true"></i>
           </button>
           <div class="panel" id="p-begin" data-open="false">
-            <p class="panel__blurb">Start with the free course, or see how the education fits together.</p>
-            <ul class="panel__list">
-              <li><a class="panel__link" href="/courses/five-laws">
-                <span class="panel__label">The Five Laws of Manifestation</span>
-                <span class="panel__note">Free · An introduction to the principles the teachings are built on.</span></a></li>
-              <li><a class="panel__link" href="/courses/human-operating-system">
-                <span class="panel__label">The Human Operating System</span>
-                <span class="panel__note">Concept to Belief to Pattern to Emotion to Behavior to Life Result.</span></a></li>
-              <li><a class="panel__link" href="/begin/the-path">
-                <span class="panel__label">How the education fits together</span>
-                <span class="panel__note">The whole path, from the free course to the Schools.</span></a></li>
-            </ul>
+            <div class="shell mega">
+              <div class="mega__lead">
+                <p class="mega__kicker">Begin here</p>
+                <p class="mega__blurb">Start with the free course, or see how the whole
+                   education fits together before you choose.</p>
+                <a class="mega__all" href="/begin/the-path">The path through the Institute</a>
+              </div>
+              <div class="mega__cols mega__cols--2">
+                <div class="mega__col">
+                  <p class="mega__cat">Where most people start</p>
+                  <ul class="mega__list">
+                    <li><a class="mega__item" href="/courses/five-laws">
+                      <span class="mega__n">The Five Laws of Manifestation</span>
+                      <span class="mega__d">Free. The principles the teachings are built on.</span></a></li>
+                    <li><a class="mega__item" href="/courses/foundation" aria-current="page">
+                      <span class="mega__n">Foundation Studies</span>
+                      <span class="mega__d">Ten weeks, thirty Patterns. It opens everything else.</span></a></li>
+                    <li><a class="mega__item" href="/courses/human-operating-system">
+                      <span class="mega__n">The Human Operating System</span>
+                      <span class="mega__d">Concept, Belief, Pattern, Emotion, Behavior, Life Result.</span></a></li>
+                  </ul>
+                </div>
+                <div class="mega__col">
+                  <p class="mega__cat">About the Institute</p>
+                  <ul class="mega__list">
+                    <li><a class="mega__item" href="/about">
+                      <span class="mega__n">What the Institute is</span></a></li>
+                    <li><a class="mega__item" href="/michael">
+                      <span class="mega__n">Michael Schwartz, N.D.</span></a></li>
+                    <li><a class="mega__item" href="/contact">
+                      <span class="mega__n">Contact</span></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </li>
 
         <li class="door">
-          <button class="door__btn" type="button" aria-expanded="false" aria-controls="p-concepts">
-            Concepts <i class="door__chev" aria-hidden="true"></i>
+          <button class="door__btn" type="button" aria-expanded="false" aria-controls="p-explore">
+            Explore <i class="door__chev" aria-hidden="true"></i>
           </button>
-          <div class="panel" id="p-concepts" data-open="false">
-            <p class="panel__blurb">Everything begins with Concept.</p>
-            <ul class="panel__list">
-              <li><a class="panel__link" href="/concepts">
-                <span class="panel__label">Individual Concepts</span>
-                <span class="panel__note">Each with its Patterns, and the beliefs that form around it.</span></a></li>
-              <li><a class="panel__link" href="/patterns">
-                <span class="panel__label">Patterns of Behavior</span>
-                <span class="panel__note">Twelve to begin with, each studied on its own.</span></a></li>
-              <li><a class="panel__link" href="/concepts/families">
-                <span class="panel__label">Concept Families</span>
-                <span class="panel__note">Acceptance, Worth, Control, Trust.</span></a></li>
-              <li><a class="panel__link" href="/collections">
-                <span class="panel__label">Interwoven Studies</span>
-                <span class="panel__note">Concepts and Patterns woven together, in threes and sixes.</span></a></li>
-            </ul>
+          <div class="panel" id="p-explore" data-open="false">
+            <div class="shell mega">
+              <div class="mega__lead">
+                <p class="mega__kicker">Explore</p>
+                <p class="mega__blurb">Everything begins with Concept. Follow whichever is
+                   most relevant to your present life, rather than a set sequence.</p>
+                <a class="mega__all" href="/concepts">Enter the Concept Studies</a>
+              </div>
+              <div class="mega__cols mega__cols--2">
+                <div class="mega__col">
+                  <p class="mega__cat">One at a time</p>
+                  <ul class="mega__list">
+                    <li><a class="mega__item" href="/concepts">
+                      <span class="mega__n">Individual Concepts</span>
+                      <span class="mega__d">Each with its own Patterns, and the beliefs that form around it.</span></a></li>
+                    <li><a class="mega__item" href="/patterns">
+                      <span class="mega__n">Patterns of Behavior</span>
+                      <span class="mega__d">Twelve to begin with, each studied on its own.</span></a></li>
+                  </ul>
+                </div>
+                <div class="mega__col">
+                  <p class="mega__cat">Studied as a set</p>
+                  <ul class="mega__list">
+                    <li><a class="mega__item" href="/concepts/families">
+                      <span class="mega__n">Concept Families</span>
+                      <span class="mega__d">Acceptance, Worth, Control and Trust.</span></a></li>
+                    <li><a class="mega__item" href="/collections">
+                      <span class="mega__n">Interwoven Studies</span>
+                      <span class="mega__d">Concepts and Patterns woven together, in threes and sixes.</span></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </li>
 
         <li class="door">
-          <button class="door__btn" type="button" aria-expanded="false" aria-controls="p-courses">
-            Courses <i class="door__chev" aria-hidden="true"></i>
+          <button class="door__btn" type="button" aria-expanded="false" aria-controls="p-learn">
+            Learn <i class="door__chev" aria-hidden="true"></i>
           </button>
-          <div class="panel" id="p-courses" data-open="false">
-            <p class="panel__blurb">Every Course in an audio and a video edition.</p>
-            <ul class="panel__list">
-              <li><a class="panel__link" href="/courses/five-laws">
-                <span class="panel__label">The Five Laws of Manifestation</span>
-                <span class="panel__note">Free</span></a></li>
-              <li><a class="panel__link" href="/courses/foundation" aria-current="page">
-                <span class="panel__label">Foundation Studies</span>
-                <span class="panel__note">Ten weeks. Thirty Patterns of Behavior.</span></a></li>
-              <li><a class="panel__link" href="/courses/human-operating-system">
-                <span class="panel__label">The Human Operating System</span>
-                <span class="panel__note">A slide presentation, or the complete written study.</span></a></li>
-              <li><a class="panel__link" href="/courses/body-symbology">
-                <span class="panel__label">Body Symbology</span>
-                <span class="panel__note">Introductory, expanded, and the comprehensive reference.</span></a></li>
-              <li><a class="panel__link" href="/schools">
-                <span class="panel__label">The Schools of the Institute</span>
-                <span class="panel__note">Six Schools, in the order Michael recommends beginning.</span></a></li>
-            </ul>
+          <div class="panel" id="p-learn" data-open="false">
+            <div class="shell mega">
+              <div class="mega__lead">
+                <p class="mega__kicker">Learn</p>
+                <p class="mega__blurb">The taught material — courses in two editions,
+                   written study editions, and seminars by subject.</p>
+                <a class="mega__all" href="/courses">All four Courses</a>
+              </div>
+              <div class="mega__cols mega__cols--3">
+                <div class="mega__col">
+                  <p class="mega__cat">Courses</p>
+                  <ul class="mega__list">
+                    <li><a class="mega__item" href="/courses/five-laws"><span class="mega__n">The Five Laws of Manifestation</span><span class="mega__d">Free</span></a></li>
+                    <li><a class="mega__item" href="/courses/foundation" aria-current="page"><span class="mega__n">Foundation Studies</span></a></li>
+                    <li><a class="mega__item" href="/courses/human-operating-system"><span class="mega__n">The Human Operating System</span></a></li>
+                    <li><a class="mega__item" href="/courses/body-symbology"><span class="mega__n">Body Symbology</span></a></li>
+                  </ul>
+                </div>
+                <div class="mega__col">
+                  <p class="mega__cat">Books &amp; study editions</p>
+                  <ul class="mega__list">
+                    <li><a class="mega__item" href="/books/awakening"><span class="mega__n">Awakening</span></a></li>
+                    <li><a class="mega__item" href="/books/tj"><span class="mega__n">T.J.</span><span class="mega__d">Title to be confirmed.</span></a></li>
+                    <li><a class="mega__item" href="/books/workbooks"><span class="mega__n">Workbooks &amp; Awakening Portfolios</span></a></li>
+                    <li><a class="mega__item" href="/books/video-studies"><span class="mega__n">Video Studies &amp; Special Topics</span><span class="mega__d">Coming soon.</span></a></li>
+                    <li><a class="mega__item" href="/books"><span class="mega__n">All books</span></a></li>
+                  </ul>
+                </div>
+                <div class="mega__col">
+                  <p class="mega__cat">Live Events</p>
+                  <ul class="mega__list">
+                    <li><a class="mega__item" href="/events/arthritis"><span class="mega__n">Arthritis</span></a></li>
+                    <li><a class="mega__item" href="/events/cancer"><span class="mega__n">Cancer</span></a></li>
+                    <li><a class="mega__item" href="/events"><span class="mega__n">All seminars</span><span class="mega__d">Remaining subjects to be confirmed.</span></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </li>
 
         <li class="door">
-          <button class="door__btn" type="button" aria-expanded="false" aria-controls="p-books">
-            Books <i class="door__chev" aria-hidden="true"></i>
+          <button class="door__btn" type="button" aria-expanded="false" aria-controls="p-schools">
+            The Schools <i class="door__chev" aria-hidden="true"></i>
           </button>
-          <div class="panel" id="p-books" data-open="false">
-            <p class="panel__blurb">Written editions, workbooks and study materials.</p>
-            <ul class="panel__list">
-              <li><a class="panel__link" href="/books/awakening"><span class="panel__label">Awakening</span></a></li>
-              <li><a class="panel__link" href="/books/tj">
-                <span class="panel__label">T.J.</span>
-                <span class="panel__note">Title to be confirmed.</span></a></li>
-              <li><a class="panel__link" href="/books/workbooks"><span class="panel__label">Workbooks &amp; Awakening Portfolios</span></a></li>
-              <li><a class="panel__link" href="/books/video-studies">
-                <span class="panel__label">Video Studies &amp; Special Topics</span>
-                <span class="panel__note">Coming soon.</span></a></li>
-            </ul>
+          <div class="panel panel--motif" id="p-schools" data-open="false">
+            <div class="shell mega">
+              <div class="mega__lead">
+                <p class="mega__kicker">Deeper study</p>
+                <p class="mega__blurb">The Institute's most comprehensive areas of continuing
+                   education. Six open it, in the order Michael recommends beginning them.</p>
+                <a class="mega__all" href="/schools">All six Schools</a>
+              </div>
+              <div class="mega__cols mega__cols--2">
+                <div class="mega__col">
+                  <p class="mega__cat">Begin with these</p>
+                  <ul class="mega__list">
+                    <li><a class="mega__item" href="/schools/human-patterns"><span class="mega__x">01</span><span class="mega__n">School of Human Patterns</span></a></li>
+                    <li><a class="mega__item" href="/schools/human-operating-system"><span class="mega__x">02</span><span class="mega__n">School of the Human Operating System</span></a></li>
+                    <li><a class="mega__item" href="/schools/identity"><span class="mega__x">03</span><span class="mega__n">School of Identity</span></a></li>
+                  </ul>
+                </div>
+                <div class="mega__col">
+                  <p class="mega__cat">And then</p>
+                  <ul class="mega__list">
+                    <li><a class="mega__item" href="/schools/concepts-and-beliefs"><span class="mega__x">04</span><span class="mega__n">School of Concepts and Beliefs</span></a></li>
+                    <li><a class="mega__item" href="/schools/relationships"><span class="mega__x">05</span><span class="mega__n">School of Relationships</span></a></li>
+                    <li><a class="mega__item" href="/schools/consciousness"><span class="mega__x">06</span><span class="mega__n">School of Consciousness</span></a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- the one motif the brief allows, on the far side, drawn not placed -->
+              <div class="mega__motif" aria-hidden="true">
+                <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid meet" focusable="false">
+                  <g fill="none" stroke="currentColor" stroke-width="1"
+                     vector-effect="non-scaling-stroke" stroke-linecap="round">
+                    <circle cx="100" cy="100" r="78"/>
+                    <circle cx="100" cy="100" r="53"/>
+                    <path d="M100 178 L100 22"/>
+                    <path d="M100 88 C90 74 72 66 54 64"/>
+                    <path d="M100 112 C90 126 72 134 54 136"/>
+                    <path d="M100 88 C110 74 128 66 146 64"/>
+                    <path d="M100 112 C110 126 128 134 146 136"/>
+                  </g>
+                </svg>
+              </div>
+            </div>
           </div>
         </li>
 
-        <li class="door">
-          <button class="door__btn" type="button" aria-expanded="false" aria-controls="p-events">
-            Live Events <i class="door__chev" aria-hidden="true"></i>
-          </button>
-          <div class="panel" id="p-events" data-open="false">
-            <p class="panel__blurb">Seminars on Zoom, organised by subject.</p>
-            <ul class="panel__list">
-              <li><a class="panel__link" href="/events/arthritis"><span class="panel__label">Arthritis</span></a></li>
-              <li><a class="panel__link" href="/events/cancer"><span class="panel__label">Cancer</span></a></li>
-              <li><a class="panel__link" href="/events">
-                <span class="panel__label">All seminars</span>
-                <span class="panel__note">Remaining subjects to be confirmed.</span></a></li>
-            </ul>
-          </div>
+        <li class="door door--flat">
+          <a class="door__btn door__btn--gold" href="/membership">Membership</a>
         </li>
 
       </ul>
     </nav>
 
     <div class="rail">
-      <a class="rail__link" href="/membership">Membership</a>
-      <a class="rail__link" href="/account">Sign in</a>
-
       <button class="icon-btn" type="button" aria-label="Search Concepts, Courses and Patterns">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
           <circle cx="11" cy="11" r="7"></circle><path d="M16.5 16.5 21 21"></path>
         </svg>
       </button>
+
+      <a class="rail__link" href="/account">Sign in</a>
 
       <button class="icon-btn burger" type="button" id="burger" aria-expanded="false" aria-controls="drawer" aria-label="Open menu">
         <span aria-hidden="true"></span>
@@ -158,12 +252,24 @@
   </div>
 </header>
 
-<!-- ══ Mobile drawer ═══════════════════════════════════════════════════ -->
-<div class="drawer" id="drawer" data-open="false" role="dialog" aria-modal="true" aria-label="Menu">
+<!-- ══ Mobile navigation ════════════════════════════════════════════════
+     Near-full-screen and ivory, not a squeezed desktop bar. The categories
+     are small gold labels and the destinations are Fraunces, so the menu
+     reads as a contents page rather than a list of controls.
+
+     Flat rather than accordions: every destination that was reachable
+     before is still reachable, and none of them is now two taps away. -->
+<div class="drawer" id="drawer" data-open="false" role="dialog" aria-modal="true"
+     aria-label="Menu">
+
   <div class="shell drawer__top">
-    <a class="brand" href="/">
+    <a class="brand brand--drawer" href="/"
+       aria-label="The Institute of The Spiritual Science of Human Patterns — home">
       <span class="brand__mark" aria-hidden="true"></span>
-      <span class="brand__name">The Institute</span>
+      <span class="brand__id" aria-hidden="true">
+        <span class="brand__short">The Institute</span>
+        <span class="brand__sub">The Spiritual Science of Human Patterns</span>
+      </span>
     </a>
     <button class="icon-btn" type="button" id="drawer-close" aria-label="Close menu">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
@@ -172,58 +278,88 @@
     </button>
   </div>
 
-  <div class="shell drawer__body">
-    <div class="acc">
-      <button class="acc__btn" type="button" aria-expanded="false" aria-controls="d-begin">Begin Here <i class="acc__plus" aria-hidden="true"></i></button>
-      <div class="acc__panel" id="d-begin" data-open="false">
-        <a class="acc__link" href="/courses/five-laws">The Five Laws of Manifestation — free</a>
-        <a class="acc__link" href="/courses/human-operating-system">The Human Operating System</a>
-        <a class="acc__link" href="/begin/the-path">How the education fits together</a>
-      </div>
-    </div>
-    <div class="acc">
-      <button class="acc__btn" type="button" aria-expanded="false" aria-controls="d-concepts">Concepts <i class="acc__plus" aria-hidden="true"></i></button>
-      <div class="acc__panel" id="d-concepts" data-open="false">
-        <a class="acc__link" href="/concepts">Individual Concepts</a>
-        <a class="acc__link" href="/patterns">Patterns of Behavior</a>
-        <a class="acc__link" href="/concepts/families">Concept Families</a>
-        <a class="acc__link" href="/collections">Interwoven Studies</a>
-      </div>
-    </div>
-    <div class="acc">
-      <button class="acc__btn" type="button" aria-expanded="false" aria-controls="d-courses">Courses <i class="acc__plus" aria-hidden="true"></i></button>
-      <div class="acc__panel" id="d-courses" data-open="false">
-        <a class="acc__link" href="/courses/five-laws">The Five Laws of Manifestation — free</a>
-        <a class="acc__link" href="/courses/foundation" aria-current="page">Foundation Studies</a>
-        <a class="acc__link" href="/courses/human-operating-system">The Human Operating System</a>
-        <a class="acc__link" href="/courses/body-symbology">Body Symbology</a>
-        <a class="acc__link" href="/schools">The Schools of the Institute</a>
-      </div>
-    </div>
-    <div class="acc">
-      <button class="acc__btn" type="button" aria-expanded="false" aria-controls="d-books">Books <i class="acc__plus" aria-hidden="true"></i></button>
-      <div class="acc__panel" id="d-books" data-open="false">
-        <a class="acc__link" href="/books/awakening">Awakening</a>
-        <a class="acc__link" href="/books/tj">T.J.</a>
-        <a class="acc__link" href="/books/workbooks">Workbooks &amp; Awakening Portfolios</a>
-        <a class="acc__link" href="/books/video-studies">Video Studies &amp; Special Topics</a>
-      </div>
-    </div>
-    <div class="acc">
-      <button class="acc__btn" type="button" aria-expanded="false" aria-controls="d-events">Live Events <i class="acc__plus" aria-hidden="true"></i></button>
-      <div class="acc__panel" id="d-events" data-open="false">
-        <a class="acc__link" href="/events/arthritis">Arthritis</a>
-        <a class="acc__link" href="/events/cancer">Cancer</a>
-        <a class="acc__link" href="/events">All seminars</a>
-      </div>
-    </div>
+  <nav class="shell drawer__body" aria-label="Menu">
 
-    <div class="stack gap-4" style="margin-top:2.25rem">
-      <a class="btn btn--primary" href="/courses/five-laws">Start the free course</a>
-      <a class="btn btn--secondary" href="/membership">Membership</a>
-      <a class="arrow" href="/account">Sign in</a>
-    </div>
-  </div>
+    <section class="dsec">
+      <h2 class="dsec__cat">Begin here</h2>
+      <ul class="dsec__list">
+        <li><a class="dlink" href="/courses/five-laws">The Five Laws of Manifestation <em>Free</em></a></li>
+        <li><a class="dlink" href="/courses/foundation" aria-current="page">Foundation Studies</a></li>
+        <li><a class="dlink" href="/courses/human-operating-system">The Human Operating System</a></li>
+        <li><a class="dlink" href="/begin/the-path">The path through the Institute</a></li>
+      </ul>
+    </section>
+
+    <section class="dsec">
+      <h2 class="dsec__cat">Explore</h2>
+      <ul class="dsec__list">
+        <li><a class="dlink" href="/concepts">Individual Concepts</a></li>
+        <li><a class="dlink" href="/patterns">Patterns of Behavior</a></li>
+        <li><a class="dlink" href="/concepts/families">Concept Families</a></li>
+        <li><a class="dlink" href="/collections">Interwoven Studies</a></li>
+      </ul>
+    </section>
+
+    <section class="dsec">
+      <h2 class="dsec__cat">Learn</h2>
+
+      <p class="dsec__sub">Courses</p>
+      <ul class="dsec__list">
+        <li><a class="dlink" href="/courses/five-laws">The Five Laws of Manifestation <em>Free</em></a></li>
+        <li><a class="dlink" href="/courses/foundation" aria-current="page">Foundation Studies</a></li>
+        <li><a class="dlink" href="/courses/human-operating-system">The Human Operating System</a></li>
+        <li><a class="dlink" href="/courses/body-symbology">Body Symbology</a></li>
+        <li><a class="dlink" href="/courses">All four Courses</a></li>
+      </ul>
+
+      <p class="dsec__sub">Books &amp; study editions</p>
+      <ul class="dsec__list">
+        <li><a class="dlink" href="/books/awakening">Awakening</a></li>
+        <li><a class="dlink" href="/books/tj">T.J.</a></li>
+        <li><a class="dlink" href="/books/workbooks">Workbooks &amp; Awakening Portfolios</a></li>
+        <li><a class="dlink" href="/books/video-studies">Video Studies &amp; Special Topics</a></li>
+        <li><a class="dlink" href="/books">All books</a></li>
+      </ul>
+
+      <p class="dsec__sub">Live Events</p>
+      <ul class="dsec__list">
+        <li><a class="dlink" href="/events/arthritis">Arthritis</a></li>
+        <li><a class="dlink" href="/events/cancer">Cancer</a></li>
+        <li><a class="dlink" href="/events">All seminars</a></li>
+      </ul>
+    </section>
+
+    <section class="dsec">
+      <h2 class="dsec__cat">The Schools</h2>
+      <ul class="dsec__list">
+        <li><a class="dlink" href="/schools/human-patterns"><i>01</i> School of Human Patterns</a></li>
+        <li><a class="dlink" href="/schools/human-operating-system"><i>02</i> School of the Human Operating System</a></li>
+        <li><a class="dlink" href="/schools/identity"><i>03</i> School of Identity</a></li>
+        <li><a class="dlink" href="/schools/concepts-and-beliefs"><i>04</i> School of Concepts and Beliefs</a></li>
+        <li><a class="dlink" href="/schools/relationships"><i>05</i> School of Relationships</a></li>
+        <li><a class="dlink" href="/schools/consciousness"><i>06</i> School of Consciousness</a></li>
+        <li><a class="dlink" href="/schools">All six Schools</a></li>
+      </ul>
+    </section>
+
+    <section class="dsec dsec--gold">
+      <h2 class="dsec__cat">Membership</h2>
+      <ul class="dsec__list">
+        <li><a class="dlink dlink--gold" href="/membership">Compare the three memberships</a></li>
+      </ul>
+    </section>
+
+    <section class="dsec dsec--quiet">
+      <h2 class="dsec__cat">The Institute</h2>
+      <ul class="dsec__list">
+        <li><a class="dlink" href="/about">What the Institute is</a></li>
+        <li><a class="dlink" href="/michael">Michael Schwartz, N.D.</a></li>
+        <li><a class="dlink" href="/contact">Contact</a></li>
+        <li><a class="dlink" href="/account">Sign in</a></li>
+      </ul>
+    </section>
+
+  </nav>
 </div>
 
 <main id="main">
@@ -474,7 +610,7 @@
   </div>
 </footer>
 
-<script src="../../app.js?v=11"></script>
+<script src="../../app.js?v=12"></script>
 
 <div class="mockbar">
   <div class="shell mockbar__in">
