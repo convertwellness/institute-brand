@@ -7,6 +7,11 @@ so there is something real to review. Replace the file at the same path and noth
 to change — the containers are responsive, the crops are handled by CSS, and no image carries
 baked-in text.
 
+**A note on what a good hero costs in scrim.** Sara's image needed far less
+darkening than the one generated before it, because its left third is genuinely dark. The
+gradient dropped from 92% to 62% and the mountains came back. That is the practical value of
+the safe area below: the darker the left, the more of the picture survives.
+
 **Two rules that apply to every asset.**
 
 1. **No text, lettering, watermark or signature in the image.** All type is live HTML.
@@ -21,13 +26,13 @@ baked-in text.
 |---|---|
 | **Section** | Hero — the page's first immersive moment |
 | **Purpose** | The Tree of Life as symbolic focal point against a night sky. Expansive and contemplative, not psychedelic. Replaces the glowing human silhouette. |
-| **Desktop** | 2400 × 1350 |
+| **Desktop** | 2200 × 1238 (source 1672 × 941) |
 | **Mobile** | Same file. CSS crops it — no second asset needed |
 | **Aspect ratio** | 16 : 9 |
 | **Object position** | `62% 50%` — the frame is pulled right so the tree clears the type |
 | **Safe area** | **The left 42% must stay quiet and dark.** The headline, body, both buttons and the supporting line sit there. A CSS gradient darkens it further, but it cannot rescue a busy or bright left third. Keep the subject right of centre. |
 | **Alt-text intent** | Describe what is actually in the frame — the tree, the sky, the horizon. Not "spirituality" or "consciousness". |
-| **Current file** | Temporary. Ancient tree in silhouette under a starfield, Milky Way low right. |
+| **Current file** | **Sara's, 23 Sep — in use.** A great tree lit from within on a rocky outcrop, spiral galaxy above, valley of mountains, mist and water falling away left. Measured: white type over the left 42% reads 14.7:1 at the 90th percentile and 9.6:1 at the 99th, so the quiet zone is genuinely quiet and the scrim could be lightened from 92% to 62% — the landscape now shows through instead of being hidden. |
 
 ---
 
@@ -37,13 +42,13 @@ baked-in text.
 |---|---|
 | **Section** | Begin Where You Are |
 | **Purpose** | A restrained landscape anchoring the five waypoints. Atmosphere, not subject. |
-| **Desktop** | 2400 × 780 |
+| **Desktop** | 2400 × 1047 |
 | **Mobile** | Same file, full width at 14% opacity |
-| **Aspect ratio** | ~ 3 : 1, flexible — it is masked on all four edges |
+| **Aspect ratio** | ~ 2.3 : 1, flexible — it is masked on all four edges |
 | **Placement** | Held to the **right 58%**, faded in from the left, veiled in cream, 22% opacity |
 | **Safe area** | **The left 42% is type.** All five waypoints and the closing line live there. Anything busy on the left will show through the veil. A horizon low in the frame works best. |
 | **Alt-text intent** | Decorative — ships with `alt=""` and `aria-hidden`. The section reads identically without it. |
-| **Current file** | Temporary — the lower band of the hero image, reused so the two agree. Wants its own landscape: a horizon at dawn or dusk, no tree, so it does not repeat the hero. |
+| **Current file** | Cut from the left of the hero frame — the mountains, lake and mist, with the tree outside the crop. Distinct from the hero without being a second commission, and they agree because they are the same photograph. Replace if you want the path to carry its own place. |
 
 ---
 

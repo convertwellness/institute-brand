@@ -1013,11 +1013,11 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
   content: ""; position: absolute; inset: 0; z-index: -1;
   background:
     linear-gradient(100deg,
-      color-mix(in srgb, var(--navy) 92%, transparent) 0%,
-      color-mix(in srgb, var(--navy) 80%, transparent) 34%,
-      color-mix(in srgb, var(--navy) 28%, transparent) 64%,
+      color-mix(in srgb, var(--navy) 62%, transparent) 0%,
+      color-mix(in srgb, var(--navy) 48%, transparent) 36%,
+      color-mix(in srgb, var(--navy) 14%, transparent) 66%,
       transparent 88%),
-    linear-gradient(to bottom, transparent 62%, color-mix(in srgb, var(--navy) 55%, transparent) 100%);
+    linear-gradient(to bottom, transparent 66%, color-mix(in srgb, var(--navy) 45%, transparent) 100%);
 }
 @media (max-width: 860px){
   /* stacked, the type sits over the middle of the picture, so the scrim goes flat */
@@ -1033,6 +1033,7 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
 .hero__copy{ max-width: 34rem; display: flex; flex-direction: column; gap: 1.35rem; }
 /* On a phone the call to action was landing 7px above the fold — true, but no
    margin at all once browser chrome is counted. Tightened so it clears. */
+
 @media (max-width: 560px){
   .hero{ min-height: 0; }
   .hero__inner{ padding-block: 3rem 3.25rem; }
@@ -1062,6 +1063,25 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
   margin: 0; font-size: .95rem; color: color-mix(in srgb, #FFFFFF 72%, transparent);
   padding-top: 1rem; border-top: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
   max-width: 28rem;
+}
+
+/* Laptops are wide and short. At 1440x900 the hero ran to 1058px, which put
+   the supporting line under the fold and left the call to action 42px clear.
+   Trimmed on height rather than width, since that is the actual constraint. */
+@media (min-width: 561px) and (max-height: 940px){
+  .hero{ min-height: 0; }
+  .hero__inner{ padding-block: clamp(2.5rem, 6vh, 4rem); }
+  .hero__copy{ gap: 1.1rem; }
+  .hero__h{ font-size: clamp(2.3rem, 4.2vw, 3.4rem); }
+}
+/* 1366x768 is still a common laptop. Tighter again, so the buttons clear. */
+@media (min-width: 561px) and (max-height: 800px){
+  .hero__inner{ padding-block: 2rem 2.25rem; }
+  .hero__copy{ gap: .8rem; max-width: 32rem; }
+  .hero__h{ font-size: clamp(1.95rem, 3.3vw, 2.5rem); }
+  .hero__body p{ font-size: .98rem; line-height: 1.5; }
+  .hero__eyebrow{ font-size: .72rem; }
+  .hero__foot{ padding-top: .7rem; font-size: .88rem; }
 }
 
 /* ── Buttons for the dark grounds ──────────────────────────────────────
