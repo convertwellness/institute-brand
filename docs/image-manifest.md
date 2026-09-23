@@ -62,8 +62,8 @@ the safe area below: the darker the left, the more of the picture survives.
 | **Section** | The Human Operating System |
 | **Delivered** | 1024px masters, shipped at 320px, pure white on transparent |
 | **How they take colour** | CSS masks. The shape comes from the file, the colour from a token. That is why six different colours cost one line of CSS each and need no new files. |
-| **Colours on the dark inset** | Concept `#E8BE45` gold · Belief `#7E9BE8` indigo · Pattern `#2FC4B8` teal · Emotion `#F0876E` coral · Behavior `#A98BE0` violet · Life Result `#E8BE45` gold |
-| **Note** | These are lifted from the brief and **brightened for the navy ground**. The brief's own values read correctly on cream but sit too dark on navy; these are the same hues at working luminance. |
+| **Colours on cream** | Concept `#B58C16` gold · Belief `#3B4E96` indigo · Pattern `#0FA399` teal · Emotion `#E2715A` coral · Behavior `#7A5CB5` violet · Life Result `#B58C16` gold |
+| **Note** | Tuned to exactly **3:1 on cream** — the threshold for a graphic that supplements a text label, which these do, since every icon sits beside its name. At that target the brief's hues survive intact: indigo and violet unchanged, teal and coral shifted by under one per cent, and gold moved **only in lightness**, `#E8BE45` to `#B58C16`. Same hue, still warm gold, not olive. |
 
 ---
 
@@ -98,11 +98,12 @@ large text. It is live on the navy inset, where it is 5.82 : 1. A `--teal-ink` t
 (`#0C827A`, 4.51 : 1) exists for the rare case it must sit on the page, but it is noticeably
 duller and I have not used it yet.
 
-**3 · The dark inset under the Operating System is a consequence of 1 and 2**, not a
-decorative choice. The brief's six stage colours only exist at full strength on a dark ground.
-Forced onto cream, gold becomes olive `#906F12` and coral becomes a hot red `#D04225`.
-`CLAUDE.md` already anticipated this: *"diagrams keep a dark inset because they need the whole
-gold."*
+**3 · The Operating System is light — resolved, 23 Sep.** The first pass put the diagram on a
+dark inset because gold and teal fail on cream as *text*. Sara's direction was to keep the
+section light, and on a second look the inset was answering the wrong question: these icons
+each sit beside their name, so they supplement a label rather than carrying meaning alone.
+That is the 3:1 graphics threshold, not 4.5:1 — and at 3:1 the hues hold. Only gold needed
+moving, and only in lightness. The section is cream, with no inset, no discs and no cards.
 
 **4 · Two system-wide changes, made deliberately.** The brief specifies Inter and a cream
 ground; the site ran Source Sans 3 on white. Both are brand-system changes rather than page

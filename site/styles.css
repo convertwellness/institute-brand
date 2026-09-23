@@ -1104,136 +1104,158 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
   border-color: var(--gold); color: var(--gold);
 }
 
-/* ── The Human Operating System ─────────────────────────────────────────
-   Cream editorial around a dark inset. The inset is not decoration: flat Gold
-   is 1.71:1 on cream and Teal 2.88:1, both failing, while on this navy they
-   are 9.8 and 5.8. The brief's six stage colours only exist at full strength
-   on a dark ground, which is what CLAUDE.md means by "diagrams keep a dark
-   inset because they need the whole gold". */
+/* ── The Human Operating System ─────────────────────────────────
+   Light and editorial, against the dark hero above it. No inset, no discs, no
+   cards: the six stages are icons and names on the page, joined by one hairline.
 
-.os{ background: var(--paper); }
-.os__head{ max-width: 46rem; display: grid; gap: 1.1rem; }
+   On colour. Flat Gold is 1.71:1 on cream and cannot carry a mark on its own.
+   But each icon sits beside its name, so it supplements a text label rather
+   than carrying the meaning — the threshold is 3:1 for graphics, not 4.5:1 for
+   text. Tuned to exactly 3:1, every hue in the brief survives with no
+   measurable shift: teal and coral move under one per cent, indigo and violet
+   not at all, and gold moves only in lightness. */
+
+.os{ background: var(--paper); position: relative; overflow: hidden; }
+
+/* the only geometry: two hairline circles, near-invisible, to stop the section
+   reading as a plain slab. 4% of bronze on cream. */
+.os::before, .os::after{
+  content: ""; position: absolute; border-radius: 50%; pointer-events: none;
+  border: 1px solid color-mix(in srgb, var(--bronze) 12%, transparent);
+  opacity: .45;
+}
+/* Both are pushed far enough out that only an arc grazes the edge. The first
+   pass had the lower circle crossing the readout, which read as an accident
+   rather than as geometry. */
+.os::before{ width: 58rem; height: 58rem; right: -26rem; top: -20rem; }
+.os::after { width: 40rem; height: 40rem; left: -27rem; bottom: -16rem; }
+
+.os__head{ position: relative; max-width: 46rem; display: grid; gap: 1.1rem; }
 .os__intro{ display: grid; gap: .9rem; max-width: 40rem; margin-top: .4rem; }
 .os__q{
   font-family: var(--display);
   font-variation-settings: "opsz" 36, "SOFT" 0, "WONK" 0;
-  font-size: clamp(1.15rem, 1.6vw, 1.42rem); line-height: 1.38;
+  font-size: clamp(1.2rem, 1.7vw, 1.5rem); line-height: 1.38;
   color: var(--ink-strong); margin: 0;
 }
 .os__intro p{ margin: 0; }
 
-.cycle{
-  margin-top: clamp(2.5rem, 5vw, 4rem);
-  background: var(--navy); color: #FFFFFF;
-  padding: clamp(2rem, 4.5vw, 3.75rem) clamp(1.25rem, 4vw, 3.5rem);
-  position: relative; overflow: hidden;
-}
-/* one faint orbital line, to keep the inset from reading as a plain box */
-.cycle::before{
-  content: ""; position: absolute; z-index: 0;
-  width: 44rem; height: 44rem; border-radius: 50%;
-  border: 1px solid color-mix(in srgb, var(--gold) 13%, transparent);
-  right: -16rem; top: -20rem; pointer-events: none;
-}
+.cycle{ position: relative; margin-top: clamp(3rem, 6.5vw, 5.5rem); }
 
 .cycle__flow{
-  list-style: none; margin: 0; padding: 0; position: relative; z-index: 1;
-  display: grid; gap: clamp(1.25rem, 2.4vw, 2rem);
-  grid-template-columns: 1fr;
+  list-style: none; margin: 0; padding: 0; position: relative;
+  display: grid; grid-template-columns: 1fr;
+  gap: clamp(1.9rem, 3vw, 2.4rem);
 }
 @media (min-width: 900px){
-  .cycle__flow{ grid-template-columns: repeat(6, 1fr); align-items: start; }
+  .cycle__flow{
+    grid-template-columns: repeat(6, 1fr);
+    gap: clamp(.75rem, 1.6vw, 1.5rem); align-items: start;
+  }
 }
 
 .stage{ position: relative; }
-/* the connecting line: horizontal between discs on desktop, vertical stacked */
+
+/* the hairline between stages, with a small chevron riding it */
+.stage + .stage::before,
+.stage + .stage::after{ content: ""; position: absolute; pointer-events: none; }
+/* stacked: a vertical run above each stage */
 .stage + .stage::before{
-  content: ""; position: absolute; z-index: 0;
-  background: color-mix(in srgb, var(--gold) 38%, transparent);
-  left: 50%; translate: -50% 0; top: -1.1rem; width: 1px; height: 1.1rem;
+  left: 1.75rem; translate: -50% 0; top: -1.9rem; width: 1px; height: 1.9rem;
+  background: color-mix(in srgb, var(--bronze) 42%, transparent);
+}
+.stage + .stage::after{
+  left: 1.75rem; translate: -50% 0; top: -.72rem;
+  width: 6px; height: 6px; rotate: 45deg;
+  border-right: 1px solid var(--bronze); border-bottom: 1px solid var(--bronze);
 }
 @media (min-width: 900px){
   .stage + .stage::before{
-    left: auto; right: calc(50% + 1.9rem); top: 1.9rem; translate: 0 0;
-    width: calc(100% - 3.8rem); height: 1px;
+    left: auto; right: calc(50% + 2.4rem); top: 1.72rem; translate: 0 0;
+    width: calc(100% - 4.8rem); height: 1px;
+  }
+  .stage + .stage::after{
+    left: auto; right: calc(50% + 2.2rem); top: 1.53rem; translate: 0 0;
+    rotate: -45deg;
   }
 }
 
 .stage .node{
-  display: grid; justify-items: center; gap: .7rem; cursor: pointer;
-  position: relative; z-index: 1; text-align: center;
+  display: grid; justify-items: start; gap: .85rem; cursor: pointer;
+  position: relative; text-align: left;
 }
-.stage__disc{
-  width: 3.8rem; height: 3.8rem; display: grid; place-items: center;
-  border-radius: 50%; background: var(--navy);
-  border: 1px solid color-mix(in srgb, var(--gold) 32%, transparent);
-  transition: border-color var(--t-colour), background-color var(--t-colour),
-              transform var(--t-move);
-}
+@media (min-width: 900px){ .stage .node{ justify-items: center; text-align: center; } }
+
 .stage__icon{
-  width: 2.1rem; height: 2.1rem; display: block;
-  background: var(--stage-c, var(--gold));
+  width: 3.5rem; height: 3.5rem; display: block;
+  background: var(--stage-c);
   -webkit-mask: var(--i) no-repeat center / contain;
           mask: var(--i) no-repeat center / contain;
+  transition: scale var(--t-move), background-color var(--t-colour);
 }
 .stage__name{
-  font-size: .82rem; font-weight: 500; letter-spacing: .09em; text-transform: uppercase;
-  color: color-mix(in srgb, #FFFFFF 78%, transparent);
-  transition: color var(--t-colour);
+  font-size: .76rem; font-weight: 600; letter-spacing: .11em; text-transform: uppercase;
+  color: var(--ink-quiet); transition: color var(--t-colour);
 }
-.stage .node:hover .stage__disc,
-.stage .node:focus-visible .stage__disc,
-.stage .node.is-active .stage__disc{
-  border-color: var(--stage-c, var(--gold));
-  background: color-mix(in srgb, var(--stage-c, var(--gold)) 12%, var(--navy));
-  transform: translateY(-2px);
-}
+.stage .node:hover .stage__icon,
+.stage .node:focus-visible .stage__icon,
+.stage .node.is-active .stage__icon{ scale: 1.07; }
 .stage .node:hover .stage__name,
-.stage .node.is-active .stage__name{ color: #FFFFFF; }
-.stage .node:focus-visible{ outline: 2px solid var(--gold); outline-offset: 6px; }
+.stage .node.is-active .stage__name{ color: var(--ink-strong); }
+.stage .node:focus-visible{ outline: 2px solid var(--accent); outline-offset: 8px; }
 
-/* the six, each its own colour — the icons are masks, so this is one line each */
-.stage .node[data-term="concept"]     { --stage-c: #E8BE45; --i: url("assets/icons/hos-concept.png"); }
-.stage .node[data-term="belief"]      { --stage-c: #7E9BE8; --i: url("assets/icons/hos-belief.png"); }
-.stage .node[data-term="pattern"]     { --stage-c: #2FC4B8; --i: url("assets/icons/hos-pattern.png"); }
-.stage .node[data-term="emotion"]     { --stage-c: #F0876E; --i: url("assets/icons/hos-emotion.png"); }
-.stage .node[data-term="behavior"]    { --stage-c: #A98BE0; --i: url("assets/icons/hos-behavior.png"); }
-.stage .node[data-term="life-result"] { --stage-c: #E8BE45; --i: url("assets/icons/hos-life-result.png"); }
+/* the six, tuned to 3:1 on cream — the hues are the brief's, unshifted */
+.stage .node[data-term="concept"]     { --stage-c: #B58C16; --i: url("assets/icons/hos-concept.png"); }
+.stage .node[data-term="belief"]      { --stage-c: #3B4E96; --i: url("assets/icons/hos-belief.png"); }
+.stage .node[data-term="pattern"]     { --stage-c: #0FA399; --i: url("assets/icons/hos-pattern.png"); }
+.stage .node[data-term="emotion"]     { --stage-c: #E2715A; --i: url("assets/icons/hos-emotion.png"); }
+.stage .node[data-term="behavior"]    { --stage-c: #7A5CB5; --i: url("assets/icons/hos-behavior.png"); }
+.stage .node[data-term="life-result"] { --stage-c: #B58C16; --i: url("assets/icons/hos-life-result.png"); }
 
-/* the return leg, drawn rather than stated with an arrow */
+/* the return leg — drawn, so the loop closes without a sentence explaining it */
 .cycle__return{
-  position: relative; z-index: 1; margin: 2.25rem 0 0; text-align: center;
-  font-size: .78rem; letter-spacing: .14em; text-transform: uppercase;
-  color: color-mix(in srgb, var(--gold) 82%, #FFFFFF);
+  position: relative; margin: 1.4rem 0 0; padding-inline-start: 3.6rem;
+  font-size: .72rem; letter-spacing: .13em; text-transform: uppercase;
+  color: var(--ink-quiet);
+}
+.cycle__return::before{
+  content: ""; position: absolute; left: 1.75rem; top: -1.9rem; bottom: .45rem;
+  width: 1.5rem;
+  border: 1px solid color-mix(in srgb, var(--bronze) 42%, transparent);
+  border-top: 0; border-right: 0; border-radius: 0 0 0 1rem;
+  translate: -50% 0;
 }
 @media (min-width: 900px){
   .cycle__return{
-    margin-top: 0; padding-top: 2.6rem;
+    padding: 2.9rem 0 0; margin-top: 0; text-align: center;
   }
   .cycle__return::before{
-    content: ""; position: absolute; left: 8.33%; right: 8.33%; top: 0; height: 2.2rem;
-    border: 1px solid color-mix(in srgb, var(--gold) 38%, transparent);
-    border-top: 0; border-radius: 0 0 4rem 4rem;
+    left: 8.333%; right: 8.333%; top: 0; bottom: auto; width: auto; height: 2.1rem;
+    border: 1px solid color-mix(in srgb, var(--bronze) 42%, transparent);
+    border-top: 0; border-radius: 0 0 3rem 3rem; translate: 0 0;
   }
-  .cycle__return span{ background: var(--navy); padding: 0 .9rem; position: relative; }
+  /* the arrowhead, landing back on Concept */
+  .cycle__return::after{
+    content: ""; position: absolute; left: 8.333%; top: 1.55rem;
+    width: 6px; height: 6px; rotate: 135deg; translate: -50% 0;
+    border-right: 1px solid var(--bronze); border-bottom: 1px solid var(--bronze);
+  }
+  .cycle__return span{ background: var(--paper); padding: 0 .9rem; position: relative; }
 }
 
+/* the readout stays — it is where three unwritten stages admit it */
 .cycle .readout{
-  position: relative; z-index: 1;
-  margin-top: clamp(1.75rem, 3vw, 2.5rem); padding-top: 1.5rem;
-  border-top: 1px solid color-mix(in srgb, #FFFFFF 15%, transparent);
-  min-height: 5.5rem;
+  position: relative; margin-top: clamp(2rem, 3.5vw, 3rem); padding-top: 1.4rem;
+  border-top: 1px solid var(--rule); min-height: 5rem; max-width: 46rem;
 }
-.cycle .readout__idle{ color: color-mix(in srgb, #FFFFFF 60%, transparent); margin: 0; }
-.cycle .readout__idle span{ color: var(--gold); }
+.cycle .readout__idle{ color: var(--ink-quiet); margin: 0; }
+.cycle .readout__idle span{ color: var(--bronze); }
 .cycle .readout__term{
-  font-size: .78rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
-  color: var(--gold); margin: 0 0 .4rem;
+  font-size: .72rem; font-weight: 600; letter-spacing: .13em; text-transform: uppercase;
+  color: var(--bronze); margin: 0 0 .4rem;
 }
-.cycle .readout__text{ margin: 0; color: color-mix(in srgb, #FFFFFF 88%, transparent); max-width: 44rem; }
-.cycle .readout__needs{
-  margin: 0; color: color-mix(in srgb, #FFFFFF 62%, transparent); font-style: italic;
-}
+.cycle .readout__text{ margin: 0; color: var(--ink); }
+.cycle .readout__needs{ margin: 0; color: var(--ink-quiet); font-style: italic; }
 
 /* ── Begin where you are ────────────────────────────────────────────────
    Five waypoints climbing left to right, joined by one thin gold line. Not
