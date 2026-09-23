@@ -52,20 +52,28 @@ the safe area below: the darker the left, the more of the picture survives.
 
 ---
 
-## 3 · The six Operating System icons — already final
+## 3 · The six Operating System icons — final, 23 Sep
 
-`hos-concept.png` · `hos-belief.png` · `hos-pattern.png` · `hos-emotion.png` ·
-`hos-behavior.png` · `hos-life-result.png`
+`hos-concept.webp` · `hos-belief.webp` · `hos-pattern.webp` · `hos-emotion.webp` ·
+`hos-behavior.webp` · `hos-life-result.webp`
 
 | | |
 |---|---|
 | **Section** | The Human Operating System |
-| **Delivered** | 1024px masters, shipped at 320px, pure white on transparent |
-| **How they take colour** | CSS masks. The shape comes from the file, the colour from a token. That is why six different colours cost one line of CSS each and need no new files. |
-| **Colours on cream** | Concept `#B58C16` gold · Belief `#3B4E96` indigo · Pattern `#0FA399` teal · Emotion `#E2715A` coral · Behavior `#7A5CB5` violet · Life Result `#B58C16` gold |
-| **Note** | Tuned to exactly **3:1 on cream** — the threshold for a graphic that supplements a text label, which these do, since every icon sits beside its name. At that target the brief's hues survive intact: indigo and violet unchanged, teal and coral shifted by under one per cent, and gold moved **only in lightness**, `#E8BE45` to `#B58C16`. Same hue, still warm gold, not olive. |
+| **Delivered** | 1254 × 1254 RGBA, full colour and dimensional. Masters kept at source size in `assets/masters/icons/stage/`; shipped at 480 × 480 WebP, ~55 KB each, 334 KB for the set |
+| **Subjects** | 01 Concept, gold compass star · 02 Belief, blue profile filled with a constellation · 03 Pattern, teal figure of eight · 04 Emotion, coral heart · 05 Behavior, violet winding path · 06 Life Result, gold sun |
+| **Rendered at** | 130px at 1440 · 123px at 1366 · 92px at 1024 · 100px at 768 · 72px at 390. Two clamps, not one: stacked they scale off viewport width steeply, six-across they cannot. |
+| **Rules honoured** | Shipped as real `<img>` with explicit width and height, `object-fit: contain`, no CSS recolouring, no background behind them, outer beaded geometry never cropped, never upscaled past 480 |
+| **Alt text** | Each describes its own artwork — "a teal figure of eight, one continuous line crossing itself at the centre" — rather than naming the doctrine, which the adjacent label already carries |
 
----
+**The earlier monochrome masks** (`hos-*.png`) are superseded and no longer referenced.
+
+**No descriptors under the names.** The brief allowed an optional short descriptor and asked
+to check the source first. Michael has written Concept, Belief and Pattern; Emotion, Behavior
+and Life Result have nothing. Rather than label three and leave three bare — or invent the
+missing three, which would be writing doctrine — the icon row carries number and name only,
+and the readout beneath reveals his sentence where one exists and says plainly where one does
+not.
 
 ## Still to come — later passes
 

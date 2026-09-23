@@ -1105,136 +1105,127 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
 }
 
 /* ── The Human Operating System ─────────────────────────────────
-   Light and editorial, against the dark hero above it. No inset, no discs, no
-   cards: the six stages are icons and names on the page, joined by one hairline.
+   Cosmos above, clarity here. The six icons carry the whole section, so nothing
+   competes with them: no cards, no discs, no borders, no background geometry,
+   no recolouring. Ivory, air, and one gold thread running through. */
 
-   On colour. Flat Gold is 1.71:1 on cream and cannot carry a mark on its own.
-   But each icon sits beside its name, so it supplements a text label rather
-   than carrying the meaning — the threshold is 3:1 for graphics, not 4.5:1 for
-   text. Tuned to exactly 3:1, every hue in the brief survives with no
-   measurable shift: teal and coral move under one per cent, indigo and violet
-   not at all, and gold moves only in lightness. */
+.os{ background: var(--paper); }
+.section.os{ padding-block: clamp(4.5rem, 10vw, 9rem); }
 
-.os{ background: var(--paper); position: relative; overflow: hidden; }
-
-/* the only geometry: two hairline circles, near-invisible, to stop the section
-   reading as a plain slab. 4% of bronze on cream. */
-.os::before, .os::after{
-  content: ""; position: absolute; border-radius: 50%; pointer-events: none;
-  border: 1px solid color-mix(in srgb, var(--bronze) 12%, transparent);
-  opacity: .45;
+/* Introduction — two columns on desktop, stacked below */
+.os__head{ display: grid; gap: clamp(1.5rem, 3vw, 3.5rem); grid-template-columns: 1fr; }
+@media (min-width: 900px){
+  .os__head{ grid-template-columns: 1.05fr 1fr; align-items: start; gap: clamp(2.5rem, 6vw, 6rem); }
 }
-/* Both are pushed far enough out that only an arc grazes the edge. The first
-   pass had the lower circle crossing the readout, which read as an accident
-   rather than as geometry. */
-.os::before{ width: 58rem; height: 58rem; right: -26rem; top: -20rem; }
-.os::after { width: 40rem; height: 40rem; left: -27rem; bottom: -16rem; }
-
-.os__head{ position: relative; max-width: 46rem; display: grid; gap: 1.1rem; }
-.os__intro{ display: grid; gap: .9rem; max-width: 40rem; margin-top: .4rem; }
+.os__headL{ display: grid; gap: 1rem; align-content: start; }
+.os__headR{ display: grid; gap: .9rem; max-width: 34rem; align-content: start; }
+.os__headR p{ margin: 0; }
 .os__q{
   font-family: var(--display);
   font-variation-settings: "opsz" 36, "SOFT" 0, "WONK" 0;
-  font-size: clamp(1.2rem, 1.7vw, 1.5rem); line-height: 1.38;
-  color: var(--ink-strong); margin: 0;
+  font-size: clamp(1.18rem, 1.6vw, 1.42rem); line-height: 1.4; color: var(--ink-strong);
 }
-.os__intro p{ margin: 0; }
 
-.cycle{ position: relative; margin-top: clamp(3rem, 6.5vw, 5.5rem); }
+/* The system ------------------------------------------------------------ */
+
+.cycle{
+  /* Stacked, there is a whole column of width to spend, so the icons scale off
+     viewport width more steeply. Six across, they cannot. Two clamps, not one. */
+  --icon: clamp(4.5rem, 13vw, 6.5rem);      /* 72 at 390, 100 at 768 */
+  --thread: color-mix(in srgb, var(--bronze) 38%, transparent);
+  position: relative; margin-top: clamp(3.5rem, 7vw, 6rem);
+}
 
 .cycle__flow{
-  list-style: none; margin: 0; padding: 0; position: relative;
+  list-style: none; margin: 0; padding: 0;
   display: grid; grid-template-columns: 1fr;
-  gap: clamp(1.9rem, 3vw, 2.4rem);
+  gap: clamp(2rem, 4vw, 2.75rem); justify-items: center;
 }
-@media (min-width: 900px){
+@media (min-width: 880px){
+  .cycle{ --icon: clamp(5.5rem, 9vw, 9rem); }   /* 92 at 1024, 130 at 1440 */
   .cycle__flow{
     grid-template-columns: repeat(6, 1fr);
-    gap: clamp(.75rem, 1.6vw, 1.5rem); align-items: start;
+    gap: clamp(.5rem, 1.4vw, 1.25rem); align-items: start;
   }
 }
 
-.stage{ position: relative; }
+.stage{ position: relative; width: 100%; display: grid; justify-items: center; }
 
-/* the hairline between stages, with a small chevron riding it */
+.stage .node{
+  display: grid; justify-items: center; gap: .85rem;
+  cursor: pointer; position: relative; text-align: center;
+}
+.stage__icon{
+  width: var(--icon); height: var(--icon);
+  object-fit: contain; display: block;
+  opacity: .93;
+  transition: opacity var(--t-colour), scale var(--t-move);
+}
+.stage__label{ display: grid; gap: .28rem; justify-items: center; }
+.stage__n{
+  font-family: var(--display);
+  font-variation-settings: "opsz" 24, "SOFT" 0, "WONK" 0;
+  font-size: .82rem; color: var(--bronze); font-variant-numeric: tabular-nums;
+}
+.stage__name{
+  font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--ink-quiet); transition: color var(--t-colour);
+}
+
+/* interaction — nearly invisible on purpose */
+.stage .node:hover .stage__icon,
+.stage .node:focus-visible .stage__icon,
+.stage .node.is-active .stage__icon{ opacity: 1; scale: 1.04; }
+.stage .node:hover .stage__name,
+.stage .node.is-active .stage__name{ color: var(--ink-strong); }
+.stage .node:focus-visible{ outline: 2px solid var(--accent); outline-offset: 10px; border-radius: 2px; }
+
+/* The thread ------------------------------------------------------------
+   Drawn only in the gaps, so it meets the icons' own outer nodes rather than
+   crossing their artwork. One hairline, one small chevron. */
 .stage + .stage::before,
 .stage + .stage::after{ content: ""; position: absolute; pointer-events: none; }
+
 /* stacked: a vertical run above each stage */
 .stage + .stage::before{
-  left: 1.75rem; translate: -50% 0; top: -1.9rem; width: 1px; height: 1.9rem;
-  background: color-mix(in srgb, var(--bronze) 42%, transparent);
+  left: 50%; translate: -50% 0; top: calc(-1 * clamp(2rem, 4vw, 2.75rem));
+  width: 1px; height: clamp(2rem, 4vw, 2.75rem); background: var(--thread);
 }
 .stage + .stage::after{
-  left: 1.75rem; translate: -50% 0; top: -.72rem;
+  left: 50%; translate: -50% 0; top: calc(-1 * clamp(2rem, 4vw, 2.75rem) / 2 - 3px);
   width: 6px; height: 6px; rotate: 45deg;
   border-right: 1px solid var(--bronze); border-bottom: 1px solid var(--bronze);
 }
-@media (min-width: 900px){
+@media (min-width: 880px){
   .stage + .stage::before{
-    left: auto; right: calc(50% + 2.4rem); top: 1.72rem; translate: 0 0;
-    width: calc(100% - 4.8rem); height: 1px;
+    left: auto; translate: 0 0;
+    right: calc(50% + var(--icon) / 2 + .55rem);
+    top: calc(var(--icon) / 2); height: 1px;
+    width: calc(100% - var(--icon) - 1.1rem);
   }
   .stage + .stage::after{
-    left: auto; right: calc(50% + 2.2rem); top: 1.53rem; translate: 0 0;
-    rotate: -45deg;
+    left: auto; translate: 0 0;
+    right: calc(50% + var(--icon) / 2 + .35rem);
+    top: calc(var(--icon) / 2 - 3px); rotate: -45deg;
   }
 }
 
-.stage .node{
-  display: grid; justify-items: start; gap: .85rem; cursor: pointer;
-  position: relative; text-align: left;
-}
-@media (min-width: 900px){ .stage .node{ justify-items: center; text-align: center; } }
-
-.stage__icon{
-  width: 3.5rem; height: 3.5rem; display: block;
-  background: var(--stage-c);
-  -webkit-mask: var(--i) no-repeat center / contain;
-          mask: var(--i) no-repeat center / contain;
-  transition: scale var(--t-move), background-color var(--t-colour);
-}
-.stage__name{
-  font-size: .76rem; font-weight: 600; letter-spacing: .11em; text-transform: uppercase;
-  color: var(--ink-quiet); transition: color var(--t-colour);
-}
-.stage .node:hover .stage__icon,
-.stage .node:focus-visible .stage__icon,
-.stage .node.is-active .stage__icon{ scale: 1.07; }
-.stage .node:hover .stage__name,
-.stage .node.is-active .stage__name{ color: var(--ink-strong); }
-.stage .node:focus-visible{ outline: 2px solid var(--accent); outline-offset: 8px; }
-
-/* the six, tuned to 3:1 on cream — the hues are the brief's, unshifted */
-.stage .node[data-term="concept"]     { --stage-c: #B58C16; --i: url("assets/icons/hos-concept.png"); }
-.stage .node[data-term="belief"]      { --stage-c: #3B4E96; --i: url("assets/icons/hos-belief.png"); }
-.stage .node[data-term="pattern"]     { --stage-c: #0FA399; --i: url("assets/icons/hos-pattern.png"); }
-.stage .node[data-term="emotion"]     { --stage-c: #E2715A; --i: url("assets/icons/hos-emotion.png"); }
-.stage .node[data-term="behavior"]    { --stage-c: #7A5CB5; --i: url("assets/icons/hos-behavior.png"); }
-.stage .node[data-term="life-result"] { --stage-c: #B58C16; --i: url("assets/icons/hos-life-result.png"); }
-
-/* the return leg — drawn, so the loop closes without a sentence explaining it */
+/* the return — one thin arc, not another arrow in the row */
 .cycle__return{
-  position: relative; margin: 1.4rem 0 0; padding-inline-start: 3.6rem;
-  font-size: .72rem; letter-spacing: .13em; text-transform: uppercase;
-  color: var(--ink-quiet);
+  position: relative; margin: 1.6rem 0 0; padding-inline-start: 2.6rem;
+  font-size: .7rem; letter-spacing: .13em; text-transform: uppercase; color: var(--ink-quiet);
 }
 .cycle__return::before{
-  content: ""; position: absolute; left: 1.75rem; top: -1.9rem; bottom: .45rem;
-  width: 1.5rem;
-  border: 1px solid color-mix(in srgb, var(--bronze) 42%, transparent);
-  border-top: 0; border-right: 0; border-radius: 0 0 0 1rem;
-  translate: -50% 0;
+  content: ""; position: absolute; left: .55rem;
+  top: calc(-1 * clamp(2rem, 4vw, 2.75rem) - .2rem); bottom: .4rem; width: 1.1rem;
+  border: 1px solid var(--thread); border-top: 0; border-right: 0; border-radius: 0 0 0 .9rem;
 }
-@media (min-width: 900px){
-  .cycle__return{
-    padding: 2.9rem 0 0; margin-top: 0; text-align: center;
-  }
+@media (min-width: 880px){
+  .cycle__return{ margin-top: 0; padding: 3.1rem 0 0; text-align: center; }
   .cycle__return::before{
-    left: 8.333%; right: 8.333%; top: 0; bottom: auto; width: auto; height: 2.1rem;
-    border: 1px solid color-mix(in srgb, var(--bronze) 42%, transparent);
-    border-top: 0; border-radius: 0 0 3rem 3rem; translate: 0 0;
+    left: 8.333%; right: 8.333%; top: .2rem; bottom: auto; width: auto; height: 2.2rem;
+    border: 1px solid var(--thread); border-top: 0; border-radius: 0 0 3.5rem 3.5rem;
   }
-  /* the arrowhead, landing back on Concept */
   .cycle__return::after{
     content: ""; position: absolute; left: 8.333%; top: 1.55rem;
     width: 6px; height: 6px; rotate: 135deg; translate: -50% 0;
@@ -1243,19 +1234,40 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
   .cycle__return span{ background: var(--paper); padding: 0 .9rem; position: relative; }
 }
 
-/* the readout stays — it is where three unwritten stages admit it */
+/* the readout, where three unwritten stages say so */
 .cycle .readout{
-  position: relative; margin-top: clamp(2rem, 3.5vw, 3rem); padding-top: 1.4rem;
-  border-top: 1px solid var(--rule); min-height: 5rem; max-width: 46rem;
+  margin-top: clamp(2rem, 3.5vw, 2.75rem); padding-top: 1.3rem;
+  border-top: 1px solid var(--rule); min-height: 4.75rem; max-width: 44rem;
 }
 .cycle .readout__idle{ color: var(--ink-quiet); margin: 0; }
-.cycle .readout__idle span{ color: var(--bronze); }
 .cycle .readout__term{
-  font-size: .72rem; font-weight: 600; letter-spacing: .13em; text-transform: uppercase;
-  color: var(--bronze); margin: 0 0 .4rem;
+  font-size: .7rem; font-weight: 600; letter-spacing: .13em; text-transform: uppercase;
+  color: var(--bronze); margin: 0 0 .35rem;
 }
 .cycle .readout__text{ margin: 0; color: var(--ink); }
 .cycle .readout__needs{ margin: 0; color: var(--ink-quiet); font-style: italic; }
+
+/* Closing ---------------------------------------------------------------- */
+.os__end{
+  margin-top: clamp(3rem, 6vw, 5rem);
+  display: grid; gap: 1.75rem; justify-items: start;
+}
+.os__endline{
+  margin: 0; font-family: var(--display);
+  font-variation-settings: "opsz" 48, "SOFT" 0, "WONK" 0;
+  font-size: clamp(1.3rem, 2.1vw, 1.8rem); line-height: 1.34; color: var(--ink-strong);
+  max-width: 30rem;
+}
+.os__endline span{ color: var(--ink-quiet); font-size: .82em; }
+
+/* a button that does not shout — bronze rule, bronze type, no fill */
+.btn--quiet{
+  background: none; color: var(--bronze); border: 1px solid var(--rule-strong);
+  font-weight: 500;
+}
+.btn--quiet:hover, .btn--quiet:focus-visible{
+  border-color: var(--bronze); background: color-mix(in srgb, var(--bronze) 5%, transparent);
+}
 
 /* ── Begin where you are ────────────────────────────────────────────────
    Five waypoints climbing left to right, joined by one thin gold line. Not

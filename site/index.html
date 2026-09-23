@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="styles.css?v=18">
+<link rel="stylesheet" href="styles.css?v=19">
 </head>
 <body>
 
@@ -265,9 +265,11 @@
   <div class="shell">
 
     <div class="os__head">
-      <p class="eyebrow" data-reveal>The Human Operating System</p>
-      <h2 class="h-section" id="os-h" data-reveal style="--d:60ms">How Your Inner World<br>Becomes Your Outer&nbsp;Life</h2>
-      <div class="os__intro" data-reveal style="--d:120ms">
+      <div class="os__headL">
+        <p class="eyebrow" data-reveal>The Human Operating System</p>
+        <h2 class="h-section" id="os-h" data-reveal style="--d:60ms">How Your Inner World<br>Becomes Your Outer&nbsp;Life</h2>
+      </div>
+      <div class="os__headR" data-reveal style="--d:120ms">
         <p class="os__q">Why can we consciously want one thing, yet find ourselves repeatedly
            creating something different?</p>
         <p>The Institute teaches that our experiences are not isolated. What we hold as true
@@ -276,46 +278,76 @@
       </div>
     </div>
 
-    <!-- Light, per Sara's direction of 23 Sep. Each icon sits beside its name, so
-         the icon supplements a text label rather than carrying meaning alone — the
-         3:1 graphics threshold applies, not 4.5:1, and at 3:1 every hue survives
-         intact. Only gold moves, and only in lightness. -->
+    <!-- The icons are the art. Nothing sits behind them, nothing recolours them,
+         and the outer beaded geometry is never cropped. No descriptors under the
+         names: Michael has written Concept, Belief and Pattern and not the other
+         three, and inventing the missing ones would be writing doctrine. -->
     <div class="cycle" id="diagram" data-reveal style="--d:180ms">
       <ol class="cycle__flow">
         <li class="stage">
           <span class="node" data-term="concept" tabindex="0" role="button" aria-label="Concept">
-            <span class="stage__icon" aria-hidden="true"></span>
-            <span class="stage__name">Concept</span>
+            <img class="stage__icon" src="/assets/icons/hos-concept.webp"
+                 width="480" height="480" loading="lazy" decoding="async"
+                 alt="A gold compass star inside a beaded ring, a point of light at its centre.">
+            <span class="stage__label">
+              <span class="stage__n">01</span>
+              <span class="stage__name">Concept</span>
+            </span>
           </span>
         </li>
         <li class="stage">
           <span class="node" data-term="belief" tabindex="0" role="button" aria-label="Belief">
-            <span class="stage__icon" aria-hidden="true"></span>
-            <span class="stage__name">Belief</span>
+            <img class="stage__icon" src="/assets/icons/hos-belief.webp"
+                 width="480" height="480" loading="lazy" decoding="async"
+                 alt="A human head in profile, deep blue, filled with a constellation of linked stars.">
+            <span class="stage__label">
+              <span class="stage__n">02</span>
+              <span class="stage__name">Belief</span>
+            </span>
           </span>
         </li>
         <li class="stage">
           <span class="node" data-term="pattern" tabindex="0" role="button" aria-label="Pattern">
-            <span class="stage__icon" aria-hidden="true"></span>
-            <span class="stage__name">Pattern</span>
+            <img class="stage__icon" src="/assets/icons/hos-pattern.webp"
+                 width="480" height="480" loading="lazy" decoding="async"
+                 alt="A teal figure of eight, one continuous line crossing itself at the centre.">
+            <span class="stage__label">
+              <span class="stage__n">03</span>
+              <span class="stage__name">Pattern</span>
+            </span>
           </span>
         </li>
         <li class="stage">
           <span class="node" data-term="emotion" tabindex="0" role="button" aria-label="Emotion">
-            <span class="stage__icon" aria-hidden="true"></span>
-            <span class="stage__name">Emotion</span>
+            <img class="stage__icon" src="/assets/icons/hos-emotion.webp"
+                 width="480" height="480" loading="lazy" decoding="async"
+                 alt="A coral heart held at the centre of fine overlapping petals.">
+            <span class="stage__label">
+              <span class="stage__n">04</span>
+              <span class="stage__name">Emotion</span>
+            </span>
           </span>
         </li>
         <li class="stage">
           <span class="node" data-term="behavior" tabindex="0" role="button" aria-label="Behavior">
-            <span class="stage__icon" aria-hidden="true"></span>
-            <span class="stage__name">Behavior</span>
+            <img class="stage__icon" src="/assets/icons/hos-behavior.webp"
+                 width="480" height="480" loading="lazy" decoding="async"
+                 alt="A violet path winding back on itself, marked with points of light.">
+            <span class="stage__label">
+              <span class="stage__n">05</span>
+              <span class="stage__name">Behavior</span>
+            </span>
           </span>
         </li>
         <li class="stage">
           <span class="node" data-term="life-result" tabindex="0" role="button" aria-label="Life Result">
-            <span class="stage__icon" aria-hidden="true"></span>
-            <span class="stage__name">Life Result</span>
+            <img class="stage__icon" src="/assets/icons/hos-life-result.webp"
+                 width="480" height="480" loading="lazy" decoding="async"
+                 alt="A gold sun in full radiance, rays reaching to the edge of its ring.">
+            <span class="stage__label">
+              <span class="stage__n">06</span>
+              <span class="stage__name">Life Result</span>
+            </span>
           </span>
         </li>
       </ol>
@@ -323,7 +355,7 @@
       <p class="cycle__return"><span>Life Result returns to Concept</span></p>
 
       <div class="readout" id="os-readout" aria-live="polite">
-        <p class="readout__idle">Always this order, always with arrows. <span>Choose a stage to read it.</span></p>
+        <p class="readout__idle">Choose a stage to read it.</p>
         <div class="readout__item" data-term="concept" hidden>
           <p class="readout__term">Concept</p>
           <p class="readout__text">Everything begins with Concept. Concepts influence beliefs, expectations, patterns, choices, and life experiences.</p>
@@ -349,6 +381,12 @@
           <p class="readout__needs">Michael has not written this stage yet.</p>
         </div>
       </div>
+    </div>
+
+    <div class="os__end" data-reveal>
+      <p class="os__endline">Six interconnected stages.<br>A continuous cycle.<br>
+         <span>A way to see what may be operating beneath the visible circumstances of your life.</span></p>
+      <a class="btn btn--quiet" href="/courses/human-operating-system">Explore the Human Operating System</a>
     </div>
 
   </div>
