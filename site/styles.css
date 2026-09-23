@@ -1766,10 +1766,23 @@ a.figure:hover .figure__l, a.figure:focus-visible .figure__l{ color: var(--accen
    sky, the mist and the water are untouched between the stops. */
 .stop__link::before{
   content: ""; position: absolute; inset: -.75rem -.6rem -.9rem -1.7rem; z-index: -1;
-  background: radial-gradient(ellipse at 32% 50%,
-              color-mix(in srgb, var(--navy) 74%, transparent) 0%,
-              color-mix(in srgb, var(--navy) 52%, transparent) 52%,
-              transparent 82%);
+  background: color-mix(in srgb, var(--navy) 72%, transparent);
+  /* The contrast was already AAA and they were still hard to read, because a
+     contrast ratio cannot see detail — only the difference between two flat
+     colours. Behind these labels the photograph is not flat: neighbouring
+     pixels jump by up to 4.9 (x1000 luminance) at stop 02, where the words sit
+     over grass, rock and path. Leaf-sized detail competes with letter-sized
+     strokes, and the eye loses the edges of the type.
+
+     So the backdrop is blurred. The landscape still shows through as soft
+     colour and the scrim still carries the contrast, but the detail that was
+     fighting the letterforms is gone. */
+  backdrop-filter: blur(11px) saturate(.88);
+  -webkit-backdrop-filter: blur(11px) saturate(.88);
+  /* The mask shapes the blur as well as the wash, so the pool keeps its soft
+     edge. Without it the blur would stop at a hard rectangle. */
+  -webkit-mask-image: radial-gradient(ellipse at 32% 50%, #000 0%, #000 44%, transparent 84%);
+          mask-image: radial-gradient(ellipse at 32% 50%, #000 0%, #000 44%, transparent 84%);
 }
 .stop__dot{
   position: absolute; left: 0; top: 50%; translate: -50% -50%;
@@ -1788,7 +1801,11 @@ a.figure:hover .figure__l, a.figure:focus-visible .figure__l{ color: var(--accen
 }
 .stop__title{
   font-family: var(--display);
-  font-variation-settings: "opsz" 48, "SOFT" 0, "WONK" 0;
+  /* opsz 48 is the display cut: Fraunces thins its hairlines as the axis
+     rises, and thin strokes are exactly what a busy photograph eats. The type
+     renders at 25px, so the axis belongs near that, not at 48. Sturdier
+     letterforms, same face. */
+  font-variation-settings: "opsz" 20, "SOFT" 0, "WONK" 0;
   font-size: clamp(1.3rem, 1.75vw, 1.8rem); line-height: 1.18; color: #FFFFFF;
   font-weight: 600; letter-spacing: -.004em;
   /* not a drop shadow on interface — a legibility shadow over a photograph,
@@ -1799,8 +1816,9 @@ a.figure:hover .figure__l, a.figure:focus-visible .figure__l{ color: var(--accen
   transition: color var(--t-colour);
 }
 .stop__desc{
-  font-size: clamp(.92rem, 1vw, 1.02rem); line-height: 1.5; margin-top: .25rem;
-  color: color-mix(in srgb, #FFFFFF 93%, transparent);
+  font-size: clamp(.95rem, 1.05vw, 1.06rem); line-height: 1.5; margin-top: .25rem;
+  font-weight: 500;
+  color: #FFFFFF;
   text-shadow: 0 1px 10px rgb(11 26 47 / .45);
 }
 .stop__link:hover .stop__title, .stop__link:focus-visible .stop__title{ color: var(--gold); }
