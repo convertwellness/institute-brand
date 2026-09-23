@@ -1498,6 +1498,31 @@ a.figure:hover .figure__l, a.figure:focus-visible .figure__l{ color: var(--accen
 }
 .trail__img{ width: 100%; height: auto; display: block; }
 
+/* Sara, 23 Sep 2026: the hard cream-to-photograph edge made the introduction
+   and the landscape read as two blocks. The page now comes down over the top
+   of the picture and lets it emerge, rather than starting it.
+
+   .trail is exactly the height of the photograph on a wide screen, so these
+   percentages are percentages of the image. It clears the markers: the
+   highest stop sits at 34% and is centred on that by translateY(-50%), so its
+   glow begins at 22.9% — measured — so the fade is finished at 22%.
+
+   The last stop is band at zero alpha rather than the `transparent` keyword.
+   Bare `transparent` is transparent *black*, and fading a light cream to it
+   drags a grey bloom through the middle of the ramp. color-mix premultiplies,
+   so this stays clean. */
+.trail::before{
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 100%;
+  z-index: 1; pointer-events: none;
+  background: linear-gradient(to bottom,
+    color-mix(in srgb, var(--band) 96%, transparent)  0%,
+    color-mix(in srgb, var(--band) 76%, transparent)  5%,
+    color-mix(in srgb, var(--band) 58%, transparent)  9%,
+    color-mix(in srgb, var(--band) 40%, transparent) 14%,
+    color-mix(in srgb, var(--band) 19%, transparent) 18%,
+    color-mix(in srgb, var(--band)  0%, transparent) 22%);
+}
+
 /* No global scrim. The photograph keeps its sky, its mist and its depth; only
    the strip each stop sits on is darkened, and only as much as that stop needs. */
 .trail::after{
@@ -1588,6 +1613,17 @@ a.figure:hover .figure__l, a.figure:focus-visible .figure__l{ color: var(--accen
      in normal flow underneath the picture, so without a stacking context of
      their own the gradient paints straight over stages three, four and five.
      It only needs to reach as far as the image does. */
+  /* shallower, because the 16/11 crop has far less height to spend */
+  .trail::before{
+    height: var(--trail-img-h, 62%);
+    background: linear-gradient(to bottom,
+      color-mix(in srgb, var(--band) 94%, transparent)  0%,
+      color-mix(in srgb, var(--band) 72%, transparent)  4%,
+      color-mix(in srgb, var(--band) 54%, transparent)  7%,
+      color-mix(in srgb, var(--band) 36%, transparent) 11%,
+      color-mix(in srgb, var(--band) 17%, transparent) 14%,
+      color-mix(in srgb, var(--band)  0%, transparent) 17%);
+  }
   .trail::after{
     inset: 0 0 auto 0; height: var(--trail-img-h, 62%);
     background: linear-gradient(to bottom, transparent 55%,

@@ -18,7 +18,7 @@ SRC   = os.path.join(ROOT, "src")
 OUT   = os.path.join(ROOT, "site")
 PARTS = os.path.join(ROOT, "build", "partials")
 
-CSS_V, JS_V, STUDY_V = "32", "11", "12"   # bump to bust caches
+CSS_V, JS_V, STUDY_V = "33", "11", "12"   # bump to bust caches
 
 TAIL_MARK = u"<!-- \u2550\u2550 page tail"
 
