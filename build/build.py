@@ -11,7 +11,7 @@ Nothing here is clever. It is string substitution, on purpose — the point is
 that the next person can read it in a minute.
 """
 
-import io, os, re, sys, glob
+import io, os, re, sys, glob, hashlib
 
 ROOT  = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC   = os.path.join(ROOT, "src")
@@ -60,6 +60,26 @@ SHELL = u"""<!doctype html>
 
 def read(p):
     return io.open(p, encoding="utf-8").read()
+
+
+def asset_stamp(url):
+    """?v=<first 8 of the file's sha1>. The filename never changes, so a browser
+    that already has the old picture keeps it — which is exactly what happened
+    when the hero was replaced. Stylesheets have been versioned since the start;
+    images were not."""
+    rel = url.split("?")[0].lstrip("/")
+    f = os.path.join(OUT, rel)
+    if not os.path.isfile(f):
+        return url
+    h = hashlib.sha1(io.open(f, "rb").read()).hexdigest()[:8]
+    return url.split("?")[0] + "?v=" + h
+
+
+ASSET_RE = re.compile(r'(src|href)="(/assets/[^"?]+\.(?:webp|png|jpg|svg))"')
+
+
+def stamp_assets(html):
+    return ASSET_RE.sub(lambda m: '%s="%s"' % (m.group(1), asset_stamp(m.group(2))), html)
 
 
 def split_tail(text):
@@ -143,7 +163,7 @@ def build():
         d = os.path.dirname(dest)
         if not os.path.isdir(d):
             os.makedirs(d)
-        io.open(dest, "w", encoding="utf-8", newline="\n").write(page)
+        io.open(dest, "w", encoding="utf-8", newline="\n").write(stamp_assets(page))
         print("  %-34s -> %s" % (route or "(404)", os.path.relpath(dest, ROOT).replace("\\", "/")))
 
     print("\n%d pages built." % len(sources))
