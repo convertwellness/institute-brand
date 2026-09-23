@@ -1281,114 +1281,149 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
   border-color: var(--bronze); background: color-mix(in srgb, var(--bronze) 5%, transparent);
 }
 
-/* ── Begin where you are ────────────────────────────────────────────────
-   Five waypoints climbing left to right, joined by one thin gold line. Not
-   cards: there is no box, no arrow and no fill — the progression is carried by
-   position and by the line, which is what makes it read as a path rather than
-   a list. Each step is inset a little further than the last, so the eye
-   ascends even before it reads. */
+/* ── Begin where you are ─────────────────────────────────────
+   The Operating System is a cycle: symbolic, precise, closed. This is a
+   journey: atmospheric, open, and it goes somewhere. So it uses a different
+   mechanism entirely — a photograph you move through rather than a diagram you
+   read. The five stops climb from the foreground to the horizon.
 
-.path{ position: relative; isolation: isolate; background: var(--band); overflow: hidden; }
-/* The landscape anchors the section without ever getting under the type. It
-   is held to the right, faded from both edges, and veiled in cream — a first
-   pass at .5 opacity across the full width washed the last two waypoints out
-   completely. */
-.path__scape{
-  position: absolute; inset: auto 0 0 auto; width: min(58%, 46rem); height: 74%;
-  z-index: -1; opacity: .22;
-}
-.path__scape img{
-  width: 100%; height: 100%; object-fit: cover; object-position: 60% 70%;
-  -webkit-mask-image:
-    linear-gradient(to right, transparent 0%, #000 42%),
-    linear-gradient(to bottom, transparent 0%, #000 38%, #000 82%, transparent 100%);
-  -webkit-mask-composite: source-in;
-          mask-image:
-    linear-gradient(to right, transparent 0%, #000 42%),
-    linear-gradient(to bottom, transparent 0%, #000 38%, #000 82%, transparent 100%);
-          mask-composite: intersect;
-}
-/* a cream veil, so whatever image lands keeps the waypoints legible */
-.path__scape::after{
-  content: ""; position: absolute; inset: 0;
-  background: linear-gradient(to right,
-    var(--band) 0%, color-mix(in srgb, var(--band) 55%, transparent) 40%, transparent 78%);
-}
-@media (max-width: 760px){ .path__scape{ width: 100%; opacity: .14; } }
-.path__inner{ position: relative; }
-.path__head{ max-width: 44rem; display: grid; gap: 1rem; }
-.path__intro{ display: grid; gap: .85rem; max-width: 38rem; margin-top: .3rem; }
-.path__intro p{ margin: 0; }
-.path__q{
+   The introduction stays on ivory above the landscape. Putting it over the
+   photograph would have meant darkening the sky to carry it, and the brief
+   asked for the mountains and mist to survive. */
+
+.journey{ background: var(--paper); padding-block: clamp(4rem, 8vw, 7rem) 0; }
+.journey__intro{ max-width: 46rem; display: grid; gap: 1.05rem; }
+.journey__lead{ display: grid; gap: .85rem; max-width: 38rem; margin-top: .3rem; }
+.journey__lead p{ margin: 0; }
+.journey__q{
   font-family: var(--display);
   font-variation-settings: "opsz" 36, "SOFT" 0, "WONK" 0;
-  font-size: clamp(1.15rem, 1.6vw, 1.42rem); line-height: 1.38; color: var(--ink-strong);
+  font-size: clamp(1.18rem, 1.6vw, 1.42rem); line-height: 1.4; color: var(--ink-strong);
 }
 
-.ways{
-  list-style: none; margin: clamp(2.5rem, 5vw, 4rem) 0 0; padding: 0;
-  display: grid; gap: 0;
-}
-.way{ position: relative; }
+/* The landscape ---------------------------------------------------------- */
 
-/* the climbing inset — step 1 flush left, step 5 furthest in */
-@media (min-width: 760px){
-  .way{ padding-inline-start: calc(var(--i) * clamp(2rem, 5vw, 5.5rem)); }
+.trail{
+  position: relative; isolation: isolate;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  width: 100%; overflow: hidden;
+}
+.trail__img{ width: 100%; height: auto; display: block; }
+
+/* No global scrim. The photograph keeps its sky, its mist and its depth; only
+   the strip each stop sits on is darkened, and only as much as that stop needs. */
+.trail::after{
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+  background: linear-gradient(to bottom, transparent 30%,
+              color-mix(in srgb, var(--navy) 14%, transparent) 62%,
+              color-mix(in srgb, var(--navy) 30%, transparent) 100%);
 }
 
-.way__link{
-  display: grid; grid-template-columns: auto 1fr; align-items: baseline;
-  gap: clamp(1rem, 2.4vw, 2rem);
-  padding-block: clamp(1.1rem, 2vw, 1.6rem);
-  text-decoration: none; color: inherit; position: relative;
+.trail__line{
+  position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2;
+  pointer-events: none;
+  stroke: color-mix(in srgb, var(--gold) 78%, transparent);
+  stroke-width: 1.25; stroke-dasharray: 1 6; stroke-linecap: round;
+  filter: drop-shadow(0 1px 1px rgb(11 26 47 / .55));
 }
-/* the path itself: a hairline dropping from each waypoint to the next */
-.way + .way .way__link::before{
-  content: ""; position: absolute; left: 0; top: -.2rem; bottom: calc(100% - .2rem);
-  width: 1px; height: 0;
-}
-.way__link::after{
-  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
-  background: linear-gradient(to right,
-    color-mix(in srgb, var(--gold) 55%, transparent),
-    color-mix(in srgb, var(--gold) 12%, transparent) 70%, transparent);
-  transition: background var(--t-colour);
-}
-.way:last-child .way__link::after{ opacity: .35; }
 
-.way__n{
+.trail__stops{ list-style: none; margin: 0; padding: 0; position: absolute; inset: 0; z-index: 3; }
+
+.stop{ position: absolute; left: var(--x); top: var(--y); width: min(14rem, 16%); }
+.stop__link{
+  display: grid; gap: .18rem; text-decoration: none; color: #FFFFFF;
+  padding: .55rem .85rem .7rem 1.4rem; position: relative;
+  transform: translateY(-50%);
+}
+/* the localised gradient — an ellipse only as wide as the words */
+.stop__link::before{
+  content: ""; position: absolute; inset: -.6rem -1.2rem -.8rem -1.6rem; z-index: -1;
+  background: radial-gradient(ellipse at 30% 50%,
+              color-mix(in srgb, var(--navy) 46%, transparent) 0%,
+              color-mix(in srgb, var(--navy) 26%, transparent) 50%,
+              transparent 80%);
+}
+.stop__dot{
+  position: absolute; left: 0; top: 50%; translate: -50% -50%;
+  width: 9px; height: 9px; rotate: 45deg; background: var(--gold);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--gold) 20%, transparent);
+  transition: scale var(--t-move);
+}
+.stop__n{
   font-family: var(--display);
   font-variation-settings: "opsz" 24, "SOFT" 0, "WONK" 0;
-  font-size: .95rem; color: var(--bronze); font-variant-numeric: tabular-nums;
-  position: relative; padding-inline-start: 1.5rem;
+  font-size: .8rem; color: var(--gold); font-variant-numeric: tabular-nums;
 }
-/* a star point on the path at each waypoint */
-.way__n::before{
-  content: ""; position: absolute; left: 0; top: .42em;
-  width: 7px; height: 7px; rotate: 45deg;
-  background: var(--gold);
-  transition: scale var(--t-move), background-color var(--t-colour);
+.stop__verb{
+  font-size: .72rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+  color: color-mix(in srgb, #FFFFFF 80%, transparent);
 }
-.way__body{ display: grid; gap: .3rem; }
-.way__verb{
+.stop__title{
   font-family: var(--display);
-  font-variation-settings: "opsz" 72, "SOFT" 0, "WONK" 0;
-  font-size: clamp(1.5rem, 2.9vw, 2.15rem); line-height: 1.1;
-  color: var(--ink-strong); transition: color var(--t-colour);
+  font-variation-settings: "opsz" 48, "SOFT" 0, "WONK" 0;
+  font-size: clamp(1.05rem, 1.35vw, 1.3rem); line-height: 1.2; color: #FFFFFF;
+  transition: color var(--t-colour);
 }
-.way__detail{ color: var(--ink-quiet); font-size: clamp(.95rem, 1.1vw, 1.05rem); }
+.stop__desc{
+  font-size: .82rem; line-height: 1.45; margin-top: .2rem;
+  color: color-mix(in srgb, #FFFFFF 74%, transparent);
+}
+.stop__link:hover .stop__title, .stop__link:focus-visible .stop__title{ color: var(--gold); }
+.stop__link:hover .stop__dot, .stop__link:focus-visible .stop__dot{ scale: 1.35; }
+.stop__link:focus-visible{ outline: 2px solid var(--gold); outline-offset: 4px; }
 
-.way__link:hover .way__verb, .way__link:focus-visible .way__verb{ color: var(--bronze); }
-.way__link:hover .way__n::before, .way__link:focus-visible .way__n::before{ scale: 1.5; }
-.way__link:focus-visible{ outline: 2px solid var(--accent); outline-offset: 4px; }
-
-.path__close{
+.journey__close{
   margin: clamp(2.5rem, 5vw, 3.75rem) 0 0;
   font-family: var(--display);
   font-variation-settings: "opsz" 36, "SOFT" 0, "WONK" 0;
   font-size: clamp(1.2rem, 1.8vw, 1.5rem); line-height: 1.45; color: var(--ink-strong);
+  padding-bottom: clamp(4rem, 8vw, 7rem);
 }
-.path__close span{ color: var(--ink-quiet); }
+.journey__close span{ color: var(--ink-quiet); }
+
+/* Tablet and below: the landscape stops being a map and becomes atmosphere --
+   a narrow screen cannot carry five absolutely-placed blocks over a photograph
+   without covering the photograph, which is the thing worth keeping. */
+@media (max-width: 1279px){
+  .trail{ margin-top: clamp(1.75rem, 4vw, 2.5rem); }
+  .trail__img{
+    content: url("assets/path-journey-tall.webp");
+    aspect-ratio: 16 / 11; object-fit: cover; object-position: 50% 42%;
+  }
+  .trail__line{ display: none; }
+  .trail::after{
+    background: linear-gradient(to bottom, transparent 45%,
+                color-mix(in srgb, var(--paper) 88%, transparent) 92%,
+                var(--paper) 100%);
+  }
+
+  /* the five steps move below the picture, on ivory, joined by one gold line */
+  .trail__stops{
+    position: static; display: grid; gap: 0;
+    padding: clamp(1.5rem,4vw,2.25rem) var(--gutter) 0;
+    max-width: var(--shell); margin-inline: auto;
+  }
+  .stop{ position: relative; left: auto; top: auto; width: 100%; }
+  .stop__link{
+    transform: none; color: var(--ink-strong);
+    padding: 1.1rem 0 1.25rem 2.1rem; gap: .22rem;
+  }
+  .stop__link::before{ content: none; }
+  /* the connecting line runs down through the markers */
+  .stop::before{
+    content: ""; position: absolute; left: 4.5px; top: 0; bottom: 0; width: 1px;
+    background: color-mix(in srgb, var(--gold) 45%, transparent);
+  }
+  .stop:first-child::before{ top: 50%; }
+  .stop:last-child::before{ bottom: 50%; }
+  .stop__dot{ left: 5px; top: 50%; translate: -50% -50%; }
+  .stop__verb{ color: var(--ink-quiet); }
+  .stop__title{ color: var(--ink-strong); }
+  .stop__desc{ color: var(--ink-quiet); font-size: .875rem; }
+  .stop__n{ color: var(--bronze); }
+  .stop__link:focus-visible{ outline-color: var(--accent); }
+  .journey__close{ padding-inline: 0; }
+}
 
 /* ── The Operating System on mobile ─────────────────────────────────────
    Sara, 23 Sep: not a stacked desktop. Desktop shows the whole cycle at once;

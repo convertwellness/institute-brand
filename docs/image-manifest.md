@@ -75,6 +75,21 @@ missing three, which would be writing doctrine — the icon row carries number a
 and the readout beneath reveals his sentence where one exists and says plainly where one does
 not.
 
+## 4 · `path-journey.webp` and `path-journey-tall.webp`
+
+| | |
+|---|---|
+| **Section** | Begin Where You Are |
+| **Purpose** | The journey itself. Not a backdrop — the five stages are placed *in* the landscape, climbing from the foreground path to the horizon. |
+| **Desktop** | 1586 × 992, shown full width below the ivory introduction |
+| **Mobile / tablet** | `path-journey-tall.webp`, 1100 × 1146 — the left 60% of the same frame, so the path, lake and mountains survive a narrow screen instead of being squeezed |
+| **Aspect ratio** | 1.6 : 1 desktop · 16 : 11 crop below 1280px |
+| **Safe area** | There isn't one in the usual sense. The five stops are positioned against a **luminance map of the photograph** — every seat was measured, and all five land where white type reads 4.8:1 to 7.9:1 on the bare image. Replacing the photograph means re-measuring; the positions are `--x` / `--y` percentages on each `.stop`, and the trail path in the SVG must move with them. |
+| **Alt-text intent** | Describe the place: the path, the mist, the lake, the mountains. |
+| **Treatment** | **No global scrim.** A faint bottom gradient only, plus one soft ellipse behind each stop at 46% navy — enough to lift words off leaf and rock detail, not to rescue contrast. The sky, mist and depth are untouched. |
+
+---
+
 ## Still to come — later passes
 
 Slots not yet built. Listed so the imagery can be commissioned in one batch.
