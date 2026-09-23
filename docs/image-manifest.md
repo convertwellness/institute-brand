@@ -90,16 +90,32 @@ not.
 
 ---
 
+## 5 · The four Explore entries
+
+`explore-concepts.webp` · `explore-courses.webp` · `explore-books.webp` · `explore-events.webp`
+
+| | |
+|---|---|
+| **Section** | Explore the Institute |
+| **Purpose** | Four ways in. The brief asked for editorial variety rather than four matching cards, so **each slot is a different shape** and sits at a different depth on a twelve-column grid. |
+| **Ratios — these differ on purpose** | Concept Studies **4 : 5** portrait · Courses **3 : 2** landscape · Books **1 : 1**, shown as a circular crop · Live Events **16 : 9** band |
+| **Shipped** | 900px on the long edge, 24–91 KB each |
+| **Composition at 1440** | Concepts left, full width of its column, at the top. Courses right and 56px lower. Books left-indented and circular, far below. Events right, a wide band. No two share a top edge. |
+| **Alt-text intent** | Describe the picture. Each should carry a **distinct visual metaphor** — the brief is explicit that four more galaxies is the wrong answer. |
+| **Current files** | **Temporary.** Cut from the existing violet plates at the four new ratios, so the layout can be judged. They are still four galaxies, which is exactly what the finals should not be. |
+
+**The circular crop is the one place the brand's no-rounded-corners rule is set aside.** It is a
+circular crop of a photograph, not a rounded interface box — the rule is about buttons, cards
+and inputs. Say the word if you would rather it were square.
+
+---
+
 ## Still to come — later passes
 
 Slots not yet built. Listed so the imagery can be commissioned in one batch.
 
 | Filename | Section | Purpose | Ratio | Notes |
 |---|---|---|---|---|
-| `explore-concepts.webp` | Explore the Institute | Concept Studies | 4 : 5 | Four distinct metaphors, not four galaxies |
-| `explore-courses.webp` | Explore the Institute | Courses | 4 : 5 | |
-| `explore-books.webp` | Explore the Institute | Books & Study Editions | 4 : 5 | |
-| `explore-events.webp` | Explore the Institute | Live Events | 4 : 5 | Abstract — never photographs of groups |
 | `library-field.webp` | The Concept Library | Second dark immersive moment, behind floating Concept names | 21 : 9 | Must stay quiet enough for a dozen words over it |
 | `closing-twilight.webp` | Membership / closing | Final immersive twilight | 16 : 9 | Quiet and reflective, not salesy |
 
