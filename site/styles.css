@@ -595,14 +595,6 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
 .hero__copy{ display: flex; flex-direction: column; gap: 1.6rem; align-items: flex-start; }
 .hero__actions{ display: flex; flex-wrap: wrap; gap: .85rem; }
 @media (max-width: 560px){ .hero__actions{ display: grid; grid-template-columns: 1fr; width: 100%; } }
-.hero__foot{
-  display: flex; align-items: baseline; gap: .7rem;
-  color: var(--ink-quiet); font-size: .98rem; padding-top: .25rem;
-}
-.hero__foot::before{
-  content: ""; width: 2rem; height: 1px; background: var(--accent);
-  flex: none; transform: translateY(-.3em);
-}
 
 /* ── The Operating System ring ──────────────────────────────────────────── */
 
@@ -1040,8 +1032,7 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
   .hero__copy{ gap: 1.05rem; }
   .hero__h{ font-size: clamp(2.15rem, 8.4vw, 2.6rem); }
   .hero__body p{ font-size: 1rem; line-height: 1.55; }
-  .hero__foot{ padding-top: .85rem; font-size: .9rem; }
-}
+  }
 
 .hero__eyebrow{
   font-size: .78rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase;
@@ -1059,11 +1050,6 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
   color: color-mix(in srgb, #FFFFFF 86%, var(--teal));
 }
 .hero__actions{ display: flex; flex-wrap: wrap; gap: .75rem; margin-top: .35rem; }
-.hero__foot{
-  margin: 0; font-size: .95rem; color: color-mix(in srgb, #FFFFFF 72%, transparent);
-  padding-top: 1rem; border-top: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
-  max-width: 28rem;
-}
 
 /* Laptops are wide and short. At 1440x900 the hero ran to 1058px, which put
    the supporting line under the fold and left the call to action 42px clear.
@@ -1081,8 +1067,7 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
   .hero__h{ font-size: clamp(1.95rem, 3.3vw, 2.5rem); }
   .hero__body p{ font-size: .98rem; line-height: 1.5; }
   .hero__eyebrow{ font-size: .72rem; }
-  .hero__foot{ padding-top: .7rem; font-size: .88rem; }
-}
+  }
 
 /* ── Buttons for the dark grounds ──────────────────────────────────────
    Gold is the emphasis colour the brief asks for, and on a dark ground it is
