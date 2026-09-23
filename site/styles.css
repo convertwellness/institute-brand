@@ -218,31 +218,6 @@ p{ margin: 0; }
 .head{ display: grid; gap: clamp(1.25rem, 3vw, 3rem); align-items: start; }
 @media (min-width: 880px){ .head{ grid-template-columns: minmax(0,1fr) minmax(0,.85fr); } }
 
-/* ── Photography ────────────────────────────────────────────────────────
-   Real rooms, real daylight, and a restrained violet luminosity where the
-   inner cosmos shows through. The frame is a hairline and an aspect ratio;
-   everything else is the picture. */
-
-.shot{
-  position: relative; display: block; overflow: hidden;
-  aspect-ratio: var(--ratio, 3 / 4);
-  background: var(--band);
-  border: 1px solid var(--rule);
-}
-.shot img{
-  width: 100%; height: 100%; object-fit: cover;
-  transition: transform var(--t-slow);
-}
-/* the picture moves inside the frame; the frame never moves */
-.tile:hover .shot img, .tile:focus-visible .shot img{ transform: scale(1.03); }
-.tile:hover .shot, .tile:focus-visible .shot{ border-color: var(--accent); }
-
-/* the mark, wherever it appears */
-.plate__mark{
-  width: 66px; height: 66px;
-  background: url("assets/logo-mark.webp") no-repeat center / contain;
-}
-
 /* ── The launch library ─────────────────────────────────────────────────
    Sara, 23 Sep 2026: keep the ground warm ivory, and put one warm point of
    light behind it with very fine orbits opening outward — one Concept, and
@@ -923,35 +898,6 @@ a.figure:hover .figure__l, a.figure:focus-visible .figure__l{ color: var(--accen
   padding: 1.1rem 1.3rem; color: var(--ink); font-size: 1rem;
 }
 
-/* ── Tiles ──────────────────────────────────────────────────────────────── */
-
-.tiles{ display: grid; gap: clamp(1.5rem, 2.5vw, 2rem); grid-template-columns: 1fr; }
-@media (min-width: 620px){ .tiles{ grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1000px){ .tiles{ grid-template-columns: repeat(4, 1fr); } }
-
-.tile{ display: flex; flex-direction: column; gap: .9rem; text-decoration: none; color: inherit; }
-.tile .plate{ transition: border-color var(--t-colour), background-color var(--t-colour); }
-.tile:hover .plate, .tile:focus-visible .plate{
-  border-color: var(--accent); background-color: var(--band);
-}
-.tile__title{
-  font-family: var(--display);
-  font-variation-settings: "opsz" 36, "SOFT" 0, "WONK" 0;
-  font-size: 1.32rem; line-height: 1.18; color: var(--ink-strong);
-  transition: color var(--t-colour);
-}
-.tile:hover .tile__title{ color: var(--accent); }
-.tile__note{ color: var(--ink-quiet); font-size: .9875rem; line-height: 1.5; }
-.tile__more{
-  margin-top: auto; padding-top: .35rem;
-  display: inline-flex; align-items: center; gap: .55rem;
-  color: var(--accent); font-size: .72rem; font-weight: 600;
-  letter-spacing: .12em; text-transform: uppercase;
-}
-.tile__more::after{ content: ""; width: 1.25rem; height: 1px; background: currentColor;
-                    transition: width var(--t-move); }
-.tile:hover .tile__more::after{ width: 2.25rem; }
-
 /* ── Schools ────────────────────────────────────────────────────────────
    They used to be a set, and were deliberately unnumbered. On 11 Sep Michael
    gave an explicit opening order and a reason for it — Human Patterns first,
@@ -992,12 +938,121 @@ a.figure:hover .figure__l, a.figure:focus-visible .figure__l{ color: var(--accen
   font-size: 1rem; line-height: 1.4; color: var(--ink-strong);
 }
 
-/* ── Membership close ───────────────────────────────────────────────────── */
+/* ── The invitation ─────────────────────────────────────────────────────
+   Sara, 23 Sep 2026: the homepage's emotional and philosophical conclusion.
+   Back up into the light after the dark Schools, centred, no card, no second
+   galaxy — and above all not a conversion banner. The two ways forward come
+   out of the argument rather than being sold underneath it.
 
-.close__grid{ display: grid; gap: clamp(2.5rem, 5vw, 4.5rem); align-items: center; }
-@media (min-width: 900px){
-  .close__grid{ grid-template-columns: minmax(0,.8fr) minmax(0,1fr); }
+   The watermark is bronze rather than flat gold, and that is not a swap for
+   its own sake. Gold at 6% over cream composites to 1.03:1 — a hairline at
+   that contrast is not a watermark, it is nothing. Bronze at 6% reads, and
+   it is the brand's own antique gold for light grounds.
+
+   The ceiling is the same one the library ran into: bronze type sits over
+   this, and bronze on cream starts at only 5.07:1. Warm glow 5% plus a
+   watermark stroke at 6% leaves 4.57:1 at the very worst case, where a
+   letter lands directly on a line. */
+
+.invite{
+  position: relative; isolation: isolate; overflow: hidden;
+  background: var(--paper);
+  color: var(--ink);
+  text-align: center;
+  padding-block: clamp(4.5rem, 9vw, 8rem) clamp(5rem, 10vw, 9rem);
 }
+/* the light the section comes back up into */
+.invite::before{
+  content: ""; position: absolute; inset: 0; z-index: -2;
+  background: radial-gradient(46% 42% at 50% 22%,
+    color-mix(in srgb, var(--gold) 5%, transparent), transparent 74%);
+}
+.invite__watermark{
+  position: absolute; z-index: -1; top: clamp(1rem, 4vw, 4rem);
+  left: 50%; translate: -50% 0;
+  width: clamp(22rem, 62vw, 44rem); aspect-ratio: 1;
+  color: color-mix(in srgb, var(--accent-warm) 6%, transparent);
+  pointer-events: none;
+}
+.invite__watermark svg{ width: 100%; height: 100%; display: block; }
+
+.invite__in{
+  display: flex; flex-direction: column; align-items: center;
+  gap: clamp(1.25rem, 2.2vw, 1.75rem);
+}
+.invite__emblem{
+  width: clamp(70px, 7vw, 88px); height: auto; margin-bottom: .35rem;
+}
+/* the eyebrow is a flex row with a trailing rule; centred, it loses the rule */
+.invite .eyebrow{ justify-content: center; color: var(--accent-warm); }
+
+.invite__h{
+  font-family: var(--display);
+  font-variation-settings: "opsz" 96, "SOFT" 0, "WONK" 0;
+  font-size: clamp(1.85rem, 3.5vw, 3rem); line-height: 1.16;
+  letter-spacing: -.014em; color: var(--ink-strong);
+  max-width: 46rem; text-wrap: balance;
+}
+.invite__body{
+  max-width: 40rem; font-size: clamp(1.05rem, 1.2vw, 1.19rem); line-height: 1.68;
+  color: var(--ink);
+}
+/* the emphasised statement — the sentence the whole page has been building to */
+.invite__say{
+  margin-top: clamp(.75rem, 1.6vw, 1.5rem);
+  max-width: 44rem;
+  font-family: var(--display);
+  font-variation-settings: "opsz" 72, "SOFT" 0, "WONK" 0;
+  font-size: clamp(1.32rem, 2.2vw, 1.85rem); line-height: 1.38;
+  letter-spacing: -.008em; color: var(--ink-strong);
+  /* the line breaks are set by <br>; balancing fights them */
+}
+
+/* two ways forward, open — no cards, one rule between */
+.ways{
+  --way-rule: color-mix(in srgb, var(--accent-warm) 34%, transparent);
+  width: 100%; max-width: 58rem;
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+  display: grid; gap: 0;
+}
+.way{ display: flex; flex-direction: column; align-items: center; gap: .7rem; }
+.way__h{
+  font-family: var(--display);
+  font-variation-settings: "opsz" 36, "SOFT" 0, "WONK" 0;
+  font-size: clamp(1.18rem, 1.5vw, 1.4rem); line-height: 1.25;
+  color: var(--ink-strong);
+}
+.way__p{
+  max-width: 24rem; font-size: 1rem; line-height: 1.6; color: var(--ink-quiet);
+}
+.way .arrow{ margin-top: .25rem; color: var(--accent-warm); }
+
+@media (min-width: 820px){
+  .ways{ grid-template-columns: 1fr 1fr; }
+  .way{ padding-inline: clamp(2rem, 4vw, 3.5rem); }
+  .way:first-child{ padding-left: 0; }
+  .way:last-child{ padding-right: 0; border-left: 1px solid var(--way-rule); }
+}
+@media (max-width: 819px){
+  /* the tall rule becomes a short one, lying down between the two */
+  .way + .way{ margin-top: clamp(2rem, 5vw, 2.75rem); }
+  .way + .way::before{
+    content: ""; width: 4rem; height: 1px;
+    background: var(--way-rule);
+    margin-bottom: clamp(1.5rem, 4vw, 2.25rem);
+  }
+}
+
+/* the bookend: the hero opens on these three words, and the page closes on
+   them. Given room, because the footer immediately below is quieter. */
+.invite__brand{
+  margin-top: clamp(3rem, 7vw, 5.5rem);
+  font-family: var(--display);
+  font-variation-settings: "opsz" 24, "SOFT" 0, "WONK" 0;
+  font-size: clamp(1rem, 1.15vw, 1.12rem); line-height: 1.4;
+  letter-spacing: .02em; color: var(--accent-warm);
+}
+.invite :focus-visible{ outline-color: var(--accent-warm); }
 
 /* ── Footer ─────────────────────────────────────────────────────────────── */
 

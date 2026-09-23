@@ -487,27 +487,79 @@ body:
   </div>
 </section>
 
-<!-- ══ Membership ══════════════════════════════════════════════════════ -->
-<section class="section g-paper" aria-labelledby="mem-h">
-  <div class="shell close__grid">
+<!-- ══ The invitation ══════════════════════════════════════════════════
+     The page comes back up into the light after the Schools, and ends.
+     Not a conversion banner: the last page of an editorial introduction,
+     with the two ways forward emerging out of the argument rather than
+     being sold underneath it.
 
-    <figure class="shot" style="--ratio: 1 / 1; margin:0" data-reveal>
-      <img src="assets/shot-membership.webp" width="900" height="900" loading="lazy"
-           alt="A violet galaxy encircled by a complete ring of small evenly spaced stars, with one warm star burning at the centre.">
-    </figure>
+     The watermark is drawn rather than placed. logo-mark.webp is 194px
+     square — right for the emblem at 80px, and far too small to enlarge
+     behind a whole section, so the roots and branches are strokes that
+     stay a hairline at any size. -->
+<section class="section invite" aria-labelledby="invite-h">
 
-    <div class="stack gap-6">
-      <h2 class="h-section" id="mem-h" data-reveal>You are not being asked to believe anything.</h2>
-      <p class="prose measure" data-reveal style="--d:80ms">
-        You are being asked to look at what is already operating, and to decide for yourself
-        whether you recognise it. Members receive preferred pricing on qualifying Courses, books
-        and materials.
-      </p>
-      <div class="hero__actions" data-reveal style="--d:160ms">
-        <a class="btn btn--primary" href="/membership">Become a member</a>
-        <a class="btn btn--secondary" href="/courses/five-laws">Start free</a>
+  <div class="invite__watermark" aria-hidden="true">
+    <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet" focusable="false">
+      <g fill="none" stroke="currentColor" stroke-width="1.25"
+         vector-effect="non-scaling-stroke" stroke-linecap="round">
+        <circle cx="200" cy="200" r="154"/>
+        <circle cx="200" cy="200" r="106"/>
+        <path d="M200 358 L200 42"/>
+        <g id="invite-bough">
+          <path d="M200 176 C186 157 159 147 130 145"/>
+          <path d="M200 148 C190 125 167 109 145 99"/>
+          <path d="M200 120 C194 100 181 82 169 68"/>
+          <path d="M200 202 C179 192 149 190 117 196"/>
+          <path d="M200 242 C183 260 157 269 128 273"/>
+          <path d="M200 270 C187 292 165 307 143 317"/>
+          <path d="M200 298 C194 319 183 335 173 349"/>
+        </g>
+        <use href="#invite-bough" transform="matrix(-1 0 0 1 400 0)"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="shell invite__in">
+
+    <img class="invite__emblem" src="assets/logo-mark.webp" width="194" height="194"
+         loading="lazy" alt="" aria-hidden="true" data-reveal>
+
+    <p class="eyebrow eyebrow--plain invite__eyebrow" data-reveal style="--d:60ms">The work begins with awareness</p>
+
+    <h2 class="invite__h" id="invite-h" data-reveal style="--d:120ms">
+      What changes when you begin to see what has been shaping you?
+    </h2>
+
+    <p class="invite__body" data-reveal style="--d:180ms">
+      The Institute exists to help you recognise the Concepts, beliefs and Patterns operating
+      beneath your experience &#8212; not so that someone else can tell you what your life means,
+      but so that you can understand it more clearly for yourself.
+    </p>
+
+    <p class="invite__say" data-reveal style="--d:240ms">
+      Awareness creates the possibility of choice.<br>
+      Understanding gives you somewhere to begin.
+    </p>
+
+    <!-- two ways forward. Open columns with one rule between them on a wide
+         screen; stacked, with a short rule in place of the tall one, below. -->
+    <div class="ways" data-reveal style="--d:300ms">
+      <div class="way">
+        <h3 class="way__h">New to the Institute?</h3>
+        <p class="way__p">Begin with the Five Laws of Manifestation and discover the
+           foundational ideas behind the work.</p>
+        <a class="arrow" href="/courses/five-laws">Start with the free course</a>
+      </div>
+      <div class="way">
+        <h3 class="way__h">Ready to go deeper?</h3>
+        <p class="way__p">Membership provides preferred access and pricing across qualifying
+           Courses, books and study materials.</p>
+        <a class="arrow" href="/membership">Explore membership</a>
       </div>
     </div>
+
+    <p class="invite__brand" data-reveal style="--d:360ms">Explore. Understand. Live more fully.</p>
 
   </div>
 </section>
