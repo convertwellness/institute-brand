@@ -1281,7 +1281,11 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
    vertical gap into the photograph is deliberately short — heading and
    landscape are one composition, not two stacked blocks. */
 
-.journey{ background: var(--paper); padding-block: clamp(3.5rem, 7vw, 6rem) 0; }
+/* A deeper cream than the Operating System above it. The two sat on the same
+   --paper and the chapter change had nothing to announce it. --band is 6.2%
+   darker, which is a visible edge without becoming a coloured panel; navy is
+   still 15.9:1 on it and the muted body copy 5.4:1. */
+.journey{ background: var(--band); padding-block: clamp(3.5rem, 7vw, 6rem) 0; }
 .journey__top{ position: relative; }
 
 .journey__horizon{
@@ -1420,8 +1424,8 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
   .trail::after{
     inset: 0 0 auto 0; height: var(--trail-img-h, 62%);
     background: linear-gradient(to bottom, transparent 55%,
-                color-mix(in srgb, var(--paper) 80%, transparent) 88%,
-                var(--paper) 100%);
+                color-mix(in srgb, var(--band) 80%, transparent) 88%,
+                var(--band) 100%);
   }
 
   /* the five steps move below the picture, on ivory, joined by one gold line */
@@ -1565,24 +1569,25 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
       color-mix(in srgb, var(--accent-soft) 30%, transparent) 0%, transparent 72%),
     color-mix(in srgb, var(--accent-soft) 28%, #FFFFFF);
   border-block: 1px solid color-mix(in srgb, var(--accent-soft) 32%, transparent);
-  padding-block: clamp(2.75rem, 5.5vw, 4.25rem);
+  padding-block: clamp(3.25rem, 6.5vw, 5.25rem);
   text-align: center;
 }
 .turn__in{ display: grid; justify-items: center; gap: .35rem; }
 /* a small gold ornament, drawn rather than shipped as an asset */
 .turn__star{
-  width: 15px; height: 15px; margin-bottom: .9rem;
+  width: 19px; height: 19px; margin-bottom: 1.15rem;
   background: var(--gold);
   clip-path: polygon(50% 0%, 58% 42%, 100% 50%, 58% 58%, 50% 100%, 42% 58%, 0% 50%, 42% 42%);
 }
 .turn__a, .turn__b{ margin: 0; font-family: var(--display); }
 .turn__a{
-  font-variation-settings: "opsz" 48, "SOFT" 0, "WONK" 0;
-  font-size: clamp(1.3rem, 2.2vw, 1.75rem); line-height: 1.3; color: var(--ink-strong);
+  font-variation-settings: "opsz" 96, "SOFT" 0, "WONK" 0;
+  font-size: clamp(1.75rem, 3.4vw, 2.75rem); line-height: 1.22;
+  letter-spacing: -.012em; color: var(--ink-strong);
 }
 .turn__b{
-  font-variation-settings: "opsz" 36, "SOFT" 0, "WONK" 0;
-  font-size: clamp(1.15rem, 1.9vw, 1.5rem); line-height: 1.35;
+  font-variation-settings: "opsz" 72, "SOFT" 0, "WONK" 0;
+  font-size: clamp(1.4rem, 2.6vw, 2.1rem); line-height: 1.3;
   font-style: italic; color: var(--accent);
 }
 
@@ -1781,70 +1786,3 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
   .cycle__path{ display: none; }
   .cycle__again{ display: none; }
 }
-
-/* ── Explore the Institute ──────────────────────────────────────────────
-   Four entries, no two the same shape. The variety is the point: a tall
-   portrait, a landscape, a circle and a wide band, set on a twelve-column
-   grid at different depths. Nothing here is a card — no border, no fill, no
-   equal column. */
-
-.explore{ background: var(--band); }
-.explore__head{ max-width: 42rem; display: grid; gap: .9rem; }
-
-.entries{
-  margin-top: clamp(2.5rem, 5vw, 4rem);
-  display: grid; grid-template-columns: 1fr;
-  gap: clamp(2.5rem, 5vw, 4rem);
-}
-@media (min-width: 900px){
-  .entries{
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: clamp(1.5rem, 3vw, 3rem);
-    row-gap: 0;
-    align-items: start;
-  }
-  /* the asymmetry, stated once and plainly */
-  .entry--tall { grid-column: 1 / span 5;  }
-  .entry--wide { grid-column: 7 / span 6;  margin-top: 3.5rem; }
-  .entry--round{ grid-column: 2 / span 4;  margin-top: 5rem; }
-  .entry--band { grid-column: 7 / span 6;  margin-top: 4rem; }
-}
-
-.entry{ display: grid; gap: 1.1rem; text-decoration: none; color: inherit; }
-.entry__fig{
-  margin: 0; overflow: hidden; background: var(--nebula);
-  position: relative;
-}
-.entry__fig img{
-  width: 100%; height: 100%; object-fit: cover; display: block;
-  transition: scale 700ms cubic-bezier(.2,.6,.2,1);
-}
-.entry--tall  .entry__fig{ aspect-ratio: 4 / 5; }
-.entry--wide  .entry__fig{ aspect-ratio: 3 / 2; }
-.entry--round .entry__fig{ aspect-ratio: 1 / 1; border-radius: 50%; }
-.entry--band  .entry__fig{ aspect-ratio: 16 / 9; }
-/* the round one is the single exception to the brand's no-rounded-corners
-   rule: it is a circular crop of a photograph, not a rounded interface box */
-
-.entry:hover .entry__fig img, .entry:focus-visible .entry__fig img{ scale: 1.04; }
-
-.entry__body{ display: grid; gap: .5rem; max-width: 30rem; }
-.entry__title{
-  font-family: var(--display);
-  font-variation-settings: "opsz" 72, "SOFT" 0, "WONK" 0;
-  font-size: clamp(1.45rem, 2.2vw, 1.95rem); line-height: 1.12;
-  color: var(--ink-strong); margin: 0; transition: color var(--t-colour);
-}
-.entry__note{ margin: 0; color: var(--ink-quiet); font-size: .9875rem; line-height: 1.55; }
-.entry__more{
-  margin-top: .3rem; font-size: .78rem; font-weight: 600;
-  letter-spacing: .12em; text-transform: uppercase; color: var(--bronze);
-  display: inline-flex; align-items: center; gap: .5rem;
-}
-.entry__more::after{
-  content: ""; width: 1.6rem; height: 1px; background: var(--bronze);
-  transition: width var(--t-move);
-}
-.entry:hover .entry__title, .entry:focus-visible .entry__title{ color: var(--bronze); }
-.entry:hover .entry__more::after{ width: 2.6rem; }
-.entry:focus-visible{ outline: 2px solid var(--accent); outline-offset: 8px; }
