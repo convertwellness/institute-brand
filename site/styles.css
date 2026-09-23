@@ -1389,17 +1389,27 @@ a.count:hover .count__note, a.count:focus-visible .count__note{
   .trail__img{
     content: url("assets/path-journey-tall.webp");
     aspect-ratio: 16 / 11; object-fit: cover; object-position: 50% 42%;
+    position: relative; z-index: 0;
   }
+  /* the picture is 16/11 of the container width, which is what the overlay
+     above is sized against */
+  .trail{ --trail-img-h: calc(100vw * 11 / 16); }
   .trail__line{ display: none; }
+  /* The overlay fades the photograph into the page, and it covers the whole of
+     .trail. On desktop the stops are absolute and sit above it; here they are
+     in normal flow underneath the picture, so without a stacking context of
+     their own the gradient paints straight over stages three, four and five.
+     It only needs to reach as far as the image does. */
   .trail::after{
-    background: linear-gradient(to bottom, transparent 45%,
-                color-mix(in srgb, var(--paper) 88%, transparent) 92%,
+    inset: 0 0 auto 0; height: var(--trail-img-h, 62%);
+    background: linear-gradient(to bottom, transparent 55%,
+                color-mix(in srgb, var(--paper) 80%, transparent) 88%,
                 var(--paper) 100%);
   }
 
   /* the five steps move below the picture, on ivory, joined by one gold line */
   .trail__stops{
-    position: static; display: grid; gap: 0;
+    position: relative; z-index: 4; display: grid; gap: 0;
     padding: clamp(1.5rem,4vw,2.25rem) var(--gutter) 0;
     max-width: var(--shell); margin-inline: auto;
   }
