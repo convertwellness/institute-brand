@@ -342,6 +342,28 @@
     });
   }
 
+  /* ── The site outline's work layer ────────────────────────────────────
+     Off by default, because the outline itself is useful to anyone. On, it
+     shows what is still to be written. /sitemap#work opens straight into
+     it, so the link can be sent as one or the other. */
+
+  var outline = document.getElementById("outline");
+  var workBtn = document.getElementById("work-toggle");
+
+  if (outline && workBtn) {
+    var setWork = function (on) {
+      outline.setAttribute("data-work", String(on));
+      workBtn.setAttribute("aria-expanded", String(on));
+      if (history.replaceState) {
+        history.replaceState(null, "", on ? "#work" : location.pathname);
+      }
+    };
+    setWork(location.hash === "#work");
+    workBtn.addEventListener("click", function () {
+      setWork(outline.getAttribute("data-work") !== "true");
+    });
+  }
+
   /* ── Escape closes whatever is open ───────────────────────────────────── */
 
   document.addEventListener("keydown", function (e) {

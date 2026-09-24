@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The shape of the Institute — Site outline — The Institute</title>
+<meta name="description" content="Every page on this site and how it sits beneath the others — the areas of study, what each one contains, and the pages that support them.">
+<meta name="theme-color" content="#FDFBF3">
+
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../styles.css?v=41">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ══ Header ══════════════════════════════════════════════════════════
+     A masthead rather than a logo bar. The emblem carries the graphic and
+     the institution's name is live text, set in the three lines
+     BRAND.fullName gives — never an image of type.
+
+     Both identities are in the markup and CSS chooses between them on
+     [data-scrolled]: the full lockup on arrival, the short name once the
+     page moves. Both are aria-hidden and the link carries the full name as
+     its label, so the swap never changes what a screen reader hears. -->
+<header class="header" id="header">
+  <div class="shell header__bar">
+
+    <a class="brand" href="/"
+       aria-label="The Institute of The Spiritual Science of Human Patterns — home">
+      <span class="brand__mark" aria-hidden="true"></span>
+
+      <span class="brand__id" aria-hidden="true">
+        <span class="brand__lockup">
+          <span class="brand__of">The Institute of</span>
+          <span class="brand__full">The Spiritual Science<br>of Human Patterns</span>
+        </span>
+        <span class="brand__short">The Institute</span>
+        <span class="brand__sub">The Spiritual Science of Human Patterns</span>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <ul class="doors">
+
+        <li class="door">
+          <button class="door__btn" type="button" aria-expanded="false" aria-controls="p-begin">
+            Begin Here <i class="door__chev" aria-hidden="true"></i>
+          </button>
+          <div class="panel" id="p-begin" data-open="false">
+            <div class="shell mega">
+              <div class="mega__lead">
+                <p class="mega__kicker">Begin here</p>
+                <p class="mega__blurb">Start with the free course, or see how the whole
+                   education fits together before you choose.</p>
+                <a class="mega__all" href="/begin/the-path">The path through the Institute</a>
+              </div>
+              <div class="mega__cols mega__cols--2">
+                <div class="mega__col">
+                  <p class="mega__cat">Where most people start</p>
+                  <ul class="mega__list">
+                    <li><a class="mega__item" href="/courses/five-laws">
+                      <span class="mega__n">The Five Laws of Manifestation</span>
+                      <span class="mega__d">Free. The principles the teachings are built on.</span></a></li>
+                    <li><a class="mega__item" href="/courses/foundation">
+                      <span class="mega__n">Foundation Studies</span>
+                      <span class="mega__d">Ten weeks, thirty Patterns. It opens everything else.</span></a></li>
+                    <li><a class="mega__item" href="/courses/human-operating-system">
+                      <span class="mega__n">The Human Operating System</span>
+                      <span class="mega__d">Concept, Belief, Pattern, Emotion, Behavior, Life Result.</span></a></li>
+                  </ul>
+                </div>
+                <div class="mega__col">
+                  <p class="mega__cat">About the Institute</p>
+                  <ul class="mega__list">
+                    <li><a class="mega__item" href="/about">
+                      <span class="mega__n">What the Institute is</span></a></li>
+                    <li><a class="mega__item" href="/michael">
+                      <span class="mega__n">Michael Schwartz, N.D.</span></a></li>
+                    <li><a class="mega__item" href="/contact">
+                      <span class="mega__n">Contact</span></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="door">
+          <button class="door__btn" type="button" aria-expanded="false" aria-controls="p-explore">
+            Explore <i class="door__chev" aria-hidden="true"></i>
+          </button>
+          <div class="panel" id="p-explore" data-open="false">
+            <div class="shell mega">
+              <div class="mega__lead">
+                <p class="mega__kicker">Explore</p>
+                <p class="mega__blurb">Everything begins with Concept. Follow whichever is
+                   most relevant to your present life, rather than a set sequence.</p>
+                <a class="mega__all" href="/concepts">Enter the Concept Studies</a>
+              </div>
+              <div class="mega__cols mega__cols--2">
+                <div class="mega__col">
+                  <p class="mega__cat">One at a time</p>
+                  <ul class="mega__list">
+                    <li><a class="mega__item" href="/concepts">
+                      <span class="mega__n">Individual Concepts</span>
+                      <span class="mega__d">Each with its own Patterns, and the beliefs that form around it.</span></a></li>
+                    <li><a class="mega__item" href="/patterns">
+                      <span class="mega__n">Patterns of Behavior</span>
+                      <span class="mega__d">Twelve to begin with, each studied on its own.</span></a></li>
+                  </ul>
+                </div>
+                <div class="mega__col">
+                  <p class="mega__cat">Studied as a set</p>
+                  <ul class="mega__list">
+                    <li><a class="mega__item" href="/concepts/families">
+                      <span class="mega__n">Concept Families</span>
+                      <span class="mega__d">Acceptance, Worth, Control and Trust.</span></a></li>
+                    <li><a class="mega__item" href="/collections">
+                      <span class="mega__n">Interwoven Studies</span>
+                      <span class="mega__d">Concepts and Patterns woven together, in threes and sixes.</span></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="door">
+          <button class="door__btn" type="button" aria-expanded="false" aria-controls="p-learn">
+            Learn <i class="door__chev" aria-hidden="true"></i>
+          </button>
+          <div class="panel" id="p-learn" data-open="false">
+            <div class="shell mega">
+              <div class="mega__lead">
+                <p class="mega__kicker">Learn</p>
+                <p class="mega__blurb">The taught material — courses in two editions,
+                   written study editions, and seminars by subject.</p>
+                <a class="mega__all" href="/courses">All four Courses</a>
+              </div>
+              <div class="mega__cols mega__cols--3">
+                <div class="mega__col">
+                  <p class="mega__cat">Courses</p>
+                  <ul class="mega__list">
+                    <li><a class="mega__item" href="/courses/five-laws"><span class="mega__n">The Five Laws of Manifestation</span><span class="mega__d">Free</span></a></li>
+                    <li><a class="mega__item" href="/courses/foundation"><span class="mega__n">Foundation Studies</span></a></li>
+                    <li><a class="mega__item" href="/courses/human-operating-system"><span class="mega__n">The Human Operating System</span></a></li>
+                    <li><a class="mega__item" href="/courses/body-symbology"><span class="mega__n">Body Symbology</span></a></li>
+                  </ul>
+                </div>
+                <div class="mega__col">
+                  <p class="mega__cat">Books &amp; study editions</p>
+                  <ul class="mega__list">
+                    <li><a class="mega__item" href="/books/awakening"><span class="mega__n">Awakening</span></a></li>
+                    <li><a class="mega__item" href="/books/tj"><span class="mega__n">T.J.</span><span class="mega__d">Title to be confirmed.</span></a></li>
+                    <li><a class="mega__item" href="/books/workbooks"><span class="mega__n">Workbooks &amp; Awakening Portfolios</span></a></li>
+                    <li><a class="mega__item" href="/books/video-studies"><span class="mega__n">Video Studies &amp; Special Topics</span><span class="mega__d">Coming soon.</span></a></li>
+                    <li><a class="mega__item" href="/books"><span class="mega__n">All books</span></a></li>
+                  </ul>
+                </div>
+                <div class="mega__col">
+                  <p class="mega__cat">Live Events</p>
+                  <ul class="mega__list">
+                    <li><a class="mega__item" href="/events/arthritis"><span class="mega__n">Arthritis</span></a></li>
+                    <li><a class="mega__item" href="/events/cancer"><span class="mega__n">Cancer</span></a></li>
+                    <li><a class="mega__item" href="/events"><span class="mega__n">All seminars</span><span class="mega__d">Remaining subjects to be confirmed.</span></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="door">
+          <button class="door__btn" type="button" aria-expanded="false" aria-controls="p-schools">
+            The Schools <i class="door__chev" aria-hidden="true"></i>
+          </button>
+          <div class="panel panel--motif" id="p-schools" data-open="false">
+            <div class="shell mega">
+              <div class="mega__lead">
+                <p class="mega__kicker">Deeper study</p>
+                <p class="mega__blurb">The Institute's most comprehensive areas of continuing
+                   education. Six open it, in the order Michael recommends beginning them.</p>
+                <a class="mega__all" href="/schools">All six Schools</a>
+              </div>
+              <div class="mega__cols mega__cols--2">
+                <div class="mega__col">
+                  <p class="mega__cat">Begin with these</p>
+                  <ul class="mega__list">
+                    <li><a class="mega__item" href="/schools/human-patterns"><span class="mega__x">01</span><span class="mega__n">School of Human Patterns</span></a></li>
+                    <li><a class="mega__item" href="/schools/human-operating-system"><span class="mega__x">02</span><span class="mega__n">School of the Human Operating System</span></a></li>
+                    <li><a class="mega__item" href="/schools/identity"><span class="mega__x">03</span><span class="mega__n">School of Identity</span></a></li>
+                  </ul>
+                </div>
+                <div class="mega__col">
+                  <p class="mega__cat">And then</p>
+                  <ul class="mega__list">
+                    <li><a class="mega__item" href="/schools/concepts-and-beliefs"><span class="mega__x">04</span><span class="mega__n">School of Concepts and Beliefs</span></a></li>
+                    <li><a class="mega__item" href="/schools/relationships"><span class="mega__x">05</span><span class="mega__n">School of Relationships</span></a></li>
+                    <li><a class="mega__item" href="/schools/consciousness"><span class="mega__x">06</span><span class="mega__n">School of Consciousness</span></a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- the one motif the brief allows, on the far side, drawn not placed -->
+              <div class="mega__motif" aria-hidden="true">
+                <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid meet" focusable="false">
+                  <g fill="none" stroke="currentColor" stroke-width="1"
+                     vector-effect="non-scaling-stroke" stroke-linecap="round">
+                    <circle cx="100" cy="100" r="78"/>
+                    <circle cx="100" cy="100" r="53"/>
+                    <path d="M100 178 L100 22"/>
+                    <path d="M100 88 C90 74 72 66 54 64"/>
+                    <path d="M100 112 C90 126 72 134 54 136"/>
+                    <path d="M100 88 C110 74 128 66 146 64"/>
+                    <path d="M100 112 C110 126 128 134 146 136"/>
+                  </g>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="door door--flat">
+          <a class="door__btn door__btn--gold" href="/membership">Membership</a>
+        </li>
+
+      </ul>
+    </nav>
+
+    <div class="rail">
+      <button class="icon-btn" type="button" id="search-btn"
+              aria-expanded="false" aria-controls="p-search"
+              aria-label="Search the Institute">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle><path d="M16.5 16.5 21 21"></path>
+        </svg>
+      </button>
+
+      <a class="rail__link" href="/account">Sign in</a>
+
+      <button class="icon-btn burger" type="button" id="burger" aria-expanded="false" aria-controls="drawer" aria-label="Open menu">
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Search. The index is fetched the first time this opens, never on load. -->
+  <div class="panel panel--search" id="p-search" data-open="false">
+    <div class="shell search">
+      <div class="search__row">
+        <svg class="search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="1.5" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle><path d="M16.5 16.5 21 21"></path>
+        </svg>
+        <label class="search__label" for="search-q">Search the Institute</label>
+        <input class="search__input" id="search-q" type="search" autocomplete="off"
+               spellcheck="false" enterkeyhint="search"
+               placeholder="A Concept, a Pattern, a Course, a word on a page">
+      </div>
+      <p class="search__said" id="search-said" aria-live="polite"></p>
+      <ul class="search__results" id="search-results"></ul>
+    </div>
+  </div>
+</header>
+
+<!-- ══ Mobile navigation ════════════════════════════════════════════════
+     Near-full-screen and ivory, not a squeezed desktop bar. The categories
+     are small gold labels and the destinations are Fraunces, so the menu
+     reads as a contents page rather than a list of controls.
+
+     Flat rather than accordions: every destination that was reachable
+     before is still reachable, and none of them is now two taps away. -->
+<div class="drawer" id="drawer" data-open="false" role="dialog" aria-modal="true"
+     aria-label="Menu">
+
+  <div class="shell drawer__top">
+    <a class="brand brand--drawer" href="/"
+       aria-label="The Institute of The Spiritual Science of Human Patterns — home">
+      <span class="brand__mark" aria-hidden="true"></span>
+      <span class="brand__id" aria-hidden="true">
+        <span class="brand__short">The Institute</span>
+        <span class="brand__sub">The Spiritual Science of Human Patterns</span>
+      </span>
+    </a>
+    <button class="icon-btn" type="button" id="drawer-close" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19"></path>
+      </svg>
+    </button>
+  </div>
+
+  <nav class="shell drawer__body" aria-label="Menu">
+
+    <section class="dsec">
+      <h2 class="dsec__cat">Begin here</h2>
+      <ul class="dsec__list">
+        <li><a class="dlink" href="/courses/five-laws">The Five Laws of Manifestation <em>Free</em></a></li>
+        <li><a class="dlink" href="/courses/foundation">Foundation Studies</a></li>
+        <li><a class="dlink" href="/courses/human-operating-system">The Human Operating System</a></li>
+        <li><a class="dlink" href="/begin/the-path">The path through the Institute</a></li>
+      </ul>
+    </section>
+
+    <section class="dsec">
+      <h2 class="dsec__cat">Explore</h2>
+      <ul class="dsec__list">
+        <li><a class="dlink" href="/concepts">Individual Concepts</a></li>
+        <li><a class="dlink" href="/patterns">Patterns of Behavior</a></li>
+        <li><a class="dlink" href="/concepts/families">Concept Families</a></li>
+        <li><a class="dlink" href="/collections">Interwoven Studies</a></li>
+      </ul>
+    </section>
+
+    <section class="dsec">
+      <h2 class="dsec__cat">Learn</h2>
+
+      <p class="dsec__sub">Courses</p>
+      <ul class="dsec__list">
+        <li><a class="dlink" href="/courses/five-laws">The Five Laws of Manifestation <em>Free</em></a></li>
+        <li><a class="dlink" href="/courses/foundation">Foundation Studies</a></li>
+        <li><a class="dlink" href="/courses/human-operating-system">The Human Operating System</a></li>
+        <li><a class="dlink" href="/courses/body-symbology">Body Symbology</a></li>
+        <li><a class="dlink" href="/courses">All four Courses</a></li>
+      </ul>
+
+      <p class="dsec__sub">Books &amp; study editions</p>
+      <ul class="dsec__list">
+        <li><a class="dlink" href="/books/awakening">Awakening</a></li>
+        <li><a class="dlink" href="/books/tj">T.J.</a></li>
+        <li><a class="dlink" href="/books/workbooks">Workbooks &amp; Awakening Portfolios</a></li>
+        <li><a class="dlink" href="/books/video-studies">Video Studies &amp; Special Topics</a></li>
+        <li><a class="dlink" href="/books">All books</a></li>
+      </ul>
+
+      <p class="dsec__sub">Live Events</p>
+      <ul class="dsec__list">
+        <li><a class="dlink" href="/events/arthritis">Arthritis</a></li>
+        <li><a class="dlink" href="/events/cancer">Cancer</a></li>
+        <li><a class="dlink" href="/events">All seminars</a></li>
+      </ul>
+    </section>
+
+    <section class="dsec">
+      <h2 class="dsec__cat">The Schools</h2>
+      <ul class="dsec__list">
+        <li><a class="dlink" href="/schools/human-patterns"><i>01</i> School of Human Patterns</a></li>
+        <li><a class="dlink" href="/schools/human-operating-system"><i>02</i> School of the Human Operating System</a></li>
+        <li><a class="dlink" href="/schools/identity"><i>03</i> School of Identity</a></li>
+        <li><a class="dlink" href="/schools/concepts-and-beliefs"><i>04</i> School of Concepts and Beliefs</a></li>
+        <li><a class="dlink" href="/schools/relationships"><i>05</i> School of Relationships</a></li>
+        <li><a class="dlink" href="/schools/consciousness"><i>06</i> School of Consciousness</a></li>
+        <li><a class="dlink" href="/schools">All six Schools</a></li>
+      </ul>
+    </section>
+
+    <section class="dsec dsec--gold">
+      <h2 class="dsec__cat">Membership</h2>
+      <ul class="dsec__list">
+        <li><a class="dlink dlink--gold" href="/membership">Compare the three memberships</a></li>
+      </ul>
+    </section>
+
+    <section class="dsec dsec--quiet">
+      <h2 class="dsec__cat">The Institute</h2>
+      <ul class="dsec__list">
+        <li><a class="dlink" href="/about">What the Institute is</a></li>
+        <li><a class="dlink" href="/michael">Michael Schwartz, N.D.</a></li>
+        <li><a class="dlink" href="/contact">Contact</a></li>
+        <li><a class="dlink" href="/account">Sign in</a></li>
+      </ul>
+    </section>
+
+  </nav>
+</div>
+
+<main id="main">
+<div class="shell outline" id="outline" data-work="false">
+
+  <nav class="crumb" aria-label="Breadcrumb">
+    <a href="/">The Institute</a> <i aria-hidden="true">/</i>
+    <span aria-current="page">Site outline</span>
+  </nav>
+
+  <div class="outline__head">
+    <p class="eyebrow eyebrow--plain">Site outline</p>
+    <h1 class="outline__title">The shape of the Institute</h1>
+    <p class="outline__lead">Every page on the site, and how each one sits beneath the others.
+       The Institute is organised in depths: an area of study, the Studies inside it, and —
+       where an area divides further — what sits inside those.</p>
+    <p class="outline__note">Drawn from the site itself each time it is built, so it cannot
+       fall out of step with what is actually here.</p>
+
+    <button class="outline__toggle" type="button" id="work-toggle"
+            aria-expanded="false" aria-controls="work-grid">
+      <span class="outline__toggle-on">Show what still needs writing</span>
+      <span class="outline__toggle-off">Hide what still needs writing</span>
+    </button>
+  </div>
+
+  <div class="work" id="work-grid">
+    <p class="work__lead">What is still to be written, by area. A page marked
+       <span class="tag tag--draft">Draft standing in</span> has scaffolding on it that reads
+       like prose but is <em>not</em> Michael's writing; one marked
+       <span class="tag tag--open">Nothing yet</span> is showing a plain placeholder. A
+       <span class="tag tag--held">Held</span> page is deliberately not his — the legal pages
+       belong to the Institute's advisers, and the account and cart need a server.</p>
+
+    <p class="grid__note">Ranked by how much is still to write. Counted from the pages themselves each time the site is built.</p><div class="gridwrap"><table class="grid"><caption class="vh">What is still to be written, by area</caption><thead><tr><th scope="col">Area</th><th scope="col" class="num">Pages</th><th scope="col" class="num">Needing him</th><th scope="col" class="num">Pieces to write</th><th scope="col">What is needed</th></tr></thead><tbody><tr><th scope="row">Concept Studies</th><td class="num">17</td><td class="num">16</td><td class="num"><b>46</b></td><td>A definition, how it shapes perception, and its Patterns — for each Concept</td></tr><tr><th scope="row">Pattern Studies</th><td class="num">13</td><td class="num">13</td><td class="num"><b>37</b></td><td>What it looks like from inside, its sequence, and the Concept it validates</td></tr><tr><th scope="row">The Schools</th><td class="num">7</td><td class="num">7</td><td class="num"><b>13</b></td><td>The Course list inside each School, and what a School costs</td></tr><tr><th scope="row">Interwoven Studies</th><td class="num">5</td><td class="num">5</td><td class="num"><b>12</b></td><td>What each set contains, in what order, and what it costs</td></tr><tr><th scope="row">Books</th><td class="num">5</td><td class="num">5</td><td class="num"><b>5</b></td><td>Every book is a title and nothing else — no description, format or price</td></tr><tr><th scope="row">Courses</th><td class="num">5</td><td class="num">3</td><td class="num"><b>5</b></td><td>The five Laws and their format; the ten weeks of the Foundation</td></tr><tr><th scope="row">Live Events</th><td class="num">3</td><td class="num">3</td><td class="num"><b>3</b></td><td>Date, format, length, price and subject for each seminar</td></tr><tr><th scope="row">The Institute</th><td class="num">1</td><td class="num">1</td><td class="num"><b>1</b></td><td>What the Institute is, in his voice</td></tr><tr><th scope="row">Begin here</th><td class="num">1</td><td class="num">1</td><td class="num"><b>1</b></td><td>The order he would put a new student through</td></tr><tr><th scope="row">Contact</th><td class="num">1</td><td class="num">1</td><td class="num"><b>1</b></td><td>An address for enquiries and one for support</td></tr><tr><th scope="row">Membership</th><td class="num">1</td><td class="num">1</td><td class="num"><b>1</b></td><td>How much membership the bundle includes, and for how long</td></tr><tr class="grid__r--done"><th scope="row">Your account</th><td class="num">1</td><td class="num">0</td><td class="num"><b>0</b></td><td>—</td></tr><tr class="grid__r--done"><th scope="row">Cart</th><td class="num">1</td><td class="num">0</td><td class="num"><b>0</b></td><td>—</td></tr><tr class="grid__r--done"><th scope="row">Home page</th><td class="num">1</td><td class="num">0</td><td class="num"><b>0</b></td><td>—</td></tr><tr class="grid__r--done"><th scope="row">Legal</th><td class="num">3</td><td class="num">0</td><td class="num"><b>0</b></td><td>—</td></tr><tr class="grid__r--done"><th scope="row">Michael Schwartz, N.D.</th><td class="num">1</td><td class="num">0</td><td class="num"><b>0</b></td><td>—</td></tr><tr class="grid__r--done"><th scope="row">Site outline</th><td class="num">1</td><td class="num">0</td><td class="num"><b>0</b></td><td>—</td></tr></tbody><tfoot><tr><th scope="row">All of it</th><td class="num">67</td><td class="num">56</td><td class="num"><b>125</b></td><td></td></tr></tfoot></table></div>
+  </div>
+
+  <ol class="tree"><li class="tree__i tree__i--1"><p class="tree__n tree__n--plain">Begin here</p><ol class="tree__kids"><li class="tree__i tree__i--2"><a class="tree__link" href="/begin/the-path"><span class="tree__n">How the education fits together</span><span class="tree__u">/begin/the-path</span><span class="tag tag--draft">Draft standing in &middot; 1</span></a></li></ol></li><li class="tree__i tree__i--1"><a class="tree__link" href="/concepts"><span class="tree__n">Concept Studies</span><span class="tree__u">/concepts</span><span class="tag tag--written">Written</span></a><p class="tree__d">Twelve Concepts to begin with, each with its Patterns. $6.99, or $4.99 with Institute Membership.</p><p class="tree__c">16 pages beneath</p><ol class="tree__kids"><li class="tree__i tree__i--2"><a class="tree__link" href="/concepts/abandonment"><span class="tree__n">Abandonment</span><span class="tree__u">/concepts/abandonment</span><span class="tag tag--draft">Draft standing in &middot; 4</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/concepts/approval"><span class="tree__n">Approval</span><span class="tree__u">/concepts/approval</span><span class="tag tag--draft">Draft standing in &middot; 3</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/concepts/families"><span class="tree__n">Concept Families</span><span class="tree__u">/concepts/families</span><span class="tag tag--draft">Draft standing in &middot; 1</span></a><p class="tree__d">Four Families, in the order Michael recommends: Acceptance, Worth, Control and Trust. Several Concepts studied as one set, because they are rarely met one at a time.</p><p class="tree__c">4 pages</p><ol class="tree__kids"><li class="tree__i tree__i--3"><a class="tree__link" href="/concepts/families/acceptance"><span class="tree__n">The Acceptance Family</span><span class="tree__u">/concepts/families/acceptance</span><span class="tag tag--draft">Draft standing in &middot; 1</span></a></li><li class="tree__i tree__i--3"><a class="tree__link" href="/concepts/families/control"><span class="tree__n">The Control Family</span><span class="tree__u">/concepts/families/control</span><span class="tag tag--draft">Draft standing in &middot; 1</span></a></li><li class="tree__i tree__i--3"><a class="tree__link" href="/concepts/families/trust"><span class="tree__n">The Trust Family</span><span class="tree__u">/concepts/families/trust</span><span class="tag tag--draft">Draft standing in &middot; 1</span></a></li><li class="tree__i tree__i--3"><a class="tree__link" href="/concepts/families/worth"><span class="tree__n">The Worth Family</span><span class="tree__u">/concepts/families/worth</span><span class="tag tag--draft">Draft standing in &middot; 1</span></a></li></ol></li><li class="tree__i tree__i--2"><a class="tree__link" href="/concepts/fear-and-doubt"><span class="tree__n">Fear and Doubt</span><span class="tree__u">/concepts/fear-and-doubt</span><span class="tag tag--draft">Draft standing in &middot; 4</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/concepts/inadequacy"><span class="tree__n">Inadequacy</span><span class="tree__u">/concepts/inadequacy</span><span class="tag tag--draft">Draft standing in &middot; 3</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/concepts/inferiority"><span class="tree__n">Inferiority</span><span class="tree__u">/concepts/inferiority</span><span class="tag tag--draft">Draft standing in &middot; 3</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/concepts/rejection"><span class="tree__n">Rejection</span><span class="tree__u">/concepts/rejection</span><span class="tag tag--draft">Draft standing in &middot; 3</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/concepts/self-rejection"><span class="tree__n">Self-Rejection</span><span class="tree__u">/concepts/self-rejection</span><span class="tag tag--draft">Draft standing in &middot; 3</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/concepts/shame"><span class="tree__n">Shame</span><span class="tree__u">/concepts/shame</span><span class="tag tag--draft">Draft standing in &middot; 4</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/concepts/suspicion"><span class="tree__n">Suspicion</span><span class="tree__u">/concepts/suspicion</span><span class="tag tag--draft">Draft standing in &middot; 3</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/concepts/undeserving"><span class="tree__n">Undeserving</span><span class="tree__u">/concepts/undeserving</span><span class="tag tag--draft">Draft standing in &middot; 3</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/concepts/unworthiness"><span class="tree__n">Unworthiness</span><span class="tree__u">/concepts/unworthiness</span><span class="tag tag--draft">Draft standing in &middot; 8</span></a></li></ol></li><li class="tree__i tree__i--1"><a class="tree__link" href="/patterns"><span class="tree__n">Patterns of Behavior</span><span class="tree__u">/patterns</span><span class="tag tag--draft">Draft standing in &middot; 1</span></a><p class="tree__d">Twelve Patterns of Behavior, each studied on its own or with the Concept that creates it.</p><p class="tree__c">12 pages beneath</p><ol class="tree__kids"><li class="tree__i tree__i--2"><a class="tree__link" href="/patterns/approval-rejection"><span class="tree__n">Approval-Rejection</span><span class="tree__u">/patterns/approval-rejection</span><span class="tag tag--draft">Draft standing in &middot; 3</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/patterns/avoidance-of-responsibility"><span class="tree__n">Avoidance of Responsibility</span><span class="tree__u">/patterns/avoidance-of-responsibility</span><span class="tag tag--draft">Draft standing in &middot; 3</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/patterns/comparison"><span class="tree__n">Comparison</span><span class="tree__u">/patterns/comparison</span><span class="tag tag--draft">Draft standing in &middot; 3</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/patterns/control"><span class="tree__n">Control</span><span class="tree__u">/patterns/control</span><span class="tag tag--draft">Draft standing in &middot; 3</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/patterns/defensiveness"><span class="tree__n">Defensiveness</span><span class="tree__u">/patterns/defensiveness</span><span class="tag tag--draft">Draft standing in &middot; 3</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/patterns/denial"><span class="tree__n">Denial</span><span class="tree__u">/patterns/denial</span><span class="tag tag--draft">Draft standing in &middot; 3</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/patterns/fear-and-doubt"><span class="tree__n">Fear and Doubt</span><span class="tree__u">/patterns/fear-and-doubt</span><span class="tag tag--draft">Draft standing in &middot; 3</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/patterns/guilt"><span class="tree__n">Guilt</span><span class="tree__u">/patterns/guilt</span><span class="tag tag--draft">Draft standing in &middot; 3</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/patterns/people-pleasing"><span class="tree__n">People Pleasing</span><span class="tree__u">/patterns/people-pleasing</span><span class="tag tag--draft">Draft standing in &middot; 3</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/patterns/perfectionism"><span class="tree__n">Perfectionism</span><span class="tree__u">/patterns/perfectionism</span><span class="tag tag--draft">Draft standing in &middot; 3</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/patterns/procrastination"><span class="tree__n">Procrastination</span><span class="tree__u">/patterns/procrastination</span><span class="tag tag--draft">Draft standing in &middot; 3</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/patterns/resentment"><span class="tree__n">Resentment</span><span class="tree__u">/patterns/resentment</span><span class="tag tag--draft">Draft standing in &middot; 3</span></a></li></ol></li><li class="tree__i tree__i--1"><a class="tree__link" href="/collections"><span class="tree__n">Interwoven Studies</span><span class="tree__u">/collections</span><span class="tag tag--draft">Draft standing in &middot; 1</span></a><p class="tree__d">Michael's own name for the sets: a central Concept Study with the Pattern Studies that belong to it, bought once and cheaper than its parts.</p><p class="tree__c">4 pages beneath</p><ol class="tree__kids"><li class="tree__i tree__i--2"><a class="tree__link" href="/collections/interwoven-concepts"><span class="tree__n">Interwoven Concepts</span><span class="tree__u">/collections/interwoven-concepts</span><span class="tag tag--draft">Draft standing in &middot; 3</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/collections/interwoven-patterns"><span class="tree__n">Interwoven Patterns</span><span class="tree__u">/collections/interwoven-patterns</span><span class="tag tag--draft">Draft standing in &middot; 3</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/collections/unworthiness"><span class="tree__n">Unworthiness and its Patterns</span><span class="tree__u">/collections/unworthiness</span><span class="tag tag--draft">Draft standing in &middot; 2</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/collections/worth-family"><span class="tree__n">The Worth Family</span><span class="tree__u">/collections/worth-family</span><span class="tag tag--draft">Draft standing in &middot; 3</span></a></li></ol></li><li class="tree__i tree__i--1"><a class="tree__link" href="/courses"><span class="tree__n">Courses</span><span class="tree__u">/courses</span><span class="tag tag--written">Written</span></a><p class="tree__d">Four Courses at launch: the Five Laws, Foundation Studies, the Human Operating System and Body Symbology.</p><p class="tree__c">4 pages beneath</p><ol class="tree__kids"><li class="tree__i tree__i--2"><a class="tree__link" href="/courses/body-symbology"><span class="tree__n">Body Symbology</span><span class="tree__u">/courses/body-symbology</span><span class="tag tag--draft">Draft standing in &middot; 1</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/courses/five-laws"><span class="tree__n">The Five Laws of Manifestation</span><span class="tree__u">/courses/five-laws</span><span class="tag tag--draft">Draft standing in &middot; 2</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/courses/foundation"><span class="tree__n">Foundation Studies</span><span class="tree__u">/courses/foundation</span><span class="tag tag--draft">Draft standing in &middot; 2</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/courses/human-operating-system"><span class="tree__n">The Human Operating System</span><span class="tree__u">/courses/human-operating-system</span><span class="tag tag--written">Written</span></a></li></ol></li><li class="tree__i tree__i--1"><a class="tree__link" href="/schools"><span class="tree__n">The Schools of the Institute</span><span class="tree__u">/schools</span><span class="tag tag--draft">Draft standing in &middot; 1</span></a><p class="tree__d">Six Schools open the Institute, in the order Michael recommends beginning them.</p><p class="tree__c">6 pages beneath</p><ol class="tree__kids"><li class="tree__i tree__i--2"><a class="tree__link" href="/schools/concepts-and-beliefs"><span class="tree__n">School of Concepts and Beliefs</span><span class="tree__u">/schools/concepts-and-beliefs</span><span class="tag tag--draft">Draft standing in &middot; 2</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/schools/consciousness"><span class="tree__n">School of Consciousness</span><span class="tree__u">/schools/consciousness</span><span class="tag tag--draft">Draft standing in &middot; 2</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/schools/human-operating-system"><span class="tree__n">School of the Human Operating System</span><span class="tree__u">/schools/human-operating-system</span><span class="tag tag--draft">Draft standing in &middot; 2</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/schools/human-patterns"><span class="tree__n">School of Human Patterns</span><span class="tree__u">/schools/human-patterns</span><span class="tag tag--draft">Draft standing in &middot; 2</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/schools/identity"><span class="tree__n">School of Identity</span><span class="tree__u">/schools/identity</span><span class="tag tag--draft">Draft standing in &middot; 2</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/schools/relationships"><span class="tree__n">School of Relationships</span><span class="tree__u">/schools/relationships</span><span class="tag tag--draft">Draft standing in &middot; 2</span></a></li></ol></li><li class="tree__i tree__i--1"><a class="tree__link" href="/books"><span class="tree__n">Books and Study Materials</span><span class="tree__u">/books</span><span class="tag tag--draft">Draft standing in &middot; 1</span></a><p class="tree__d">Awakening, T.J., the Workbooks and Awakening Portfolios, and the Video Studies and Special Topics.</p><p class="tree__c">4 pages beneath</p><ol class="tree__kids"><li class="tree__i tree__i--2"><a class="tree__link" href="/books/awakening"><span class="tree__n">Awakening</span><span class="tree__u">/books/awakening</span><span class="tag tag--draft">Draft standing in &middot; 1</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/books/tj"><span class="tree__n">T.J.</span><span class="tree__u">/books/tj</span><span class="tag tag--draft">Draft standing in &middot; 1</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/books/video-studies"><span class="tree__n">Video Studies and Special Topics</span><span class="tree__u">/books/video-studies</span><span class="tag tag--draft">Draft standing in &middot; 1</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/books/workbooks"><span class="tree__n">Workbooks and Awakening Portfolios</span><span class="tree__u">/books/workbooks</span><span class="tag tag--draft">Draft standing in &middot; 1</span></a></li></ol></li><li class="tree__i tree__i--1"><a class="tree__link" href="/events"><span class="tree__n">Live Events</span><span class="tree__u">/events</span><span class="tag tag--draft">Draft standing in &middot; 1</span></a><p class="tree__d">Seminars from the Institute. Two subjects named so far — Arthritis and Cancer — with dates, format and pricing still to come.</p><p class="tree__c">2 pages beneath</p><ol class="tree__kids"><li class="tree__i tree__i--2"><a class="tree__link" href="/events/arthritis"><span class="tree__n">Arthritis</span><span class="tree__u">/events/arthritis</span><span class="tag tag--draft">Draft standing in &middot; 1</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/events/cancer"><span class="tree__n">Cancer</span><span class="tree__u">/events/cancer</span><span class="tag tag--draft">Draft standing in &middot; 1</span></a></li></ol></li><li class="tree__i tree__i--1"><a class="tree__link" href="/membership"><span class="tree__n">Membership</span><span class="tree__u">/membership</span><span class="tag tag--draft">Draft standing in &middot; 1</span></a><p class="tree__d">Three memberships: Institute at $19.95 a month, Sustaining at $199 a year, and Core Studies.</p></li><li class="tree__i tree__i--1"><a class="tree__link" href="/about"><span class="tree__n">About the Institute</span><span class="tree__u">/about</span><span class="tag tag--draft">Draft standing in &middot; 1</span></a><p class="tree__d">What the Institute is, what it teaches, and why it was founded.</p></li><li class="tree__i tree__i--1"><a class="tree__link" href="/michael"><span class="tree__n">Michael Schwartz, N.D.</span><span class="tree__u">/michael</span><span class="tag tag--held">Held</span></a><p class="tree__d">The teacher behind the Institute's material.</p></li><li class="tree__i tree__i--1"><a class="tree__link" href="/contact"><span class="tree__n">Contact</span><span class="tree__u">/contact</span><span class="tag tag--draft">Draft standing in &middot; 1</span></a><p class="tree__d">How to reach the Institute.</p></li><li class="tree__i tree__i--1"><a class="tree__link" href="/account"><span class="tree__n">Sign in</span><span class="tree__u">/account</span><span class="tag tag--held">Held</span></a><p class="tree__d">Your Studies, your progress through the Foundation, and your membership.</p></li><li class="tree__i tree__i--1"><a class="tree__link" href="/cart"><span class="tree__n">Your cart</span><span class="tree__u">/cart</span><span class="tag tag--held">Held</span></a><p class="tree__d">What you have chosen, before you pay for it.</p></li><li class="tree__i tree__i--1"><p class="tree__n tree__n--plain">Legal</p><ol class="tree__kids"><li class="tree__i tree__i--2"><a class="tree__link" href="/legal/privacy"><span class="tree__n">Privacy</span><span class="tree__u">/legal/privacy</span><span class="tag tag--held">Held</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/legal/refunds"><span class="tree__n">Refunds</span><span class="tree__u">/legal/refunds</span><span class="tag tag--held">Held</span></a></li><li class="tree__i tree__i--2"><a class="tree__link" href="/legal/terms"><span class="tree__n">Terms of Service</span><span class="tree__u">/legal/terms</span><span class="tag tag--held">Held</span></a></li></ol></li><li class="tree__i tree__i--1"><a class="tree__link" href="/sitemap"><span class="tree__n">The shape of the Institute</span><span class="tree__u">/sitemap</span><span class="tag tag--written">Written</span></a><p class="tree__d">Every page on this site and how it sits beneath the others — the areas of study, what each one contains, and the pages that support them.</p></li></ol>
+
+</div>
+</main>
+
+<!-- ══ Footer ═══════════════════════════════════════════════════════════════════ -->
+<footer class="footer g-deep">
+  <div class="shell">
+
+    <div class="footer__top">
+
+      <div class="stack gap-6">
+        <div class="footer__lockup">
+          <img class="lockup" src="/assets/logo-lockup.webp?v=7405f4f4"
+               alt="The Institute of The Spiritual Science of Human Patterns"
+               width="600" height="188" decoding="async">
+        </div>
+
+        <div>
+          <p class="h-small">Occasional letters from the Institute</p>
+          <p class="small quiet" style="margin-top:.4rem">New Concepts, new Courses, and seminar dates. No more than monthly.</p>
+          <form class="news" id="news">
+            <label class="sr-only" for="news-email">Email address</label>
+            <input id="news-email" type="email" name="email" placeholder="you@example.com" required>
+            <button class="btn btn--primary" type="submit">Subscribe</button>
+          </form>
+          <p class="small quiet" id="news-said" hidden style="margin-top:.6rem">Thank you. You will hear from the Institute.</p>
+        </div>
+      </div>
+
+      <div class="footer__cols">
+
+        <div>
+          <p class="footer__h">Study</p>
+          <ul class="footer__list">
+            <li><a href="/courses/five-laws">The Five Laws</a></li>
+            <li><a href="/courses/foundation">Foundation Studies</a></li>
+            <li><a href="/concepts">Concept Studies</a></li>
+            <li><a href="/patterns">Patterns of Behavior</a></li>
+            <li><a href="/concepts/families">Concept Families</a></li>
+            <li><a href="/collections">Interwoven Studies</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer__h">The Schools</p>
+          <ul class="footer__list">
+            <li><a href="/schools/human-patterns">Human Patterns</a></li>
+            <li><a href="/schools/human-operating-system">Human Operating System</a></li>
+            <li><a href="/schools/identity">Identity</a></li>
+            <li><a href="/schools/concepts-and-beliefs">Concepts and Beliefs</a></li>
+            <li><a href="/schools/relationships">Relationships</a></li>
+            <li><a href="/schools/consciousness">Consciousness</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer__h">Library</p>
+          <ul class="footer__list">
+            <li><a href="/courses/human-operating-system">The Human Operating System</a></li>
+            <li><a href="/courses/body-symbology">Body Symbology</a></li>
+            <li><a href="/books/awakening">Awakening</a></li>
+            <li><a href="/books/workbooks">Workbooks &amp; Portfolios</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer__h">The Institute</p>
+          <ul class="footer__list">
+            <li><a href="/about">About</a></li>
+            <li><a href="/michael">Michael Schwartz</a></li>
+            <li><a href="/membership">Membership</a></li>
+            <li><a href="/events">Live Events</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer__base">
+      <p>&copy; <span id="year">2026</span> The Institute of The Spiritual Science of Human Patterns</p>
+      <ul class="footer__legal">
+        <li><a href="/sitemap">Site outline</a></li>
+        <li><a href="/legal/terms">Terms</a></li>
+        <li><a href="/legal/privacy">Privacy</a></li>
+        <li><a href="/legal/refunds">Refunds</a></li>
+      </ul>
+    </div>
+
+  </div>
+</footer>
+
+<script src="../app.js?v=15"></script>
+</body>
+</html>
