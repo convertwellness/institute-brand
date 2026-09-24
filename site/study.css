@@ -15,18 +15,6 @@
      place. It never invents his voice.
    ========================================================================== */
 
-/* ── Breadcrumb ─────────────────────────────────────────────────────────── */
-
-.crumb{
-  display: flex; flex-wrap: wrap; align-items: center; gap: .5rem;
-  font-size: .875rem; color: var(--ink-quiet);
-  padding-block: 1.5rem 0;
-}
-.crumb a{ color: var(--ink-quiet); text-decoration: none; }
-.crumb a:hover{ color: var(--accent); }
-.crumb span[aria-current]{ color: var(--ink); }
-.crumb i{ font-style: normal; color: var(--rule-strong); }
-
 /* ── The two columns ────────────────────────────────────────────────────── */
 
 .study{

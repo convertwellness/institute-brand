@@ -670,6 +670,16 @@ a.figure:hover .figure__l, a.figure:focus-visible .figure__l{ color: var(--accen
 }
 .door__btn[aria-expanded="true"] .door__chev{ transform: translateY(1px) rotate(-135deg); }
 
+/* The panel opens under the masthead, which leaves 24px of header between the
+   bottom of the door and the top of the panel. That strip belongs to neither,
+   so crossing it fires mouseleave and starts the close. This bridges it: a
+   transparent strip, only under the door that is open, and only while it is —
+   so the pointer never actually leaves the door on the way down. */
+.door__btn[aria-expanded="true"]::before{
+  content: ""; position: absolute;
+  left: -.6rem; right: -.6rem; top: 100%; height: 30px;
+}
+
 /* Membership carries a hairline rather than a filled button — more present
    than the others, still a long way from a SaaS call to action. */
 .door__btn--gold{
@@ -888,6 +898,20 @@ a.figure:hover .figure__l, a.figure:focus-visible .figure__l{ color: var(--accen
   .mega__all::after{ transition: none; }
 }
 
+/* ── Breadcrumb ──────────────────────────────────────────
+   Sixty-six pages carry a breadcrumb and sixty-five of them load study.css, so
+   this lived there and worked by luck. The one that does not — the site outline
+   — got the browser default: blue and underlined. It belongs here. */
+
+.crumb{
+  display: flex; flex-wrap: wrap; align-items: center; gap: .5rem;
+  font-size: .875rem; color: var(--ink-quiet);
+  padding-block: 1.5rem 0;
+}
+.crumb a{ color: var(--ink-quiet); text-decoration: none; }
+.crumb a:hover{ color: var(--accent); }
+.crumb span[aria-current]{ color: var(--ink); }
+.crumb i{ font-style: normal; color: var(--rule-strong); }
 /* ── Search ─────────────────────────────────────────────────────────────
    It borrows the mega panel, so search opens in the same place and on the
    same ground as the navigation rather than as a separate piece of

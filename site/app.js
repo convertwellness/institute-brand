@@ -40,7 +40,11 @@
       var open = btn.getAttribute("aria-expanded") === "true";
       closeSearch();
       closeAllDoors(door);
-      openDoor(door, !open);
+      // On a fine pointer the panel is already open from hovering, so a click
+      // that toggled it shut would leave it shut: the pointer never left, so
+      // no mouseenter fires to bring it back. Escape and clicking away still
+      // close it. Where there is no hover, the click has to do both jobs.
+      openDoor(door, fine.matches ? true : !open);
     });
 
     door.addEventListener("mouseenter", function () {
@@ -53,7 +57,7 @@
 
     door.addEventListener("mouseleave", function () {
       if (!fine.matches) return;
-      hoverTimer = window.setTimeout(function () { openDoor(door, false); }, 140);
+      hoverTimer = window.setTimeout(function () { openDoor(door, false); }, 260);
     });
 
     door.addEventListener("focusout", function (e) {
