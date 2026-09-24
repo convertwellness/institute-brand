@@ -383,9 +383,22 @@
 
   /* ── The header hairline, once the page has moved ─────────────────────── */
 
+  /* Two thresholds, not one. The masthead is sticky, so it occupies space in
+     normal flow, and compacting takes 28px out of the document -- the page
+     rises by 28px under the pointer. Against a single 8px threshold that
+     shift can carry scrollY back under the line, which expands the masthead,
+     which pushes the page down again, which compacts it: the lockup flickering
+     between its two states. 28 cannot cross a 70px gap. */
   var header = document.getElementById("header");
+  var COMPACT_AT = 110, EXPAND_AT = 40;
+  var compact = null;
+
   var onScroll = function () {
-    header.setAttribute("data-scrolled", String(window.scrollY > 8));
+    var y = window.scrollY || 0;
+    var next = compact ? y > EXPAND_AT : y > COMPACT_AT;
+    if (next === compact) return;
+    compact = next;
+    header.setAttribute("data-scrolled", String(compact));
   };
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
