@@ -11,14 +11,14 @@ Nothing here is clever. It is string substitution, on purpose — the point is
 that the next person can read it in a minute.
 """
 
-import io, os, re, sys, glob, hashlib
+import io, os, re, sys, glob, json, hashlib
 
 ROOT  = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC   = os.path.join(ROOT, "src")
 OUT   = os.path.join(ROOT, "site")
 PARTS = os.path.join(ROOT, "build", "partials")
 
-CSS_V, JS_V, STUDY_V = "38", "12", "12"   # bump to bust caches
+CSS_V, JS_V, STUDY_V = "39", "14", "12"   # bump to bust caches
 
 TAIL_MARK = u"<!-- \u2550\u2550 page tail"
 
@@ -82,6 +82,51 @@ def stamp_assets(html):
     return ASSET_RE.sub(lambda m: '%s="%s"' % (m.group(1), asset_stamp(m.group(2))), html)
 
 
+# -- The search index -----------------------------------------------------
+# Michael and Sara need to find a word across 67 pages -- "where does it say
+# governs?" -- so the index carries the body text, not just the titles. It is
+# written once here and fetched by the browser only when someone actually
+# opens search, so it costs nothing on an ordinary page load.
+
+SCRIPT_RE  = re.compile(r"<(script|style)[^>]*>.*?</\1>", re.S | re.I)
+COMMENT_RE = re.compile(r"<!--.*?-->", re.S)
+TAG_RE     = re.compile(r"<[^>]+>")
+WS_RE      = re.compile(r"\s+")
+HEAD_RE    = re.compile(r"<h[1-3][^>]*>(.*?)</h[1-3]>", re.S | re.I)
+# the breadcrumb repeats the title and the section on every page, so it
+# would otherwise be the first thing in every snippet
+CRUMB_RE   = re.compile(r'<nav class="crumb".*?</nav>', re.S | re.I)
+
+ENTITIES = [("&amp;", "&"), ("&#8212;", u"\u2014"), ("&nbsp;", " "),
+            ("&middot;", u"\u00b7"), ("&lt;", "<"), ("&gt;", ">"), ("&quot;", '"')]
+
+
+def plain(html):
+    """Visible text, with markup, scripts and our own notes taken out."""
+    t = COMMENT_RE.sub(" ", html)     # AWAITING-MICHAEL notes are ours, not the page
+    t = SCRIPT_RE.sub(" ", t)
+    t = TAG_RE.sub(" ", t)
+    for a, b in ENTITIES:
+        t = t.replace(a, b)
+    return WS_RE.sub(" ", t).strip()
+
+
+def index_entry(route, meta, main):
+    main = CRUMB_RE.sub(" ", main)
+    title = meta["title"]
+    short = title.split(u"\u2014")[0].strip() or title
+    heads = [plain(h) for h in HEAD_RE.findall(main)]
+    heads = [h for h in heads if h and h != short]
+    return {
+        "u": route,
+        "t": short,
+        "d": meta["desc"],
+        "h": heads[:12],
+        "x": plain(main),
+        "k": (route.strip("/").split("/")[0] or "home"),
+    }
+
+
 def split_tail(text):
     """A page may carry markup and script of its own after the footer — the mock
     gate-state bar, the Concepts filter. Everything past the marker goes there."""
@@ -120,6 +165,8 @@ def build():
     sources = sorted(glob.glob(os.path.join(SRC, "**", "*.html"), recursive=True))
     if not sources:
         sys.exit("src/ is empty — nothing to build")
+
+    entries = []
 
     for s in sources:
         rel   = os.path.relpath(s, SRC).replace("\\", "/")
@@ -164,9 +211,16 @@ def build():
         if not os.path.isdir(d):
             os.makedirs(d)
         io.open(dest, "w", encoding="utf-8", newline="\n").write(stamp_assets(page))
+        if route:                       # 404 is not a destination
+            entries.append(index_entry(route, meta, main))
         print("  %-34s -> %s" % (route or "(404)", os.path.relpath(dest, ROOT).replace("\\", "/")))
 
-    print("\n%d pages built." % len(sources))
+    idx = os.path.join(OUT, "search-index.json")
+    io.open(idx, "w", encoding="utf-8", newline="\n").write(
+        json.dumps({"v": 1, "pages": entries}, ensure_ascii=False, separators=(",", ":")))
+
+    print("\n%d pages built.  search-index.json: %d pages, %.0f KB."
+          % (len(sources), len(entries), os.path.getsize(idx) / 1024.0))
 
 
 if __name__ == "__main__":

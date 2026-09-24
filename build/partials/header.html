@@ -213,7 +213,9 @@
     </nav>
 
     <div class="rail">
-      <button class="icon-btn" type="button" aria-label="Search Concepts, Courses and Patterns">
+      <button class="icon-btn" type="button" id="search-btn"
+              aria-expanded="false" aria-controls="p-search"
+              aria-label="Search the Institute">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
           <circle cx="11" cy="11" r="7"></circle><path d="M16.5 16.5 21 21"></path>
         </svg>
@@ -226,5 +228,23 @@
       </button>
     </div>
 
+  </div>
+
+  <!-- Search. The index is fetched the first time this opens, never on load. -->
+  <div class="panel panel--search" id="p-search" data-open="false">
+    <div class="shell search">
+      <div class="search__row">
+        <svg class="search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="1.5" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle><path d="M16.5 16.5 21 21"></path>
+        </svg>
+        <label class="search__label" for="search-q">Search the Institute</label>
+        <input class="search__input" id="search-q" type="search" autocomplete="off"
+               spellcheck="false" enterkeyhint="search"
+               placeholder="A Concept, a Pattern, a Course, a word on a page">
+      </div>
+      <p class="search__said" id="search-said" aria-live="polite"></p>
+      <ul class="search__results" id="search-results"></ul>
+    </div>
   </div>
 </header>

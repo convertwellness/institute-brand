@@ -6,7 +6,8 @@
      2. The mobile menu
      3. The Operating System ring — hover, tab or tap a stage to read it
      4. The path — each tier opens
-     5. Section reveal and the ring draw, each once
+     5. Search — a body-text index, fetched on first open
+     6. Section reveal and the ring draw, each once
    ========================================================================== */
 
 (function () {
@@ -37,6 +38,7 @@
 
     btn.addEventListener("click", function () {
       var open = btn.getAttribute("aria-expanded") === "true";
+      closeSearch();
       closeAllDoors(door);
       openDoor(door, !open);
     });
@@ -44,6 +46,7 @@
     door.addEventListener("mouseenter", function () {
       if (!fine.matches) return;
       window.clearTimeout(hoverTimer);
+      closeSearch();
       closeAllDoors(door);
       openDoor(door, true);
     });
@@ -140,10 +143,212 @@
     });
   });
 
+  /* ── 5. Search ─────────────────────────────────────────────────────────
+     Sixty-six pages is past the point where anyone remembers which one a
+     sentence was on. So the index carries the body text of every page, not
+     just the titles — asking "where does it say governs?" is the whole
+     point of it. It is fetched the first time search opens and never on an
+     ordinary page load, so it costs a visitor who never searches nothing. */
+
+  var sBtn   = document.getElementById("search-btn");
+  var sPanel = document.getElementById("p-search");
+  var sInput = document.getElementById("search-q");
+  var sSaid  = document.getElementById("search-said");
+  var sList  = document.getElementById("search-results");
+
+  var KIND = {
+    home: "Home", concepts: "Concepts", patterns: "Patterns", courses: "Courses",
+    books: "Books", events: "Live Events", schools: "The Schools",
+    collections: "Interwoven Studies", membership: "Membership",
+    begin: "Begin here", about: "The Institute", michael: "The Institute",
+    contact: "The Institute", account: "Your account", cart: "Cart", legal: "Legal"
+  };
+
+  function closeSearch() {
+    if (!sPanel) return;
+    sPanel.setAttribute("data-open", "false");
+    sBtn.setAttribute("aria-expanded", "false");
+  }
+
+  if (sBtn && sPanel && sInput) {
+    var pages = null, pending = null, timer = null;
+
+    var load = function () {
+      if (pending) return pending;
+      // no-cache revalidates rather than refetching: correct when the content
+      // has changed, nearly free when it has not.
+      pending = fetch("/search-index.json", { cache: "no-cache" })
+        .then(function (r) { return r.json(); })
+        .then(function (j) {
+          pages = j.pages.map(function (p) {
+            return { u: p.u, t: p.t, d: p.d, k: p.k, x: p.x,
+                     T: p.t.toLowerCase(), D: p.d.toLowerCase(),
+                     H: (p.h || []).join(" ").toLowerCase(),
+                     X: p.x.toLowerCase() };
+          });
+          return pages;
+        })
+        .catch(function () { pages = []; return pages; });
+      return pending;
+    };
+
+    var count = function (hay, needle) {
+      var n = 0, at = hay.indexOf(needle);
+      while (at >= 0 && n < 12) { n += 1; at = hay.indexOf(needle, at + needle.length); }
+      return n;
+    };
+
+    var score = function (p, terms, phrase) {
+      var i, t, n = 0;
+      // every term has to appear somewhere, or it is not a match
+      for (i = 0; i < terms.length; i += 1) {
+        t = terms[i];
+        if (p.T.indexOf(t) < 0 && p.D.indexOf(t) < 0 &&
+            p.H.indexOf(t) < 0 && p.X.indexOf(t) < 0) return 0;
+      }
+      // a page whose name *begins* with what you typed is likelier to be the
+      // one you meant than one that merely contains it somewhere
+      if (p.T.toLowerCase().indexOf(phrase) === 0) n += 70;
+      if (p.T.indexOf(phrase) >= 0) n += 140;
+      if (p.D.indexOf(phrase) >= 0) n += 40;
+      if (p.H.indexOf(phrase) >= 0) n += 30;
+      if (p.X.indexOf(phrase) >= 0) n += 16;
+      for (i = 0; i < terms.length; i += 1) {
+        t = terms[i];
+        if (p.T.indexOf(t) >= 0) n += 28;
+        if (p.D.indexOf(t) >= 0) n += 8;
+        if (p.H.indexOf(t) >= 0) n += 6;
+        n += count(p.X, t) * 2;
+      }
+      return n;
+    };
+
+    /* Built as nodes rather than innerHTML — the snippet is page text and the
+       query is the visitor's, and neither should ever be parsed as markup. */
+    var snippet = function (text, low, needle) {
+      var frag = document.createDocumentFragment();
+      var at = needle ? low.indexOf(needle) : -1;
+      if (at < 0) {
+        frag.appendChild(document.createTextNode(text.slice(0, 150) + "\u2026"));
+        return frag;
+      }
+      var from = Math.max(0, at - 78), to = Math.min(text.length, at + needle.length + 96);
+      if (from > 0) { from = text.indexOf(" ", from) + 1 || from; }
+      frag.appendChild(document.createTextNode((from > 0 ? "\u2026" : "") + text.slice(from, at)));
+      var m = document.createElement("mark");
+      m.textContent = text.slice(at, at + needle.length);
+      frag.appendChild(m);
+      frag.appendChild(document.createTextNode(
+        text.slice(at + needle.length, to) + (to < text.length ? "\u2026" : "")));
+      return frag;
+    };
+
+    var render = function (hits, phrase, total) {
+      sList.textContent = "";
+      hits.forEach(function (h) {
+        var li = document.createElement("li");
+        var a  = document.createElement("a");
+        a.className = "sres";
+        a.href = h.p.u;
+
+        var k = document.createElement("span");
+        k.className = "sres__k";
+        k.textContent = KIND[h.p.k] || "The Institute";
+
+        var t = document.createElement("span");
+        t.className = "sres__t";
+        t.textContent = h.p.t;
+
+        var sn = document.createElement("span");
+        sn.className = "sres__s";
+        sn.appendChild(snippet(h.p.x, h.p.X, h.needle));
+
+        a.appendChild(k); a.appendChild(t); a.appendChild(sn);
+        li.appendChild(a); sList.appendChild(li);
+      });
+      sSaid.textContent = total === 0
+        ? "Nothing found."
+        : (total === 1 ? "1 page" : total + " pages") +
+          (total > hits.length ? ", showing the closest " + hits.length + "." : ".");
+    };
+
+    var run = function () {
+      var q = sInput.value.trim();
+      if (q.length < 2) { sList.textContent = ""; sSaid.textContent = ""; return; }
+      if (!pages) { sSaid.textContent = "Searching\u2026"; load().then(run); return; }
+
+      var phrase = q.toLowerCase();
+      var terms  = phrase.split(/\s+/).filter(function (t) { return t.length > 1; });
+      if (!terms.length) terms = [phrase];
+
+      var hits = [];
+      pages.forEach(function (p) {
+        var n = score(p, terms, phrase);
+        if (!n) return;
+        var needle = p.X.indexOf(phrase) >= 0 ? phrase : null;
+        if (!needle) {
+          terms.forEach(function (t) {
+            if (!needle && p.X.indexOf(t) >= 0) needle = t;
+          });
+        }
+        hits.push({ p: p, n: n, needle: needle });
+      });
+      hits.sort(function (a, b) { return b.n - a.n; });
+      render(hits.slice(0, 12), phrase, hits.length);
+    };
+
+    var setSearch = function (open) {
+      sPanel.setAttribute("data-open", String(open));
+      sBtn.setAttribute("aria-expanded", String(open));
+      if (open) {
+        closeAllDoors(null);
+        load();
+        sInput.focus();
+        sInput.select();
+      } else {
+        sBtn.focus();
+      }
+    };
+
+    sBtn.addEventListener("click", function () {
+      setSearch(sPanel.getAttribute("data-open") !== "true");
+    });
+
+    sInput.addEventListener("input", function () {
+      window.clearTimeout(timer);
+      timer = window.setTimeout(run, 120);
+    });
+
+    // down from the field walks into the results; up from the first comes back
+    sPanel.addEventListener("keydown", function (e) {
+      if (e.key !== "ArrowDown" && e.key !== "ArrowUp") return;
+      var links = Array.prototype.slice.call(sList.querySelectorAll("a"));
+      if (!links.length) return;
+      e.preventDefault();
+      var i = links.indexOf(document.activeElement);
+      if (e.key === "ArrowDown") {
+        links[i < 0 ? 0 : Math.min(i + 1, links.length - 1)].focus();
+      } else if (i <= 0) {
+        sInput.focus();
+      } else {
+        links[i - 1].focus();
+      }
+    });
+
+    document.addEventListener("click", function (e) {
+      if (sPanel.getAttribute("data-open") !== "true") return;
+      if (e.target.closest("#p-search") || e.target.closest("#search-btn")) return;
+      closeSearch();
+    });
+  }
+
   /* ── Escape closes whatever is open ───────────────────────────────────── */
 
   document.addEventListener("keydown", function (e) {
     if (e.key !== "Escape") return;
+    if (sPanel && sPanel.getAttribute("data-open") === "true") {
+      closeSearch(); sBtn.focus(); return;
+    }
     if (drawer.getAttribute("data-open") === "true") { setDrawer(false); return; }
     if (pinned) { pinned = null; if (diagram) diagram.removeAttribute("data-active"); }
     var openBtn = document.querySelector('.door .door__btn[aria-expanded="true"]');

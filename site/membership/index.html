@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="../styles.css?v=38">
+<link rel="stylesheet" href="../styles.css?v=39">
 <link rel="stylesheet" href="../study.css?v=12">
 </head>
 <body data-state="open">
@@ -236,7 +236,9 @@
     </nav>
 
     <div class="rail">
-      <button class="icon-btn" type="button" aria-label="Search Concepts, Courses and Patterns">
+      <button class="icon-btn" type="button" id="search-btn"
+              aria-expanded="false" aria-controls="p-search"
+              aria-label="Search the Institute">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
           <circle cx="11" cy="11" r="7"></circle><path d="M16.5 16.5 21 21"></path>
         </svg>
@@ -249,6 +251,24 @@
       </button>
     </div>
 
+  </div>
+
+  <!-- Search. The index is fetched the first time this opens, never on load. -->
+  <div class="panel panel--search" id="p-search" data-open="false">
+    <div class="shell search">
+      <div class="search__row">
+        <svg class="search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="1.5" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle><path d="M16.5 16.5 21 21"></path>
+        </svg>
+        <label class="search__label" for="search-q">Search the Institute</label>
+        <input class="search__input" id="search-q" type="search" autocomplete="off"
+               spellcheck="false" enterkeyhint="search"
+               placeholder="A Concept, a Pattern, a Course, a word on a page">
+      </div>
+      <p class="search__said" id="search-said" aria-live="polite"></p>
+      <ul class="search__results" id="search-results"></ul>
+    </div>
   </div>
 </header>
 
@@ -596,7 +616,7 @@
   </div>
 </footer>
 
-<script src="../app.js?v=12"></script>
+<script src="../app.js?v=14"></script>
 
 <!-- ══ Mock note — not part of the site ════════════════════════════════ -->
 <div class="mockbar">

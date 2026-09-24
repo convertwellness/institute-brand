@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="../../styles.css?v=38">
+<link rel="stylesheet" href="../../styles.css?v=39">
 <link rel="stylesheet" href="../../study.css?v=12">
 </head>
 <body>
@@ -236,7 +236,9 @@
     </nav>
 
     <div class="rail">
-      <button class="icon-btn" type="button" aria-label="Search Concepts, Courses and Patterns">
+      <button class="icon-btn" type="button" id="search-btn"
+              aria-expanded="false" aria-controls="p-search"
+              aria-label="Search the Institute">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
           <circle cx="11" cy="11" r="7"></circle><path d="M16.5 16.5 21 21"></path>
         </svg>
@@ -249,6 +251,24 @@
       </button>
     </div>
 
+  </div>
+
+  <!-- Search. The index is fetched the first time this opens, never on load. -->
+  <div class="panel panel--search" id="p-search" data-open="false">
+    <div class="shell search">
+      <div class="search__row">
+        <svg class="search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="1.5" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle><path d="M16.5 16.5 21 21"></path>
+        </svg>
+        <label class="search__label" for="search-q">Search the Institute</label>
+        <input class="search__input" id="search-q" type="search" autocomplete="off"
+               spellcheck="false" enterkeyhint="search"
+               placeholder="A Concept, a Pattern, a Course, a word on a page">
+      </div>
+      <p class="search__said" id="search-said" aria-live="polite"></p>
+      <ul class="search__results" id="search-results"></ul>
+    </div>
   </div>
 </header>
 
@@ -408,12 +428,6 @@
             <li>Expectations</li>
             <li>Patterns</li>
           </ul>
-          <div class="draft">
-            <span class="draft__k">Draft</span>
-            <p>The full outline sits here: what each part covers, and in what order.</p>
-            <p>Everything else on this page — the price, the format, what it opens — is already settled.</p>
-          </div>
-          <!-- AWAITING-MICHAEL Awaiting Michael ||| <p><p><p><p>The lesson list. Individual lessons are sold separately at $8.99, so each one needs a name and a line of its own before that can be offered here.</p></p></p></p> -->
         </section>
 
         <section class="sec">
@@ -423,8 +437,6 @@
              is the one to take if you want the shape of the system before committing to the
              detail. The complete written study is the reference — the edition you return to while
              working through the Concepts and the Schools.</p>
-          <p>Individual lessons may also be taken on their own, for anyone who wants one part of
-             the system rather than all of it.</p>
         </section>
 
         <section class="sec">
@@ -483,16 +495,6 @@
               <span class="edition__m">$44.99 member</span>
             </span>
             <a class="btn btn--primary" href="/cart">Add to cart</a>
-          </div>
-
-          <div class="edition">
-            <span class="edition__n">A single lesson</span>
-            <span class="edition__d">One part of the system on its own.</span>
-            <span class="edition__row">
-              <span class="edition__p">$8.99</span>
-              <span class="edition__m">$5.99 member</span>
-            </span>
-            <a class="btn btn--secondary" href="/courses/human-operating-system#lessons">Choose a lesson</a>
           </div>
         </div>
       </div>
@@ -596,14 +598,6 @@
   </div>
 </footer>
 
-<script src="../../app.js?v=12"></script>
-
-<div class="mockbar">
-  <div class="shell mockbar__in">
-    <span class="mockbar__k">Mock-up</span>
-    <span class="mockbar__note">The single-lesson option needs the lesson list before it can go
-      anywhere. Until then it points at this page.</span>
-  </div>
-</div>
+<script src="../../app.js?v=14"></script>
 </body>
 </html>
