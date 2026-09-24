@@ -673,3 +673,13 @@ body.show-drafts .draft{
   background: color-mix(in srgb, var(--accent-soft) 9%, transparent);
   padding: .75rem clamp(.9rem,1.6vw,1.25rem);
 }
+
+/* A price the Institute is not yet asserting. The slot keeps its place so
+   nothing reflows when the number arrives, but it steps down out of the
+   display size — "To be confirmed" set at 2.6rem is a headline, not a price.
+   Held and restored by build/prices.py. */
+.price__now--tbc, .tier__price--tbc{
+  font-variation-settings: "opsz" 24, "SOFT" 0, "WONK" 0;
+  font-size: clamp(1.2rem, 2vw, 1.4rem); line-height: 1.25;
+  color: var(--ink-quiet);
+}
