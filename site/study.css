@@ -671,3 +671,23 @@ body.show-drafts .draft{
   font-size: clamp(1.2rem, 2vw, 1.4rem); line-height: 1.25;
   color: var(--ink-quiet);
 }
+
+/* ── Michael's definition of a category ─────────────────────────────
+   It sits between the opener and the list, because it says what the things
+   below it are before anyone starts browsing them. A rule above and reading
+   measure below — it is prose, not a panel, so it gets no box. */
+
+.define{
+  max-width: 44rem;
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+  padding-top: clamp(1.5rem, 3vw, 2.25rem);
+  border-top: 1px solid color-mix(in srgb, var(--accent-warm) 26%, transparent);
+  display: flex; flex-direction: column; gap: 1.05rem;
+}
+.define p{
+  margin: 0;
+  font-size: 1.0625rem; line-height: 1.72; color: var(--ink);
+}
+.define p:first-child{
+  font-size: 1.125rem; color: var(--ink-strong);
+}
