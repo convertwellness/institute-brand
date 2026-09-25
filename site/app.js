@@ -368,6 +368,39 @@
     });
   }
 
+  /* A link to the site outline, kept in the corner of every page for whoever
+     is reviewing. Off for everyone else, and remembered per browser — the
+     switch is on the outline itself. localStorage throws in a private window
+     and comes back empty when site data is cleared, so every touch of it is
+     wrapped and the page is correct without it. */
+
+  var PIN_KEY = "institute:outline-pin";
+  var pin     = document.getElementById("outline-pin");
+  var pinBtn  = document.getElementById("pin-toggle");
+
+  var pinned = function () {
+    try { return window.localStorage.getItem(PIN_KEY) === "1"; }
+    catch (e) { return false; }
+  };
+  var setPinned = function (on) {
+    try {
+      if (on) window.localStorage.setItem(PIN_KEY, "1");
+      else window.localStorage.removeItem(PIN_KEY);
+    } catch (e) {}
+    if (pin) pin.hidden = !on;
+    if (pinBtn) pinBtn.setAttribute("aria-pressed", String(on));
+  };
+
+  if (pin || pinBtn) setPinned(pinned());
+  // never in its own corner
+  if (pin && location.pathname.indexOf("/sitemap") === 0) pin.hidden = true;
+
+  if (pinBtn) {
+    pinBtn.addEventListener("click", function () {
+      setPinned(pinBtn.getAttribute("aria-pressed") !== "true");
+    });
+  }
+
   /* ── Escape closes whatever is open ───────────────────────────────────── */
 
   document.addEventListener("keydown", function (e) {

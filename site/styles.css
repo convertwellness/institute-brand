@@ -898,6 +898,50 @@ a.figure:hover .figure__l, a.figure:focus-visible .figure__l{ color: var(--accen
   .mega__all::after{ transition: none; }
 }
 
+/* ── The outline, kept within reach ──────────────────────────────
+   A review affordance, not a piece of the site: hidden unless someone has
+   switched it on, and remembered in their browser alone. Hairline and cream,
+   because the brand has no rounded corners and no shadows on interface. */
+
+.pin{
+  position: fixed; right: clamp(.9rem, 2vw, 1.6rem); bottom: clamp(.9rem, 2vw, 1.6rem);
+  z-index: 120;
+  display: inline-flex; align-items: center; gap: .55rem;
+  min-height: 42px; padding: 0 .9rem 0 .7rem;
+  background: color-mix(in srgb, var(--paper) 95%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid color-mix(in srgb, var(--accent-warm) 45%, transparent);
+  color: var(--accent-warm); text-decoration: none;
+  font-family: var(--body); font-size: .72rem; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase; white-space: nowrap;
+  transition: color var(--t-colour), border-color var(--t-colour), background-color var(--t-colour);
+}
+.pin:hover{
+  color: var(--ink-strong); border-color: var(--accent-warm);
+  background: color-mix(in srgb, var(--accent-warm) 10%, var(--paper));
+}
+.pin__mark{
+  width: 22px; height: 22px; flex: none;
+  background: url("assets/logo-mark.webp") no-repeat center / contain;
+}
+@media (max-width: 520px){
+  .pin{ font-size: .66rem; padding: 0 .7rem 0 .55rem; min-height: 38px; }
+  .pin__mark{ width: 18px; height: 18px; }
+}
+
+.outline__toggle--quiet{
+  border-color: var(--rule-strong); color: var(--ink-quiet);
+}
+.outline__toggle--quiet:hover{ color: var(--accent-warm); border-color: var(--accent-warm); }
+.pin-off{ display: none; }
+[aria-pressed="true"] .pin-on{ display: none; }
+[aria-pressed="true"] .pin-off{ display: inline; }
+.outline__pinnote{
+  margin-top: .5rem; max-width: 34rem;
+  font-size: .85rem; line-height: 1.5; color: var(--ink-quiet);
+}
+
 /* ── Breadcrumb ──────────────────────────────────────────
    Sixty-six pages carry a breadcrumb and sixty-five of them load study.css, so
    this lived there and worked by luck. The one that does not — the site outline
