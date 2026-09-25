@@ -14,6 +14,37 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT  = os.path.join(ROOT, "site")
 
 
+def check_scripts():
+    """node --check on every script we ship. A SyntaxError in app.js disables
+    the whole interface silently: the build succeeds, every link resolves, and
+    the site looks finished until you try to use it."""
+    import subprocess
+    scripts = sorted(glob.glob(os.path.join(OUT, "*.js")))
+    if not scripts:
+        return 0
+    try:
+        subprocess.run(["node", "--version"], capture_output=True, check=True)
+    except Exception:
+        print("\nnode not found - could not syntax-check the scripts.")
+        return 0
+
+    bad = []
+    for js in scripts:
+        r = subprocess.run(["node", "--check", js], capture_output=True, text=True)
+        if r.returncode:
+            first = [L for L in (r.stderr or "").splitlines() if "Error" in L]
+            bad.append((os.path.relpath(js, ROOT).replace("\\", "/"),
+                        first[0].strip() if first else "failed to parse"))
+
+    if bad:
+        print("\nBROKEN SCRIPT - the interface will not run:")
+        for rel, err in bad:
+            print("   %s  %s" % (rel, err))
+        return 1
+    print("\n%d script%s parse clean." % (len(scripts), "" if len(scripts) == 1 else "s"))
+    return 0
+
+
 def main():
     pages = sorted(glob.glob(os.path.join(OUT, "**", "*.html"), recursive=True))
     if not pages:
@@ -88,7 +119,9 @@ def main():
     print("\nRemember: the host must serve /404.html for unmatched addresses,")
     print("otherwise a wrong URL gets the host's own bare error page.")
 
-    return 1 if dead else 0
+    broken = check_scripts()
+
+    return 1 if (dead or broken) else 0
 
 
 if __name__ == "__main__":

@@ -368,36 +368,73 @@
     });
   }
 
-  /* A link to the site outline, kept in the corner of every page for whoever
-     is reviewing. Off for everyone else, and remembered per browser — the
-     switch is on the outline itself. localStorage throws in a private window
-     and comes back empty when site data is cleared, so every touch of it is
-     wrapped and the page is correct without it. */
-
-  var PIN_KEY = "institute:outline-pin";
-  var pin     = document.getElementById("outline-pin");
-  var pinBtn  = document.getElementById("pin-toggle");
-
-  var pinned = function () {
-    try { return window.localStorage.getItem(PIN_KEY) === "1"; }
-    catch (e) { return false; }
-  };
-  var setPinned = function (on) {
-    try {
-      if (on) window.localStorage.setItem(PIN_KEY, "1");
-      else window.localStorage.removeItem(PIN_KEY);
-    } catch (e) {}
-    if (pin) pin.hidden = !on;
-    if (pinBtn) pinBtn.setAttribute("aria-pressed", String(on));
-  };
-
-  if (pin || pinBtn) setPinned(pinned());
-  // never in its own corner
+  /* The outline is within reach from every page while the site is being
+     reviewed — except from its own corner. */
+  var pin = document.getElementById("outline-pin");
   if (pin && location.pathname.indexOf("/sitemap") === 0) pin.hidden = true;
 
-  if (pinBtn) {
-    pinBtn.addEventListener("click", function () {
-      setPinned(pinBtn.getAttribute("aria-pressed") !== "true");
+  /* The six pieces Michael has written that the site has nowhere to put.
+     He answers on the outline itself and copies the answers back — a static
+     site cannot receive them, and pretending otherwise would lose his work.
+     Kept in this browser as he goes, so a stray reload costs nothing. */
+
+  var copyBtn = document.getElementById("unplaced-copy");
+  if (copyBtn) {
+    var UNPLACED_KEY = "institute:unplaced";
+    var rows = Array.prototype.slice.call(document.querySelectorAll(".up"));
+
+    var save = function () {
+      var d = {};
+      rows.forEach(function (li) {
+        var sel = li.querySelector("select"), note = li.querySelector("input");
+        d[sel.id] = [sel.value, note.value];
+      });
+      try { window.localStorage.setItem(UNPLACED_KEY, JSON.stringify(d)); } catch (e) {}
+    };
+
+    (function restore() {
+      var d;
+      try { d = JSON.parse(window.localStorage.getItem(UNPLACED_KEY) || "{}"); }
+      catch (e) { return; }
+      rows.forEach(function (li) {
+        var sel = li.querySelector("select"), note = li.querySelector("input");
+        if (d[sel.id]) { sel.value = d[sel.id][0]; note.value = d[sel.id][1]; }
+      });
+    })();
+
+    rows.forEach(function (li) {
+      li.querySelector("select").addEventListener("change", save);
+      li.querySelector("input").addEventListener("input", save);
+    });
+
+    var answers = function () {
+      var out = ["Where these belong — from the site outline"];
+      rows.forEach(function (li, n) {
+        var sel = li.querySelector("select"), note = li.querySelector("input");
+        out.push("");
+        out.push((n + 1) + ". " + sel.getAttribute("data-title"));
+        out.push("   " + (sel.value || "not decided yet"));
+        if (note.value.trim()) out.push("   note: " + note.value.trim());
+      });
+      return out.join("\n");
+    };
+
+    copyBtn.addEventListener("click", function () {
+      var text = answers();
+      var said = document.getElementById("unplaced-said");
+      var box  = document.getElementById("unplaced-text");
+      var byHand = function () {
+        box.value = text; box.hidden = false; box.focus(); box.select();
+        said.textContent = "Copy the text below and paste it into a message.";
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () {
+          box.hidden = true;
+          said.textContent = "Copied. Paste it into a message to Sara.";
+        }, byHand);
+      } else {
+        byHand();
+      }
     });
   }
 

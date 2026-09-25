@@ -930,16 +930,84 @@ a.figure:hover .figure__l, a.figure:focus-visible .figure__l{ color: var(--accen
   .pin__mark{ width: 18px; height: 18px; }
 }
 
-.outline__toggle--quiet{
-  border-color: var(--rule-strong); color: var(--ink-quiet);
+/* ── The pieces with nowhere to go ─────────────────────────────
+   Inside the work layer, so only whoever is reviewing sees it. The question
+   is asked where the answer is easiest to give — on the outline, beside the
+   structure it is about. */
+
+.unplaced{
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  padding-top: clamp(1.75rem, 3vw, 2.5rem);
+  border-top: 1px solid color-mix(in srgb, var(--accent-warm) 30%, transparent);
 }
-.outline__toggle--quiet:hover{ color: var(--accent-warm); border-color: var(--accent-warm); }
-.pin-off{ display: none; }
-[aria-pressed="true"] .pin-on{ display: none; }
-[aria-pressed="true"] .pin-off{ display: inline; }
-.outline__pinnote{
-  margin-top: .5rem; max-width: 34rem;
-  font-size: .85rem; line-height: 1.5; color: var(--ink-quiet);
+.unplaced__h{
+  font-variation-settings: "opsz" 48, "SOFT" 0, "WONK" 0;
+  font-size: clamp(1.35rem, 2vw, 1.7rem); line-height: 1.2;
+}
+.unplaced__lead{
+  max-width: 46rem; margin-top: .7rem;
+  font-size: .9375rem; line-height: 1.7; color: var(--ink-quiet);
+}
+.unplaced__list{ list-style: none; margin: clamp(1.5rem,3vw,2.25rem) 0 0; padding: 0; }
+
+.up{
+  padding-block: clamp(1.25rem, 2.4vw, 1.9rem);
+  border-top: 1px solid var(--rule);
+  display: grid; gap: .4rem;
+}
+.up:first-child{ border-top: 0; padding-top: 0; }
+.up__n{
+  font-size: .66rem; font-weight: 600; letter-spacing: .14em;
+  color: var(--accent-warm); font-variant-numeric: tabular-nums;
+}
+.up__t{
+  font-variation-settings: "opsz" 36, "SOFT" 0, "WONK" 0;
+  font-size: 1.2rem; line-height: 1.25;
+}
+.up__q{
+  max-width: 44rem; font-size: 1rem; line-height: 1.6;
+  color: var(--ink); font-style: italic;
+}
+.up__note{ max-width: 44rem; font-size: .875rem; line-height: 1.6; color: var(--ink-quiet); }
+
+.up__ask{
+  margin-top: .6rem; display: grid; gap: .35rem .9rem;
+  max-width: 40rem;
+}
+@media (min-width: 720px){
+  .up__ask{ grid-template-columns: auto minmax(0,1fr); align-items: center; }
+}
+.up__l{
+  font-size: .66rem; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--ink-quiet);
+}
+.up__s, .up__i{
+  appearance: none; -webkit-appearance: none;
+  width: 100%; min-height: 42px; padding: 0 .75rem;
+  background: var(--paper);
+  border: 1px solid var(--rule-strong);
+  font-family: var(--body); font-size: .9375rem; color: var(--ink-strong);
+}
+.up__s{
+  background-image: linear-gradient(45deg, transparent 50%, var(--accent-warm) 50%),
+                    linear-gradient(135deg, var(--accent-warm) 50%, transparent 50%);
+  background-position: calc(100% - 17px) 19px, calc(100% - 12px) 19px;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 2.2rem;
+}
+.up__s:focus, .up__i:focus{ outline: 2px solid var(--accent-warm); outline-offset: 1px; }
+.up__i::placeholder{ color: var(--ink-quiet); opacity: 1; }
+
+.unplaced__foot{ margin-top: clamp(1.5rem,3vw,2.25rem); display: grid; gap: .8rem; justify-items: start; }
+.unplaced__said{
+  font-size: .68rem; font-weight: 600; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--accent-warm); min-height: 1rem;
+}
+.unplaced__fallback{
+  width: 100%; max-width: 46rem; padding: .8rem;
+  border: 1px solid var(--rule-strong); background: var(--paper);
+  font-family: var(--body); font-size: .875rem; line-height: 1.6; color: var(--ink);
 }
 
 /* ── Breadcrumb ──────────────────────────────────────────
