@@ -36,6 +36,50 @@ mobile drawer and the footer are written once; changing a nav link changes it
 everywhere. The build also marks the link to the current page with
 `aria-current="page"`, so the header says where you are to a screen reader.
 
+## Nov 11, 2026: the layout brief
+
+Sara's Nov 11 brief (`.agents/inbox.md`, commit 629d008) supersedes the older docs where they
+disagree. What it changed:
+
+- **The name.** The Michael Schwartz Institute for Wholistic Education, everywhere. "The Institute"
+  after first mention. The lockup image in the footer carried the old name, so the footer now sets
+  the name as live text.
+- **The library is data.** `content/catalog.json` holds every item (id, title, type, route,
+  Family, School, formats, price key, status). `content/pricing.json` holds both tier models and
+  every price. `build/make-catalog.py` writes the library pages, every index and every buying
+  block from those two files. **Edit the data, not the page**: a page with `generated: catalog`
+  in its front matter is rewritten on every run.
+- **Prices are held.** `content/pricing.json` has `"display": "held"`, so no figure reaches any page.
+  `python build/prices.py --show` puts every price on the site; `--hold` takes them off again.
+  `make-catalog.py` refuses to write a page if a figure leaks while held.
+- **Three tracks** (Personal Mastery, Holistic Health Educator, Wholistic Essays and Teachings),
+  the **ten Concept Families** as five-piece packages, **twelve Schools**, and new areas:
+  Relationship Studies, Universal Teachings, the Eightfold Path, Self-Guided Studies, the
+  Scholarship Fund.
+- **The Operating System** is now Michael's five-step loop (Nov 4 fax): Concept, Belief System /
+  Pattern, Experience, Fulfilled Expectation, Validation of Concept. One copy, in
+  `build/partials/os-loop.html`, dropped into a page with `<!-- OS-LOOP -->`. The six-stage ring
+  is gone from the home page.
+- **No em or en dashes in copy.** `build/audit.py` fails the build if one appears in visible text,
+  or if the old name or old course names come back.
+- **Open items O1 to O13** show on the pages that wait on them, numbered, and are listed in
+  `docs/questions-for-michael.md`. The portal (accounts, payments) is specified, not built:
+  `docs/portal-spec.md`.
+
+To change the library:
+
+```bash
+python build/make-catalog.py
+```
+
+```bash
+python build/build.py
+```
+
+```bash
+python build/audit.py
+```
+
 ## Where this stands
 
 A light site — white ground, faintly lavender bands, charcoal text — carrying a set of
@@ -71,12 +115,9 @@ appears only inside imagery and as star points.
 
 ## The three set pieces
 
-**The Operating System ring.** Michael's chain drawn as a closed loop, Life Result returning
-to Concept. Each stage is a real button — hover on a pointer, tab to it, tap it — and the
-readout underneath is a live region. Below 800px it becomes a vertical chain with the return
-leg up the left. **Three of the six stages carry a visible placeholder**: Emotion, Behavior
-and Life Result have no description from Michael yet, and the page says so rather than
-inventing copy.
+**The Operating System loop.** Michael's five steps from his Nov 4 fax, drawn as a row on a
+wide screen and a column on a phone, closing back on Concept. Step names only: he has not
+written a line for each step, so none is shown.
 
 **The path.** Five tiers that open on hover or click. Height animates through
 `grid-template-rows: 0fr → 1fr`, so there is no guessed `max-height` and no jump when copy
@@ -113,11 +154,7 @@ catalogue rather than the placeholder sets:
   opening order and a reason for it, and `DESIGN.md` says number what is genuinely sequential.
 - **Weaves are "Interwoven Studies"** — his own name for them, from the pricing sheet.
 
-**Deliberately not changed: the Operating System ring.** The Member Pricing document states the
-chain as *Concept → Expectation → Pattern → Experience → Validation*; the ring draws his earlier
-*Concept → Belief → Pattern → Emotion → Behavior → Life Result*. Five stages against six.
-Redrawing it before he says which is current would be a guess, and it is the most prominent
-thing on the page.
+**The Operating System.** Settled by Michael on Nov 4 (the five-step loop). The ring is gone.
 
 Three other answers are still open — whether the Foundation gate survives the $6.99 standalone
 Study, whether the member price is one figure or three, and what a purchase credit buys. All are
@@ -135,31 +172,33 @@ screenshot tool shows the page faded or inert, that is why.
 
 ## Routes
 
-**Every internal link resolves.** 67 pages, 66 routes, 5,229 internal links, no
-dead ends. `build/audit.py` enforces that.
+**Every internal link resolves.** 149 pages at Nov 11. `build/audit.py` enforces that.
 
 ```
-/                              home
-/concepts                      twelve Concepts, filterable by Family
-/concepts/<slug>               11 Concept Studies
-/concepts/families             the four Families
-/concepts/families/<slug>      Acceptance · Worth · Control · Trust
-/patterns                      twelve Patterns of Behavior
-/patterns/<slug>               12 Pattern Studies
-/collections                   Interwoven Studies
-/collections/<slug>            4 sets
-/courses                       the four Courses
-/courses/<slug>                Five Laws · Foundation · HOS · Body Symbology
-/schools                       six Schools, in Michael's order
-/schools/<slug>                6 School pages
-/books, /books/<slug>          2 books, 2 kinds of study material
-/events, /events/<slug>        2 seminars
-/membership                    the three tiers
-/about /michael /contact       the Institute
-/begin/the-path                how the education fits together
+/                                   home: greeting video, three tracks, the loop, membership
+/begin                              Begin Here: orientation, Five Laws, Personal Mastery, principles, loop
+/begin/personal-mastery             Track 1, and /lesson-1 to /lesson-3
+/begin/the-path                     how the education fits together
+/concepts, /concepts/<slug>         Concept Studies, filterable by Family
+/concepts/families, /<family>       the ten Concept Families, each a five-piece package
+/patterns, /patterns/<slug>         Patterns of Behavior
+/collections, /collections/<slug>   Interwoven Studies and collections
+/relationships, /<slug>             six Relationship Studies
+/learn                              Learn: tracks 2 and 3, courses, teachings, studies
+/learn/holistic-health-educator     Track 2, and /module-1 to /module-6
+/learn/wholistic-essays             Track 3
+/courses, /courses/<slug>           Courses
+/universal-teachings, /<slug>       Universal Teachings
+/eightfold-path                     short videos
+/self-guided-studies, /<slug>       the disease studies (not "webinars")
+/schools, /schools/<slug>           twelve Schools (O8)
+/books, /events                     unchanged
+/membership                         rendered from content/pricing.json
+/scholarship, /scholarship/apply    the Scholarship Fund
+/about /michael /contact /sitemap
 /legal/terms /privacy /refunds
-/account /cart                 the application layer
-404.html                       served for any unmatched address
+/account /cart                      placeholders until the portal exists
+404.html                            served for any unmatched address
 ```
 
 **The host must be told to serve `/404.html`** for addresses it cannot match.
@@ -169,25 +208,19 @@ confirm it on Sevalla.
 
 ### What is real and what is scaffold
 
-Three kinds of page, and the difference matters when reading the site:
+1. **Written by hand** in `src/`: home, Begin Here, the Five Laws, the Foundation, the Human
+   Operating System and Total Body Symbology Reference courses, the Unworthiness Study and its
+   Collection, books, events, about, Michael, contact, legal, the site outline, the 404. The four
+   hand-written course pages still carry their own buying block; moving them onto the data is the
+   next step.
+2. **Generated from `content/catalog.json`** by `build/make-catalog.py`: every other Concept,
+   Pattern, Family, collection, Relationship Study, Universal Teaching, Self-Guided Study, School,
+   track, the indexes, Membership and the Scholarship Fund. Real names and structure from Michael's
+   files; every description is an "Awaiting Michael" note.
+3. **Route only**: account and cart, until the portal exists.
 
-1. **Written** — home, the four Courses, the three indexes with real data, the
-   Unworthiness Study and its Collection, Membership, the 404.
-2. **Generated from Michael's names** — the 11 Concept Studies, 12 Pattern
-   Studies, 6 Schools, 4 sets. Real names, real prices, real structure; the
-   descriptions are placeholders. Written by `build/make-library.py`.
-3. **Route only** — books, events, about, michael, contact, legal, account,
-   cart. A real page at a real URL saying plainly what is missing. Written by
-   `build/make-stubs.py`.
-
-Neither generator overwrites a file that already exists, so replacing a
-placeholder means editing its `src/` file and never running the script again for
-that page.
-
-**141 placeholders across 62 pages.** That is the backlog, and it is visible on
-the site on purpose — `CLAUDE.md` says ship the route, ship a clear placeholder,
-do not invent copy. The legal pages go further and say the text is not ours to
-draft, because a plausible-looking placeholder there invites someone to ship it.
+`build/drafts.py` can still fill the placeholders with labelled draft copy for layout review.
+On Nov 11 the drafts were taken out again, because the Nov brief says not to guess.
 
 The Concepts index filter surfaces a real gap rather than hiding it:
 **Abandonment, Shame, and Fear and Doubt appear in none of Michael's four Family

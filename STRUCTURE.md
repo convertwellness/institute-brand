@@ -1,59 +1,71 @@
 # Sitemap & page inventory
 
-Reconciled from Michael's educational architecture (19 Aug 2026) and his handwritten navigation
-sketch (23 Aug 2026). Built to the launch scope on the sketch — **24 Concepts, 12 Weaves,
-8 Families** — and shaped so the full ~50-Concept library grows in without new templates.
+**Updated Nov 11, 2026 from Sara's layout brief** (`.agents/inbox.md`). Where this file and the
+brief disagree, the brief wins. The August route plan below the templates table is kept for history.
 
-**Ninety-four pages at launch, from seventeen templates.**
+Five header doors, unchanged in number: **Begin Here, Explore, Learn, The Schools, Membership**,
+plus Search and Sign in. The three tracks fit inside them.
+
+Every library route is listed in `content/catalog.json` and written by `build/make-catalog.py`.
+**149 pages at Nov 11.**
 
 ## Routes
 
 ```
-/                                     Home
-/begin                                Begin Here
-/begin/the-path                       How the education fits together
+Begin Here
+/begin                                Orientation video (coming), Five Laws, Personal Mastery,
+                                      Foundational Principles, the five-step loop
+/begin/personal-mastery               Track 1: three free lessons          O9
+/begin/personal-mastery/lesson-<n>    × 3                                  O9
+/courses/five-laws                    Five Laws of Human Experience, free
+/courses/human-operating-system       The five-step loop
+/begin/the-path
 
-/concepts                             Concept index          (24)
-/concepts/<concept>                   Concept                × 24   gated
-/concepts/families                    Families index
-/concepts/families/<family>           Family                 × 8    gated
-/concepts/weaves                      Weaves index
-/concepts/weaves/<weave>              Weave                  × 12   gated
-/concepts/pattern-weaves              Pattern Weaves                phase 2
+Explore
+/concepts, /concepts/<slug>           Concept Studies                      × 27 (3 more held, no page)
+/patterns, /patterns/<slug>           Pattern Studies                      × 19
+/concepts/families, /<family>         The ten Concept Families             × 10
+/collections, /collections/<slug>     Interwoven Studies and collections   × 6
+/relationships, /relationships/<slug> Relationship Studies                 × 6   O13
 
-/courses                              Courses index
-/courses/five-laws                    Course                        free
-/courses/foundation                   Course
-/courses/extended-foundation          Course                        gated
-/courses/awakening-of-consciousness   Course                        gated
-/courses/tj                           Course                        gated · NEEDS MICHAEL
+Learn
+/learn                                Learn index
+/learn/holistic-health-educator       Track 2: six-module certification    O9
+/learn/holistic-health-educator/module-<n>                                 × 6
+/learn/wholistic-essays               Track 3                              O9
+/courses, /courses/<slug>             Courses                              × 8
+/universal-teachings, /<slug>         Universal Teachings                  × 4
+/eightfold-path                       Short videos                         O12
+/self-guided-studies, /<slug>         Self-Guided Studies (disease)        × 10
+/books, /events                       unchanged
 
-/schools                              Schools index
-/schools/<school>                     School                 × 6
+The Schools
+/schools, /schools/<slug>             Twelve-week programs                 × 12  O8
 
-/human-operating-system               Feature page
+Membership
+/membership                           Tiers from content/pricing.json      O1 O5 O7 O11
+/scholarship, /scholarship/apply      The Scholarship Fund
 
-/books                                Books index
-/books/<title>                        Book                   × 4
-/books/workbooks                       Workbooks & Portfolios
-/books/video-studies                  Video Studies                 phase 2
-
-/events                               Events index
-/events/<subject>                     Event                  × ~7
-/events/<subject>/recording           Recording                     open question
-
-/membership                           Membership & pricing
-
-/account                              My studies
-/account/progress                     Progress
-/account/orders                       Orders
-/account/settings                     Settings
-
-/cart  /checkout  /checkout/confirmation
-/about  /michael  /contact
-/legal/terms  /legal/privacy  /legal/refunds
-/search  /404
+Account
+/account                              Dashboard: My Library, member orientation, progress,
+                                      downloads, billing. Spec only: docs/portal-spec.md   O2
+/cart
 ```
+
+**Every study page carries the same buying block:** buy this study, buy its collection, or become
+a member, with its formats (Watch, Self-guided, Written), its Concept Family and its Interwoven
+Studies.
+
+**Held, no page, not in navigation:** Stubbornness, Sacrifice, the standalone Concept of Love (O4),
+and the Doctrine of Personal Responsibility. They stay in `content/catalog.json` with
+`"status": "hold"`.
+
+---
+
+# The August plan (history)
+
+Reconciled from Michael's educational architecture (19 Aug 2026) and his handwritten navigation
+sketch (23 Aug 2026).
 
 ## Templates
 

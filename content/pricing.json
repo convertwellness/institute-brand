@@ -1,0 +1,146 @@
+{
+  "_about": [
+    "Every tier and price on the site comes from this file. Nothing else in the repo carries a number.",
+    "display: 'held' prints 'Price to be confirmed' everywhere and writes no figure into the built HTML at all.",
+    "A {{9}} inside any text is a figure: '$9' when shown, 'an amount to be confirmed' when held. {{50%}} is a discount: '50% off' when shown.",
+    "display: 'show' prints the figures. Flip it only when Michael signs off (open item O1), then run python build/build.py.",
+    "active_model picks which tier model the Membership page renders. Both are kept here until Michael says which is final.",
+    "Figures below are Michael's own, from the SARA THREE Price Menu (Final 11 3), as summarised in the Nov 11 brief. Not yet confirmed as final."
+  ],
+
+  "display": "held",
+  "active_model": "four_tier_nov3",
+  "currency": "USD",
+
+  "models": {
+    "four_tier_nov3": {
+      "label": "Four tiers (Price Menu, Nov 3)",
+      "status": "From notes, not yet confirmed (O1)",
+      "tiers": [
+        {
+          "id": "seeker",
+          "name": "Seeker",
+          "monthly": 5,
+          "annual": 50,
+          "annual_note": "Annual is ten months' price for twelve.",
+          "discount_pct": 20,
+          "inclusions": [
+            "One free individual study a month, up to {{9}}",
+            "One free short video a month",
+            "Community meetings"
+          ]
+        },
+        {
+          "id": "explorer",
+          "name": "Explorer",
+          "monthly": 18,
+          "annual": 180,
+          "discount_pct": 30,
+          "inclusions": [
+            "One School at a time",
+            "The Introductory Body Symbology eBook on joining",
+            "One self-guided disease study a quarter",
+            "Community meetings"
+          ]
+        },
+        {
+          "id": "discoverer",
+          "name": "Discoverer",
+          "monthly": 29,
+          "annual": 290,
+          "discount_pct": 40,
+          "inclusions": [
+            "Everything in Explorer",
+            "The full short video library",
+            "Early access to new Schools and studies"
+          ]
+        },
+        {
+          "id": "counselor",
+          "name": "Counselor",
+          "monthly": 69,
+          "annual": 690,
+          "discount_pct": null,
+          "discount_note": "Everything included",
+          "cap_per_year": 120,
+          "inclusions": [
+            "All Schools, collections, Foundational courses and disease studies",
+            "Live sessions with Michael (format to be confirmed, O5)",
+            "The Counselor path. The title is awarded only after the coursework is complete",
+            "Private sessions at {{50%}}",
+            "Optional permission to use the materials with your own clients",
+            "My Library is unlimited"
+          ]
+        }
+      ]
+    },
+
+    "three_tier_nov5": {
+      "label": "Three tiers (revision notes, Nov 5)",
+      "status": "From notes, not yet confirmed (O1). Only the first tier's name survives.",
+      "tiers": [
+        { "id": "foundation-free", "name": "Foundation Free", "monthly": 0, "annual": 0, "discount_pct": null, "inclusions": [] },
+        { "id": "tier-2", "name": null, "monthly": null, "annual": null, "discount_pct": null, "inclusions": [] },
+        { "id": "tier-3", "name": null, "monthly": null, "annual": null, "discount_pct": null, "inclusions": [] }
+      ]
+    }
+  },
+
+  "release_rules": [
+    "Annual members receive their tier's material up front. Monthly members receive it at a steady pace.",
+    "Explorer and Discoverer, monthly: each School releases one week at a time over twelve weeks, and the next School opens when the first is finished. The eBook unlocks with the second payment. One disease study a quarter.",
+    "Counselor, monthly: the first month unlocks everything Discoverer receives, the Foundation of the Institute Course and the first live session. Months two to eleven unlock one School a month with its related collections and Family studies. Month twelve unlocks the rest. Every month brings a live session and one disease study.",
+    "Unreleased items can be bought ahead at the member's own discount. A monthly member can switch to annual at any time by paying the balance, and everything unlocks.",
+    "Schools unlock in the order the Institute sets.",
+    "Unused free monthly or quarterly benefits do not carry over."
+  ],
+
+  "upgrade_rule": "Everything you have already spent counts toward bundles, courses and tier upgrades. An upgrade starts its benefits immediately and the new rate bills on the next cycle.",
+
+  "tier_columns": ["public", "seeker", "explorer", "discoverer"],
+
+  "prices": {
+    "pattern-study":            { "label": "Individual Pattern, Universal Teaching, Four Selves, Self, Relationship, Spiritual Gift or Discipline study", "public": 7, "seeker": 6, "explorer": 5, "discoverer": 4 },
+    "concept-study":            { "label": "Individual Concept Study", "public": 9, "seeker": 7, "explorer": 6, "discoverer": 5 },
+    "concept-study-self-guided":{ "label": "Self-Guided Concept Study", "public": 8, "seeker": 6, "explorer": 6, "discoverer": 5 },
+    "hos-lesson":               { "label": "Individual Human Operating System Lesson", "public": 9, "seeker": 7, "explorer": 6, "discoverer": 5 },
+    "body-symbology-ebook":     { "label": "Introductory Body Symbology eBook", "public": 10, "seeker": 8, "explorer": "free on joining", "discoverer": "free on joining" },
+
+    "three-interwoven-concepts":{ "label": "Three Interwoven Concept Studies", "public": 24, "seeker": 19, "explorer": 17, "discoverer": 14 },
+    "three-interwoven-patterns":{ "label": "Three Interwoven Pattern Studies", "public": 17, "seeker": 14, "explorer": 12, "discoverer": 10 },
+    "six-interwoven-patterns":  { "label": "Six Interwoven Pattern Studies", "public": 30, "seeker": 24, "explorer": 21, "discoverer": 18 },
+    "connected-collection":     { "label": "Connected Concept and Pattern Collection", "public": 19, "seeker": 15, "explorer": 13, "discoverer": 11 },
+    "family-collection":        { "label": "Pattern Family Collection (each)", "public": 30, "seeker": 24, "explorer": 21, "discoverer": 18 },
+    "three-relationship":       { "label": "Three Relationship Studies", "public": 17, "seeker": 14, "explorer": 12, "discoverer": 10 },
+    "complete-relationship":    { "label": "Complete Relationship Collection", "public": 30, "seeker": 24, "explorer": 21, "discoverer": 18 },
+    "complete-universal":       { "label": "Complete Universal Teachings Collection", "public": 30, "seeker": 24, "explorer": 21, "discoverer": 18 },
+    "hos-collection":           { "label": "Human Operating System Collection", "public": null, "seeker": null, "explorer": null, "discoverer": null, "note": "To be set" },
+
+    "five-laws":                { "label": "Five Laws of Human Experience", "public": 0, "seeker": 0, "explorer": 0, "discoverer": 0 },
+    "personal-responsibility":  { "label": "Doctrine of Personal Responsibility", "public": 0, "seeker": 0, "explorer": 0, "discoverer": 0, "note": "Proposed" },
+    "self-exploratory":         { "label": "Self Exploratory Course", "public": 25, "seeker": 20, "explorer": 18, "discoverer": 15 },
+    "foundation":               { "label": "Foundation of the Institute Course", "public": 80, "seeker": 64, "explorer": 56, "discoverer": 48 },
+    "awakening":                { "label": "Awakening of Consciousness", "public": 30, "seeker": 24, "explorer": 21, "discoverer": 18 },
+    "universal-principles":     { "label": "Universal Principles and Teachings", "public": 25, "seeker": 20, "explorer": 18, "discoverer": 15 },
+    "body-symbology":           { "label": "Total Body Symbology Reference", "public": 30, "seeker": 24, "explorer": 21, "discoverer": 18 },
+    "four-selves":              { "label": "The Four Selves", "public": 19, "seeker": 15, "explorer": 13, "discoverer": 11 },
+    "gifts-and-disciplines":    { "label": "Twelve Spiritual Gifts and Twelve Disciplines", "public": 20, "seeker": 16, "explorer": 14, "discoverer": 12 },
+
+    "school":                   { "label": "Each School", "public": 40, "seeker": 32, "explorer": "included, one at a time", "discoverer": 24 },
+
+    "disease-study":            { "label": "Self-guided disease study (slides)", "public": 25, "seeker": 20, "explorer": "one free a quarter, then 18", "discoverer": "one free a quarter, then 15" },
+    "disease-study-written":    { "label": "Self-guided disease study with written study", "public": 40, "seeker": 32, "explorer": 28, "discoverer": 24 },
+
+    "short-video":              { "label": "Short video", "public": 4.99, "seeker": "included", "explorer": "included", "discoverer": "included" },
+    "video-bundle":             { "label": "Video bundles", "public": null, "seeker": null, "explorer": null, "discoverer": null, "note": "To be set" }
+  },
+
+  "scholarship": {
+    "_about": "Gift levels from Michael's Scholarship Fund document. Held with the prices, because '$5 a month sponsors a Seeker' states a tier price.",
+    "charity": "Center for Universal Teachings",
+    "charity_status": "501(c)(3)",
+    "gift_levels": [25, 40, 50, 80, 180, 290],
+    "any_amount": true,
+    "monthly_sponsor": { "amount": 5, "sponsors": "Seeker" }
+  }
+}

@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trust and Rejection, Relationship Study | The Institute</title>
+<meta name="description" content="A Relationship Study: Trust and Rejection.">
+<meta name="theme-color" content="#FDFBF3">
+
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../../styles.css?v=45">
+<link rel="stylesheet" href="../../study.css?v=16">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ══ Header ══════════════════════════════════════════════════════════
+     A masthead rather than a logo bar. The emblem carries the graphic and
+     the institution's name is live text, set in the three lines
+     BRAND.fullName gives — never an image of type.
+
+     Both identities are in the markup and CSS chooses between them on
+     [data-scrolled]: the full lockup on arrival, the short name once the
+     page moves. Both are aria-hidden and the link carries the full name as
+     its label, so the swap never changes what a screen reader hears. -->
+<header class="header" id="header">
+  <div class="shell header__bar">
+
+    <a class="brand" href="/"
+       aria-label="The Michael Schwartz Institute for Wholistic Education, home">
+      <span class="brand__mark" aria-hidden="true"></span>
+
+      <span class="brand__id" aria-hidden="true">
+        <span class="brand__lockup">
+          <span class="brand__of">The Michael Schwartz Institute</span>
+          <span class="brand__full">for Wholistic Education</span>
+        </span>
+        <span class="brand__short">The Institute</span>
+        <span class="brand__sub">The Michael Schwartz Institute for Wholistic Education</span>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <ul class="doors">
+
+        <li class="door">
+          <button class="door__btn" type="button" aria-expanded="false" aria-controls="p-begin">
+            Begin Here <i class="door__chev" aria-hidden="true"></i>
+          </button>
+          <div class="panel" id="p-begin" data-open="false">
+            <div class="shell mega">
+              <div class="mega__lead">
+                <p class="mega__kicker">Begin here</p>
+                <p class="mega__blurb">Start free: the Five Laws of Human Experience and the three
+                   lessons of Personal Mastery.</p>
+                <a class="mega__all" href="/begin">Begin Here</a>
+              </div>
+              <div class="mega__cols mega__cols--2">
+                <div class="mega__col">
+                  <p class="mega__cat">Where to start</p>
+                  <ul class="mega__list">
+                    <li><a class="mega__item" href="/courses/five-laws">
+                      <span class="mega__n">Five Laws of Human Experience</span>
+                      <span class="mega__d">Free course.</span></a></li>
+                    <li><a class="mega__item" href="/begin/personal-mastery">
+                      <span class="mega__n">Track 1: Personal Mastery</span>
+                      <span class="mega__d">Three free lessons.</span></a></li>
+                    <li><a class="mega__item" href="/courses/human-operating-system">
+                      <span class="mega__n">The Human Operating System</span>
+                      <span class="mega__d">The five-step loop, from Concept to Validation of Concept.</span></a></li>
+                  </ul>
+                </div>
+                <div class="mega__col">
+                  <p class="mega__cat">About the Institute</p>
+                  <ul class="mega__list">
+                    <li><a class="mega__item" href="/about">
+                      <span class="mega__n">What the Institute is</span></a></li>
+                    <li><a class="mega__item" href="/michael">
+                      <span class="mega__n">Michael Schwartz, N.D.</span></a></li>
+                    <li><a class="mega__item" href="/scholarship">
+                      <span class="mega__n">The Scholarship Fund</span></a></li>
+                    <li><a class="mega__item" href="/contact">
+                      <span class="mega__n">Contact</span></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="door">
+          <button class="door__btn" type="button" aria-expanded="false" aria-controls="p-explore">
+            Explore <i class="door__chev" aria-hidden="true"></i>
+          </button>
+          <div class="panel" id="p-explore" data-open="false">
+            <div class="shell mega">
+              <div class="mega__lead">
+                <p class="mega__kicker">Explore</p>
+                <p class="mega__blurb">Everything begins with Concept. Follow whichever is
+                   most relevant to your present life, rather than a set sequence.</p>
+                <a class="mega__all" href="/concepts">Enter the Concept Studies</a>
+              </div>
+              <div class="mega__cols mega__cols--2">
+                <div class="mega__col">
+                  <p class="mega__cat">One at a time</p>
+                  <ul class="mega__list">
+                    <li><a class="mega__item" href="/concepts">
+                      <span class="mega__n">Concepts</span></a></li>
+                    <li><a class="mega__item" href="/patterns">
+                      <span class="mega__n">Patterns of Behavior</span></a></li>
+                    <li><a class="mega__item" href="/relationships">
+                      <span class="mega__n">Relationship Studies</span></a></li>
+                  </ul>
+                </div>
+                <div class="mega__col">
+                  <p class="mega__cat">Studied as a set</p>
+                  <ul class="mega__list">
+                    <li><a class="mega__item" href="/concepts/families">
+                      <span class="mega__n">The ten Concept Families</span></a></li>
+                    <li><a class="mega__item" href="/collections">
+                      <span class="mega__n">Interwoven Studies</span></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="door">
+          <button class="door__btn" type="button" aria-expanded="false" aria-controls="p-learn">
+            Learn <i class="door__chev" aria-hidden="true"></i>
+          </button>
+          <div class="panel" id="p-learn" data-open="false">
+            <div class="shell mega">
+              <div class="mega__lead">
+                <p class="mega__kicker">Learn</p>
+                <p class="mega__blurb">Two tracks, the Courses, the Universal Teachings and
+                   the self-guided studies.</p>
+                <a class="mega__all" href="/learn">Everything in Learn</a>
+              </div>
+              <div class="mega__cols mega__cols--3">
+                <div class="mega__col">
+                  <p class="mega__cat">Tracks</p>
+                  <ul class="mega__list">
+                    <li><a class="mega__item" href="/learn/holistic-health-educator"><span class="mega__n">Track 2: Holistic Health Educator</span><span class="mega__d">Six-module certification.</span></a></li>
+                    <li><a class="mega__item" href="/learn/wholistic-essays"><span class="mega__n">Track 3: Wholistic Essays and Teachings</span></a></li>
+                  </ul>
+                </div>
+                <div class="mega__col">
+                  <p class="mega__cat">Courses and teachings</p>
+                  <ul class="mega__list">
+                    <li><a class="mega__item" href="/courses"><span class="mega__n">Courses</span></a></li>
+                    <li><a class="mega__item" href="/universal-teachings"><span class="mega__n">Universal Teachings</span></a></li>
+                    <li><a class="mega__item" href="/eightfold-path"><span class="mega__n">The Eightfold Path</span><span class="mega__d">Short videos.</span></a></li>
+                  </ul>
+                </div>
+                <div class="mega__col">
+                  <p class="mega__cat">More</p>
+                  <ul class="mega__list">
+                    <li><a class="mega__item" href="/self-guided-studies"><span class="mega__n">Self-Guided Studies</span></a></li>
+                    <li><a class="mega__item" href="/books"><span class="mega__n">Books</span></a></li>
+                    <li><a class="mega__item" href="/events"><span class="mega__n">Live Events</span></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="door">
+          <button class="door__btn" type="button" aria-expanded="false" aria-controls="p-schools">
+            The Schools <i class="door__chev" aria-hidden="true"></i>
+          </button>
+          <div class="panel panel--motif" id="p-schools" data-open="false">
+            <div class="shell mega">
+              <div class="mega__lead">
+                <p class="mega__kicker">Deeper study</p>
+                <p class="mega__blurb">Each School is a twelve-week program.</p>
+                <a class="mega__all" href="/schools">All the Schools</a>
+              </div>
+              <div class="mega__cols mega__cols--2">
+                <div class="mega__col">
+                  <ul class="mega__list">
+                    <li><a class="mega__item" href="/schools/human-patterns"><span class="mega__x">01</span><span class="mega__n">School of Human Patterns</span></a></li>
+                    <li><a class="mega__item" href="/schools/human-operating-system"><span class="mega__x">02</span><span class="mega__n">School of the Human Operating System</span></a></li>
+                    <li><a class="mega__item" href="/schools/identity"><span class="mega__x">03</span><span class="mega__n">School of Identity</span></a></li>
+                    <li><a class="mega__item" href="/schools/concepts-and-beliefs"><span class="mega__x">04</span><span class="mega__n">School of Concepts and Beliefs</span></a></li>
+                    <li><a class="mega__item" href="/schools/relationships"><span class="mega__x">05</span><span class="mega__n">School of Relationships</span></a></li>
+                    <li><a class="mega__item" href="/schools/consciousness"><span class="mega__x">06</span><span class="mega__n">School of Consciousness</span></a></li>
+                  </ul>
+                </div>
+                <div class="mega__col">
+                  <ul class="mega__list">
+                    <li><a class="mega__item" href="/schools/conscious-living"><span class="mega__x">07</span><span class="mega__n">School of Conscious Living</span></a></li>
+                    <li><a class="mega__item" href="/schools/fear-safety-trust"><span class="mega__x">08</span><span class="mega__n">School of Fear, Safety and Trust</span></a></li>
+                    <li><a class="mega__item" href="/schools/human-relationships"><span class="mega__x">09</span><span class="mega__n">School of Human Relationships</span></a></li>
+                    <li><a class="mega__item" href="/schools/universal-teachings"><span class="mega__x">10</span><span class="mega__n">School of Universal Teachings</span></a></li>
+                    <li><a class="mega__item" href="/schools/symbolic-understanding"><span class="mega__x">11</span><span class="mega__n">School of Symbolic Understanding</span></a></li>
+                    <li><a class="mega__item" href="/schools/belonging"><span class="mega__x">12</span><span class="mega__n">School of Belonging</span></a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- the one motif the brief allows, on the far side, drawn not placed -->
+              <div class="mega__motif" aria-hidden="true">
+                <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid meet" focusable="false">
+                  <g fill="none" stroke="currentColor" stroke-width="1"
+                     vector-effect="non-scaling-stroke" stroke-linecap="round">
+                    <circle cx="100" cy="100" r="78"/>
+                    <circle cx="100" cy="100" r="53"/>
+                    <path d="M100 178 L100 22"/>
+                    <path d="M100 88 C90 74 72 66 54 64"/>
+                    <path d="M100 112 C90 126 72 134 54 136"/>
+                    <path d="M100 88 C110 74 128 66 146 64"/>
+                    <path d="M100 112 C110 126 128 134 146 136"/>
+                  </g>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="door door--flat">
+          <a class="door__btn door__btn--gold" href="/membership">Membership</a>
+        </li>
+
+      </ul>
+    </nav>
+
+    <div class="rail">
+      <button class="icon-btn" type="button" id="search-btn"
+              aria-expanded="false" aria-controls="p-search"
+              aria-label="Search the Institute">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle><path d="M16.5 16.5 21 21"></path>
+        </svg>
+      </button>
+
+      <a class="rail__link" href="/account">Sign in</a>
+
+      <button class="icon-btn burger" type="button" id="burger" aria-expanded="false" aria-controls="drawer" aria-label="Open menu">
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Search. The index is fetched the first time this opens, never on load. -->
+  <div class="panel panel--search" id="p-search" data-open="false">
+    <div class="shell search">
+      <div class="search__row">
+        <svg class="search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="1.5" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle><path d="M16.5 16.5 21 21"></path>
+        </svg>
+        <label class="search__label" for="search-q">Search the Institute</label>
+        <input class="search__input" id="search-q" type="search" autocomplete="off"
+               spellcheck="false" enterkeyhint="search"
+               placeholder="A Concept, a Pattern, a Course, a word on a page">
+      </div>
+      <p class="search__said" id="search-said" aria-live="polite"></p>
+      <ul class="search__results" id="search-results"></ul>
+    </div>
+  </div>
+</header>
+
+<!-- ══ Mobile navigation ════════════════════════════════════════════════
+     Near-full-screen and ivory, not a squeezed desktop bar. The categories
+     are small gold labels and the destinations are Fraunces, so the menu
+     reads as a contents page rather than a list of controls.
+
+     Flat rather than accordions: every destination in the header is here,
+     and none of them is two taps away. Same five doors as the header. -->
+<div class="drawer" id="drawer" data-open="false" role="dialog" aria-modal="true"
+     aria-label="Menu">
+
+  <div class="shell drawer__top">
+    <a class="brand brand--drawer" href="/"
+       aria-label="The Michael Schwartz Institute for Wholistic Education, home">
+      <span class="brand__mark" aria-hidden="true"></span>
+      <span class="brand__id" aria-hidden="true">
+        <span class="brand__short">The Institute</span>
+        <span class="brand__sub">The Michael Schwartz Institute for Wholistic Education</span>
+      </span>
+    </a>
+    <button class="icon-btn" type="button" id="drawer-close" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19"></path>
+      </svg>
+    </button>
+  </div>
+
+  <nav class="shell drawer__body" aria-label="Menu">
+
+    <section class="dsec">
+      <h2 class="dsec__cat">Begin here</h2>
+      <ul class="dsec__list">
+        <li><a class="dlink" href="/begin">Begin Here</a></li>
+        <li><a class="dlink" href="/courses/five-laws">Five Laws of Human Experience <em>Free</em></a></li>
+        <li><a class="dlink" href="/begin/personal-mastery">Track 1: Personal Mastery <em>Free</em></a></li>
+        <li><a class="dlink" href="/courses/human-operating-system">The Human Operating System</a></li>
+      </ul>
+    </section>
+
+    <section class="dsec">
+      <h2 class="dsec__cat">Explore</h2>
+      <ul class="dsec__list">
+        <li><a class="dlink" href="/concepts">Concepts</a></li>
+        <li><a class="dlink" href="/patterns">Patterns of Behavior</a></li>
+        <li><a class="dlink" href="/concepts/families">The ten Concept Families</a></li>
+        <li><a class="dlink" href="/collections">Interwoven Studies</a></li>
+        <li><a class="dlink" href="/relationships">Relationship Studies</a></li>
+      </ul>
+    </section>
+
+    <section class="dsec">
+      <h2 class="dsec__cat">Learn</h2>
+      <ul class="dsec__list">
+        <li><a class="dlink" href="/learn/holistic-health-educator">Track 2: Holistic Health Educator</a></li>
+        <li><a class="dlink" href="/learn/wholistic-essays">Track 3: Wholistic Essays and Teachings</a></li>
+        <li><a class="dlink" href="/courses">Courses</a></li>
+        <li><a class="dlink" href="/universal-teachings">Universal Teachings</a></li>
+        <li><a class="dlink" href="/eightfold-path">The Eightfold Path</a></li>
+        <li><a class="dlink" href="/self-guided-studies">Self-Guided Studies</a></li>
+        <li><a class="dlink" href="/books">Books</a></li>
+        <li><a class="dlink" href="/events">Live Events</a></li>
+      </ul>
+    </section>
+
+    <section class="dsec">
+      <h2 class="dsec__cat">The Schools</h2>
+      <ul class="dsec__list">
+        <li><a class="dlink" href="/schools/human-patterns"><i>01</i> School of Human Patterns</a></li>
+        <li><a class="dlink" href="/schools/human-operating-system"><i>02</i> School of the Human Operating System</a></li>
+        <li><a class="dlink" href="/schools/identity"><i>03</i> School of Identity</a></li>
+        <li><a class="dlink" href="/schools/concepts-and-beliefs"><i>04</i> School of Concepts and Beliefs</a></li>
+        <li><a class="dlink" href="/schools/relationships"><i>05</i> School of Relationships</a></li>
+        <li><a class="dlink" href="/schools/consciousness"><i>06</i> School of Consciousness</a></li>
+        <li><a class="dlink" href="/schools/conscious-living"><i>07</i> School of Conscious Living</a></li>
+        <li><a class="dlink" href="/schools/fear-safety-trust"><i>08</i> School of Fear, Safety and Trust</a></li>
+        <li><a class="dlink" href="/schools/human-relationships"><i>09</i> School of Human Relationships</a></li>
+        <li><a class="dlink" href="/schools/universal-teachings"><i>10</i> School of Universal Teachings</a></li>
+        <li><a class="dlink" href="/schools/symbolic-understanding"><i>11</i> School of Symbolic Understanding</a></li>
+        <li><a class="dlink" href="/schools/belonging"><i>12</i> School of Belonging</a></li>
+        <li><a class="dlink" href="/schools">All the Schools</a></li>
+      </ul>
+    </section>
+
+    <section class="dsec dsec--gold">
+      <h2 class="dsec__cat">Membership</h2>
+      <ul class="dsec__list">
+        <li><a class="dlink dlink--gold" href="/membership">Membership</a></li>
+        <li><a class="dlink" href="/scholarship">The Scholarship Fund</a></li>
+      </ul>
+    </section>
+
+    <section class="dsec dsec--quiet">
+      <h2 class="dsec__cat">The Institute</h2>
+      <ul class="dsec__list">
+        <li><a class="dlink" href="/about">What the Institute is</a></li>
+        <li><a class="dlink" href="/michael">Michael Schwartz, N.D.</a></li>
+        <li><a class="dlink" href="/contact">Contact</a></li>
+        <li><a class="dlink" href="/account">Sign in</a></li>
+      </ul>
+    </section>
+
+  </nav>
+</div>
+
+<main id="main">
+<div class="shell">
+  <nav class="crumb" aria-label="Breadcrumb">
+    <a href="/">The Institute</a> <i aria-hidden="true">/</i>
+    <a href="/relationships">Relationship Studies</a> <i aria-hidden="true">/</i>
+    <span aria-current="page">Trust and Rejection</span>
+  </nav>
+
+  <div class="study">
+    <div>
+      <div class="study__head">
+        <p class="eyebrow eyebrow--plain">Relationship Study</p>
+        <h1 class="study__title">Trust and Rejection</h1>
+        <div class="needs"><span class="needs__k">Awaiting Michael &middot; O13</span>
+            <p>The files for this study have not arrived. It is on the Price Menu.</p></div>
+      </div>
+
+      <div class="sections">
+        <section class="sec">
+          <p class="sec__n">01</p>
+          <h2 class="sec__h">What this Study covers</h2>
+          <div class="needs"><span class="needs__k">Awaiting Michael</span>
+            <p>What Trust and Rejection covers, in his words.</p></div>
+        </section>
+
+        <section class="sec">
+          <p class="sec__n">02</p>
+          <h2 class="sec__h">Formats</h2>
+          <p>Formats to be confirmed. Written material can be downloaded and kept for personal study.
+             Presentations, voiced or self-guided, are streamed and cannot be downloaded.</p>
+        </section>
+      </div>
+
+      <div class="belongs" style="margin-top:clamp(2.5rem,4vw,3.5rem)">
+        <a href="/relationships">
+          <span class="belongs__k">All six</span>
+          <span class="belongs__n">Relationship Studies</span>
+          <span class="belongs__d">Bought singly, in threes, or as the complete collection.</span>
+        </a>
+      </div>
+    </div>
+
+    <aside class="buy" aria-label="Purchase">
+      <div class="buy__card">
+        <span class="buy__k">Relationship Study</span>
+        <div>
+          <div class="price">
+            <span class="price__now price__now--tbc">To be confirmed</span>
+            <span class="price__note">one-off</span>
+          </div>
+          <p class="price__member">Member prices to be confirmed (O1)</p>
+        </div>
+        <a class="btn btn--primary" href="/cart">Buy this relationship study</a>
+        <a class="btn btn--secondary" href="/relationships">Buy three Relationship Studies</a>
+        <a class="btn btn--secondary" href="/membership">Become a member</a>
+        <dl class="facts">
+          <dt>Formats</dt><dd>Formats to be confirmed</dd>
+          <dt>Concept Family</dt><dd>Not yet placed</dd>
+          <dt>Interwoven Studies</dt><dd>To be confirmed</dd>
+        </dl>
+      </div>
+    </aside>
+  </div>
+</div>
+</main>
+
+<!-- ══ Footer ═══════════════════════════════════════════════════════════════════ -->
+<footer class="footer g-deep">
+  <div class="shell">
+
+    <div class="footer__top">
+
+      <div class="stack gap-6">
+        <div class="footer__lockup">
+          <span class="brand__mark" aria-hidden="true"></span>
+          <p class="footer__name">The Michael Schwartz Institute<br>for Wholistic Education</p>
+        </div>
+
+        <div>
+          <p class="h-small">Occasional letters from the Institute</p>
+          <p class="small quiet" style="margin-top:.4rem">New Concepts, new Courses, and seminar dates. No more than monthly.</p>
+          <form class="news" id="news">
+            <label class="sr-only" for="news-email">Email address</label>
+            <input id="news-email" type="email" name="email" placeholder="you@example.com" required>
+            <button class="btn btn--primary" type="submit">Subscribe</button>
+          </form>
+          <p class="small quiet" id="news-said" hidden style="margin-top:.6rem">Thank you. You will hear from the Institute.</p>
+        </div>
+      </div>
+
+      <div class="footer__cols">
+
+        <div>
+          <p class="footer__h">Begin and explore</p>
+          <ul class="footer__list">
+            <li><a href="/begin">Begin Here</a></li>
+            <li><a href="/courses/five-laws">Five Laws of Human Experience</a></li>
+            <li><a href="/concepts">Concepts</a></li>
+            <li><a href="/patterns">Patterns of Behavior</a></li>
+            <li><a href="/concepts/families">Concept Families</a></li>
+            <li><a href="/collections">Interwoven Studies</a></li>
+            <li><a href="/relationships">Relationship Studies</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer__h">Learn</p>
+          <ul class="footer__list">
+            <li><a href="/learn/holistic-health-educator">Holistic Health Educator</a></li>
+            <li><a href="/learn/wholistic-essays">Wholistic Essays and Teachings</a></li>
+            <li><a href="/courses">Courses</a></li>
+            <li><a href="/universal-teachings">Universal Teachings</a></li>
+            <li><a href="/self-guided-studies">Self-Guided Studies</a></li>
+            <li><a href="/books">Books</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer__h">The Schools</p>
+          <ul class="footer__list">
+            <li><a href="/schools">All the Schools</a></li>
+            <li><a href="/schools/human-patterns">Human Patterns</a></li>
+            <li><a href="/schools/human-operating-system">Human Operating System</a></li>
+            <li><a href="/schools/identity">Identity</a></li>
+            <li><a href="/schools/fear-safety-trust">Fear, Safety and Trust</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer__h">The Institute</p>
+          <ul class="footer__list">
+            <li><a href="/about">About</a></li>
+            <li><a href="/michael">Michael Schwartz</a></li>
+            <li><a href="/membership">Membership</a></li>
+            <li><a href="/scholarship">Scholarship Fund</a></li>
+            <li><a href="/events">Live Events</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer__base">
+      <p>&copy; <span id="year">2026</span> The Michael Schwartz Institute for Wholistic Education</p>
+      <ul class="footer__legal">
+        <li><a href="/sitemap">Site outline</a></li>
+        <li><a href="/legal/terms">Terms</a></li>
+        <li><a href="/legal/privacy">Privacy</a></li>
+        <li><a href="/legal/refunds">Refunds</a></li>
+      </ul>
+    </div>
+
+  </div>
+</footer>
+
+<!-- The outline, within reach from every page while the site is being
+     reviewed. Sara will say when it comes out. -->
+<a class="pin" id="outline-pin" href="/sitemap">
+  <span class="pin__mark" aria-hidden="true"></span>
+  <span>Site outline</span>
+</a>
+
+<script src="../../app.js?v=19"></script>
+</body>
+</html>

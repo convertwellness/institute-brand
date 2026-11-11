@@ -1,10 +1,17 @@
-## Brief: Institute site layout (Nov 11, 2026)
+# Inbox: Claude Code and Grok Bot
 
-# Claude Code Brief: The Michael Schwartz Institute for Wholistic Education website
+Two-way inbox for this repo. Each entry: date and time in ET, a subject, and a status of `open` or `done`.
+Never put secrets here: name a variable, never its value.
+
+## To Claude
+
+### 2026-11-11 5:41 PM ET | Brief: Institute site layout (Nov 11, 2026) | done
+
+#### Claude Code Brief: The Michael Schwartz Institute for Wholistic Education website
 
 Prepared November 11, 2026 for Convert Wellness. Use this as the single consolidated brief for laying out the Institute site. Where this brief and older repo docs disagree, this brief wins. Where this brief marks something as open, do not guess. Build a clearly labeled placeholder and list it in your summary.
 
-## 1. Context
+##### 1. Context
 
 - **Client:** Michael Schwartz, N.D. (michael383@me.com). His assistant is Bunny (he spells it Bunnie). Bunny is preparing additional Schools paperwork.
 - **Official name in use:** The Michael Schwartz Institute for Wholistic Education. Spell "Wholistic" with a W. Note: the Membership Rules document still says "Institute of the Spiritual Science of Human Patterns." Use the official name everywhere and flag the Rules document text for Michael.
@@ -14,7 +21,7 @@ Prepared November 11, 2026 for Convert Wellness. Use this as the single consolid
 - **State at Nov 4:** 67 pages on staging, all prices held as "to be confirmed," 141 placeholders across 62 pages, no accounts, payments or dashboard. `/account` and `/cart` are placeholders.
 - **An earlier Phase 1 prompt exists** (`claude-prompt-phase1.md`, written against the SARA TWO material). This brief supersedes it where they differ.
 
-### Source materials
+###### Source materials
 
 | Source | Date | What it is |
 |---|---|---|
@@ -26,14 +33,14 @@ Prepared November 11, 2026 for Convert Wellness. Use this as the single consolid
 | Nov 6 review call | Nov 6 | 30 minute call. The automatic notes captured only 6 seconds, so no outcomes are recorded |
 | Michael's verbal feedback to Sara | Nov 11 | He confirmed much of the summary sheet and said it looked good (verbal, no written record) |
 
-### Status labels used below
+###### Status labels used below
 
 - **Confirmed by Michael (written):** in his own handwriting, email or his own documents.
 - **Confirmed by Michael (verbal, Nov 11):** covered by his Nov 11 "looks good" on the summary sheet. Treat as confirmed but keep it easy to change.
 - **From notes, not yet confirmed:** our recommendation or an inference from his files. Build it, but keep it configurable and list it in your summary.
 - **Open:** do not build final copy or logic. Placeholder only. See Section 8.
 
-## 2. Confirmed decisions
+##### 2. Confirmed decisions
 
 Michael's fax answers map to the 16 questions in Section 8 of the Nov 4 Content Map and Portal Plan.
 
@@ -54,7 +61,7 @@ Michael's fax answers map to the 16 questions in Section 8 of the Nov 4 Content 
 | Q15 | Joining | Instant join. No application gate for membership. (The scholarship application is separate and stays.) | Confirmed by Michael (written, Nov 4) |
 | Q16 | Upgrades | Yes. The full amount a student has already spent counts toward bundles, courses and tier upgrades. Upgrade benefits start immediately and the new rate bills on the next cycle. | Confirmed by Michael (written, Nov 4), billing timing from SARA THREE Rules |
 
-### Michael's comments on the portal and approach (Nov 4 fax)
+###### Michael's comments on the portal and approach (Nov 4 fax)
 
 | Topic | What he wrote | How to treat it |
 |---|---|---|
@@ -69,7 +76,7 @@ Michael's fax answers map to the 16 questions in Section 8 of the Nov 4 Content 
 | Approach B (Memberstack-style plug-in) | "Awkward at scale? Can each student have own file, page or Excel?" | Answer: each student gets their own portal account and record, and the Institute can export to Excel at any time. This fits Approach A |
 | Refund policy, phased plan | Noted, no objection | Refund policy is drafted in SARA THREE (Section 5). Phased plan stands |
 
-## 3. Program structure (Nov 5 revision)
+##### 3. Program structure (Nov 5 revision)
 
 Michael's 9-page CamScanner notes (Nov 5) reorganize the Institute into three tracks and three pricing tiers. **From notes, not yet confirmed.** Only the summary below survives. The PDF and both outline documents are no longer in the SARA THREE folder, so their full contents (module lists, tier names two and three, prices) are not available. Build the track structure with placeholders and do not invent module titles or prices.
 
@@ -83,11 +90,11 @@ Michael's 9-page CamScanner notes (Nov 5) reorganize the Institute into three tr
 
 **How to reconcile with the Nov 3 four-tier menu (Open item O1):** do not hard-code either model. Put tiers in one data file (extend `build/prices.py` or a `content/tiers` file) so the Membership page and every buying block render from data. Build the 3-track model as the public program structure, and keep the Nov 3 four tiers in the data file as the current draft until Michael says which is final.
 
-## 4. Pricing and membership data (Nov 3 Price Menu, Final 11 3)
+##### 4. Pricing and membership data (Nov 3 Price Menu, Final 11 3)
 
 **From notes, not yet confirmed as final.** Michael wrote this himself, so the figures are his. Whether it is still current after the Nov 5 revision is Open item O1. Keep prices held on the live site (`build/prices.py`) until Michael signs off.
 
-### Tiers
+###### Tiers
 
 | Tier | Monthly | Annual (10 months) | Discount on purchases | Key inclusions |
 |---|---|---|---|---|
@@ -96,7 +103,7 @@ Michael's 9-page CamScanner notes (Nov 5) reorganize the Institute into three tr
 | Discoverer | $29 | $290 | 40% | Everything in Explorer plus the full short video library, early access to new Schools and studies |
 | Counselor | $69 | $690 | Everything included | All Schools, collections, Foundational courses and disease studies; live session(s) with Michael (format open, O5); the Counselor path (title awarded only after coursework); 50% off private sessions; optional permission to use materials with own clients. Cap of 120 per year |
 
-### Release rules
+###### Release rules
 
 - Annual members get their tier's material up front. Monthly members get it at a steady pace.
 - Explorer and Discoverer monthly: each School releases one week per week over 12 weeks, the next School opens when the first is finished. eBook unlocks with the second payment. One disease study a quarter.
@@ -105,7 +112,7 @@ Michael's 9-page CamScanner notes (Nov 5) reorganize the Institute into three tr
 - Schools unlock in the order the Institute sets.
 - Unused free monthly or quarterly benefits do not carry over.
 
-### Standalone prices (Public / Seeker / Explorer / Discoverer)
+###### Standalone prices (Public / Seeker / Explorer / Discoverer)
 
 - Individual Pattern, Universal Teaching, Four Selves, Self, Relationship, Spiritual Gift, Discipline study: $7 / $6 / $5 / $4
 - Individual Concept Study: $9 / $7 / $6 / $5. Self-Guided Concept Study: $8 / $6 / $6 / $5
@@ -119,7 +126,7 @@ Michael's 9-page CamScanner notes (Nov 5) reorganize the Institute into three tr
 
 **Discounts, not credits.** The recommendation on Nov 6 was to ship the simple percentage discounts and retire the separate credits documents (3 credits a month, $6.50 per credit, rollover caps). The Price Menu uses discounts only. **From notes, not yet confirmed.** Do not build a credits wallet.
 
-## 5. Portal, access and protection rules
+##### 5. Portal, access and protection rules
 
 Recommended stack (Approach A): keep the static catalogue, add a small app with Supabase Auth and Postgres plus Stripe Checkout and Billing, with webhooks writing entitlements. Video on a streaming host (Bunny Stream, Mux or Vimeo), never in git. **From notes, not yet confirmed as a signed build plan** (Open item O2), but Michael's questions about Approach B point the same way.
 
@@ -137,7 +144,7 @@ Portal requirements:
 10. **Account sharing:** one person per membership; the Institute can suspend shared accounts.
 11. **Admin:** grant or revoke access, comp a student, award scholarships, map products to content, view progress, export.
 
-### Refund and cancellation policy (drafted by Michael in SARA THREE, needs attorney review before publishing)
+###### Refund and cancellation policy (drafted by Michael in SARA THREE, needs attorney review before publishing)
 
 - Monthly: full refund of the first payment if cancelled within 30 days, once per member. After that, cancel any time, effective at the end of the paid month, no partial refunds.
 - Annual paid in full: cannot be cancelled or refunded; full access for 12 months; auto-renews unless turned off; reminder at least 14 days before renewal.
@@ -145,7 +152,7 @@ Portal requirements:
 - Cancellation method and contact email are blank in the draft. Use a placeholder.
 - Health disclaimer: material is educational, not diagnosis or treatment.
 
-## 6. Site architecture and page layout
+##### 6. Site architecture and page layout
 
 Keep the five header doors so navigation does not grow: **Begin Here, Explore, Learn, The Schools, Membership**, plus Search and Sign in. Fit the three tracks inside this structure.
 
@@ -160,7 +167,7 @@ Keep the five header doors so navigation does not grow: **Begin Here, Explore, L
 
 **Every study page** carries the same buying block: buy this study, buy its collection, or become a member. Show formats (Watch, Self-guided, Written) and the Family and weaves it belongs to.
 
-## 7. Content inventory
+##### 7. Content inventory
 
 From SARA TWO (Nov 4) and SARA THREE (Nov 5). Videos are catalogued by title and size only, not reviewed.
 
@@ -178,7 +185,7 @@ From SARA TWO (Nov 4) and SARA THREE (Nov 5). Videos are catalogued by title and
 - **Courses:** Foundation 10-week outline (Foundation-Pattern-Course deck), Self Exploratory Intro Course deck.
 - **Schools:** 12 folders in "Schools Completed 10 30": Belonging, Concepts, Consciousness, Fear Trust Safety, Human Patterns, Identity, Operating System, Relationships, School of Conscious Living, School of Human Relationships, School of Symbolic Understanding, Teachings. The Price Menu lists 10: Concepts, Consciousness, Conscious Living, Fear Safety and Trust, Identity, Human Operating System, Human Patterns, Human Relationships, Universal Teachings, Symbolic Body. Belonging and Relationships are extra folders. Open item O8.
 
-## 8. What Claude should build next
+##### 8. What Claude should build next
 
 Work on a branch and open a pull request. Do not merge.
 
@@ -196,7 +203,7 @@ Work on a branch and open a pull request. Do not merge.
 12. **Update docs:** `site/README.md`, `STRUCTURE.md`, and replace `docs/questions-for-michael.md` with the open list below.
 13. Run `build/audit.py` and report the placeholder count before and after.
 
-## 9. Questions Claude should not guess on
+##### 9. Questions Claude should not guess on
 
 Use labeled placeholders for all of these and list them in your pull request summary.
 
@@ -215,3 +222,18 @@ Use labeled placeholders for all of these and list them in your pull request sum
 - **O13. Missing files:** Identity School Week 1, Discipline of Cycles PDF, 2 orientation videos, 8 Eightfold Path videos (if new), Bunny's Schools paperwork, the CamScanner notes and both outlines, and anything in the new "Sara Four" folder.
 
 Do not invent teaching copy, prices, dates, counts or decisions. If something is unknown, mark it unknown.
+
+## To Grok Bot
+
+### 2026-11-11 6:10 PM ET | Institute layout built on branch site-layout-nov11, not for deploy yet | open
+The Nov 11 layout brief is built on branch `site-layout-nov11`. **Do not deploy or merge: Sara has not approved it.**
+
+- 149 pages. Library pages, indexes, Membership and the Scholarship Fund are generated from
+  `content/catalog.json` and `content/pricing.json` by `build/make-catalog.py`.
+- Prices are held (`"display": "held"`); no figure is in any built page.
+- Open items O1 to O13 are labelled on the pages and listed in `docs/questions-for-michael.md`.
+- Portal is specified, not built: `docs/portal-spec.md`.
+- Pre-deploy checks: `python build/audit.py` (links, dashes, old names) and
+  `python ~/.claude/tools/site-meta-check.py site` both pass on the branch.
+
+Nothing is needed from Grok Bot yet. A new entry will follow when Sara approves the merge.

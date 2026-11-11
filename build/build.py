@@ -111,10 +111,19 @@ def plain(html):
     return WS_RE.sub(" ", t).strip()
 
 
+def short_title(title):
+    """The page's own name: everything before ' | The Institute', or before
+    the old em-dash separator on a page not yet moved over."""
+    for sep in (" | ", u"—"):
+        if sep in title:
+            return title.split(sep)[0].strip() or title
+    return title
+
+
 def index_entry(route, meta, main):
     main = CRUMB_RE.sub(" ", main)
     title = meta["title"]
-    short = title.split(u"\u2014")[0].strip() or title
+    short = short_title(title)
     heads = [plain(h) for h in HEAD_RE.findall(main)]
     heads = [h for h in heads if h and h != short]
     return {
@@ -147,17 +156,23 @@ HELD = {
 }
 
 AREA_NEED = {
-    "concepts":    "A definition, how it shapes perception, and its Patterns \u2014 for each Concept",
+    "concepts":    "For each Concept: a definition, how it shapes perception, and its Patterns",
     "patterns":    "What it looks like from inside, its sequence, and the Concept it validates",
     "schools":     "The Course list inside each School, and what a School costs",
     "collections": "What each set contains, in what order, and what it costs",
-    "books":       "Every book is a title and nothing else \u2014 no description, format or price",
+    "books":       "Every book is a title and nothing else: no description, format or price",
     "courses":     "The five Laws and their format; the ten weeks of the Foundation",
     "events":      "Date, format, length, price and subject for each seminar",
     "membership":  "How much membership the bundle includes, and for how long",
     "about":       "What the Institute is, in his voice",
     "contact":     "An address for enquiries and one for support",
-    "begin":       "The order he would put a new student through",
+    "begin":       "The three Personal Mastery lessons, and the Foundational Principles",
+    "learn":       "The six Holistic Health Educator modules, and the Track 3 titles",
+    "relationships": "The files for all six Relationship Studies",
+    "universal-teachings": "A description of each teaching; the Discipline of Cycles PDF",
+    "self-guided-studies": "A description of each study",
+    "eightfold-path": "Whether these are the eight new videos",
+    "scholarship": "The application link and the contact emails",
 }
 
 STATE_LABEL = {"written": "Written", "draft": "Draft standing in",
@@ -206,7 +221,7 @@ def sitemap_grid(routes):
             "<td class=\"num\">%d</td><td class=\"num\">%d</td>"
             "<td class=\"num\"><b>%d</b></td><td>%s</td></tr>"
             % (cls, esc(GROUP_NAME.get(g, g.title())), a["pages"], a["todo"],
-               a["slots"], esc(AREA_NEED.get(g, "\u2014"))))
+               a["slots"], esc(AREA_NEED.get(g, ""))))
     out.append("</tbody><tfoot><tr><th scope=\"row\">All of it</th>"
                "<td class=\"num\">%d</td><td class=\"num\">%d</td>"
                "<td class=\"num\"><b>%d</b></td><td></td></tr></tfoot>"
@@ -217,8 +232,13 @@ def sitemap_grid(routes):
 
 GRID_MARK = "<!-- SITEMAP-GRID -->"
 
-OUTLINE_ORDER = ["begin", "concepts", "patterns", "collections", "courses",
-                 "schools", "books", "events", "membership",
+# The five-step Operating System loop, Michael's Nov 4 fax. One copy, used on
+# the home page, Begin Here and the Human Operating System course.
+LOOP_MARK = "<!-- OS-LOOP -->"
+
+OUTLINE_ORDER = ["begin", "concepts", "patterns", "collections", "relationships",
+                 "learn", "courses", "universal-teachings", "eightfold-path",
+                 "self-guided-studies", "schools", "books", "events", "membership", "scholarship",
                  "about", "michael", "contact", "account", "cart", "legal"]
 
 GROUP_NAME = {
@@ -229,6 +249,9 @@ GROUP_NAME = {
     "michael": "Michael Schwartz, N.D.", "contact": "Contact",
     "account": "Your account", "cart": "Cart", "legal": "Legal",
     "sitemap": "Site outline", "home": "Home page",
+    "relationships": "Relationship Studies", "learn": "Learn",
+    "universal-teachings": "Universal Teachings", "eightfold-path": "The Eightfold Path",
+    "self-guided-studies": "Self-Guided Studies", "scholarship": "Scholarship Fund",
 }
 
 SITEMAP_MARK = "<!-- SITEMAP -->"
@@ -265,7 +288,7 @@ def sitemap_tree(routes):
     """routes: list of (route, title, desc), every page in the site."""
     meta = {}
     for r, title, desc, state, n in routes:
-        meta[r] = {"short": title.split(u"\u2014")[0].strip() or title,
+        meta[r] = {"short": short_title(title),
                    "desc": desc, "state": state, "n": n}
 
     groups = {}
@@ -338,8 +361,8 @@ def mark_current(chrome, route):
 
 
 def build():
-    header, drawer, footer = (read(os.path.join(PARTS, n + ".html")).rstrip("\n")
-                              for n in ("header", "drawer", "footer"))
+    header, drawer, footer, loop = (read(os.path.join(PARTS, n + ".html")).rstrip("\n")
+                                    for n in ("header", "drawer", "footer", "os-loop"))
 
     sources = sorted(glob.glob(os.path.join(SRC, "**", "*.html"), recursive=True))
     if not sources:
@@ -386,6 +409,8 @@ def build():
             main = main.replace(SITEMAP_MARK, outline)
         if GRID_MARK in main:
             main = main.replace(GRID_MARK, grid)
+        if LOOP_MARK in main:
+            main = main.replace(LOOP_MARK, loop)
         tail  = ("\n" + tail.strip() + "\n") if tail.strip() else ""
         study = ('\n<link rel="stylesheet" href="%sstudy.css?v=%s">' % (up, STUDY_V)
                  if meta.get("css") == "study" else "")

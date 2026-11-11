@@ -11,6 +11,19 @@
 >
 > Everything else in this file still stands, and the brand rules below are unchanged.
 
+> **Amended 11 Nov 2026.** Sara's layout brief (`.agents/inbox.md`, commit 629d008) wins where it
+> and this file disagree. In short:
+>
+> - **Name.** The Michael Schwartz Institute for Wholistic Education ("Wholistic" with a W), set in
+>   two lines: "The Michael Schwartz Institute" / "for Wholistic Education". "The Institute" after
+>   first mention. The old name is retired.
+> - **Library and prices are data.** `content/catalog.json` and `content/pricing.json`, written into
+>   pages by `build/make-catalog.py`. Prices stay held until Michael confirms them.
+> - **The Operating System** is five steps: Concept, Belief System / Pattern, Experience, Fulfilled
+>   Expectation, Validation of Concept.
+> - **No em or en dashes in copy.** `build/audit.py` fails on one.
+> - Open questions are numbered O1 to O13 in `docs/questions-for-michael.md`. Do not guess on them.
+
 You are building the website for **The Institute of The Spiritual Science of Human Patterns**.
 The brand is decided, the content is written, and the structure is settled. Your job is to build
 it well — not to redesign it.

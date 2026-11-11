@@ -116,12 +116,37 @@ def main():
               % (sum(drafts.values()), len(drafts)))
         print("  remove with: python build/drafts.py --strip")
 
+    # No em or en dashes in copy (Sara, Nov 11). Comments, scripts and styles
+    # are not copy, so only the visible text is checked.
+    dashes = collections.Counter()
+    old = collections.Counter()
+    for p in pages:
+        rel = os.path.relpath(p, OUT).replace("\\", "/")
+        text = io.open(p, encoding="utf-8").read()
+        vis = re.sub(r"<!--.*?-->|<(script|style)[^>]*>.*?</\1>", " ", text, flags=re.S | re.I)
+        n = len(re.findall(u"[–—]|&#821[12];|&[mn]dash;", vis))
+        if n:
+            dashes[rel] = n
+        o = len(re.findall(r"Spiritual Science of Human Patterns|Five Laws of Manifestation", vis))
+        if o:
+            old[rel] = o
+    if dashes:
+        print("\nEM OR EN DASHES IN COPY - %d across %d pages" % (sum(dashes.values()), len(dashes)))
+        for rel, n in sorted(dashes.items(), key=lambda kv: -kv[1])[:12]:
+            print("  %3d  %s" % (n, rel))
+    else:
+        print("\nNo em or en dashes in copy.")
+    if old:
+        print("\nOLD NAMES STILL SHOWING - %d across %d pages" % (sum(old.values()), len(old)))
+        for rel, n in sorted(old.items(), key=lambda kv: -kv[1])[:12]:
+            print("  %3d  %s" % (n, rel))
+
     print("\nRemember: the host must serve /404.html for unmatched addresses,")
     print("otherwise a wrong URL gets the host's own bare error page.")
 
     broken = check_scripts()
 
-    return 1 if (dead or broken) else 0
+    return 1 if (dead or broken or dashes or old) else 0
 
 
 if __name__ == "__main__":

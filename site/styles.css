@@ -2610,3 +2610,90 @@ a.figure:hover .figure__l, a.figure:focus-visible .figure__l{ color: var(--accen
   .cycle__path{ display: none; }
   .cycle__again{ display: none; }
 }
+
+/* ── Nov 11 layout ──────────────────────────────────────────────────────
+   The pieces the Nov 11 brief added: the five-step Operating System loop,
+   the three tracks, and the video slots that wait for Michael's films. */
+
+/* The loop. Five steps in a row on a wide screen, a column on a phone,
+   joined by a hairline. Step names only; nothing invented beneath them. */
+.loop{ margin: clamp(2rem,4vw,3rem) 0 0; }
+.loop__steps{
+  list-style: none; margin: 0; padding: 0; counter-reset: none;
+  display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 900px){ .loop__steps{ grid-template-columns: repeat(5, minmax(0,1fr)); } }
+.loop__step{
+  background: var(--paper); padding: 1.35rem 1.25rem 1.5rem;
+  display: flex; flex-direction: column; gap: .55rem; position: relative;
+}
+.loop__step:first-child{ background: var(--band); }
+.loop__n{ font-size: .72rem; font-weight: 600; letter-spacing: .12em;
+          color: var(--accent-warm); font-variant-numeric: tabular-nums; }
+.loop__name{
+  font-family: var(--display);
+  font-variation-settings: "opsz" 36, "SOFT" 0, "WONK" 0;
+  font-size: 1.3rem; line-height: 1.2; color: var(--ink-strong);
+}
+/* the arrow to the next step: down on a phone, across on a wide screen */
+.loop__step:not(:last-child)::after{
+  content: ""; position: absolute; z-index: 1;
+  width: 9px; height: 9px; background: var(--paper);
+  border-right: 1px solid var(--accent); border-bottom: 1px solid var(--accent);
+  left: 1.25rem; bottom: -6px; transform: rotate(45deg);
+}
+@media (min-width: 900px){
+  .loop__step:not(:last-child)::after{ left: auto; right: -6px; bottom: auto; top: 1.6rem; transform: rotate(-45deg); }
+}
+.loop__back{
+  display: flex; align-items: center; gap: .75rem; margin: 1rem 0 0;
+  color: var(--ink-quiet); font-size: .9375rem;
+}
+.loop__hook{ width: 2.5rem; height: 1rem; flex: none;
+             border: 1px solid var(--accent); border-top: 0; }
+.section--loop{ background: var(--band); }
+
+/* The three tracks, as three entry cards. */
+.tracks{ display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule);
+         grid-template-columns: 1fr; margin-top: clamp(1.75rem,3vw,2.5rem); }
+@media (min-width: 900px){ .tracks{ grid-template-columns: repeat(3, minmax(0,1fr)); } }
+.track{
+  background: var(--paper); padding: clamp(1.5rem,2.4vw,2rem);
+  display: flex; flex-direction: column; gap: .7rem;
+  text-decoration: none; color: inherit;
+  transition: background-color var(--t-colour);
+}
+.track:hover, .track:focus-visible{ background: var(--band); }
+.track__k{ font-size: .72rem; font-weight: 600; letter-spacing: .12em;
+           text-transform: uppercase; color: var(--accent-warm); }
+.track__n{
+  font-family: var(--display);
+  font-variation-settings: "opsz" 72, "SOFT" 0, "WONK" 0;
+  font-size: clamp(1.5rem,2.2vw,1.85rem); line-height: 1.15; color: var(--ink-strong);
+  transition: color var(--t-colour);
+}
+.track:hover .track__n{ color: var(--accent); }
+.track__d{ color: var(--ink-quiet); flex: 1; }
+.track__go{ color: var(--accent); font-weight: 600; font-size: .9375rem; }
+
+/* A video Michael has not delivered yet. The frame keeps its shape so the
+   page does not jump when the film arrives. */
+.reel{
+  aspect-ratio: 16 / 9; width: 100%; max-width: 52rem;
+  background: var(--nebula); color: var(--paper);
+  display: grid; place-items: center; text-align: center;
+  padding: 1.5rem; margin-top: clamp(1.5rem,3vw,2rem);
+}
+.reel__in{ display: flex; flex-direction: column; gap: .5rem; align-items: center; max-width: 26rem; }
+.reel__play{ width: 3.25rem; height: 3.25rem; border: 1px solid currentColor; display: grid; place-items: center; }
+.reel__play::before{ content: ""; border-left: 12px solid currentColor;
+                     border-top: 8px solid transparent; border-bottom: 8px solid transparent; margin-left: 4px; }
+.reel__k{ font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-soft); }
+.reel__t{ font-family: var(--display); font-variation-settings: "opsz" 36, "SOFT" 0, "WONK" 0; font-size: 1.3rem; }
+/* the footer name, set as live text now that the lockup image carries the old name */
+.footer__lockup .brand__mark{ width: 56px; height: 56px; flex: none; }
+.footer__name{
+  font-family: var(--display); font-variation-settings: "opsz" 36, "SOFT" 0, "WONK" 0;
+  font-size: 1.25rem; line-height: 1.25; color: var(--ink-strong);
+}

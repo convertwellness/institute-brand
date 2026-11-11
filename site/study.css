@@ -691,3 +691,19 @@ body.show-drafts .draft{
 .define p:first-child{
   font-size: 1.125rem; color: var(--ink-strong);
 }
+
+/* ── Nov 11 layout ────────────────────────────────────────────────────── */
+
+/* What a study is, under the buttons: formats, Family, Interwoven Studies. */
+.facts{ display: grid; grid-template-columns: auto minmax(0,1fr); gap: .45rem 1rem;
+        margin: 0; padding-top: 1rem; border-top: 1px solid var(--rule); font-size: .9375rem; }
+.facts dt{ color: var(--ink-quiet); }
+.facts dd{ margin: 0; color: var(--ink); }
+
+/* four tiers in the Nov 3 draft */
+@media (min-width: 900px){ .tiers--4{ grid-template-columns: repeat(2,1fr); } }
+@media (min-width: 1200px){ .tiers--4{ grid-template-columns: repeat(4,1fr); } }
+
+/* the gift levels on the Scholarship Fund page */
+.gifts{ display: flex; flex-wrap: wrap; gap: .6rem; list-style: none; margin: 0; padding: 0; }
+.gifts li{ border: 1px solid var(--rule-strong); padding: .6rem 1rem; font-variant-numeric: tabular-nums; }

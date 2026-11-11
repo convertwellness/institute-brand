@@ -1,0 +1,231 @@
+{
+  "_about": [
+    "Every item in the Institute's library. build/make-catalog.py writes the library pages, the index pages and every buying block from this file and from content/pricing.json.",
+    "status: ship = has a page and appears in navigation. hold = kept here, no page, not in navigation (Michael has held it). placeholder = has a page, but its material has not arrived.",
+    "page: gen = written by make-catalog.py and overwritten on every run. hand = written by hand in src/, never touched by the generator.",
+    "price: a key into content/pricing.json 'prices'. null = no price on the menu yet.",
+    "formats: any of watch, self-guided, written. An empty list prints 'Formats to be confirmed'.",
+    "open: the open items (O1 to O13 in docs/questions-for-michael.md) that touch this item.",
+    "source: where the item comes from. 'brief' = the Nov 11 layout brief (SARA TWO and SARA THREE). 'earlier' = already on the site from the Aug and Sep material, not named in the Nov brief."
+  ],
+
+  "settings": {
+    "official_name": "The Michael Schwartz Institute for Wholistic Education",
+    "official_name_lines": ["The Michael Schwartz Institute", "for Wholistic Education"],
+    "short_name": "The Institute",
+    "foundation_gate": false,
+    "foundation_gate_note": "Built as a flag and left off until Michael answers O3."
+  },
+
+  "os_loop": {
+    "source": "Michael's Nov 4 fax, answer to Q7. Confirmed in writing.",
+    "steps": ["Concept", "Belief System / Pattern", "Experience", "Fulfilled Expectation", "Validation of Concept"]
+  },
+
+  "definitions": {
+    "concepts": [
+      "Concepts are the ideas and meanings we accept as true about ourselves, other people, relationships, the Divine Source, and life. They begin forming through early experiences, observation, teaching, interpretation, and the conclusions we draw from what happens to us.",
+      "Concepts organise experience. They influence what we notice, how we interpret circumstances, what we expect, and how we respond. When a Concept is repeatedly reinforced, it can become a belief and give direction to Patterns of Behavior.",
+      "By becoming aware of the Concepts operating within us, we can understand why certain experiences and Patterns continue to repeat. When the underlying Concept changes, new choices, responses, and possibilities become available."
+    ],
+    "patterns": [
+      "Patterns are repeated ways of thinking, responding, choosing, and behaving that develop from the Concepts and beliefs held within consciousness. They are created to express and validate what a person has accepted as true about themselves, others, relationships, and life.",
+      "Patterns are not random, nor are they simply personal flaws. Each Pattern has an underlying purpose and reveals something that consciousness is attempting to protect, prove, avoid, receive, or understand.",
+      "By learning to recognise our Patterns, we can look beneath repeated behaviour and discover the Concept that gives it direction. Awareness allows us to understand why the Pattern developed, what it continues to produce, and what must change for a different experience to become possible."
+    ],
+    "schools": [
+      "The Schools provide organised areas of study through which students can explore the major dimensions of human life, consciousness, relationships, and spiritual development. Each School brings together related Concepts, Patterns, Universal Principles, and existing Institute teachings within one coherent field of understanding.",
+      "The Schools allow students to enter the Institute through the subjects most relevant to their present needs and interests. Although each School has a particular focus, they remain interconnected because every part of life operates within the same Human Operating System and Divine order.",
+      "Through progressive study, students learn to recognise what is operating within them, understand how it developed, and apply Universal Principles to their choices, relationships, challenges, and personal growth. The purpose of every School is to transform knowledge into conscious participation in life."
+    ],
+    "courses": [
+      "Courses are organised studies that guide students through a specific subject, question, or area of life. Each Course brings together related Institute presentations, Concepts, Patterns, and Universal Principles in a clear and purposeful sequence.",
+      "Courses may introduce a subject, develop a deeper understanding, or teach students how to apply what they have learned. They allow students to focus upon a particular need or interest while still understanding how it connects with the greater Institute teaching.",
+      "Through each Course, students move from information to awareness, from awareness to understanding, and from understanding to conscious application in daily life."
+    ]
+  },
+
+  "tracks": [
+    {
+      "id": "personal-mastery", "number": 1, "title": "Personal Mastery",
+      "route": "/begin/personal-mastery", "door": "begin",
+      "summary": "Three free lessons.",
+      "price": null, "free": true,
+      "parts_label": "Lesson", "parts": 3,
+      "status": "placeholder", "open": ["O9"]
+    },
+    {
+      "id": "holistic-health-educator", "number": 2, "title": "Holistic Health Educator",
+      "route": "/learn/holistic-health-educator", "door": "learn",
+      "summary": "A six-module Certification Program.",
+      "price": null, "free": false,
+      "parts_label": "Module", "parts": 6,
+      "note": "Nutritional Concepts I may belong to this track. Unconfirmed.",
+      "status": "placeholder", "open": ["O9", "O13"]
+    },
+    {
+      "id": "wholistic-essays", "number": 3, "title": "Wholistic Essays and Teachings",
+      "route": "/learn/wholistic-essays", "door": "learn",
+      "summary": "A library of essays and teachings.",
+      "price": null, "free": false,
+      "parts_label": null, "parts": 0,
+      "status": "placeholder", "open": ["O9"]
+    }
+  ],
+
+  "families": [
+    { "id": "acceptance",           "title": "Acceptance",           "route": "/concepts/families/acceptance",           "status": "ship" },
+    { "id": "achievement",          "title": "Achievement",          "route": "/concepts/families/achievement",          "status": "ship" },
+    { "id": "belonging",            "title": "Belonging",            "route": "/concepts/families/belonging",            "status": "ship" },
+    { "id": "control",              "title": "Control",              "route": "/concepts/families/control",              "status": "ship" },
+    { "id": "emotional-expression", "title": "Emotional Expression", "route": "/concepts/families/emotional-expression", "status": "ship" },
+    { "id": "love",                 "title": "Love",                 "route": "/concepts/families/love",                 "status": "ship", "open": ["O4"], "note": "The Love Family ships. A standalone Love study is held until Michael answers O4." },
+    { "id": "relationship",         "title": "Relationship",         "route": "/concepts/families/relationship",         "status": "ship" },
+    { "id": "responsibility",       "title": "Responsibility",       "route": "/concepts/families/responsibility",       "status": "ship" },
+    { "id": "trust",                "title": "Trust",                "route": "/concepts/families/trust",                "status": "ship" },
+    { "id": "worth",                "title": "Worth",                "route": "/concepts/families/worth",                "status": "ship" }
+  ],
+
+  "family_package": [
+    { "title": "The Concept of {family}", "format": "self-guided" },
+    { "title": "Approval Pathway", "format": null },
+    { "title": "Rejection Pathway", "format": null },
+    { "title": "Personal Application and Review", "format": null },
+    { "title": "Modus Operandi", "format": "watch" }
+  ],
+
+  "schools": [
+    { "id": "human-patterns",         "title": "School of Human Patterns",              "route": "/schools/human-patterns",         "status": "ship", "listed": "Price Menu and folder",
+      "summary": "The most relatable entry point. Students begin with the Patterns they already recognise in daily life.",
+      "principle": "First, because it answers the question most students arrive with: why do I keep doing this?" },
+    { "id": "human-operating-system", "title": "School of the Human Operating System",  "route": "/schools/human-operating-system", "status": "ship", "listed": "Price Menu and folder",
+      "summary": "Explains why life repeats, and how consciousness, mind, brain, Concepts, expectations, emotions and Patterns work together." },
+    { "id": "identity",               "title": "School of Identity",                    "route": "/schools/identity",               "status": "ship", "listed": "Price Menu and folder", "open": ["O13"], "note": "Week 1 of the Identity School has not arrived.",
+      "summary": "Acceptance, approval and rejection, the mother and father relationships, self-image, self-worth, roles, masks and belonging." },
+    { "id": "concepts-and-beliefs",   "title": "School of Concepts and Beliefs",        "route": "/schools/concepts-and-beliefs",   "status": "ship", "listed": "Price Menu (as Concepts) and folder", "open": ["O6"],
+      "summary": "How experiences receive meaning, Concepts are accepted, expectations develop, and Patterns are created to validate Concepts." },
+    { "id": "relationships",          "title": "School of Relationships",               "route": "/schools/relationships",          "status": "ship", "listed": "Folder only", "open": ["O8"],
+      "summary": "Applies the teachings to expectations, communication, responsibility, recurring relationship Patterns and resolution.",
+      "principle": "Relationships do not create the Concepts within us. They reveal the Concepts that already exist." },
+    { "id": "consciousness",          "title": "School of Consciousness",               "route": "/schools/consciousness",          "status": "ship", "listed": "Price Menu and folder",
+      "summary": "Develops awareness, understanding, conscious choice, and participation in the direction of life." },
+    { "id": "conscious-living",       "title": "School of Conscious Living",            "route": "/schools/conscious-living",       "status": "ship", "listed": "Price Menu and folder" },
+    { "id": "fear-safety-trust",      "title": "School of Fear, Safety and Trust",      "route": "/schools/fear-safety-trust",      "status": "ship", "listed": "Price Menu and folder",
+      "core_studies": { "7": "fear-and-doubt" } },
+    { "id": "human-relationships",    "title": "School of Human Relationships",         "route": "/schools/human-relationships",    "status": "ship", "listed": "Price Menu and folder", "open": ["O8"] },
+    { "id": "universal-teachings",    "title": "School of Universal Teachings",         "route": "/schools/universal-teachings",    "status": "ship", "listed": "Price Menu (as Universal Teachings) and folder (as Teachings)", "open": ["O6"] },
+    { "id": "symbolic-understanding", "title": "School of Symbolic Understanding",      "route": "/schools/symbolic-understanding", "status": "ship", "listed": "Price Menu (as Symbolic Body) and folder", "open": ["O6"] },
+    { "id": "belonging",              "title": "School of Belonging",                   "route": "/schools/belonging",              "status": "ship", "listed": "Folder only", "open": ["O8"] }
+  ],
+  "schools_order_note": "Order is the one Michael gave for the first six in August, then the Price Menu, then the two folder-only Schools. Michael has not set an order for all twelve (O8).",
+  "school_weeks": 12,
+
+  "items": [
+    { "id": "abandonment",            "title": "Abandonment",            "type": "concept", "route": "/concepts/abandonment",            "page": "gen", "status": "ship", "family": null,         "formats": ["self-guided"], "price": "concept-study-self-guided", "source": "brief", "open": ["O4"] },
+    { "id": "acceptance",             "title": "Acceptance",             "type": "concept", "route": "/concepts/acceptance",             "page": "gen", "status": "ship", "family": "acceptance", "formats": ["self-guided"], "price": "concept-study-self-guided", "source": "brief" },
+    { "id": "achievement",            "title": "Achievement",            "type": "concept", "route": "/concepts/achievement",            "page": "gen", "status": "ship", "family": "achievement","formats": ["self-guided"], "price": "concept-study-self-guided", "source": "brief" },
+    { "id": "approval",               "title": "Approval",               "type": "concept", "route": "/concepts/approval",               "page": "gen", "status": "ship", "family": "acceptance", "formats": ["self-guided"], "price": "concept-study-self-guided", "source": "brief" },
+    { "id": "belonging",              "title": "Belonging",              "type": "concept", "route": "/concepts/belonging",              "page": "gen", "status": "ship", "family": "belonging",  "formats": ["self-guided"], "price": "concept-study-self-guided", "source": "brief" },
+    { "id": "control",                "title": "Control",                "type": "concept", "route": "/concepts/control",                "page": "gen", "status": "ship", "family": "control",    "formats": ["self-guided"], "price": "concept-study-self-guided", "source": "brief" },
+    { "id": "expectation",            "title": "Expectation",            "type": "concept", "route": "/concepts/expectation",            "page": "gen", "status": "ship", "family": null,         "formats": ["self-guided"], "price": "concept-study-self-guided", "source": "brief" },
+    { "id": "expectation-and-pattern","title": "Expectation and Pattern","type": "concept", "route": "/concepts/expectation-and-pattern","page": "gen", "status": "ship", "family": null,         "formats": ["self-guided"], "price": "concept-study-self-guided", "source": "brief" },
+    { "id": "fear",                   "title": "Fear",                   "type": "concept", "route": "/concepts/fear",                   "page": "gen", "status": "ship", "family": null,         "formats": ["self-guided"], "price": "concept-study-self-guided", "source": "brief" },
+    { "id": "freedom",                "title": "Freedom",                "type": "concept", "route": "/concepts/freedom",                "page": "gen", "status": "ship", "family": null,         "formats": ["self-guided"], "price": "concept-study-self-guided", "source": "brief" },
+    { "id": "guilt",                  "title": "Guilt",                  "type": "concept", "route": "/concepts/guilt",                  "page": "gen", "status": "ship", "family": null,         "formats": ["self-guided"], "price": "concept-study-self-guided", "source": "brief" },
+    { "id": "identity",               "title": "Identity",               "type": "concept", "route": "/concepts/identity",               "page": "gen", "status": "ship", "family": null,         "formats": ["self-guided"], "price": "concept-study-self-guided", "source": "brief" },
+    { "id": "inadequacy",             "title": "Inadequacy",             "type": "concept", "route": "/concepts/inadequacy",             "page": "gen", "status": "ship", "family": "worth",      "formats": ["self-guided"], "price": "concept-study-self-guided", "source": "brief" },
+    { "id": "people-pleasing-concept","title": "People Pleasing",        "type": "concept", "route": "/concepts/people-pleasing",        "page": "gen", "status": "ship", "family": null,         "formats": ["self-guided"], "price": "concept-study-self-guided", "source": "brief" },
+    { "id": "rejection",              "title": "Rejection",              "type": "concept", "route": "/concepts/rejection",              "page": "gen", "status": "ship", "family": "acceptance", "formats": ["self-guided"], "price": "concept-study-self-guided", "source": "brief" },
+    { "id": "safety-and-protection",  "title": "Safety and Protection",  "type": "concept", "route": "/concepts/safety-and-protection",  "page": "gen", "status": "ship", "family": null,         "formats": ["self-guided"], "price": "concept-study-self-guided", "source": "brief" },
+    { "id": "success-and-failure",    "title": "Success and Failure",    "type": "concept", "route": "/concepts/success-and-failure",    "page": "gen", "status": "ship", "family": null,         "formats": ["self-guided"], "price": "concept-study-self-guided", "source": "brief" },
+    { "id": "trust-concept",          "title": "Trust",                  "type": "concept", "route": "/concepts/trust",                  "page": "gen", "status": "ship", "family": "trust",      "formats": ["self-guided"], "price": "concept-study-self-guided", "source": "brief" },
+    { "id": "unworthiness",           "title": "Unworthiness",           "type": "concept", "route": "/concepts/unworthiness",           "page": "hand","status": "ship", "family": "worth",      "formats": ["self-guided"], "price": "concept-study-self-guided", "source": "brief", "note": "The worked example. Written by hand." },
+    { "id": "suspicion",              "title": "Suspicion",              "type": "concept", "route": "/concepts/suspicion",              "page": "gen", "status": "ship", "family": "trust",      "formats": [],              "price": "concept-study",             "source": "brief" },
+    { "id": "truth",                  "title": "Truth",                  "type": "concept", "route": "/concepts/truth",                  "page": "gen", "status": "ship", "family": null,         "formats": [],              "price": "concept-study",             "source": "brief" },
+    { "id": "unforgiveness",          "title": "Unforgiveness",          "type": "concept", "route": "/concepts/unforgiveness",          "page": "gen", "status": "ship", "family": null,         "formats": [],              "price": "concept-study",             "source": "brief" },
+    { "id": "inferiority",            "title": "Inferiority",            "type": "concept", "route": "/concepts/inferiority",            "page": "gen", "status": "ship", "family": "worth",      "formats": [],              "price": "concept-study",             "source": "earlier" },
+    { "id": "undeserving",            "title": "Undeserving",            "type": "concept", "route": "/concepts/undeserving",            "page": "gen", "status": "ship", "family": "worth",      "formats": [],              "price": "concept-study",             "source": "earlier" },
+    { "id": "self-rejection",         "title": "Self-Rejection",         "type": "concept", "route": "/concepts/self-rejection",         "page": "gen", "status": "ship", "family": "acceptance", "formats": [],              "price": "concept-study",             "source": "earlier" },
+    { "id": "shame",                  "title": "Shame",                  "type": "concept", "route": "/concepts/shame",                  "page": "gen", "status": "ship", "family": null,         "formats": [],              "price": "concept-study",             "source": "earlier", "open": ["O4"] },
+    { "id": "fear-and-doubt-concept", "title": "Fear and Doubt",         "type": "concept", "route": "/concepts/fear-and-doubt",         "page": "gen", "status": "ship", "family": null,         "formats": [],              "price": "concept-study",             "source": "earlier", "note": "The Nov brief places Fear and Doubt as a Pattern, Core Study 7 of the School of Fear, Safety and Trust. This Concept page is from the earlier site; Michael to say whether it stays." },
+    { "id": "stubbornness",           "title": "Stubbornness",           "type": "concept", "route": null, "page": null, "status": "hold", "family": null, "formats": ["self-guided"], "price": "concept-study-self-guided", "source": "brief", "note": "Held by Michael (Q9)." },
+    { "id": "sacrifice",              "title": "Sacrifice",              "type": "concept", "route": null, "page": null, "status": "hold", "family": null, "formats": ["self-guided"], "price": "concept-study-self-guided", "source": "brief", "note": "Held by Michael (Q9)." },
+    { "id": "love-concept",           "title": "Love",                   "type": "concept", "route": null, "page": null, "status": "hold", "family": "love", "formats": ["self-guided"], "price": "concept-study-self-guided", "source": "brief", "open": ["O4"], "note": "The Concept of Love deck. Held as a standalone study; it is part of the Love Family package." },
+
+    { "id": "fear-and-doubt",              "title": "Fear and Doubt",              "type": "pattern", "route": "/patterns/fear-and-doubt",              "page": "gen", "status": "ship", "formats": ["self-guided"], "price": "pattern-study", "source": "brief", "school": "fear-safety-trust", "core_study": 7 },
+    { "id": "inconsistency",               "title": "Inconsistency",               "type": "pattern", "route": "/patterns/inconsistency",               "page": "gen", "status": "ship", "formats": ["self-guided"], "price": "pattern-study", "source": "brief" },
+    { "id": "resentment",                  "title": "Resentment",                  "type": "pattern", "route": "/patterns/resentment",                  "page": "gen", "status": "ship", "formats": ["self-guided"], "price": "pattern-study", "source": "brief" },
+    { "id": "becoming-indispensable",      "title": "Becoming Indispensable",      "type": "pattern", "route": "/patterns/becoming-indispensable",      "page": "gen", "status": "ship", "formats": ["self-guided"], "price": "pattern-study", "source": "brief" },
+    { "id": "managing-others",             "title": "Managing Others",             "type": "pattern", "route": "/patterns/managing-others",             "page": "gen", "status": "ship", "formats": ["self-guided"], "price": "pattern-study", "source": "brief" },
+    { "id": "self-sabotage",               "title": "Self-Sabotage",               "type": "pattern", "route": "/patterns/self-sabotage",               "page": "gen", "status": "ship", "formats": ["self-guided"], "price": "pattern-study", "source": "brief" },
+    { "id": "modus-operandi",              "title": "Modus Operandi",              "type": "pattern", "route": "/patterns/modus-operandi",              "page": "gen", "status": "ship", "formats": ["watch"],       "price": "pattern-study", "source": "brief", "note": "Also part of every Family package." },
+    { "id": "worrying",                    "title": "Worrying",                    "type": "pattern", "route": "/patterns/worrying",                    "page": "gen", "status": "ship", "formats": [],              "price": "pattern-study", "source": "brief" },
+    { "id": "hypervigilance",              "title": "Hypervigilance",              "type": "pattern", "route": "/patterns/hypervigilance",              "page": "gen", "status": "ship", "formats": [],              "price": "pattern-study", "source": "brief" },
+    { "id": "defensiveness",               "title": "Defensiveness",               "type": "pattern", "route": "/patterns/defensiveness",               "page": "gen", "status": "ship", "formats": [],              "price": "pattern-study", "source": "brief" },
+    { "id": "approval-rejection",          "title": "Approval-Rejection",          "type": "pattern", "route": "/patterns/approval-rejection",          "page": "gen", "status": "ship", "formats": [],              "price": "pattern-study", "source": "earlier" },
+    { "id": "people-pleasing",             "title": "People Pleasing",             "type": "pattern", "route": "/patterns/people-pleasing",             "page": "gen", "status": "ship", "formats": [],              "price": "pattern-study", "source": "earlier" },
+    { "id": "control-pattern",             "title": "Control",                     "type": "pattern", "route": "/patterns/control",                     "page": "gen", "status": "ship", "formats": [],              "price": "pattern-study", "source": "earlier" },
+    { "id": "denial",                      "title": "Denial",                      "type": "pattern", "route": "/patterns/denial",                      "page": "gen", "status": "ship", "formats": [],              "price": "pattern-study", "source": "earlier" },
+    { "id": "avoidance-of-responsibility", "title": "Avoidance of Responsibility", "type": "pattern", "route": "/patterns/avoidance-of-responsibility", "page": "gen", "status": "ship", "formats": [],              "price": "pattern-study", "source": "earlier" },
+    { "id": "guilt-pattern",               "title": "Guilt",                       "type": "pattern", "route": "/patterns/guilt",                       "page": "gen", "status": "ship", "formats": [],              "price": "pattern-study", "source": "earlier" },
+    { "id": "comparison",                  "title": "Comparison",                  "type": "pattern", "route": "/patterns/comparison",                  "page": "gen", "status": "ship", "formats": [],              "price": "pattern-study", "source": "earlier" },
+    { "id": "perfectionism",               "title": "Perfectionism",               "type": "pattern", "route": "/patterns/perfectionism",               "page": "gen", "status": "ship", "formats": [],              "price": "pattern-study", "source": "earlier" },
+    { "id": "procrastination",             "title": "Procrastination",             "type": "pattern", "route": "/patterns/procrastination",             "page": "gen", "status": "ship", "formats": [],              "price": "pattern-study", "source": "earlier" },
+
+    { "id": "interwoven-concepts", "title": "Three Interwoven Concept Studies", "type": "collection", "route": "/collections/interwoven-concepts", "page": "gen", "status": "placeholder", "formats": [], "price": "three-interwoven-concepts", "source": "brief",
+      "summary": "Three Concepts that rarely appear alone, studied together. About eleven Concept weaves are in the material; their names have not been set down here yet." },
+    { "id": "interwoven-patterns", "title": "Interwoven Pattern Studies", "type": "collection", "route": "/collections/interwoven-patterns", "page": "gen", "status": "placeholder", "formats": [], "price": "three-interwoven-patterns", "price_alt": "six-interwoven-patterns", "source": "brief",
+      "summary": "Three or six Patterns that reinforce one another, studied together. About twenty-one Pattern weaves are in the material; their names have not been set down here yet." },
+    { "id": "connected-collection", "title": "Connected Concept and Pattern Collection", "type": "collection", "route": "/collections/connected", "page": "gen", "status": "placeholder", "formats": [], "price": "connected-collection", "source": "brief",
+      "summary": "A Concept studied with the Patterns connected to it." },
+    { "id": "hos-collection", "title": "Human Operating System Collection", "type": "collection", "route": "/collections/human-operating-system", "page": "gen", "status": "ship", "formats": [], "price": "hos-collection", "lesson_price": "hos-lesson", "source": "brief",
+      "summary": "Nine lessons, each available on its own.",
+      "lessons": ["Consciousness", "Mind", "Brain", "Body", "Four Selves", "Concepts", "Beliefs", "Expectations", "Patterns"] },
+    { "id": "worth-family-collection", "title": "The Worth Family", "type": "collection", "route": "/collections/worth-family", "page": "gen", "status": "ship", "formats": [], "price": "family-collection", "source": "earlier", "redirect_family": "worth",
+      "summary": "Unworthiness, Inadequacy, Inferiority and Undeserving studied as one set." },
+    { "id": "unworthiness-collection", "title": "Unworthiness", "type": "collection", "route": "/collections/unworthiness", "page": "hand", "status": "ship", "formats": [], "price": "connected-collection", "source": "earlier", "note": "The worked example. Written by hand." },
+
+    { "id": "mother-and-acceptance",          "title": "Mother and Acceptance",          "type": "relationship", "route": "/relationships/mother-and-acceptance",          "page": "gen", "status": "placeholder", "formats": [], "price": "pattern-study", "source": "brief", "open": ["O13"] },
+    { "id": "father-and-approval",            "title": "Father and Approval",            "type": "relationship", "route": "/relationships/father-and-approval",            "page": "gen", "status": "placeholder", "formats": [], "price": "pattern-study", "source": "brief", "open": ["O13"] },
+    { "id": "trust-and-rejection",            "title": "Trust and Rejection",            "type": "relationship", "route": "/relationships/trust-and-rejection",            "page": "gen", "status": "placeholder", "formats": [], "price": "pattern-study", "source": "brief", "open": ["O13"] },
+    { "id": "roles-and-expectations",         "title": "Roles and Expectations",         "type": "relationship", "route": "/relationships/roles-and-expectations",         "page": "gen", "status": "placeholder", "formats": [], "price": "pattern-study", "source": "brief", "open": ["O13"] },
+    { "id": "relationships-as-mirrors",       "title": "Relationships as Mirrors",       "type": "relationship", "route": "/relationships/relationships-as-mirrors",       "page": "gen", "status": "placeholder", "formats": [], "price": "pattern-study", "source": "brief", "open": ["O13"] },
+    { "id": "recurring-relationship-patterns","title": "Recurring Relationship Patterns","type": "relationship", "route": "/relationships/recurring-relationship-patterns","page": "gen", "status": "placeholder", "formats": [], "price": "pattern-study", "source": "brief", "open": ["O13"] },
+
+    { "id": "five-laws",            "title": "Five Laws of Human Experience",      "type": "course", "route": "/courses/five-laws",            "page": "hand", "status": "ship", "formats": ["watch"], "price": "five-laws", "free": true, "source": "brief", "summary": "Free. The video is in SARA THREE." },
+    { "id": "foundation",           "title": "Foundation of the Institute Course", "type": "course", "route": "/courses/foundation",           "page": "hand", "status": "ship", "formats": [], "price": "foundation", "source": "brief", "open": ["O3", "O6"], "summary": "Ten weeks." },
+    { "id": "self-exploratory",     "title": "Self Exploratory Course",            "type": "course", "route": "/courses/self-exploratory",     "page": "gen",  "status": "ship", "formats": ["self-guided"], "price": "self-exploratory", "source": "brief", "summary": "An introductory course. The deck is in SARA THREE." },
+    { "id": "awakening",            "title": "Awakening of Consciousness",         "type": "course", "route": "/courses/awakening-of-consciousness", "page": "gen", "status": "ship", "formats": [], "price": "awakening", "source": "brief" },
+    { "id": "universal-principles", "title": "Universal Principles and Teachings", "type": "course", "route": "/courses/universal-principles", "page": "gen", "status": "ship", "formats": [], "price": "universal-principles", "source": "brief" },
+    { "id": "four-selves",          "title": "The Four Selves",                    "type": "course", "route": "/courses/four-selves",          "page": "gen",  "status": "ship", "formats": [], "price": "four-selves", "source": "brief" },
+    { "id": "body-symbology",       "title": "Total Body Symbology Reference",     "type": "course", "route": "/courses/body-symbology",       "page": "hand", "status": "ship", "formats": [], "price": "body-symbology", "source": "brief", "open": ["O6"] },
+    { "id": "human-operating-system-course", "title": "The Human Operating System", "type": "course", "route": "/courses/human-operating-system", "page": "hand", "status": "ship", "formats": [], "price": "hos-collection", "source": "earlier" },
+    { "id": "personal-responsibility", "title": "Doctrine of Personal Responsibility", "type": "course", "route": null, "page": null, "status": "hold", "formats": [], "price": "personal-responsibility", "free": true, "source": "brief", "note": "Proposed as free on the Price Menu. Not in the brief's Learn list." },
+
+    { "id": "twelve-spiritual-gifts",  "title": "Twelve Spiritual Gifts",   "type": "teaching", "route": "/universal-teachings/twelve-spiritual-gifts",  "page": "gen", "status": "ship", "formats": [], "price": "pattern-study", "bundle": "gifts-and-disciplines", "source": "brief" },
+    { "id": "twelve-disciplines",      "title": "Twelve Disciplines",       "type": "teaching", "route": "/universal-teachings/twelve-disciplines",      "page": "gen", "status": "ship", "formats": [], "price": "pattern-study", "bundle": "gifts-and-disciplines", "source": "brief" },
+    { "id": "discipline-of-cycles",    "title": "Discipline of Cycles",     "type": "teaching", "route": "/universal-teachings/discipline-of-cycles",    "page": "gen", "status": "placeholder", "formats": ["written"], "price": null, "source": "brief", "open": ["O13"], "note": "Michael asked for the Keynote to be converted to PDF. The PDF has not arrived." },
+    { "id": "belonging-six-principles","title": "Belonging Six Principles", "type": "teaching", "route": "/universal-teachings/belonging-six-principles","page": "gen", "status": "ship", "formats": ["written"], "price": null, "source": "brief", "note": "PDF received in SARA THREE." },
+
+    { "id": "eightfold-view",        "title": "View",                  "type": "video", "series": "eightfold", "route": null, "page": null, "status": "ship", "formats": ["watch"], "price": "short-video", "source": "brief" },
+    { "id": "eightfold-thought",     "title": "Thought",               "type": "video", "series": "eightfold", "route": null, "page": null, "status": "ship", "formats": ["watch"], "price": "short-video", "source": "brief" },
+    { "id": "eightfold-speech",      "title": "Speech",                "type": "video", "series": "eightfold", "route": null, "page": null, "status": "ship", "formats": ["watch"], "price": "short-video", "source": "brief" },
+    { "id": "eightfold-behavior",    "title": "Behavior",              "type": "video", "series": "eightfold", "route": null, "page": null, "status": "ship", "formats": ["watch"], "price": "short-video", "source": "brief" },
+    { "id": "eightfold-livelihood",  "title": "Livelihood",            "type": "video", "series": "eightfold", "route": null, "page": null, "status": "ship", "formats": ["watch"], "price": "short-video", "source": "brief" },
+    { "id": "eightfold-effort",      "title": "Effort",                "type": "video", "series": "eightfold", "route": null, "page": null, "status": "ship", "formats": ["watch"], "price": "short-video", "source": "brief" },
+    { "id": "eightfold-mindfulness", "title": "Mindfulness",           "type": "video", "series": "eightfold", "route": null, "page": null, "status": "ship", "formats": ["watch"], "price": "short-video", "source": "brief", "note": "Two cuts in the folder. Which one ships is open (O12)." , "open": ["O12"] },
+    { "id": "eightfold-meditation",  "title": "Meditation",            "type": "video", "series": "eightfold", "route": null, "page": null, "status": "ship", "formats": ["watch"], "price": "short-video", "source": "brief" },
+
+    { "id": "arthritis",                  "title": "Arthritis",                    "type": "self-guided", "route": "/self-guided-studies/arthritis",                  "page": "gen", "status": "ship", "formats": ["self-guided"], "price": "disease-study", "price_alt": "disease-study-written", "source": "brief" },
+    { "id": "bone-health",                "title": "Bone Health",                  "type": "self-guided", "route": "/self-guided-studies/bone-health",                "page": "gen", "status": "ship", "formats": ["self-guided"], "price": "disease-study", "price_alt": "disease-study-written", "source": "brief" },
+    { "id": "brain-and-memory",           "title": "Brain and Memory",             "type": "self-guided", "route": "/self-guided-studies/brain-and-memory",           "page": "gen", "status": "ship", "formats": ["self-guided"], "price": "disease-study", "price_alt": "disease-study-written", "source": "brief" },
+    { "id": "cancer",                     "title": "Cancer",                       "type": "self-guided", "route": "/self-guided-studies/cancer",                     "page": "gen", "status": "ship", "formats": ["self-guided"], "price": "disease-study", "price_alt": "disease-study-written", "source": "brief",
+      "parts": ["Breast", "Prostate", "Causes of Cancer"] },
+    { "id": "cardiovascular",             "title": "Cardiovascular", "type": "self-guided", "route": "/self-guided-studies/cardiovascular",             "page": "gen", "status": "ship", "formats": ["self-guided"], "price": "disease-study", "price_alt": "disease-study-written", "source": "brief" },
+    { "id": "diabetes",                   "title": "Diabetes",                     "type": "self-guided", "route": "/self-guided-studies/diabetes",                   "page": "gen", "status": "ship", "formats": ["self-guided"], "price": "disease-study", "price_alt": "disease-study-written", "source": "brief" },
+    { "id": "digestive-health",           "title": "Digestive Health",             "type": "self-guided", "route": "/self-guided-studies/digestive-health",           "page": "gen", "status": "ship", "formats": ["self-guided"], "price": "disease-study", "price_alt": "disease-study-written", "source": "brief" },
+    { "id": "hypertension",               "title": "Hypertension",                 "type": "self-guided", "route": "/self-guided-studies/hypertension",               "page": "gen", "status": "ship", "formats": ["self-guided"], "price": "disease-study", "price_alt": "disease-study-written", "source": "brief" },
+    { "id": "immune-health",              "title": "Immune Health",                "type": "self-guided", "route": "/self-guided-studies/immune-health",              "page": "gen", "status": "ship", "formats": ["self-guided"], "price": "disease-study", "price_alt": "disease-study-written", "source": "brief" },
+    { "id": "weight-and-metabolic-health","title": "Weight and Metabolic Health",  "type": "self-guided", "route": "/self-guided-studies/weight-and-metabolic-health","page": "gen", "status": "ship", "formats": ["self-guided"], "price": "disease-study", "price_alt": "disease-study-written", "source": "brief" }
+  ]
+}
